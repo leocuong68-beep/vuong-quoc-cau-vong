@@ -1,0 +1,53 @@
+import { vi } from 'vitest';
+
+vi.spyOn(window.HTMLMediaElement.prototype, 'play').mockImplementation(() => Promise.resolve());
+vi.spyOn(window.HTMLMediaElement.prototype, 'pause').mockImplementation(() => {});
+vi.spyOn(window.HTMLMediaElement.prototype, 'load').mockImplementation(() => {});
+vi.spyOn(window.HTMLMediaElement.prototype, 'addEventListener').mockImplementation(() => {});
+vi.spyOn(window.HTMLMediaElement.prototype, 'removeEventListener').mockImplementation(() => {});
+
+vi.mock('@interactjs/interactjs', () => {
+  const mockInteract = vi.fn(() => ({
+    dropzone: vi.fn().mockReturnThis(),
+    draggable: vi.fn().mockReturnThis(),
+    unset: vi.fn(),
+  }));
+  mockInteract.dropzone = vi.fn().mockReturnThis();
+  mockInteract.draggable = vi.fn().mockReturnThis();
+  mockInteract.unset = vi.fn();
+  mockInteract.use = vi.fn();
+  return { default: mockInteract };
+});
+
+vi.mock('@interactjs/actions/plugin.js', () => ({
+  default: { id: 'actions', install: vi.fn() },
+}));
+
+Object.defineProperty(window, 'localStorage', {
+  value: {
+    getItem: vi.fn(() => '0'),
+    setItem: vi.fn(),
+    removeItem: vi.fn(),
+    clear: vi.fn(),
+  },
+  writable: true,
+});
+
+Object.defineProperty(window, 'matchMedia', {
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+  writable: true,
+});
+
+// eslint-disable-next-line no-console
+console.error = vi.fn();
+// eslint-disable-next-line no-console
+console.warn = vi.fn();

@@ -1,0 +1,2832 @@
+[
+  {
+    "key": "hello",
+    "en": "Hi Mia! Let's play!",
+    "vi": "Chào Mia! Mình cùng chơi nhé!"
+  },
+  {
+    "key": "praise_1",
+    "en": "Great job, Mia!",
+    "vi": "Mia giỏi lắm!"
+  },
+  {
+    "key": "praise_2",
+    "en": "Well done, Mia!",
+    "vi": "Mia làm tốt lắm!"
+  },
+  {
+    "key": "praise_3",
+    "en": "You are a star, Mia!",
+    "vi": "Mia là ngôi sao nhỏ!"
+  },
+  {
+    "key": "stage_done",
+    "en": "Hooray! You did it, Mia!",
+    "vi": "Hoan hô! Mia giỏi quá!"
+  },
+  {
+    "key": "try_again",
+    "en": "Not quite, Mia. Try again!",
+    "vi": "Chưa đúng rồi, Mia thử lại nhé!"
+  },
+  {
+    "key": "count_again",
+    "en": "Not quite, Mia. Count again!",
+    "vi": "Chưa đúng, Mia đếm lại nhé!"
+  },
+  {
+    "key": "locked",
+    "en": "Play the game before this one first, Mia!",
+    "vi": "Mia chơi xong trò trước đã nhé!"
+  },
+  {
+    "key": "dressup_done",
+    "en": "Hooray! The princess is ready for the party!",
+    "vi": "Hoan hô! Công chúa đã sẵn sàng đi dự tiệc!"
+  },
+  {
+    "key": "how_many_apples",
+    "en": "Mia, how many apples?",
+    "vi": "Mia ơi, có mấy quả táo?"
+  },
+  {
+    "key": "how_many_flowers",
+    "en": "Mia, how many flowers?",
+    "vi": "Mia ơi, có mấy bông hoa?"
+  },
+  {
+    "key": "more",
+    "en": "Mia, which side has more apples?",
+    "vi": "Mia ơi, bên nào nhiều táo hơn?"
+  },
+  {
+    "key": "fewer",
+    "en": "Mia, which side has fewer apples?",
+    "vi": "Mia ơi, bên nào ít táo hơn?"
+  },
+  {
+    "key": "yes_more",
+    "en": "Yes! This side has more!",
+    "vi": "Đúng rồi! Bên này nhiều hơn!"
+  },
+  {
+    "key": "yes_fewer",
+    "en": "Yes! This side has fewer!",
+    "vi": "Đúng rồi! Bên này ít hơn!"
+  },
+  {
+    "key": "pattern",
+    "en": "Mia, what comes next?",
+    "vi": "Mia ơi, tiếp theo là gì nhỉ?"
+  },
+  {
+    "key": "yes_pattern",
+    "en": "Yes! You found the pattern!",
+    "vi": "Đúng rồi! Mia tìm ra quy luật rồi!"
+  },
+  {
+    "key": "hello_tintin",
+    "en": "Tin Tin wants to play with Mia!",
+    "vi": "Anh Tin Tin muốn chơi cùng Mia!"
+  },
+  {
+    "key": "done_tintin",
+    "en": "Tin Tin says: you did it, Mia!",
+    "vi": "Anh Tin Tin nói: Mia giỏi quá!"
+  },
+  {
+    "key": "hello_mommy",
+    "en": "Mommy wants to play with Mia!",
+    "vi": "Mẹ muốn chơi cùng Mia!"
+  },
+  {
+    "key": "done_mommy",
+    "en": "Mommy is so proud of you, Mia!",
+    "vi": "Mẹ tự hào về Mia lắm!"
+  },
+  {
+    "key": "hello_daddy",
+    "en": "Daddy wants to play with Mia!",
+    "vi": "Ba muốn chơi cùng Mia!"
+  },
+  {
+    "key": "done_daddy",
+    "en": "Daddy is so proud of you, Mia!",
+    "vi": "Ba tự hào về Mia lắm!"
+  },
+  {
+    "key": "find_dress_pink",
+    "en": "Mia, find the pink dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu hồng nào!"
+  },
+  {
+    "key": "yes_dress_pink",
+    "en": "Yes! The pink dress!",
+    "vi": "Đúng rồi! Chiếc váy màu hồng!"
+  },
+  {
+    "key": "find_dress_blue",
+    "en": "Mia, find the blue dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu xanh dương nào!"
+  },
+  {
+    "key": "yes_dress_blue",
+    "en": "Yes! The blue dress!",
+    "vi": "Đúng rồi! Chiếc váy màu xanh dương!"
+  },
+  {
+    "key": "find_dress_yellow",
+    "en": "Mia, find the yellow dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu vàng nào!"
+  },
+  {
+    "key": "yes_dress_yellow",
+    "en": "Yes! The yellow dress!",
+    "vi": "Đúng rồi! Chiếc váy màu vàng!"
+  },
+  {
+    "key": "find_dress_green",
+    "en": "Mia, find the green dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu xanh lá nào!"
+  },
+  {
+    "key": "yes_dress_green",
+    "en": "Yes! The green dress!",
+    "vi": "Đúng rồi! Chiếc váy màu xanh lá!"
+  },
+  {
+    "key": "find_dress_purple",
+    "en": "Mia, find the purple dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu tím nào!"
+  },
+  {
+    "key": "yes_dress_purple",
+    "en": "Yes! The purple dress!",
+    "vi": "Đúng rồi! Chiếc váy màu tím!"
+  },
+  {
+    "key": "find_dress_red",
+    "en": "Mia, find the red dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu đỏ nào!"
+  },
+  {
+    "key": "yes_dress_red",
+    "en": "Yes! The red dress!",
+    "vi": "Đúng rồi! Chiếc váy màu đỏ!"
+  },
+  {
+    "key": "find_dress_orange",
+    "en": "Mia, find the orange dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu cam nào!"
+  },
+  {
+    "key": "yes_dress_orange",
+    "en": "Yes! The orange dress!",
+    "vi": "Đúng rồi! Chiếc váy màu cam!"
+  },
+  {
+    "key": "find_crown_pink",
+    "en": "Mia, find the pink crown!",
+    "vi": "Mia ơi, tìm vương miện màu hồng nào!"
+  },
+  {
+    "key": "yes_crown_pink",
+    "en": "Yes! The pink crown!",
+    "vi": "Đúng rồi! Vương miện màu hồng!"
+  },
+  {
+    "key": "find_crown_blue",
+    "en": "Mia, find the blue crown!",
+    "vi": "Mia ơi, tìm vương miện màu xanh dương nào!"
+  },
+  {
+    "key": "yes_crown_blue",
+    "en": "Yes! The blue crown!",
+    "vi": "Đúng rồi! Vương miện màu xanh dương!"
+  },
+  {
+    "key": "find_crown_yellow",
+    "en": "Mia, find the yellow crown!",
+    "vi": "Mia ơi, tìm vương miện màu vàng nào!"
+  },
+  {
+    "key": "yes_crown_yellow",
+    "en": "Yes! The yellow crown!",
+    "vi": "Đúng rồi! Vương miện màu vàng!"
+  },
+  {
+    "key": "find_crown_green",
+    "en": "Mia, find the green crown!",
+    "vi": "Mia ơi, tìm vương miện màu xanh lá nào!"
+  },
+  {
+    "key": "yes_crown_green",
+    "en": "Yes! The green crown!",
+    "vi": "Đúng rồi! Vương miện màu xanh lá!"
+  },
+  {
+    "key": "find_crown_purple",
+    "en": "Mia, find the purple crown!",
+    "vi": "Mia ơi, tìm vương miện màu tím nào!"
+  },
+  {
+    "key": "yes_crown_purple",
+    "en": "Yes! The purple crown!",
+    "vi": "Đúng rồi! Vương miện màu tím!"
+  },
+  {
+    "key": "find_crown_red",
+    "en": "Mia, find the red crown!",
+    "vi": "Mia ơi, tìm vương miện màu đỏ nào!"
+  },
+  {
+    "key": "yes_crown_red",
+    "en": "Yes! The red crown!",
+    "vi": "Đúng rồi! Vương miện màu đỏ!"
+  },
+  {
+    "key": "find_crown_orange",
+    "en": "Mia, find the orange crown!",
+    "vi": "Mia ơi, tìm vương miện màu cam nào!"
+  },
+  {
+    "key": "yes_crown_orange",
+    "en": "Yes! The orange crown!",
+    "vi": "Đúng rồi! Vương miện màu cam!"
+  },
+  {
+    "key": "find_bow_pink",
+    "en": "Mia, Pony wants the pink bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu hồng!"
+  },
+  {
+    "key": "yes_bow_pink",
+    "en": "Yes! The pink bow!",
+    "vi": "Đúng rồi! Chiếc nơ màu hồng!"
+  },
+  {
+    "key": "find_bow_blue",
+    "en": "Mia, Pony wants the blue bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu xanh dương!"
+  },
+  {
+    "key": "yes_bow_blue",
+    "en": "Yes! The blue bow!",
+    "vi": "Đúng rồi! Chiếc nơ màu xanh dương!"
+  },
+  {
+    "key": "find_bow_yellow",
+    "en": "Mia, Pony wants the yellow bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu vàng!"
+  },
+  {
+    "key": "yes_bow_yellow",
+    "en": "Yes! The yellow bow!",
+    "vi": "Đúng rồi! Chiếc nơ màu vàng!"
+  },
+  {
+    "key": "find_bow_green",
+    "en": "Mia, Pony wants the green bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu xanh lá!"
+  },
+  {
+    "key": "yes_bow_green",
+    "en": "Yes! The green bow!",
+    "vi": "Đúng rồi! Chiếc nơ màu xanh lá!"
+  },
+  {
+    "key": "find_bow_purple",
+    "en": "Mia, Pony wants the purple bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu tím!"
+  },
+  {
+    "key": "yes_bow_purple",
+    "en": "Yes! The purple bow!",
+    "vi": "Đúng rồi! Chiếc nơ màu tím!"
+  },
+  {
+    "key": "find_bow_red",
+    "en": "Mia, Pony wants the red bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu đỏ!"
+  },
+  {
+    "key": "yes_bow_red",
+    "en": "Yes! The red bow!",
+    "vi": "Đúng rồi! Chiếc nơ màu đỏ!"
+  },
+  {
+    "key": "find_bow_orange",
+    "en": "Mia, Pony wants the orange bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu cam!"
+  },
+  {
+    "key": "yes_bow_orange",
+    "en": "Yes! The orange bow!",
+    "vi": "Đúng rồi! Chiếc nơ màu cam!"
+  },
+  {
+    "key": "that_is_pink",
+    "en": "That is pink. Try again, Mia!",
+    "vi": "Đây là màu hồng. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_pink",
+    "en": "Mia, find the pink flower!",
+    "vi": "Mia ơi, tìm bông hoa màu hồng nào!"
+  },
+  {
+    "key": "yes_color_pink",
+    "en": "Yes! Pink!",
+    "vi": "Đúng rồi! Màu hồng!"
+  },
+  {
+    "key": "that_is_blue",
+    "en": "That is blue. Try again, Mia!",
+    "vi": "Đây là màu xanh dương. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_blue",
+    "en": "Mia, find the blue flower!",
+    "vi": "Mia ơi, tìm bông hoa màu xanh dương nào!"
+  },
+  {
+    "key": "yes_color_blue",
+    "en": "Yes! Blue!",
+    "vi": "Đúng rồi! Màu xanh dương!"
+  },
+  {
+    "key": "that_is_yellow",
+    "en": "That is yellow. Try again, Mia!",
+    "vi": "Đây là màu vàng. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_yellow",
+    "en": "Mia, find the yellow flower!",
+    "vi": "Mia ơi, tìm bông hoa màu vàng nào!"
+  },
+  {
+    "key": "yes_color_yellow",
+    "en": "Yes! Yellow!",
+    "vi": "Đúng rồi! Màu vàng!"
+  },
+  {
+    "key": "that_is_green",
+    "en": "That is green. Try again, Mia!",
+    "vi": "Đây là màu xanh lá. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_green",
+    "en": "Mia, find the green flower!",
+    "vi": "Mia ơi, tìm bông hoa màu xanh lá nào!"
+  },
+  {
+    "key": "yes_color_green",
+    "en": "Yes! Green!",
+    "vi": "Đúng rồi! Màu xanh lá!"
+  },
+  {
+    "key": "that_is_purple",
+    "en": "That is purple. Try again, Mia!",
+    "vi": "Đây là màu tím. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_purple",
+    "en": "Mia, find the purple flower!",
+    "vi": "Mia ơi, tìm bông hoa màu tím nào!"
+  },
+  {
+    "key": "yes_color_purple",
+    "en": "Yes! Purple!",
+    "vi": "Đúng rồi! Màu tím!"
+  },
+  {
+    "key": "that_is_red",
+    "en": "That is red. Try again, Mia!",
+    "vi": "Đây là màu đỏ. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_red",
+    "en": "Mia, find the red flower!",
+    "vi": "Mia ơi, tìm bông hoa màu đỏ nào!"
+  },
+  {
+    "key": "yes_color_red",
+    "en": "Yes! Red!",
+    "vi": "Đúng rồi! Màu đỏ!"
+  },
+  {
+    "key": "that_is_orange",
+    "en": "That is orange. Try again, Mia!",
+    "vi": "Đây là màu cam. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_orange",
+    "en": "Mia, find the orange flower!",
+    "vi": "Mia ơi, tìm bông hoa màu cam nào!"
+  },
+  {
+    "key": "yes_color_orange",
+    "en": "Yes! Orange!",
+    "vi": "Đúng rồi! Màu cam!"
+  },
+  {
+    "key": "find_shape_circle",
+    "en": "Mia, find the circle!",
+    "vi": "Mia ơi, tìm hình tròn nào!"
+  },
+  {
+    "key": "yes_shape_circle",
+    "en": "Yes! The circle!",
+    "vi": "Đúng rồi! Hình tròn!"
+  },
+  {
+    "key": "find_shape_square",
+    "en": "Mia, find the square!",
+    "vi": "Mia ơi, tìm hình vuông nào!"
+  },
+  {
+    "key": "yes_shape_square",
+    "en": "Yes! The square!",
+    "vi": "Đúng rồi! Hình vuông!"
+  },
+  {
+    "key": "find_shape_triangle",
+    "en": "Mia, find the triangle!",
+    "vi": "Mia ơi, tìm hình tam giác nào!"
+  },
+  {
+    "key": "yes_shape_triangle",
+    "en": "Yes! The triangle!",
+    "vi": "Đúng rồi! Hình tam giác!"
+  },
+  {
+    "key": "find_shape_star",
+    "en": "Mia, find the star!",
+    "vi": "Mia ơi, tìm ngôi sao nào!"
+  },
+  {
+    "key": "yes_shape_star",
+    "en": "Yes! The star!",
+    "vi": "Đúng rồi! Ngôi sao!"
+  },
+  {
+    "key": "find_shape_heart",
+    "en": "Mia, find the heart!",
+    "vi": "Mia ơi, tìm trái tim nào!"
+  },
+  {
+    "key": "yes_shape_heart",
+    "en": "Yes! The heart!",
+    "vi": "Đúng rồi! Trái tim!"
+  },
+  {
+    "key": "number_1",
+    "en": "One",
+    "vi": "Một"
+  },
+  {
+    "key": "find_number_1",
+    "en": "Mia, find number one!",
+    "vi": "Mia ơi, tìm số một nào!"
+  },
+  {
+    "key": "yes_number_1",
+    "en": "Yes! Number one!",
+    "vi": "Đúng rồi! Số một!"
+  },
+  {
+    "key": "yes_count_1",
+    "en": "Yes! One!",
+    "vi": "Đúng rồi! Một!"
+  },
+  {
+    "key": "give_1",
+    "en": "Mia, give Pony one apple!",
+    "vi": "Mia ơi, cho pony một quả táo nào!"
+  },
+  {
+    "key": "give_yes_1",
+    "en": "Yes! One apple! Yummy!",
+    "vi": "Đúng rồi! Một quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_2",
+    "en": "Two",
+    "vi": "Hai"
+  },
+  {
+    "key": "find_number_2",
+    "en": "Mia, find number two!",
+    "vi": "Mia ơi, tìm số hai nào!"
+  },
+  {
+    "key": "yes_number_2",
+    "en": "Yes! Number two!",
+    "vi": "Đúng rồi! Số hai!"
+  },
+  {
+    "key": "yes_count_2",
+    "en": "Yes! Two!",
+    "vi": "Đúng rồi! Hai!"
+  },
+  {
+    "key": "give_2",
+    "en": "Mia, give Pony two apples!",
+    "vi": "Mia ơi, cho pony hai quả táo nào!"
+  },
+  {
+    "key": "give_yes_2",
+    "en": "Yes! Two apples! Yummy!",
+    "vi": "Đúng rồi! Hai quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_3",
+    "en": "Three",
+    "vi": "Ba"
+  },
+  {
+    "key": "find_number_3",
+    "en": "Mia, find number three!",
+    "vi": "Mia ơi, tìm số ba nào!"
+  },
+  {
+    "key": "yes_number_3",
+    "en": "Yes! Number three!",
+    "vi": "Đúng rồi! Số ba!"
+  },
+  {
+    "key": "yes_count_3",
+    "en": "Yes! Three!",
+    "vi": "Đúng rồi! Ba!"
+  },
+  {
+    "key": "give_3",
+    "en": "Mia, give Pony three apples!",
+    "vi": "Mia ơi, cho pony ba quả táo nào!"
+  },
+  {
+    "key": "give_yes_3",
+    "en": "Yes! Three apples! Yummy!",
+    "vi": "Đúng rồi! Ba quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_4",
+    "en": "Four",
+    "vi": "Bốn"
+  },
+  {
+    "key": "find_number_4",
+    "en": "Mia, find number four!",
+    "vi": "Mia ơi, tìm số bốn nào!"
+  },
+  {
+    "key": "yes_number_4",
+    "en": "Yes! Number four!",
+    "vi": "Đúng rồi! Số bốn!"
+  },
+  {
+    "key": "yes_count_4",
+    "en": "Yes! Four!",
+    "vi": "Đúng rồi! Bốn!"
+  },
+  {
+    "key": "give_4",
+    "en": "Mia, give Pony four apples!",
+    "vi": "Mia ơi, cho pony bốn quả táo nào!"
+  },
+  {
+    "key": "give_yes_4",
+    "en": "Yes! Four apples! Yummy!",
+    "vi": "Đúng rồi! Bốn quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_5",
+    "en": "Five",
+    "vi": "Năm"
+  },
+  {
+    "key": "find_number_5",
+    "en": "Mia, find number five!",
+    "vi": "Mia ơi, tìm số năm nào!"
+  },
+  {
+    "key": "yes_number_5",
+    "en": "Yes! Number five!",
+    "vi": "Đúng rồi! Số năm!"
+  },
+  {
+    "key": "yes_count_5",
+    "en": "Yes! Five!",
+    "vi": "Đúng rồi! Năm!"
+  },
+  {
+    "key": "give_5",
+    "en": "Mia, give Pony five apples!",
+    "vi": "Mia ơi, cho pony năm quả táo nào!"
+  },
+  {
+    "key": "give_yes_5",
+    "en": "Yes! Five apples! Yummy!",
+    "vi": "Đúng rồi! Năm quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_6",
+    "en": "Six",
+    "vi": "Sáu"
+  },
+  {
+    "key": "find_number_6",
+    "en": "Mia, find number six!",
+    "vi": "Mia ơi, tìm số sáu nào!"
+  },
+  {
+    "key": "yes_number_6",
+    "en": "Yes! Number six!",
+    "vi": "Đúng rồi! Số sáu!"
+  },
+  {
+    "key": "yes_count_6",
+    "en": "Yes! Six!",
+    "vi": "Đúng rồi! Sáu!"
+  },
+  {
+    "key": "give_6",
+    "en": "Mia, give Pony six apples!",
+    "vi": "Mia ơi, cho pony sáu quả táo nào!"
+  },
+  {
+    "key": "give_yes_6",
+    "en": "Yes! Six apples! Yummy!",
+    "vi": "Đúng rồi! Sáu quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_7",
+    "en": "Seven",
+    "vi": "Bảy"
+  },
+  {
+    "key": "find_number_7",
+    "en": "Mia, find number seven!",
+    "vi": "Mia ơi, tìm số bảy nào!"
+  },
+  {
+    "key": "yes_number_7",
+    "en": "Yes! Number seven!",
+    "vi": "Đúng rồi! Số bảy!"
+  },
+  {
+    "key": "yes_count_7",
+    "en": "Yes! Seven!",
+    "vi": "Đúng rồi! Bảy!"
+  },
+  {
+    "key": "give_7",
+    "en": "Mia, give Pony seven apples!",
+    "vi": "Mia ơi, cho pony bảy quả táo nào!"
+  },
+  {
+    "key": "give_yes_7",
+    "en": "Yes! Seven apples! Yummy!",
+    "vi": "Đúng rồi! Bảy quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_8",
+    "en": "Eight",
+    "vi": "Tám"
+  },
+  {
+    "key": "find_number_8",
+    "en": "Mia, find number eight!",
+    "vi": "Mia ơi, tìm số tám nào!"
+  },
+  {
+    "key": "yes_number_8",
+    "en": "Yes! Number eight!",
+    "vi": "Đúng rồi! Số tám!"
+  },
+  {
+    "key": "yes_count_8",
+    "en": "Yes! Eight!",
+    "vi": "Đúng rồi! Tám!"
+  },
+  {
+    "key": "give_8",
+    "en": "Mia, give Pony eight apples!",
+    "vi": "Mia ơi, cho pony tám quả táo nào!"
+  },
+  {
+    "key": "give_yes_8",
+    "en": "Yes! Eight apples! Yummy!",
+    "vi": "Đúng rồi! Tám quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_9",
+    "en": "Nine",
+    "vi": "Chín"
+  },
+  {
+    "key": "find_number_9",
+    "en": "Mia, find number nine!",
+    "vi": "Mia ơi, tìm số chín nào!"
+  },
+  {
+    "key": "yes_number_9",
+    "en": "Yes! Number nine!",
+    "vi": "Đúng rồi! Số chín!"
+  },
+  {
+    "key": "yes_count_9",
+    "en": "Yes! Nine!",
+    "vi": "Đúng rồi! Chín!"
+  },
+  {
+    "key": "give_9",
+    "en": "Mia, give Pony nine apples!",
+    "vi": "Mia ơi, cho pony chín quả táo nào!"
+  },
+  {
+    "key": "give_yes_9",
+    "en": "Yes! Nine apples! Yummy!",
+    "vi": "Đúng rồi! Chín quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_10",
+    "en": "Ten",
+    "vi": "Mười"
+  },
+  {
+    "key": "find_number_10",
+    "en": "Mia, find number ten!",
+    "vi": "Mia ơi, tìm số mười nào!"
+  },
+  {
+    "key": "yes_number_10",
+    "en": "Yes! Number ten!",
+    "vi": "Đúng rồi! Số mười!"
+  },
+  {
+    "key": "yes_count_10",
+    "en": "Yes! Ten!",
+    "vi": "Đúng rồi! Mười!"
+  },
+  {
+    "key": "give_10",
+    "en": "Mia, give Pony ten apples!",
+    "vi": "Mia ơi, cho pony mười quả táo nào!"
+  },
+  {
+    "key": "give_yes_10",
+    "en": "Yes! Ten apples! Yummy!",
+    "vi": "Đúng rồi! Mười quả táo! Ngon quá!"
+  },
+  {
+    "key": "number_11",
+    "en": "Eleven",
+    "vi": "Mười một"
+  },
+  {
+    "key": "find_number_11",
+    "en": "Mia, find number eleven!",
+    "vi": "Mia ơi, tìm số mười một nào!"
+  },
+  {
+    "key": "yes_number_11",
+    "en": "Yes! Number eleven!",
+    "vi": "Đúng rồi! Số mười một!"
+  },
+  {
+    "key": "yes_count_11",
+    "en": "Yes! Eleven!",
+    "vi": "Đúng rồi! Mười một!"
+  },
+  {
+    "key": "number_12",
+    "en": "Twelve",
+    "vi": "Mười hai"
+  },
+  {
+    "key": "find_number_12",
+    "en": "Mia, find number twelve!",
+    "vi": "Mia ơi, tìm số mười hai nào!"
+  },
+  {
+    "key": "yes_number_12",
+    "en": "Yes! Number twelve!",
+    "vi": "Đúng rồi! Số mười hai!"
+  },
+  {
+    "key": "yes_count_12",
+    "en": "Yes! Twelve!",
+    "vi": "Đúng rồi! Mười hai!"
+  },
+  {
+    "key": "number_13",
+    "en": "Thirteen",
+    "vi": "Mười ba"
+  },
+  {
+    "key": "find_number_13",
+    "en": "Mia, find number thirteen!",
+    "vi": "Mia ơi, tìm số mười ba nào!"
+  },
+  {
+    "key": "yes_number_13",
+    "en": "Yes! Number thirteen!",
+    "vi": "Đúng rồi! Số mười ba!"
+  },
+  {
+    "key": "yes_count_13",
+    "en": "Yes! Thirteen!",
+    "vi": "Đúng rồi! Mười ba!"
+  },
+  {
+    "key": "number_14",
+    "en": "Fourteen",
+    "vi": "Mười bốn"
+  },
+  {
+    "key": "find_number_14",
+    "en": "Mia, find number fourteen!",
+    "vi": "Mia ơi, tìm số mười bốn nào!"
+  },
+  {
+    "key": "yes_number_14",
+    "en": "Yes! Number fourteen!",
+    "vi": "Đúng rồi! Số mười bốn!"
+  },
+  {
+    "key": "yes_count_14",
+    "en": "Yes! Fourteen!",
+    "vi": "Đúng rồi! Mười bốn!"
+  },
+  {
+    "key": "number_15",
+    "en": "Fifteen",
+    "vi": "Mười lăm"
+  },
+  {
+    "key": "find_number_15",
+    "en": "Mia, find number fifteen!",
+    "vi": "Mia ơi, tìm số mười lăm nào!"
+  },
+  {
+    "key": "yes_number_15",
+    "en": "Yes! Number fifteen!",
+    "vi": "Đúng rồi! Số mười lăm!"
+  },
+  {
+    "key": "yes_count_15",
+    "en": "Yes! Fifteen!",
+    "vi": "Đúng rồi! Mười lăm!"
+  },
+  {
+    "key": "number_16",
+    "en": "Sixteen",
+    "vi": "Mười sáu"
+  },
+  {
+    "key": "find_number_16",
+    "en": "Mia, find number sixteen!",
+    "vi": "Mia ơi, tìm số mười sáu nào!"
+  },
+  {
+    "key": "yes_number_16",
+    "en": "Yes! Number sixteen!",
+    "vi": "Đúng rồi! Số mười sáu!"
+  },
+  {
+    "key": "yes_count_16",
+    "en": "Yes! Sixteen!",
+    "vi": "Đúng rồi! Mười sáu!"
+  },
+  {
+    "key": "number_17",
+    "en": "Seventeen",
+    "vi": "Mười bảy"
+  },
+  {
+    "key": "find_number_17",
+    "en": "Mia, find number seventeen!",
+    "vi": "Mia ơi, tìm số mười bảy nào!"
+  },
+  {
+    "key": "yes_number_17",
+    "en": "Yes! Number seventeen!",
+    "vi": "Đúng rồi! Số mười bảy!"
+  },
+  {
+    "key": "yes_count_17",
+    "en": "Yes! Seventeen!",
+    "vi": "Đúng rồi! Mười bảy!"
+  },
+  {
+    "key": "number_18",
+    "en": "Eighteen",
+    "vi": "Mười tám"
+  },
+  {
+    "key": "find_number_18",
+    "en": "Mia, find number eighteen!",
+    "vi": "Mia ơi, tìm số mười tám nào!"
+  },
+  {
+    "key": "yes_number_18",
+    "en": "Yes! Number eighteen!",
+    "vi": "Đúng rồi! Số mười tám!"
+  },
+  {
+    "key": "yes_count_18",
+    "en": "Yes! Eighteen!",
+    "vi": "Đúng rồi! Mười tám!"
+  },
+  {
+    "key": "number_19",
+    "en": "Nineteen",
+    "vi": "Mười chín"
+  },
+  {
+    "key": "find_number_19",
+    "en": "Mia, find number nineteen!",
+    "vi": "Mia ơi, tìm số mười chín nào!"
+  },
+  {
+    "key": "yes_number_19",
+    "en": "Yes! Number nineteen!",
+    "vi": "Đúng rồi! Số mười chín!"
+  },
+  {
+    "key": "yes_count_19",
+    "en": "Yes! Nineteen!",
+    "vi": "Đúng rồi! Mười chín!"
+  },
+  {
+    "key": "number_20",
+    "en": "Twenty",
+    "vi": "Hai mươi"
+  },
+  {
+    "key": "find_number_20",
+    "en": "Mia, find number twenty!",
+    "vi": "Mia ơi, tìm số hai mươi nào!"
+  },
+  {
+    "key": "yes_number_20",
+    "en": "Yes! Number twenty!",
+    "vi": "Đúng rồi! Số hai mươi!"
+  },
+  {
+    "key": "yes_count_20",
+    "en": "Yes! Twenty!",
+    "vi": "Đúng rồi! Hai mươi!"
+  },
+  {
+    "key": "makeup_done",
+    "en": "Wow! Mia looks beautiful!",
+    "vi": "Ồ! Mia xinh quá!"
+  },
+  {
+    "key": "missing",
+    "en": "Mia, which number is missing?",
+    "vi": "Mia ơi, số nào còn thiếu?"
+  },
+  {
+    "key": "bigger",
+    "en": "Mia, which number is bigger?",
+    "vi": "Mia ơi, số nào lớn hơn?"
+  },
+  {
+    "key": "smaller",
+    "en": "Mia, which number is smaller?",
+    "vi": "Mia ơi, số nào nhỏ hơn?"
+  },
+  {
+    "key": "yes_bigger",
+    "en": "Yes! That number is bigger!",
+    "vi": "Đúng rồi! Số đó lớn hơn!"
+  },
+  {
+    "key": "yes_smaller",
+    "en": "Yes! That number is smaller!",
+    "vi": "Đúng rồi! Số đó nhỏ hơn!"
+  },
+  {
+    "key": "makeup_lipstick_pink",
+    "en": "Mia, find the pink lipstick!",
+    "vi": "Mia ơi, tìm son môi màu hồng nào!"
+  },
+  {
+    "key": "makeup_yes_lipstick_pink",
+    "en": "Yes! Pink lipstick! So pretty!",
+    "vi": "Đúng rồi! Son môi màu hồng! Xinh quá!"
+  },
+  {
+    "key": "makeup_lipstick_blue",
+    "en": "Mia, find the blue lipstick!",
+    "vi": "Mia ơi, tìm son môi màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_yes_lipstick_blue",
+    "en": "Yes! Blue lipstick! So pretty!",
+    "vi": "Đúng rồi! Son môi màu xanh dương! Xinh quá!"
+  },
+  {
+    "key": "makeup_lipstick_yellow",
+    "en": "Mia, find the yellow lipstick!",
+    "vi": "Mia ơi, tìm son môi màu vàng nào!"
+  },
+  {
+    "key": "makeup_yes_lipstick_yellow",
+    "en": "Yes! Yellow lipstick! So pretty!",
+    "vi": "Đúng rồi! Son môi màu vàng! Xinh quá!"
+  },
+  {
+    "key": "makeup_lipstick_green",
+    "en": "Mia, find the green lipstick!",
+    "vi": "Mia ơi, tìm son môi màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_yes_lipstick_green",
+    "en": "Yes! Green lipstick! So pretty!",
+    "vi": "Đúng rồi! Son môi màu xanh lá! Xinh quá!"
+  },
+  {
+    "key": "makeup_lipstick_purple",
+    "en": "Mia, find the purple lipstick!",
+    "vi": "Mia ơi, tìm son môi màu tím nào!"
+  },
+  {
+    "key": "makeup_yes_lipstick_purple",
+    "en": "Yes! Purple lipstick! So pretty!",
+    "vi": "Đúng rồi! Son môi màu tím! Xinh quá!"
+  },
+  {
+    "key": "makeup_lipstick_red",
+    "en": "Mia, find the red lipstick!",
+    "vi": "Mia ơi, tìm son môi màu đỏ nào!"
+  },
+  {
+    "key": "makeup_yes_lipstick_red",
+    "en": "Yes! Red lipstick! So pretty!",
+    "vi": "Đúng rồi! Son môi màu đỏ! Xinh quá!"
+  },
+  {
+    "key": "makeup_lipstick_orange",
+    "en": "Mia, find the orange lipstick!",
+    "vi": "Mia ơi, tìm son môi màu cam nào!"
+  },
+  {
+    "key": "makeup_yes_lipstick_orange",
+    "en": "Yes! Orange lipstick! So pretty!",
+    "vi": "Đúng rồi! Son môi màu cam! Xinh quá!"
+  },
+  {
+    "key": "makeup_blush_pink",
+    "en": "Mia, find the pink blush!",
+    "vi": "Mia ơi, tìm phấn má màu hồng nào!"
+  },
+  {
+    "key": "makeup_yes_blush_pink",
+    "en": "Yes! Pink blush! So pretty!",
+    "vi": "Đúng rồi! Phấn má màu hồng! Xinh quá!"
+  },
+  {
+    "key": "makeup_blush_blue",
+    "en": "Mia, find the blue blush!",
+    "vi": "Mia ơi, tìm phấn má màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_yes_blush_blue",
+    "en": "Yes! Blue blush! So pretty!",
+    "vi": "Đúng rồi! Phấn má màu xanh dương! Xinh quá!"
+  },
+  {
+    "key": "makeup_blush_yellow",
+    "en": "Mia, find the yellow blush!",
+    "vi": "Mia ơi, tìm phấn má màu vàng nào!"
+  },
+  {
+    "key": "makeup_yes_blush_yellow",
+    "en": "Yes! Yellow blush! So pretty!",
+    "vi": "Đúng rồi! Phấn má màu vàng! Xinh quá!"
+  },
+  {
+    "key": "makeup_blush_green",
+    "en": "Mia, find the green blush!",
+    "vi": "Mia ơi, tìm phấn má màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_yes_blush_green",
+    "en": "Yes! Green blush! So pretty!",
+    "vi": "Đúng rồi! Phấn má màu xanh lá! Xinh quá!"
+  },
+  {
+    "key": "makeup_blush_purple",
+    "en": "Mia, find the purple blush!",
+    "vi": "Mia ơi, tìm phấn má màu tím nào!"
+  },
+  {
+    "key": "makeup_yes_blush_purple",
+    "en": "Yes! Purple blush! So pretty!",
+    "vi": "Đúng rồi! Phấn má màu tím! Xinh quá!"
+  },
+  {
+    "key": "makeup_blush_red",
+    "en": "Mia, find the red blush!",
+    "vi": "Mia ơi, tìm phấn má màu đỏ nào!"
+  },
+  {
+    "key": "makeup_yes_blush_red",
+    "en": "Yes! Red blush! So pretty!",
+    "vi": "Đúng rồi! Phấn má màu đỏ! Xinh quá!"
+  },
+  {
+    "key": "makeup_blush_orange",
+    "en": "Mia, find the orange blush!",
+    "vi": "Mia ơi, tìm phấn má màu cam nào!"
+  },
+  {
+    "key": "makeup_yes_blush_orange",
+    "en": "Yes! Orange blush! So pretty!",
+    "vi": "Đúng rồi! Phấn má màu cam! Xinh quá!"
+  },
+  {
+    "key": "makeup_eyeshadow_pink",
+    "en": "Mia, find the pink eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu hồng nào!"
+  },
+  {
+    "key": "makeup_yes_eyeshadow_pink",
+    "en": "Yes! Pink eyeshadow! So pretty!",
+    "vi": "Đúng rồi! Phấn mắt màu hồng! Xinh quá!"
+  },
+  {
+    "key": "makeup_eyeshadow_blue",
+    "en": "Mia, find the blue eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_yes_eyeshadow_blue",
+    "en": "Yes! Blue eyeshadow! So pretty!",
+    "vi": "Đúng rồi! Phấn mắt màu xanh dương! Xinh quá!"
+  },
+  {
+    "key": "makeup_eyeshadow_yellow",
+    "en": "Mia, find the yellow eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu vàng nào!"
+  },
+  {
+    "key": "makeup_yes_eyeshadow_yellow",
+    "en": "Yes! Yellow eyeshadow! So pretty!",
+    "vi": "Đúng rồi! Phấn mắt màu vàng! Xinh quá!"
+  },
+  {
+    "key": "makeup_eyeshadow_green",
+    "en": "Mia, find the green eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_yes_eyeshadow_green",
+    "en": "Yes! Green eyeshadow! So pretty!",
+    "vi": "Đúng rồi! Phấn mắt màu xanh lá! Xinh quá!"
+  },
+  {
+    "key": "makeup_eyeshadow_purple",
+    "en": "Mia, find the purple eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu tím nào!"
+  },
+  {
+    "key": "makeup_yes_eyeshadow_purple",
+    "en": "Yes! Purple eyeshadow! So pretty!",
+    "vi": "Đúng rồi! Phấn mắt màu tím! Xinh quá!"
+  },
+  {
+    "key": "makeup_eyeshadow_red",
+    "en": "Mia, find the red eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu đỏ nào!"
+  },
+  {
+    "key": "makeup_yes_eyeshadow_red",
+    "en": "Yes! Red eyeshadow! So pretty!",
+    "vi": "Đúng rồi! Phấn mắt màu đỏ! Xinh quá!"
+  },
+  {
+    "key": "makeup_eyeshadow_orange",
+    "en": "Mia, find the orange eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu cam nào!"
+  },
+  {
+    "key": "makeup_yes_eyeshadow_orange",
+    "en": "Yes! Orange eyeshadow! So pretty!",
+    "vi": "Đúng rồi! Phấn mắt màu cam! Xinh quá!"
+  },
+  {
+    "key": "makeup_hairbow_pink",
+    "en": "Mia, find the pink hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu hồng nào!"
+  },
+  {
+    "key": "makeup_yes_hairbow_pink",
+    "en": "Yes! Pink hair bow! So pretty!",
+    "vi": "Đúng rồi! Nơ cài tóc màu hồng! Xinh quá!"
+  },
+  {
+    "key": "makeup_hairbow_blue",
+    "en": "Mia, find the blue hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_yes_hairbow_blue",
+    "en": "Yes! Blue hair bow! So pretty!",
+    "vi": "Đúng rồi! Nơ cài tóc màu xanh dương! Xinh quá!"
+  },
+  {
+    "key": "makeup_hairbow_yellow",
+    "en": "Mia, find the yellow hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu vàng nào!"
+  },
+  {
+    "key": "makeup_yes_hairbow_yellow",
+    "en": "Yes! Yellow hair bow! So pretty!",
+    "vi": "Đúng rồi! Nơ cài tóc màu vàng! Xinh quá!"
+  },
+  {
+    "key": "makeup_hairbow_green",
+    "en": "Mia, find the green hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_yes_hairbow_green",
+    "en": "Yes! Green hair bow! So pretty!",
+    "vi": "Đúng rồi! Nơ cài tóc màu xanh lá! Xinh quá!"
+  },
+  {
+    "key": "makeup_hairbow_purple",
+    "en": "Mia, find the purple hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu tím nào!"
+  },
+  {
+    "key": "makeup_yes_hairbow_purple",
+    "en": "Yes! Purple hair bow! So pretty!",
+    "vi": "Đúng rồi! Nơ cài tóc màu tím! Xinh quá!"
+  },
+  {
+    "key": "makeup_hairbow_red",
+    "en": "Mia, find the red hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu đỏ nào!"
+  },
+  {
+    "key": "makeup_yes_hairbow_red",
+    "en": "Yes! Red hair bow! So pretty!",
+    "vi": "Đúng rồi! Nơ cài tóc màu đỏ! Xinh quá!"
+  },
+  {
+    "key": "makeup_hairbow_orange",
+    "en": "Mia, find the orange hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu cam nào!"
+  },
+  {
+    "key": "makeup_yes_hairbow_orange",
+    "en": "Yes! Orange hair bow! So pretty!",
+    "vi": "Đúng rồi! Nơ cài tóc màu cam! Xinh quá!"
+  },
+  {
+    "key": "outfit_rain",
+    "en": "It is raining. Mia, find the raincoat!",
+    "vi": "Trời đang mưa. Mia ơi, tìm áo mưa nào!"
+  },
+  {
+    "key": "outfit_yes_rain",
+    "en": "Yes! The raincoat!",
+    "vi": "Đúng rồi! Áo mưa!"
+  },
+  {
+    "key": "outfit_pajamas",
+    "en": "It is bedtime. Mia, find the pajamas!",
+    "vi": "Đến giờ đi ngủ rồi. Mia ơi, tìm bộ đồ ngủ nào!"
+  },
+  {
+    "key": "outfit_yes_pajamas",
+    "en": "Yes! The pajamas!",
+    "vi": "Đúng rồi! Bộ đồ ngủ!"
+  },
+  {
+    "key": "outfit_winter",
+    "en": "It is snowing. Mia, find the winter coat!",
+    "vi": "Trời đang có tuyết. Mia ơi, tìm áo khoác mùa đông nào!"
+  },
+  {
+    "key": "outfit_yes_winter",
+    "en": "Yes! The winter coat!",
+    "vi": "Đúng rồi! Áo khoác mùa đông!"
+  },
+  {
+    "key": "outfit_school",
+    "en": "It is time for school. Mia, find the school uniform!",
+    "vi": "Đến giờ đi học rồi. Mia ơi, tìm đồng phục đi học nào!"
+  },
+  {
+    "key": "outfit_yes_school",
+    "en": "Yes! The school uniform!",
+    "vi": "Đúng rồi! Đồng phục đi học!"
+  },
+  {
+    "key": "outfit_sunny",
+    "en": "It is sunny. Mia, find the sun hat!",
+    "vi": "Trời nắng đẹp. Mia ơi, tìm mũ che nắng nào!"
+  },
+  {
+    "key": "outfit_yes_sunny",
+    "en": "Yes! The sun hat!",
+    "vi": "Đúng rồi! Mũ che nắng!"
+  },
+  {
+    "key": "outfit_sport",
+    "en": "It is time to play football. Mia, find the football kit!",
+    "vi": "Đến giờ đá bóng rồi. Mia ơi, tìm bộ đồ đá bóng nào!"
+  },
+  {
+    "key": "outfit_yes_sport",
+    "en": "Yes! The football kit!",
+    "vi": "Đúng rồi! Bộ đồ đá bóng!"
+  },
+  {
+    "key": "word_cat",
+    "en": "Mia, find the cat!",
+    "vi": "Mia ơi, tìm con mèo nào!"
+  },
+  {
+    "key": "word_yes_cat",
+    "en": "Yes! The cat!",
+    "vi": "Đúng rồi! Con mèo!"
+  },
+  {
+    "key": "first_cat",
+    "en": "Cat. Which letter does cat start with, Mia?",
+    "vi": "Con mèo tiếng Anh là \"cat\". Chữ đầu tiên của \"cat\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_cat",
+    "en": "Yes! Cat starts with C!",
+    "vi": "Đúng rồi! \"Cat\" bắt đầu bằng chữ C!"
+  },
+  {
+    "key": "word_dog",
+    "en": "Mia, find the dog!",
+    "vi": "Mia ơi, tìm con chó nào!"
+  },
+  {
+    "key": "word_yes_dog",
+    "en": "Yes! The dog!",
+    "vi": "Đúng rồi! Con chó!"
+  },
+  {
+    "key": "first_dog",
+    "en": "Dog. Which letter does dog start with, Mia?",
+    "vi": "Con chó tiếng Anh là \"dog\". Chữ đầu tiên của \"dog\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_dog",
+    "en": "Yes! Dog starts with D!",
+    "vi": "Đúng rồi! \"Dog\" bắt đầu bằng chữ D!"
+  },
+  {
+    "key": "word_bird",
+    "en": "Mia, find the bird!",
+    "vi": "Mia ơi, tìm con chim nào!"
+  },
+  {
+    "key": "word_yes_bird",
+    "en": "Yes! The bird!",
+    "vi": "Đúng rồi! Con chim!"
+  },
+  {
+    "key": "first_bird",
+    "en": "Bird. Which letter does bird start with, Mia?",
+    "vi": "Con chim tiếng Anh là \"bird\". Chữ đầu tiên của \"bird\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_bird",
+    "en": "Yes! Bird starts with B!",
+    "vi": "Đúng rồi! \"Bird\" bắt đầu bằng chữ B!"
+  },
+  {
+    "key": "word_fish",
+    "en": "Mia, find the fish!",
+    "vi": "Mia ơi, tìm con cá nào!"
+  },
+  {
+    "key": "word_yes_fish",
+    "en": "Yes! The fish!",
+    "vi": "Đúng rồi! Con cá!"
+  },
+  {
+    "key": "first_fish",
+    "en": "Fish. Which letter does fish start with, Mia?",
+    "vi": "Con cá tiếng Anh là \"fish\". Chữ đầu tiên của \"fish\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_fish",
+    "en": "Yes! Fish starts with F!",
+    "vi": "Đúng rồi! \"Fish\" bắt đầu bằng chữ F!"
+  },
+  {
+    "key": "word_frog",
+    "en": "Mia, find the frog!",
+    "vi": "Mia ơi, tìm con ếch nào!"
+  },
+  {
+    "key": "word_yes_frog",
+    "en": "Yes! The frog!",
+    "vi": "Đúng rồi! Con ếch!"
+  },
+  {
+    "key": "first_frog",
+    "en": "Frog. Which letter does frog start with, Mia?",
+    "vi": "Con ếch tiếng Anh là \"frog\". Chữ đầu tiên của \"frog\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_frog",
+    "en": "Yes! Frog starts with F!",
+    "vi": "Đúng rồi! \"Frog\" bắt đầu bằng chữ F!"
+  },
+  {
+    "key": "word_rabbit",
+    "en": "Mia, find the rabbit!",
+    "vi": "Mia ơi, tìm con thỏ nào!"
+  },
+  {
+    "key": "word_yes_rabbit",
+    "en": "Yes! The rabbit!",
+    "vi": "Đúng rồi! Con thỏ!"
+  },
+  {
+    "key": "first_rabbit",
+    "en": "Rabbit. Which letter does rabbit start with, Mia?",
+    "vi": "Con thỏ tiếng Anh là \"rabbit\". Chữ đầu tiên của \"rabbit\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_rabbit",
+    "en": "Yes! Rabbit starts with R!",
+    "vi": "Đúng rồi! \"Rabbit\" bắt đầu bằng chữ R!"
+  },
+  {
+    "key": "word_goat",
+    "en": "Mia, find the goat!",
+    "vi": "Mia ơi, tìm con dê nào!"
+  },
+  {
+    "key": "word_yes_goat",
+    "en": "Yes! The goat!",
+    "vi": "Đúng rồi! Con dê!"
+  },
+  {
+    "key": "first_goat",
+    "en": "Goat. Which letter does goat start with, Mia?",
+    "vi": "Con dê tiếng Anh là \"goat\". Chữ đầu tiên của \"goat\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_goat",
+    "en": "Yes! Goat starts with G!",
+    "vi": "Đúng rồi! \"Goat\" bắt đầu bằng chữ G!"
+  },
+  {
+    "key": "word_penguin",
+    "en": "Mia, find the penguin!",
+    "vi": "Mia ơi, tìm chim cánh cụt nào!"
+  },
+  {
+    "key": "word_yes_penguin",
+    "en": "Yes! The penguin!",
+    "vi": "Đúng rồi! Chim cánh cụt!"
+  },
+  {
+    "key": "first_penguin",
+    "en": "Penguin. Which letter does penguin start with, Mia?",
+    "vi": "Chim cánh cụt tiếng Anh là \"penguin\". Chữ đầu tiên của \"penguin\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_penguin",
+    "en": "Yes! Penguin starts with P!",
+    "vi": "Đúng rồi! \"Penguin\" bắt đầu bằng chữ P!"
+  },
+  {
+    "key": "word_snail",
+    "en": "Mia, find the snail!",
+    "vi": "Mia ơi, tìm con ốc sên nào!"
+  },
+  {
+    "key": "word_yes_snail",
+    "en": "Yes! The snail!",
+    "vi": "Đúng rồi! Con ốc sên!"
+  },
+  {
+    "key": "first_snail",
+    "en": "Snail. Which letter does snail start with, Mia?",
+    "vi": "Con ốc sên tiếng Anh là \"snail\". Chữ đầu tiên của \"snail\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_snail",
+    "en": "Yes! Snail starts with S!",
+    "vi": "Đúng rồi! \"Snail\" bắt đầu bằng chữ S!"
+  },
+  {
+    "key": "word_butterfly",
+    "en": "Mia, find the butterfly!",
+    "vi": "Mia ơi, tìm con bướm nào!"
+  },
+  {
+    "key": "word_yes_butterfly",
+    "en": "Yes! The butterfly!",
+    "vi": "Đúng rồi! Con bướm!"
+  },
+  {
+    "key": "first_butterfly",
+    "en": "Butterfly. Which letter does butterfly start with, Mia?",
+    "vi": "Con bướm tiếng Anh là \"butterfly\". Chữ đầu tiên của \"butterfly\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_butterfly",
+    "en": "Yes! Butterfly starts with B!",
+    "vi": "Đúng rồi! \"Butterfly\" bắt đầu bằng chữ B!"
+  },
+  {
+    "key": "word_chicken",
+    "en": "Mia, find the chicken!",
+    "vi": "Mia ơi, tìm con gà nào!"
+  },
+  {
+    "key": "word_yes_chicken",
+    "en": "Yes! The chicken!",
+    "vi": "Đúng rồi! Con gà!"
+  },
+  {
+    "key": "first_chicken",
+    "en": "Chicken. Which letter does chicken start with, Mia?",
+    "vi": "Con gà tiếng Anh là \"chicken\". Chữ đầu tiên của \"chicken\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_chicken",
+    "en": "Yes! Chicken starts with C!",
+    "vi": "Đúng rồi! \"Chicken\" bắt đầu bằng chữ C!"
+  },
+  {
+    "key": "word_car",
+    "en": "Mia, find the car!",
+    "vi": "Mia ơi, tìm xe ô tô nào!"
+  },
+  {
+    "key": "word_yes_car",
+    "en": "Yes! The car!",
+    "vi": "Đúng rồi! Xe ô tô!"
+  },
+  {
+    "key": "first_car",
+    "en": "Car. Which letter does car start with, Mia?",
+    "vi": "Xe ô tô tiếng Anh là \"car\". Chữ đầu tiên của \"car\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_car",
+    "en": "Yes! Car starts with C!",
+    "vi": "Đúng rồi! \"Car\" bắt đầu bằng chữ C!"
+  },
+  {
+    "key": "word_tree",
+    "en": "Mia, find the tree!",
+    "vi": "Mia ơi, tìm cái cây nào!"
+  },
+  {
+    "key": "word_yes_tree",
+    "en": "Yes! The tree!",
+    "vi": "Đúng rồi! Cái cây!"
+  },
+  {
+    "key": "first_tree",
+    "en": "Tree. Which letter does tree start with, Mia?",
+    "vi": "Cái cây tiếng Anh là \"tree\". Chữ đầu tiên của \"tree\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_tree",
+    "en": "Yes! Tree starts with T!",
+    "vi": "Đúng rồi! \"Tree\" bắt đầu bằng chữ T!"
+  },
+  {
+    "key": "word_star",
+    "en": "Mia, find the star!",
+    "vi": "Mia ơi, tìm ngôi sao nào!"
+  },
+  {
+    "key": "word_yes_star",
+    "en": "Yes! The star!",
+    "vi": "Đúng rồi! Ngôi sao!"
+  },
+  {
+    "key": "first_star",
+    "en": "Star. Which letter does star start with, Mia?",
+    "vi": "Ngôi sao tiếng Anh là \"star\". Chữ đầu tiên của \"star\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_star",
+    "en": "Yes! Star starts with S!",
+    "vi": "Đúng rồi! \"Star\" bắt đầu bằng chữ S!"
+  },
+  {
+    "key": "word_rainbow",
+    "en": "Mia, find the rainbow!",
+    "vi": "Mia ơi, tìm cầu vồng nào!"
+  },
+  {
+    "key": "word_yes_rainbow",
+    "en": "Yes! The rainbow!",
+    "vi": "Đúng rồi! Cầu vồng!"
+  },
+  {
+    "key": "first_rainbow",
+    "en": "Rainbow. Which letter does rainbow start with, Mia?",
+    "vi": "Cầu vồng tiếng Anh là \"rainbow\". Chữ đầu tiên của \"rainbow\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_rainbow",
+    "en": "Yes! Rainbow starts with R!",
+    "vi": "Đúng rồi! \"Rainbow\" bắt đầu bằng chữ R!"
+  },
+  {
+    "key": "word_tractor",
+    "en": "Mia, find the tractor!",
+    "vi": "Mia ơi, tìm máy kéo nào!"
+  },
+  {
+    "key": "word_yes_tractor",
+    "en": "Yes! The tractor!",
+    "vi": "Đúng rồi! Máy kéo!"
+  },
+  {
+    "key": "first_tractor",
+    "en": "Tractor. Which letter does tractor start with, Mia?",
+    "vi": "Máy kéo tiếng Anh là \"tractor\". Chữ đầu tiên của \"tractor\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "first_yes_tractor",
+    "en": "Yes! Tractor starts with T!",
+    "vi": "Đúng rồi! \"Tractor\" bắt đầu bằng chữ T!"
+  },
+  {
+    "key": "add_1_1",
+    "en": "Pony has one apple. Here is one more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_1",
+    "en": "Yes! One and one make two!",
+    "vi": "Đúng rồi! Một cộng một bằng hai!"
+  },
+  {
+    "key": "add_1_2",
+    "en": "Pony has one apple. Here are two more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_2",
+    "en": "Yes! One and two make three!",
+    "vi": "Đúng rồi! Một cộng hai bằng ba!"
+  },
+  {
+    "key": "add_1_3",
+    "en": "Pony has one apple. Here are three more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_3",
+    "en": "Yes! One and three make four!",
+    "vi": "Đúng rồi! Một cộng ba bằng bốn!"
+  },
+  {
+    "key": "add_1_4",
+    "en": "Pony has one apple. Here are four more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_4",
+    "en": "Yes! One and four make five!",
+    "vi": "Đúng rồi! Một cộng bốn bằng năm!"
+  },
+  {
+    "key": "add_1_5",
+    "en": "Pony has one apple. Here are five more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_5",
+    "en": "Yes! One and five make six!",
+    "vi": "Đúng rồi! Một cộng năm bằng sáu!"
+  },
+  {
+    "key": "add_1_6",
+    "en": "Pony has one apple. Here are six more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_6",
+    "en": "Yes! One and six make seven!",
+    "vi": "Đúng rồi! Một cộng sáu bằng bảy!"
+  },
+  {
+    "key": "add_1_7",
+    "en": "Pony has one apple. Here are seven more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm bảy quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_7",
+    "en": "Yes! One and seven make eight!",
+    "vi": "Đúng rồi! Một cộng bảy bằng tám!"
+  },
+  {
+    "key": "add_1_8",
+    "en": "Pony has one apple. Here are eight more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm tám quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_8",
+    "en": "Yes! One and eight make nine!",
+    "vi": "Đúng rồi! Một cộng tám bằng chín!"
+  },
+  {
+    "key": "add_1_9",
+    "en": "Pony has one apple. Here are nine more. How many apples, Mia?",
+    "vi": "Pony có một quả táo. Thêm chín quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_1_9",
+    "en": "Yes! One and nine make ten!",
+    "vi": "Đúng rồi! Một cộng chín bằng mười!"
+  },
+  {
+    "key": "add_2_1",
+    "en": "Pony has two apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_1",
+    "en": "Yes! Two and one make three!",
+    "vi": "Đúng rồi! Hai cộng một bằng ba!"
+  },
+  {
+    "key": "add_2_2",
+    "en": "Pony has two apples. Here are two more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_2",
+    "en": "Yes! Two and two make four!",
+    "vi": "Đúng rồi! Hai cộng hai bằng bốn!"
+  },
+  {
+    "key": "add_2_3",
+    "en": "Pony has two apples. Here are three more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_3",
+    "en": "Yes! Two and three make five!",
+    "vi": "Đúng rồi! Hai cộng ba bằng năm!"
+  },
+  {
+    "key": "add_2_4",
+    "en": "Pony has two apples. Here are four more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_4",
+    "en": "Yes! Two and four make six!",
+    "vi": "Đúng rồi! Hai cộng bốn bằng sáu!"
+  },
+  {
+    "key": "add_2_5",
+    "en": "Pony has two apples. Here are five more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_5",
+    "en": "Yes! Two and five make seven!",
+    "vi": "Đúng rồi! Hai cộng năm bằng bảy!"
+  },
+  {
+    "key": "add_2_6",
+    "en": "Pony has two apples. Here are six more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_6",
+    "en": "Yes! Two and six make eight!",
+    "vi": "Đúng rồi! Hai cộng sáu bằng tám!"
+  },
+  {
+    "key": "add_2_7",
+    "en": "Pony has two apples. Here are seven more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm bảy quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_7",
+    "en": "Yes! Two and seven make nine!",
+    "vi": "Đúng rồi! Hai cộng bảy bằng chín!"
+  },
+  {
+    "key": "add_2_8",
+    "en": "Pony has two apples. Here are eight more. How many apples, Mia?",
+    "vi": "Pony có hai quả táo. Thêm tám quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_2_8",
+    "en": "Yes! Two and eight make ten!",
+    "vi": "Đúng rồi! Hai cộng tám bằng mười!"
+  },
+  {
+    "key": "add_3_1",
+    "en": "Pony has three apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có ba quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_3_1",
+    "en": "Yes! Three and one make four!",
+    "vi": "Đúng rồi! Ba cộng một bằng bốn!"
+  },
+  {
+    "key": "add_3_2",
+    "en": "Pony has three apples. Here are two more. How many apples, Mia?",
+    "vi": "Pony có ba quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_3_2",
+    "en": "Yes! Three and two make five!",
+    "vi": "Đúng rồi! Ba cộng hai bằng năm!"
+  },
+  {
+    "key": "add_3_3",
+    "en": "Pony has three apples. Here are three more. How many apples, Mia?",
+    "vi": "Pony có ba quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_3_3",
+    "en": "Yes! Three and three make six!",
+    "vi": "Đúng rồi! Ba cộng ba bằng sáu!"
+  },
+  {
+    "key": "add_3_4",
+    "en": "Pony has three apples. Here are four more. How many apples, Mia?",
+    "vi": "Pony có ba quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_3_4",
+    "en": "Yes! Three and four make seven!",
+    "vi": "Đúng rồi! Ba cộng bốn bằng bảy!"
+  },
+  {
+    "key": "add_3_5",
+    "en": "Pony has three apples. Here are five more. How many apples, Mia?",
+    "vi": "Pony có ba quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_3_5",
+    "en": "Yes! Three and five make eight!",
+    "vi": "Đúng rồi! Ba cộng năm bằng tám!"
+  },
+  {
+    "key": "add_3_6",
+    "en": "Pony has three apples. Here are six more. How many apples, Mia?",
+    "vi": "Pony có ba quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_3_6",
+    "en": "Yes! Three and six make nine!",
+    "vi": "Đúng rồi! Ba cộng sáu bằng chín!"
+  },
+  {
+    "key": "add_3_7",
+    "en": "Pony has three apples. Here are seven more. How many apples, Mia?",
+    "vi": "Pony có ba quả táo. Thêm bảy quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_3_7",
+    "en": "Yes! Three and seven make ten!",
+    "vi": "Đúng rồi! Ba cộng bảy bằng mười!"
+  },
+  {
+    "key": "add_4_1",
+    "en": "Pony has four apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có bốn quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_4_1",
+    "en": "Yes! Four and one make five!",
+    "vi": "Đúng rồi! Bốn cộng một bằng năm!"
+  },
+  {
+    "key": "add_4_2",
+    "en": "Pony has four apples. Here are two more. How many apples, Mia?",
+    "vi": "Pony có bốn quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_4_2",
+    "en": "Yes! Four and two make six!",
+    "vi": "Đúng rồi! Bốn cộng hai bằng sáu!"
+  },
+  {
+    "key": "add_4_3",
+    "en": "Pony has four apples. Here are three more. How many apples, Mia?",
+    "vi": "Pony có bốn quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_4_3",
+    "en": "Yes! Four and three make seven!",
+    "vi": "Đúng rồi! Bốn cộng ba bằng bảy!"
+  },
+  {
+    "key": "add_4_4",
+    "en": "Pony has four apples. Here are four more. How many apples, Mia?",
+    "vi": "Pony có bốn quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_4_4",
+    "en": "Yes! Four and four make eight!",
+    "vi": "Đúng rồi! Bốn cộng bốn bằng tám!"
+  },
+  {
+    "key": "add_4_5",
+    "en": "Pony has four apples. Here are five more. How many apples, Mia?",
+    "vi": "Pony có bốn quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_4_5",
+    "en": "Yes! Four and five make nine!",
+    "vi": "Đúng rồi! Bốn cộng năm bằng chín!"
+  },
+  {
+    "key": "add_4_6",
+    "en": "Pony has four apples. Here are six more. How many apples, Mia?",
+    "vi": "Pony có bốn quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_4_6",
+    "en": "Yes! Four and six make ten!",
+    "vi": "Đúng rồi! Bốn cộng sáu bằng mười!"
+  },
+  {
+    "key": "add_5_1",
+    "en": "Pony has five apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có năm quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_5_1",
+    "en": "Yes! Five and one make six!",
+    "vi": "Đúng rồi! Năm cộng một bằng sáu!"
+  },
+  {
+    "key": "add_5_2",
+    "en": "Pony has five apples. Here are two more. How many apples, Mia?",
+    "vi": "Pony có năm quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_5_2",
+    "en": "Yes! Five and two make seven!",
+    "vi": "Đúng rồi! Năm cộng hai bằng bảy!"
+  },
+  {
+    "key": "add_5_3",
+    "en": "Pony has five apples. Here are three more. How many apples, Mia?",
+    "vi": "Pony có năm quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_5_3",
+    "en": "Yes! Five and three make eight!",
+    "vi": "Đúng rồi! Năm cộng ba bằng tám!"
+  },
+  {
+    "key": "add_5_4",
+    "en": "Pony has five apples. Here are four more. How many apples, Mia?",
+    "vi": "Pony có năm quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_5_4",
+    "en": "Yes! Five and four make nine!",
+    "vi": "Đúng rồi! Năm cộng bốn bằng chín!"
+  },
+  {
+    "key": "add_5_5",
+    "en": "Pony has five apples. Here are five more. How many apples, Mia?",
+    "vi": "Pony có năm quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_5_5",
+    "en": "Yes! Five and five make ten!",
+    "vi": "Đúng rồi! Năm cộng năm bằng mười!"
+  },
+  {
+    "key": "add_6_1",
+    "en": "Pony has six apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có sáu quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_6_1",
+    "en": "Yes! Six and one make seven!",
+    "vi": "Đúng rồi! Sáu cộng một bằng bảy!"
+  },
+  {
+    "key": "add_6_2",
+    "en": "Pony has six apples. Here are two more. How many apples, Mia?",
+    "vi": "Pony có sáu quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_6_2",
+    "en": "Yes! Six and two make eight!",
+    "vi": "Đúng rồi! Sáu cộng hai bằng tám!"
+  },
+  {
+    "key": "add_6_3",
+    "en": "Pony has six apples. Here are three more. How many apples, Mia?",
+    "vi": "Pony có sáu quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_6_3",
+    "en": "Yes! Six and three make nine!",
+    "vi": "Đúng rồi! Sáu cộng ba bằng chín!"
+  },
+  {
+    "key": "add_6_4",
+    "en": "Pony has six apples. Here are four more. How many apples, Mia?",
+    "vi": "Pony có sáu quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_6_4",
+    "en": "Yes! Six and four make ten!",
+    "vi": "Đúng rồi! Sáu cộng bốn bằng mười!"
+  },
+  {
+    "key": "add_7_1",
+    "en": "Pony has seven apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có bảy quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_7_1",
+    "en": "Yes! Seven and one make eight!",
+    "vi": "Đúng rồi! Bảy cộng một bằng tám!"
+  },
+  {
+    "key": "add_7_2",
+    "en": "Pony has seven apples. Here are two more. How many apples, Mia?",
+    "vi": "Pony có bảy quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_7_2",
+    "en": "Yes! Seven and two make nine!",
+    "vi": "Đúng rồi! Bảy cộng hai bằng chín!"
+  },
+  {
+    "key": "add_7_3",
+    "en": "Pony has seven apples. Here are three more. How many apples, Mia?",
+    "vi": "Pony có bảy quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_7_3",
+    "en": "Yes! Seven and three make ten!",
+    "vi": "Đúng rồi! Bảy cộng ba bằng mười!"
+  },
+  {
+    "key": "add_8_1",
+    "en": "Pony has eight apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có tám quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_8_1",
+    "en": "Yes! Eight and one make nine!",
+    "vi": "Đúng rồi! Tám cộng một bằng chín!"
+  },
+  {
+    "key": "add_8_2",
+    "en": "Pony has eight apples. Here are two more. How many apples, Mia?",
+    "vi": "Pony có tám quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_8_2",
+    "en": "Yes! Eight and two make ten!",
+    "vi": "Đúng rồi! Tám cộng hai bằng mười!"
+  },
+  {
+    "key": "add_9_1",
+    "en": "Pony has nine apples. Here is one more. How many apples, Mia?",
+    "vi": "Pony có chín quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_yes_9_1",
+    "en": "Yes! Nine and one make ten!",
+    "vi": "Đúng rồi! Chín cộng một bằng mười!"
+  },
+  {
+    "key": "sub_2_1",
+    "en": "Pony has two apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có hai quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_2_1",
+    "en": "Yes! Two take away one is one!",
+    "vi": "Đúng rồi! Hai trừ một bằng một!"
+  },
+  {
+    "key": "sub_3_1",
+    "en": "Pony has three apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có ba quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_3_1",
+    "en": "Yes! Three take away one is two!",
+    "vi": "Đúng rồi! Ba trừ một bằng hai!"
+  },
+  {
+    "key": "sub_3_2",
+    "en": "Pony has three apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có ba quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_3_2",
+    "en": "Yes! Three take away two is one!",
+    "vi": "Đúng rồi! Ba trừ hai bằng một!"
+  },
+  {
+    "key": "sub_4_1",
+    "en": "Pony has four apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có bốn quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_4_1",
+    "en": "Yes! Four take away one is three!",
+    "vi": "Đúng rồi! Bốn trừ một bằng ba!"
+  },
+  {
+    "key": "sub_4_2",
+    "en": "Pony has four apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có bốn quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_4_2",
+    "en": "Yes! Four take away two is two!",
+    "vi": "Đúng rồi! Bốn trừ hai bằng hai!"
+  },
+  {
+    "key": "sub_4_3",
+    "en": "Pony has four apples. Pony eats three. How many are left, Mia?",
+    "vi": "Pony có bốn quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_4_3",
+    "en": "Yes! Four take away three is one!",
+    "vi": "Đúng rồi! Bốn trừ ba bằng một!"
+  },
+  {
+    "key": "sub_5_1",
+    "en": "Pony has five apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có năm quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_5_1",
+    "en": "Yes! Five take away one is four!",
+    "vi": "Đúng rồi! Năm trừ một bằng bốn!"
+  },
+  {
+    "key": "sub_5_2",
+    "en": "Pony has five apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có năm quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_5_2",
+    "en": "Yes! Five take away two is three!",
+    "vi": "Đúng rồi! Năm trừ hai bằng ba!"
+  },
+  {
+    "key": "sub_5_3",
+    "en": "Pony has five apples. Pony eats three. How many are left, Mia?",
+    "vi": "Pony có năm quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_5_3",
+    "en": "Yes! Five take away three is two!",
+    "vi": "Đúng rồi! Năm trừ ba bằng hai!"
+  },
+  {
+    "key": "sub_5_4",
+    "en": "Pony has five apples. Pony eats four. How many are left, Mia?",
+    "vi": "Pony có năm quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_5_4",
+    "en": "Yes! Five take away four is one!",
+    "vi": "Đúng rồi! Năm trừ bốn bằng một!"
+  },
+  {
+    "key": "sub_6_1",
+    "en": "Pony has six apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có sáu quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_6_1",
+    "en": "Yes! Six take away one is five!",
+    "vi": "Đúng rồi! Sáu trừ một bằng năm!"
+  },
+  {
+    "key": "sub_6_2",
+    "en": "Pony has six apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có sáu quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_6_2",
+    "en": "Yes! Six take away two is four!",
+    "vi": "Đúng rồi! Sáu trừ hai bằng bốn!"
+  },
+  {
+    "key": "sub_6_3",
+    "en": "Pony has six apples. Pony eats three. How many are left, Mia?",
+    "vi": "Pony có sáu quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_6_3",
+    "en": "Yes! Six take away three is three!",
+    "vi": "Đúng rồi! Sáu trừ ba bằng ba!"
+  },
+  {
+    "key": "sub_6_4",
+    "en": "Pony has six apples. Pony eats four. How many are left, Mia?",
+    "vi": "Pony có sáu quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_6_4",
+    "en": "Yes! Six take away four is two!",
+    "vi": "Đúng rồi! Sáu trừ bốn bằng hai!"
+  },
+  {
+    "key": "sub_6_5",
+    "en": "Pony has six apples. Pony eats five. How many are left, Mia?",
+    "vi": "Pony có sáu quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_6_5",
+    "en": "Yes! Six take away five is one!",
+    "vi": "Đúng rồi! Sáu trừ năm bằng một!"
+  },
+  {
+    "key": "sub_7_1",
+    "en": "Pony has seven apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có bảy quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_7_1",
+    "en": "Yes! Seven take away one is six!",
+    "vi": "Đúng rồi! Bảy trừ một bằng sáu!"
+  },
+  {
+    "key": "sub_7_2",
+    "en": "Pony has seven apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có bảy quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_7_2",
+    "en": "Yes! Seven take away two is five!",
+    "vi": "Đúng rồi! Bảy trừ hai bằng năm!"
+  },
+  {
+    "key": "sub_7_3",
+    "en": "Pony has seven apples. Pony eats three. How many are left, Mia?",
+    "vi": "Pony có bảy quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_7_3",
+    "en": "Yes! Seven take away three is four!",
+    "vi": "Đúng rồi! Bảy trừ ba bằng bốn!"
+  },
+  {
+    "key": "sub_7_4",
+    "en": "Pony has seven apples. Pony eats four. How many are left, Mia?",
+    "vi": "Pony có bảy quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_7_4",
+    "en": "Yes! Seven take away four is three!",
+    "vi": "Đúng rồi! Bảy trừ bốn bằng ba!"
+  },
+  {
+    "key": "sub_7_5",
+    "en": "Pony has seven apples. Pony eats five. How many are left, Mia?",
+    "vi": "Pony có bảy quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_7_5",
+    "en": "Yes! Seven take away five is two!",
+    "vi": "Đúng rồi! Bảy trừ năm bằng hai!"
+  },
+  {
+    "key": "sub_7_6",
+    "en": "Pony has seven apples. Pony eats six. How many are left, Mia?",
+    "vi": "Pony có bảy quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_7_6",
+    "en": "Yes! Seven take away six is one!",
+    "vi": "Đúng rồi! Bảy trừ sáu bằng một!"
+  },
+  {
+    "key": "sub_8_1",
+    "en": "Pony has eight apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có tám quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_8_1",
+    "en": "Yes! Eight take away one is seven!",
+    "vi": "Đúng rồi! Tám trừ một bằng bảy!"
+  },
+  {
+    "key": "sub_8_2",
+    "en": "Pony has eight apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có tám quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_8_2",
+    "en": "Yes! Eight take away two is six!",
+    "vi": "Đúng rồi! Tám trừ hai bằng sáu!"
+  },
+  {
+    "key": "sub_8_3",
+    "en": "Pony has eight apples. Pony eats three. How many are left, Mia?",
+    "vi": "Pony có tám quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_8_3",
+    "en": "Yes! Eight take away three is five!",
+    "vi": "Đúng rồi! Tám trừ ba bằng năm!"
+  },
+  {
+    "key": "sub_8_4",
+    "en": "Pony has eight apples. Pony eats four. How many are left, Mia?",
+    "vi": "Pony có tám quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_8_4",
+    "en": "Yes! Eight take away four is four!",
+    "vi": "Đúng rồi! Tám trừ bốn bằng bốn!"
+  },
+  {
+    "key": "sub_8_5",
+    "en": "Pony has eight apples. Pony eats five. How many are left, Mia?",
+    "vi": "Pony có tám quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_8_5",
+    "en": "Yes! Eight take away five is three!",
+    "vi": "Đúng rồi! Tám trừ năm bằng ba!"
+  },
+  {
+    "key": "sub_8_6",
+    "en": "Pony has eight apples. Pony eats six. How many are left, Mia?",
+    "vi": "Pony có tám quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_8_6",
+    "en": "Yes! Eight take away six is two!",
+    "vi": "Đúng rồi! Tám trừ sáu bằng hai!"
+  },
+  {
+    "key": "sub_8_7",
+    "en": "Pony has eight apples. Pony eats seven. How many are left, Mia?",
+    "vi": "Pony có tám quả táo. Pony ăn bảy quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_8_7",
+    "en": "Yes! Eight take away seven is one!",
+    "vi": "Đúng rồi! Tám trừ bảy bằng một!"
+  },
+  {
+    "key": "sub_9_1",
+    "en": "Pony has nine apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_1",
+    "en": "Yes! Nine take away one is eight!",
+    "vi": "Đúng rồi! Chín trừ một bằng tám!"
+  },
+  {
+    "key": "sub_9_2",
+    "en": "Pony has nine apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_2",
+    "en": "Yes! Nine take away two is seven!",
+    "vi": "Đúng rồi! Chín trừ hai bằng bảy!"
+  },
+  {
+    "key": "sub_9_3",
+    "en": "Pony has nine apples. Pony eats three. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_3",
+    "en": "Yes! Nine take away three is six!",
+    "vi": "Đúng rồi! Chín trừ ba bằng sáu!"
+  },
+  {
+    "key": "sub_9_4",
+    "en": "Pony has nine apples. Pony eats four. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_4",
+    "en": "Yes! Nine take away four is five!",
+    "vi": "Đúng rồi! Chín trừ bốn bằng năm!"
+  },
+  {
+    "key": "sub_9_5",
+    "en": "Pony has nine apples. Pony eats five. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_5",
+    "en": "Yes! Nine take away five is four!",
+    "vi": "Đúng rồi! Chín trừ năm bằng bốn!"
+  },
+  {
+    "key": "sub_9_6",
+    "en": "Pony has nine apples. Pony eats six. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_6",
+    "en": "Yes! Nine take away six is three!",
+    "vi": "Đúng rồi! Chín trừ sáu bằng ba!"
+  },
+  {
+    "key": "sub_9_7",
+    "en": "Pony has nine apples. Pony eats seven. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn bảy quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_7",
+    "en": "Yes! Nine take away seven is two!",
+    "vi": "Đúng rồi! Chín trừ bảy bằng hai!"
+  },
+  {
+    "key": "sub_9_8",
+    "en": "Pony has nine apples. Pony eats eight. How many are left, Mia?",
+    "vi": "Pony có chín quả táo. Pony ăn tám quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_9_8",
+    "en": "Yes! Nine take away eight is one!",
+    "vi": "Đúng rồi! Chín trừ tám bằng một!"
+  },
+  {
+    "key": "sub_10_1",
+    "en": "Pony has ten apples. Pony eats one. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_1",
+    "en": "Yes! Ten take away one is nine!",
+    "vi": "Đúng rồi! Mười trừ một bằng chín!"
+  },
+  {
+    "key": "sub_10_2",
+    "en": "Pony has ten apples. Pony eats two. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_2",
+    "en": "Yes! Ten take away two is eight!",
+    "vi": "Đúng rồi! Mười trừ hai bằng tám!"
+  },
+  {
+    "key": "sub_10_3",
+    "en": "Pony has ten apples. Pony eats three. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_3",
+    "en": "Yes! Ten take away three is seven!",
+    "vi": "Đúng rồi! Mười trừ ba bằng bảy!"
+  },
+  {
+    "key": "sub_10_4",
+    "en": "Pony has ten apples. Pony eats four. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_4",
+    "en": "Yes! Ten take away four is six!",
+    "vi": "Đúng rồi! Mười trừ bốn bằng sáu!"
+  },
+  {
+    "key": "sub_10_5",
+    "en": "Pony has ten apples. Pony eats five. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_5",
+    "en": "Yes! Ten take away five is five!",
+    "vi": "Đúng rồi! Mười trừ năm bằng năm!"
+  },
+  {
+    "key": "sub_10_6",
+    "en": "Pony has ten apples. Pony eats six. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_6",
+    "en": "Yes! Ten take away six is four!",
+    "vi": "Đúng rồi! Mười trừ sáu bằng bốn!"
+  },
+  {
+    "key": "sub_10_7",
+    "en": "Pony has ten apples. Pony eats seven. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn bảy quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_7",
+    "en": "Yes! Ten take away seven is three!",
+    "vi": "Đúng rồi! Mười trừ bảy bằng ba!"
+  },
+  {
+    "key": "sub_10_8",
+    "en": "Pony has ten apples. Pony eats eight. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn tám quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_8",
+    "en": "Yes! Ten take away eight is two!",
+    "vi": "Đúng rồi! Mười trừ tám bằng hai!"
+  },
+  {
+    "key": "sub_10_9",
+    "en": "Pony has ten apples. Pony eats nine. How many are left, Mia?",
+    "vi": "Pony có mười quả táo. Pony ăn chín quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_yes_10_9",
+    "en": "Yes! Ten take away nine is one!",
+    "vi": "Đúng rồi! Mười trừ chín bằng một!"
+  },
+  {
+    "key": "find_letter_a",
+    "en": "Mia, find the letter A!",
+    "vi": "Mia ơi, tìm chữ A nào!"
+  },
+  {
+    "key": "yes_letter_a",
+    "en": "Yes! The letter A!",
+    "vi": "Đúng rồi! Chữ A!"
+  },
+  {
+    "key": "find_letter_b",
+    "en": "Mia, find the letter B!",
+    "vi": "Mia ơi, tìm chữ B nào!"
+  },
+  {
+    "key": "yes_letter_b",
+    "en": "Yes! The letter B!",
+    "vi": "Đúng rồi! Chữ B!"
+  },
+  {
+    "key": "find_letter_c",
+    "en": "Mia, find the letter C!",
+    "vi": "Mia ơi, tìm chữ C nào!"
+  },
+  {
+    "key": "yes_letter_c",
+    "en": "Yes! The letter C!",
+    "vi": "Đúng rồi! Chữ C!"
+  },
+  {
+    "key": "find_letter_d",
+    "en": "Mia, find the letter D!",
+    "vi": "Mia ơi, tìm chữ D nào!"
+  },
+  {
+    "key": "yes_letter_d",
+    "en": "Yes! The letter D!",
+    "vi": "Đúng rồi! Chữ D!"
+  },
+  {
+    "key": "find_letter_e",
+    "en": "Mia, find the letter E!",
+    "vi": "Mia ơi, tìm chữ E nào!"
+  },
+  {
+    "key": "yes_letter_e",
+    "en": "Yes! The letter E!",
+    "vi": "Đúng rồi! Chữ E!"
+  },
+  {
+    "key": "find_letter_f",
+    "en": "Mia, find the letter F!",
+    "vi": "Mia ơi, tìm chữ F nào!"
+  },
+  {
+    "key": "yes_letter_f",
+    "en": "Yes! The letter F!",
+    "vi": "Đúng rồi! Chữ F!"
+  },
+  {
+    "key": "find_letter_g",
+    "en": "Mia, find the letter G!",
+    "vi": "Mia ơi, tìm chữ G nào!"
+  },
+  {
+    "key": "yes_letter_g",
+    "en": "Yes! The letter G!",
+    "vi": "Đúng rồi! Chữ G!"
+  },
+  {
+    "key": "find_letter_h",
+    "en": "Mia, find the letter H!",
+    "vi": "Mia ơi, tìm chữ H nào!"
+  },
+  {
+    "key": "yes_letter_h",
+    "en": "Yes! The letter H!",
+    "vi": "Đúng rồi! Chữ H!"
+  },
+  {
+    "key": "find_letter_i",
+    "en": "Mia, find the letter I!",
+    "vi": "Mia ơi, tìm chữ I nào!"
+  },
+  {
+    "key": "yes_letter_i",
+    "en": "Yes! The letter I!",
+    "vi": "Đúng rồi! Chữ I!"
+  },
+  {
+    "key": "find_letter_j",
+    "en": "Mia, find the letter J!",
+    "vi": "Mia ơi, tìm chữ J nào!"
+  },
+  {
+    "key": "yes_letter_j",
+    "en": "Yes! The letter J!",
+    "vi": "Đúng rồi! Chữ J!"
+  },
+  {
+    "key": "find_letter_k",
+    "en": "Mia, find the letter K!",
+    "vi": "Mia ơi, tìm chữ K nào!"
+  },
+  {
+    "key": "yes_letter_k",
+    "en": "Yes! The letter K!",
+    "vi": "Đúng rồi! Chữ K!"
+  },
+  {
+    "key": "find_letter_l",
+    "en": "Mia, find the letter L!",
+    "vi": "Mia ơi, tìm chữ L nào!"
+  },
+  {
+    "key": "yes_letter_l",
+    "en": "Yes! The letter L!",
+    "vi": "Đúng rồi! Chữ L!"
+  },
+  {
+    "key": "find_letter_m",
+    "en": "Mia, find the letter M!",
+    "vi": "Mia ơi, tìm chữ M nào!"
+  },
+  {
+    "key": "yes_letter_m",
+    "en": "Yes! The letter M!",
+    "vi": "Đúng rồi! Chữ M!"
+  },
+  {
+    "key": "find_letter_n",
+    "en": "Mia, find the letter N!",
+    "vi": "Mia ơi, tìm chữ N nào!"
+  },
+  {
+    "key": "yes_letter_n",
+    "en": "Yes! The letter N!",
+    "vi": "Đúng rồi! Chữ N!"
+  },
+  {
+    "key": "find_letter_o",
+    "en": "Mia, find the letter O!",
+    "vi": "Mia ơi, tìm chữ O nào!"
+  },
+  {
+    "key": "yes_letter_o",
+    "en": "Yes! The letter O!",
+    "vi": "Đúng rồi! Chữ O!"
+  },
+  {
+    "key": "find_letter_p",
+    "en": "Mia, find the letter P!",
+    "vi": "Mia ơi, tìm chữ P nào!"
+  },
+  {
+    "key": "yes_letter_p",
+    "en": "Yes! The letter P!",
+    "vi": "Đúng rồi! Chữ P!"
+  },
+  {
+    "key": "find_letter_q",
+    "en": "Mia, find the letter Q!",
+    "vi": "Mia ơi, tìm chữ Q nào!"
+  },
+  {
+    "key": "yes_letter_q",
+    "en": "Yes! The letter Q!",
+    "vi": "Đúng rồi! Chữ Q!"
+  },
+  {
+    "key": "find_letter_r",
+    "en": "Mia, find the letter R!",
+    "vi": "Mia ơi, tìm chữ R nào!"
+  },
+  {
+    "key": "yes_letter_r",
+    "en": "Yes! The letter R!",
+    "vi": "Đúng rồi! Chữ R!"
+  },
+  {
+    "key": "find_letter_s",
+    "en": "Mia, find the letter S!",
+    "vi": "Mia ơi, tìm chữ S nào!"
+  },
+  {
+    "key": "yes_letter_s",
+    "en": "Yes! The letter S!",
+    "vi": "Đúng rồi! Chữ S!"
+  },
+  {
+    "key": "find_letter_t",
+    "en": "Mia, find the letter T!",
+    "vi": "Mia ơi, tìm chữ T nào!"
+  },
+  {
+    "key": "yes_letter_t",
+    "en": "Yes! The letter T!",
+    "vi": "Đúng rồi! Chữ T!"
+  },
+  {
+    "key": "find_letter_u",
+    "en": "Mia, find the letter U!",
+    "vi": "Mia ơi, tìm chữ U nào!"
+  },
+  {
+    "key": "yes_letter_u",
+    "en": "Yes! The letter U!",
+    "vi": "Đúng rồi! Chữ U!"
+  },
+  {
+    "key": "find_letter_v",
+    "en": "Mia, find the letter V!",
+    "vi": "Mia ơi, tìm chữ V nào!"
+  },
+  {
+    "key": "yes_letter_v",
+    "en": "Yes! The letter V!",
+    "vi": "Đúng rồi! Chữ V!"
+  },
+  {
+    "key": "find_letter_w",
+    "en": "Mia, find the letter W!",
+    "vi": "Mia ơi, tìm chữ W nào!"
+  },
+  {
+    "key": "yes_letter_w",
+    "en": "Yes! The letter W!",
+    "vi": "Đúng rồi! Chữ W!"
+  },
+  {
+    "key": "find_letter_x",
+    "en": "Mia, find the letter X!",
+    "vi": "Mia ơi, tìm chữ X nào!"
+  },
+  {
+    "key": "yes_letter_x",
+    "en": "Yes! The letter X!",
+    "vi": "Đúng rồi! Chữ X!"
+  },
+  {
+    "key": "find_letter_y",
+    "en": "Mia, find the letter Y!",
+    "vi": "Mia ơi, tìm chữ Y nào!"
+  },
+  {
+    "key": "yes_letter_y",
+    "en": "Yes! The letter Y!",
+    "vi": "Đúng rồi! Chữ Y!"
+  },
+  {
+    "key": "find_letter_z",
+    "en": "Mia, find the letter Z!",
+    "vi": "Mia ơi, tìm chữ Z nào!"
+  },
+  {
+    "key": "yes_letter_z",
+    "en": "Yes! The letter Z!",
+    "vi": "Đúng rồi! Chữ Z!"
+  }
+]

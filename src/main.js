@@ -1,0 +1,130 @@
+import { createApp } from 'vue';
+import App from './App.vue';
+import { createRouter, createWebHashHistory } from 'vue-router';
+import '@fortawesome/fontawesome-free/css/all.css';
+import mitt from 'mitt';
+import { logger } from './utils/logger.js';
+
+import Home from './components/Home.vue';
+
+const APP_VERSION = import.meta.env.APP_VERSION;
+const APP_COMMIT = import.meta.env.APP_COMMIT;
+
+if (typeof window !== 'undefined') {
+  window.__APP_VERSION__ = APP_VERSION;
+  window.__APP_COMMIT__ = APP_COMMIT;
+  logger.version(`Edukiz v${APP_VERSION} (${APP_COMMIT})`);
+}
+import Memory from './components/memory/MemoryNavPage.vue';
+import MemoryAnimals from './components/memory/MemoryAnimals.vue';
+import MemoryCharacters from './components/memory/MemoryCharacters.vue';
+import DDNavPage from './components/drag_drop/DDNavPage.vue';
+import DDBuildWordsGame from './components/drag_drop/DDBuildWordsGame.vue';
+import DDCharacters from './components/drag_drop/DDCharacters.vue';
+import MiscNavPage from './components/misc/MiscNavPage.vue';
+import CalculateNumbers0To18 from './components/misc/CalculateNumbers0To18.vue';
+import TextToSpeech from './components/misc/TextToSpeech.vue';
+import PrincessNavPage from './components/princess/PrincessNavPage.vue';
+import DressUpGame from './components/princess/DressUpGame.vue';
+import FeedPonyGame from './components/princess/FeedPonyGame.vue';
+import QuizGame from './components/princess/QuizGame.vue';
+import MakeupGame from './components/princess/MakeupGame.vue';
+import './registerServiceWorker';
+
+if (!localStorage.rewards) {
+  localStorage.rewards = 0;
+}
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+    },
+    {
+      path: '/memory',
+      name: 'Memory',
+      component: Memory,
+    },
+    {
+      path: '/memory/animals',
+      name: 'MemoryAnimals',
+      component: MemoryAnimals,
+    },
+    {
+      path: '/memory/characters',
+      name: 'MemoryCharacters',
+      component: MemoryCharacters,
+    },
+    {
+      path: '/dragdrop',
+      name: 'DragDrop',
+      component: DDNavPage,
+    },
+    {
+      path: '/dragdrop/build-words',
+      name: 'DDBuildWords',
+      component: DDBuildWordsGame,
+    },
+    {
+      path: '/dragdrop/characters',
+      name: 'DDCharacters',
+      component: DDCharacters,
+    },
+    {
+      path: '/misc',
+      name: 'Misc',
+      component: MiscNavPage,
+    },
+    {
+      path: '/misc/numbers-0-to-18',
+      name: 'CalculateNumbers0To18',
+      component: CalculateNumbers0To18,
+    },
+    {
+      path: '/misc/t2s',
+      name: 'TextToSpeech',
+      component: TextToSpeech,
+    },
+    {
+      path: '/princess',
+      name: 'Princess',
+      component: PrincessNavPage,
+    },
+    {
+      path: '/princess/dress/:level',
+      name: 'PrincessDressUp',
+      component: DressUpGame,
+    },
+    {
+      path: '/princess/feed/:level',
+      name: 'PrincessFeedPony',
+      component: FeedPonyGame,
+    },
+    {
+      path: '/princess/makeup/:level',
+      name: 'PrincessMakeup',
+      component: MakeupGame,
+    },
+    {
+      path: '/princess/stage/:id',
+      name: 'PrincessStage',
+      component: QuizGame,
+    },
+    {
+      path: '/github',
+      name: 'github',
+      beforeEnter() {
+        location.href = 'https://github.com/timmalich/edukiz';
+      },
+    },
+  ],
+});
+
+const emitter = mitt();
+const app = createApp(App);
+app.use(router);
+app.config.globalProperties.emitter = emitter;
+app.mount('#app');

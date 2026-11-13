@@ -1,0 +1,17 @@
+import { ImageUtils } from '../utils/ImageUtils.js';
+
+export const numberConfigs = {
+  data() {
+    let possibleNumbers = '0123456789'.split('');
+    let numberConfigs = [];
+    for (let number of possibleNumbers) {
+      numberConfigs.push({
+        number: parseInt(number),
+        image: ImageUtils.getCharacterImagePath(number),
+      });
+    }
+    return {
+      numberConfigs: numberConfigs,
+    };
+  },
+};
