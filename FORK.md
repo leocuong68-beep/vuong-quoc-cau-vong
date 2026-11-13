@@ -31,3 +31,8 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - `dist/` trên máy này là bản build trước khi có giọng; chạy lại `npx vite build` để có bản mới.
 - Khoá ký bản debug nằm ở `android/keystore/debug.keystore`. Phải dùng đúng khoá này (chép vào `~/.android/debug.keystore`) thì APK mới cài đè lên bản cũ được mà không mất sao của bé.
 - Mỗi lần ra bản mới: tăng `versionCode` trong `android/app/build.gradle`.
+
+## Cập nhật tự động (từ bản 1.4)
+- Game chạy tại https://leocuong68-beep.github.io/vuong-quoc-cau-vong/ (nhánh `gh-pages` của repo `leocuong68-beep/vuong-quoc-cau-vong`; mã nguồn ở nhánh `main`).
+- APK từ bản 1.4 chỉ là vỏ mở trang đó: build bằng `VQCV_REMOTE=1 npx cap sync android` rồi `gradle assembleDebug`.
+- Ra bản mới: `npx vite build`, chép nội dung `dist/` (kèm file `.nojekyll`) lên nhánh `gh-pages`. Tablet tự lấy bản mới khi mở app có mạng; không cần cài lại APK.

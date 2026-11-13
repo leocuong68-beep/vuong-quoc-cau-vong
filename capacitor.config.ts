@@ -5,7 +5,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.leocuong.vuongquoccauvong',
   appName: 'Vuong Quoc Cau Vong',
-  webDir: 'dist',
+  webDir: process.env.VQCV_REMOTE === '1' ? '../../shell' : 'dist',
 };
 
 // Build with VQCV_REMOTE=1 once the GitHub Pages site is live; without it the game is bundled in the APK.
