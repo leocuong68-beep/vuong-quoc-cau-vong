@@ -154,3 +154,9 @@ const app = createApp(App);
 app.use(router);
 app.config.globalProperties.emitter = emitter;
 app.mount('#app');
+
+// The first Android shells (before 1.5) draw the game under the status bar and the task bar.
+// Shell 1.5 and later hide those bars and add "VQCV/" to the user agent.
+const userAgent = navigator.userAgent || '';
+const inAndroidShell = (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) || /; wv\)/.test(userAgent);
+if (inAndroidShell && !/VQCV\//.test(userAgent)) document.documentElement.classList.add('under-system-bars');

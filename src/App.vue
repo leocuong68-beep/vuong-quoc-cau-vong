@@ -14,14 +14,29 @@
   $generalPaddingRight: 10pt;
   $generalPaddingLeft: 10pt;
 
+  // Room the tablet's own bars take (status bar on top, task bar below), so they never cover the game.
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+  }
+
+  // Android app shell that draws under the system bars but does not report their size
+  :root.under-system-bars {
+    --safe-top: max(env(safe-area-inset-top, 0px), 30px);
+    --safe-bottom: max(env(safe-area-inset-bottom, 0px), 62px);
+  }
+
   .content-window {
-    height: 100%;
-    max-height: 100%;
-    padding-right: $generalPaddingRight;
-    padding-left: $generalPaddingLeft;
-    width: calc(100% - #{$generalPaddingLeft} - #{$generalPaddingRight});
-    max-width: calc(100% - #{$generalPaddingLeft} - #{$generalPaddingRight});
-    top: 0;
+    box-sizing: border-box;
+    height: calc(100% - var(--safe-top) - var(--safe-bottom));
+    max-height: calc(100% - var(--safe-top) - var(--safe-bottom));
+    padding-right: calc(#{$generalPaddingRight} + var(--safe-right));
+    padding-left: calc(#{$generalPaddingLeft} + var(--safe-left));
+    width: 100%;
+    max-width: 100%;
+    top: var(--safe-top);
     left: 0;
     position: absolute;
     margin: 0;

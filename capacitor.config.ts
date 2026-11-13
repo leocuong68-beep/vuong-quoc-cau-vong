@@ -6,6 +6,8 @@ const config: CapacitorConfig = {
   appId: 'com.leocuong.vuongquoccauvong',
   appName: 'Vuong Quoc Cau Vong',
   webDir: process.env.VQCV_REMOTE === '1' ? '../../shell' : 'dist',
+  // tells the web game that this shell hides the system bars itself
+  appendUserAgent: ' VQCV/6',
 };
 
 // Build with VQCV_REMOTE=1 once the GitHub Pages site is live; without it the game is bundled in the APK.
