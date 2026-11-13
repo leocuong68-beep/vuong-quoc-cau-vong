@@ -10,7 +10,33 @@
   >
     <div class="princess-game">
       <div class="scene">
-        <template v-if="scene.kind === 'chars'">
+        <template v-if="scene.kind === 'face'">
+          <div class="face-tap">
+            <img :src="'img/princess/mia_face.webp'" class="no-drag" alt="Mia" />
+            <button
+              v-for="(spot, index) in choices"
+              :key="questionId + '-' + index"
+              type="button"
+              class="spot"
+              :data-choice="spot.id"
+              :style="{ left: spot.x - spot.r + '%', top: spot.y - spot.r + '%', width: spot.r * 2 + '%', height: spot.r * 2 + '%' }"
+              @click="pick(spot)"
+            />
+          </div>
+        </template>
+        <template v-else-if="scene.kind === 'people'">
+          <div class="people" :style="{ '--n': scene.people.length }">
+            <img
+              v-for="(person, index) in scene.people"
+              :key="questionId + '-' + index"
+              :src="person.src"
+              class="person no-drag"
+              :style="{ '--h': person.h }"
+              alt=""
+            />
+          </div>
+        </template>
+        <template v-else-if="scene.kind === 'chars'">
           <div class="mia" :class="'mood-' + mood" :style="{ height: miaHeight + '%' }">
             <img :src="miaSrc" class="no-drag" alt="Mia" />
           </div>
@@ -38,7 +64,11 @@
               </template>
             </template>
             <template v-else-if="scene.kind === 'picture'">
-              <img :key="questionId" :src="scene.src" class="picture no-drag" alt="" />
+              <img :key="questionId" :src="scene.src" class="picture no-drag" :style="scene.scale ? { transform: 'scale(' + scene.scale + ')' } : null" alt="" />
+            </template>
+            <template v-else-if="scene.kind === 'clock'">
+              <!-- eslint-disable-next-line vue/no-v-html -->
+              <span :key="questionId" class="clock" v-html="clock(scene.hour)" />
             </template>
             <template v-else-if="scene.kind === 'numbers'">
               <span
@@ -74,15 +104,22 @@
       <div class="choices">
         <template v-if="!isGameOver">
           <button
-            v-for="choice in choices"
+            v-for="choice in buttonChoices"
             :key="questionId + '-' + choice.id"
             type="button"
             class="choice"
-            :class="{ shake: wrongId === choice.id, wide: choice.kind === 'group' }"
+            :class="{ shake: wrongId === choice.id, wide: choice.kind === 'group', big: question && question.big }"
             :data-choice="choice.id"
             @click="pick(choice)"
           >
-            <img v-if="choice.kind === 'img'" :src="choice.src" class="no-drag" alt="" />
+            <img
+              v-if="choice.kind === 'img'"
+              :src="choice.src"
+              class="no-drag"
+              :class="{ silhouette: choice.shadow }"
+              :style="choice.scale ? { transform: 'scale(' + choice.scale + ')' } : null"
+              alt=""
+            />
             <span v-else-if="choice.kind === 'text'">{{ choice.text }}</span>
             <!-- eslint-disable-next-line vue/no-v-html -->
             <span v-else-if="choice.kind === 'shape'" class="shape" v-html="shape(choice)" />
@@ -109,7 +146,7 @@
   import LangToggle from './LangToggle.vue';
   import { ArrayUtils } from '../utils/ArrayUtils.js';
   import { BUDDIES, COLORS, Lines } from './princessLines.js';
-  import { stageById, shapeSvg } from './stages.js';
+  import { stageById, shapeSvg, clockSvg } from './stages.js';
   import { gameMixin } from './gameMixin.js';
 
   export default {
@@ -149,6 +186,9 @@
       choices() {
         return this.question ? this.question.choices : [];
       },
+      buttonChoices() {
+        return this.choices.filter((c) => c.kind !== 'spot');
+      },
     },
     created() {
       this.stageId = (this.$route && this.$route.params.id) || '';
@@ -159,6 +199,9 @@
       this.restart();
     },
     methods: {
+      clock(hour) {
+        return clockSvg(hour);
+      },
       shape(choice) {
         return shapeSvg(choice.shape, choice.hex);
       },

@@ -14,17 +14,19 @@
         </button>
         <LangToggle @change="hello" />
       </div>
+      <template v-for="area in areas" :key="area.id">
+        <h2 class="area-title">{{ area[lang] }}</h2>
       <div class="path-grid">
         <button
-          v-for="(stage, index) in stages"
+          v-for="stage in stagesOf(area.id)"
           :key="stage.id"
           type="button"
           class="stage"
-          :class="{ locked: !isUnlocked(index), done: starsOf(stage) > 0, shake: lockedId === stage.id }"
+          :class="{ locked: !isUnlocked(indexOf(stage)), done: starsOf(stage) > 0, shake: lockedId === stage.id }"
           :data-stage="stage.id"
-          @click="open(stage, index)"
+          @click="open(stage, indexOf(stage))"
         >
-          <span class="stage-number">{{ index + 1 }}</span>
+          <span class="stage-number">{{ indexOf(stage) + 1 }}</span>
           <span class="stage-icon">
             <img v-if="stage.icon.src" :src="stage.icon.src" class="no-drag" alt="" />
             <!-- eslint-disable-next-line vue/no-v-html -->
@@ -36,9 +38,10 @@
           <span class="stage-stars">
             <span v-for="n in 3" :key="n" :class="{ on: n <= starsOf(stage) }">★</span>
           </span>
-          <em v-if="!isUnlocked(index)" class="fas fa-lock stage-lock" />
+          <em v-if="!isUnlocked(indexOf(stage))" class="fas fa-lock stage-lock" />
         </button>
       </div>
+      </template>
     </div>
   </NavPage>
 </template>
@@ -49,7 +52,7 @@
   import { Speech } from '../utils/Speech.js';
   import { Lang, Progress } from './state.js';
   import { BUDDIES, Lines } from './princessLines.js';
-  import { STAGES, stageRoute, shapeSvg } from './stages.js';
+  import { AREAS, STAGES, areaOf, stageRoute, shapeSvg } from './stages.js';
 
   export default {
     name: 'PrincessNavPage',
@@ -57,6 +60,7 @@
     data() {
       return {
         stages: STAGES,
+        areas: AREAS,
         buddies: BUDDIES,
         shown: Lines.hello(),
         lockedId: null,
@@ -78,6 +82,12 @@
       Speech.stop();
     },
     methods: {
+      stagesOf(areaId) {
+        return this.stages.filter((stage) => areaOf(stage) === areaId);
+      },
+      indexOf(stage) {
+        return this.stages.indexOf(stage);
+      },
       shape(icon) {
         return shapeSvg(icon.shape, icon.hex);
       },
@@ -173,6 +183,13 @@
     }
   }
 
+  .area-title {
+    margin: 10pt 2pt 6pt;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fffaf2;
+  }
+
   .path-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(92pt, 1fr));
@@ -225,8 +242,9 @@
   }
 
   .stage-icon img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
     object-fit: contain;
   }
 
@@ -239,7 +257,7 @@
   }
 
   .stage-text {
-    font-size: 1.7rem;
+    font-size: 1.35rem;
     white-space: nowrap;
     font-weight: 800;
   }

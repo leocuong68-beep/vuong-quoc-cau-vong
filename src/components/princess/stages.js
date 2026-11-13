@@ -1,5 +1,7 @@
 import { ArrayUtils } from '../utils/ArrayUtils.js';
-import { COLORS, SHAPES, LETTERS, OUTFITS, WORDS, Lines } from './princessLines.js';
+import {
+  BODY, BUDDIES, COLORS, DAY_NIGHT, EMOTIONS, LETTERS, OPPOSITES, OUTFITS, RHYMES, SHAPES, TABLE_ITEMS, WORDS, Lines,
+} from './princessLines.js';
 
 // The learning path, easiest first. `buddy` is the family member who plays along
 // (Pony when not set; stages whose sentences name Pony keep Pony).
@@ -162,8 +164,8 @@ const letterQuiz = (letters, count) => () => {
   };
 };
 
-const wordQuiz = (count) => () => {
-  const options = sample(WORDS, count);
+const wordQuiz = (count, food = false) => () => {
+  const options = sample(WORDS.filter((w) => !!w.food === food), count);
   const target = pickOne(options);
   return {
     line: Lines.findWord(target.id),
@@ -176,7 +178,7 @@ const wordQuiz = (count) => () => {
 };
 
 const firstLetterQuiz = (count) => () => {
-  const target = pickOne(WORDS);
+  const target = pickOne(WORDS.filter((w) => !w.food));
   const letter = target.id.charAt(0).toUpperCase();
   const others = sample(LETTERS.filter((l) => l !== letter), count - 1);
   return {
@@ -236,6 +238,279 @@ const compareNumbersQuiz = (max, count, wantBigger) => () => {
   };
 };
 
+const img = (id, src, extra = {}) => ({ id, kind: 'img', src, ...extra });
+const ANIMALS = WORDS.filter((w) => !w.food && !['car', 'tree', 'star', 'rainbow', 'tractor'].includes(w.id));
+
+const shadowQuiz = () => {
+  const options = sample(ANIMALS, 3);
+  const target = pickOne(options);
+  return {
+    line: Lines.shadow(),
+    okLine: Lines.yesShadow(),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'picture', src: target.src },
+    choices: options.map((w) => img(w.id, w.src, { shadow: true })),
+    big: true,
+    answerId: target.id,
+  };
+};
+
+const oddQuiz = () => {
+  const kind = between(0, 3);
+  let same;
+  let odd;
+  if (kind === 0) {
+    same = sample(ANIMALS, 3).map((w) => w.src);
+    odd = pickOne(['img/car1.svg', 'img/tractor1.svg', 'img/tree1.svg']);
+  } else if (kind === 1) {
+    same = sample(WORDS.filter((w) => w.food), 3).map((w) => w.src);
+    odd = pickOne(ANIMALS).src;
+  } else if (kind === 2) {
+    same = sample(LETTERS, 3).map((l) => 'img/characters/' + l + '.svg');
+    odd = 'img/characters/' + between(1, 9) + '.svg';
+  } else {
+    const [a, b] = sample(COLORS, 2);
+    same = [flower(a.id), flower(a.id), flower(a.id)];
+    odd = flower(b.id);
+  }
+  const choices = shuffled([img('odd', odd), ...same.map((src, i) => img('same' + i, src))]);
+  return {
+    line: Lines.odd(),
+    okLine: Lines.yesOdd(),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'chars' },
+    choices,
+    big: true,
+    answerId: 'odd',
+  };
+};
+
+const sizeQuiz = () => {
+  const wantBiggest = Math.random() < 0.5;
+  const src = pickOne([APPLE, 'img/princess/thing_whale.webp', 'img/princess/food_pear.webp', 'img/star1.svg', flower('pink')]);
+  const scales = shuffled([0.4, 0.68, 1]);
+  return {
+    line: wantBiggest ? Lines.biggest() : Lines.smallest(),
+    okLine: wantBiggest ? Lines.yesBiggest() : Lines.yesSmallest(),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'chars' },
+    choices: scales.map((s) => img(String(s), src, { scale: s })),
+    big: true,
+    answerId: String(wantBiggest ? 1 : 0.4),
+  };
+};
+
+const clockQuiz = () => {
+  const hour = between(1, 12);
+  return {
+    line: Lines.whatTime(),
+    okLine: Lines.yesTime(hour),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'clock', hour },
+    choices: numberChoices(hour, 1, 12),
+    answerId: String(hour),
+  };
+};
+
+const dayNightQuiz = () => {
+  const q = pickOne(DAY_NIGHT);
+  return {
+    line: Lines.when(q.id),
+    okLine: q.answer === 'day' ? Lines.yesDay() : Lines.yesNight(),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'picture', src: q.src },
+    choices: [img('day', 'img/princess/thing_sun.webp'), img('night', 'img/princess/thing_moon.webp')],
+    big: true,
+    answerId: q.answer,
+  };
+};
+
+const emotionQuiz = (count) => () => {
+  const options = sample(EMOTIONS, count);
+  const target = pickOne(options);
+  return {
+    line: Lines.findFace(target.id),
+    okLine: Lines.yesFace(target.id),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'chars' },
+    choices: options.map((e) => img(e.id, 'img/princess/face_' + e.id + '.webp')),
+    big: true,
+    answerId: target.id,
+  };
+};
+
+// where each part is on img/princess/mia_face.webp, in % of the picture
+const BODY_SPOTS = [
+  { id: 'hair', x: 50, y: 27, r: 12 },
+  { id: 'hair', x: 21, y: 72, r: 7 },
+  { id: 'hair', x: 79, y: 72, r: 7 },
+  { id: 'eye', x: 37.4, y: 49, r: 6.5 },
+  { id: 'eye', x: 63, y: 49, r: 6.5 },
+  { id: 'ear', x: 24.5, y: 52, r: 5 },
+  { id: 'ear', x: 76, y: 52, r: 5 },
+  { id: 'nose', x: 50, y: 54.5, r: 4 },
+  { id: 'cheek', x: 33.5, y: 59.5, r: 5 },
+  { id: 'cheek', x: 67.5, y: 59.5, r: 5 },
+  { id: 'mouth', x: 50, y: 61.5, r: 4.5 },
+];
+
+const bodyQuiz = () => {
+  const target = pickOne(BODY);
+  return {
+    line: Lines.touch(target.id),
+    okLine: Lines.yesBody(target.id),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'face' },
+    choices: BODY_SPOTS.map((s) => ({ ...s, kind: 'spot' })),
+    answerId: target.id,
+  };
+};
+
+const skipQuiz = () => {
+  const step = pickOne([2, 5, 10]);
+  const start = step * between(1, step === 2 ? 5 : step === 5 ? 4 : 5);
+  const sequence = [0, 1, 2].map((i) => start + i * step);
+  const answer = start + 3 * step;
+  const options = shuffled([answer, answer + step, answer - 1 > sequence[2] ? answer - 1 : answer + 1]);
+  return {
+    line: Lines.nextNumber(),
+    okLine: Lines.yesPattern(),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'numbers', sequence: [...sequence, null] },
+    choices: options.map((n) => ({ id: String(n), kind: 'text', text: String(n) })),
+    answerId: String(answer),
+  };
+};
+
+const bondQuiz = (max) => () => {
+  const n = between(3, max);
+  const a = between(1, n - 1);
+  return {
+    line: Lines.bond(n, a),
+    okLine: Lines.addYes(a, n - a),
+    wrongLine: () => Lines.countAgain(),
+    scene: { kind: 'numbers', sequence: [n, '=', a, '+', null] },
+    choices: numberChoices(n - a, 1, max),
+    answerId: String(n - a),
+  };
+};
+
+const doublesQuiz = () => {
+  const a = between(1, 5);
+  return {
+    line: Lines.add(a, a),
+    okLine: Lines.addYes(a, a),
+    wrongLine: () => Lines.countAgain(),
+    scene: { kind: 'items', src: APPLE, groups: [a, a] },
+    choices: numberChoices(a + a, 1, 10),
+    answerId: String(a + a),
+  };
+};
+
+const evenQuiz = () => {
+  const n = between(2, 10);
+  const even = n % 2 === 0;
+  return {
+    line: Lines.canShare(n),
+    okLine: even ? Lines.yesShare() : Lines.noShare(),
+    wrongLine: () => Lines.countAgain(),
+    scene: { kind: 'items', src: APPLE, groups: [n] },
+    choices: [
+      { id: 'yes', kind: 'text', text: '✓' },
+      { id: 'no', kind: 'text', text: '✗' },
+    ],
+    answerId: even ? 'yes' : 'no',
+  };
+};
+
+const halfQuiz = () => {
+  const n = 2 * between(1, 5);
+  return {
+    line: Lines.shareHalf(n),
+    okLine: Lines.yesHalf(n),
+    wrongLine: () => Lines.countAgain(),
+    scene: { kind: 'items', src: APPLE, groups: [n] },
+    choices: numberChoices(n / 2, 1, 6),
+    answerId: String(n / 2),
+  };
+};
+
+const lowerQuiz = (count) => () => {
+  const options = sample(LETTERS, count);
+  const target = pickOne(options);
+  return {
+    line: Lines.lower(target),
+    okLine: Lines.yesLetter(target),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'picture', src: 'img/characters/' + target + '.svg' },
+    choices: options.map((l) => ({ id: l, kind: 'text', text: l.toLowerCase() })),
+    answerId: target,
+  };
+};
+
+const oppositeQuiz = () => {
+  const pair = pickOne(OPPOSITES);
+  const [a, b] = Math.random() < 0.5 ? pair : [pair[1], pair[0]];
+  const others = sample(OPPOSITES.filter((p) => p !== pair && p[0].src !== b.src && p[1].src !== b.src), 2).map((p) => pickOne(p));
+  return {
+    line: Lines.opposite(a),
+    okLine: Lines.yesOpposite(a, b),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'picture', src: a.src, scale: a.scale },
+    choices: shuffled([b, ...others]).map((w) => img(w.id, w.src, { scale: w.scale })),
+    big: true,
+    answerId: b.id,
+  };
+};
+
+const rhymeQuiz = () => {
+  const pair = pickOne(RHYMES);
+  const [a, b] = Math.random() < 0.5 ? pair : [pair[1], pair[0]];
+  const others = sample(RHYMES.filter((p) => p !== pair), 2).map((p) => pickOne(p));
+  return {
+    line: Lines.rhyme(a),
+    okLine: Lines.yesRhyme(a, b),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'picture', src: a.src },
+    choices: shuffled([b, ...others]).map((w) => img(w.id, w.src)),
+    big: true,
+    answerId: b.id,
+  };
+};
+
+const tableQuiz = () => {
+  const people = sample(['tintin', 'mommy', 'daddy'], between(1, 3));
+  const item = pickOne(TABLE_ITEMS);
+  const n = people.length + 1;
+  return {
+    line: Lines.howManyNeeded(item.id),
+    okLine: Lines.yesCount(n),
+    wrongLine: () => Lines.countAgain(),
+    scene: {
+      kind: 'people',
+      people: [{ src: 'img/princess/mia_pink.webp', h: 0.74 }, ...people.map((p) => ({ src: BUDDIES[p].src, h: BUDDIES[p].height / 100 }))],
+      src: item.src,
+    },
+    choices: numberChoices(n, 1, 5),
+    answerId: String(n),
+  };
+};
+
+const flowerShopQuiz = () => {
+  const n = between(1, 5);
+  const [color, other] = sample(COLORS, 2);
+  const wrongCount = n === 1 ? 2 : pickOne([n - 1, n + 1]);
+  const bunch = (id, c, count) => ({ id, kind: 'group', src: flower(c.id), count });
+  return {
+    line: Lines.pickFlowers(n, color.id),
+    okLine: Lines.yesCount(n),
+    wrongLine: () => Lines.countAgain(),
+    scene: { kind: 'chars' },
+    choices: shuffled([bunch('right', color, n), bunch('count', color, wrongCount), bunch('color', other, n)]),
+    answerId: 'right',
+  };
+};
+
 const icon = (src) => ({ src });
 const text = (value) => ({ text: value });
 
@@ -279,6 +554,30 @@ export const STAGES = [
   { id: 'bigger2', buddy: 'mommy', make: compareNumbersQuiz(20, 3, true), en: 'Biggest of three', vi: 'Số lớn nhất', icon: text('>') },
   { id: 'first2', buddy: 'tintin', make: firstLetterQuiz(4), en: 'First letter 2', vi: 'Chữ cái đầu 2', icon: icon('img/characters/R.svg') },
   { id: 'makeup3', route: '/princess/makeup/3', en: 'Party makeup', vi: 'Trang điểm dự tiệc', icon: icon('img/princess/mia_face.webp') },
+  // --- wave 1 of the 30 new games ---
+  { id: 'memory1', area: 'world', route: '/princess/memory/1', en: 'Family pairs', vi: 'Lật thẻ gia đình', icon: icon('img/princess/tintin.webp') },
+  { id: 'shadows', area: 'world', buddy: 'tintin', make: shadowQuiz, en: 'Whose shadow?', vi: 'Bóng của ai?', icon: icon('img/rabbit1.svg') },
+  { id: 'odd', area: 'world', buddy: 'mommy', make: oddQuiz, en: 'Odd one out', vi: 'Cái nào khác loại?', icon: text('≠') },
+  { id: 'size', area: 'world', buddy: 'daddy', make: sizeQuiz, en: 'Big and small', vi: 'To và nhỏ', icon: icon('img/princess/thing_whale.webp') },
+  { id: 'emotions', area: 'world', buddy: 'mommy', make: emotionQuiz(3), en: 'Feelings', vi: 'Cảm xúc', icon: icon('img/princess/face_happy.webp') },
+  { id: 'body', area: 'world', make: bodyQuiz, en: 'My face', vi: 'Khuôn mặt', icon: icon('img/princess/mia_face.webp') },
+  { id: 'daynight', area: 'world', buddy: 'daddy', make: dayNightQuiz, en: 'Day and night', vi: 'Ngày và đêm', icon: icon('img/princess/thing_moon.webp') },
+  { id: 'clock', area: 'world', buddy: 'tintin', make: clockQuiz, en: 'What time?', vi: 'Xem giờ', icon: text('3:00') },
+  { id: 'table', area: 'world', make: tableQuiz, en: 'Set the table', vi: 'Bày bàn ăn', icon: icon('img/princess/thing_cup.webp') },
+  { id: 'memory2', area: 'world', route: '/princess/memory/2', en: 'More pairs', vi: 'Lật thẻ 2', icon: icon('img/princess/daddy.webp') },
+  { id: 'foods', area: 'english', buddy: 'mommy', make: wordQuiz(3, true), en: 'Fruit and veg', vi: 'Trái cây và rau', icon: icon('img/princess/food_strawberry.webp') },
+  { id: 'lower', area: 'english', buddy: 'tintin', make: lowerQuiz(3), en: 'Small letters', vi: 'Chữ viết thường', icon: text('Aa') },
+  { id: 'opposites', area: 'english', buddy: 'daddy', make: oppositeQuiz, en: 'Opposites', vi: 'Trái nghĩa', icon: text('↔') },
+  { id: 'rhymes', area: 'english', buddy: 'mommy', make: rhymeQuiz, en: 'Rhymes', vi: 'Vần giống nhau', icon: icon('img/princess/thing_hat.webp') },
+  { id: 'bubbles1', area: 'math', route: '/princess/bubbles/1', en: 'Bubbles 1–5', vi: 'Bong bóng 1–5', icon: text('○') },
+  { id: 'flowershop', area: 'math', buddy: 'mommy', make: flowerShopQuiz, en: 'Flower shop', vi: 'Tiệm hoa', icon: icon(flower('orange')) },
+  { id: 'doubles', area: 'math', make: doublesQuiz, en: 'Doubles', vi: 'Gấp đôi', icon: text('2+2') },
+  { id: 'bubbles2', area: 'math', route: '/princess/bubbles/2', en: 'Bubbles 1–10', vi: 'Bong bóng 1–10', icon: text('○○') },
+  { id: 'half', area: 'math', buddy: 'tintin', make: halfQuiz, en: 'Share apples', vi: 'Chia táo', icon: icon(APPLE) },
+  { id: 'even', area: 'math', buddy: 'tintin', make: evenQuiz, en: 'Can we share?', vi: 'Chia đều được không?', icon: text('✓✗') },
+  { id: 'bonds', area: 'math', buddy: 'daddy', make: bondQuiz(10), en: 'Number pairs', vi: 'Tách số', icon: text('5=2+?') },
+  { id: 'skip', area: 'math', buddy: 'daddy', make: skipQuiz, en: 'Skip counting', vi: 'Đếm nhảy', icon: text('2 4 6') },
+  { id: 'bubbles3', area: 'math', route: '/princess/bubbles/3', en: 'Count down', vi: 'Đếm ngược', icon: text('10→1') },
 ];
 
 export const stageById = (id) => STAGES.find((s) => s.id === id);
@@ -299,3 +598,35 @@ export const shapeSvg = (shape, hex) =>
   '" stroke="#4a2a57" stroke-width="4" stroke-linejoin="round">' +
   SHAPE_PATHS[shape] +
   '</svg>';
+
+// The path page shows the stages in these groups.
+export const AREAS = [
+  { id: 'beauty', en: 'Dress up and makeup', vi: 'Làm đẹp' },
+  { id: 'math', en: 'Numbers', vi: 'Học số' },
+  { id: 'english', en: 'Words and letters', vi: 'Học chữ' },
+  { id: 'world', en: 'My world', vi: 'Thế giới quanh bé' },
+];
+
+export const areaOf = (stage) => {
+  if (stage.area) return stage.area;
+  if (/^(dress|makeup|outfit)/.test(stage.id)) return 'beauty';
+  if (/^(letters|words|first)/.test(stage.id)) return 'english';
+  if (/^(shapes|flowers|pattern)/.test(stage.id)) return 'world';
+  return 'math';
+};
+
+export const clockSvg = (hour) => {
+  let marks = '';
+  for (let h = 1; h <= 12; h++) {
+    const a = (h * 30 * Math.PI) / 180;
+    marks += '<text x="' + (50 + 37 * Math.sin(a)).toFixed(1) + '" y="' + (53.5 - 37 * Math.cos(a)).toFixed(1) + '" font-size="10" font-weight="700" text-anchor="middle" fill="#4a2a57" stroke="none">' + h + '</text>';
+  }
+  const a = (hour * 30 * Math.PI) / 180;
+  return (
+    '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" stroke="#4a2a57" stroke-linecap="round">' +
+    '<circle cx="50" cy="50" r="47" fill="#fffaf2" stroke-width="4"/>' + marks +
+    '<line x1="50" y1="50" x2="50" y2="14" stroke-width="3"/>' +
+    '<line x1="50" y1="50" x2="' + (50 + 22 * Math.sin(a)).toFixed(1) + '" y2="' + (50 - 22 * Math.cos(a)).toFixed(1) + '" stroke-width="5" stroke="#ff5a5f"/>' +
+    '<circle cx="50" cy="50" r="3.5" fill="#4a2a57"/></svg>'
+  );
+};

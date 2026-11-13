@@ -171,6 +171,70 @@
   animation: princess-pop 0.35s ease-out both;
 }
 
+.clock {
+  width: min(70%, 190pt);
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+.clock :deep(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.face-tap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  max-width: 100%;
+  align-self: center;
+}
+
+.face-tap > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.face-tap .spot {
+  position: absolute;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.people {
+  height: 100%;
+  width: 100%;
+  container-type: size;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1%;
+}
+
+.people .person {
+  flex: none;
+  width: auto;
+  height: calc(var(--h) * 70%);
+  // as tall as fits: limited by the scene height or by the room each person has
+  height: calc(var(--h) * min(96cqh, 190cqw / var(--n)));
+}
+
+.choice.big {
+  width: 92pt;
+  height: 92pt;
+}
+
+.choice img.silhouette {
+  filter: brightness(0);
+  opacity: 0.75;
+}
+
 .number-box {
   min-width: 40pt;
   height: 44pt;
@@ -296,6 +360,12 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+.choice > img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 .choice.wide {

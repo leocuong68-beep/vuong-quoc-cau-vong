@@ -29,6 +29,8 @@ import DressUpGame from './components/princess/DressUpGame.vue';
 import FeedPonyGame from './components/princess/FeedPonyGame.vue';
 import QuizGame from './components/princess/QuizGame.vue';
 import MakeupGame from './components/princess/MakeupGame.vue';
+import MemoryGame from './components/princess/MemoryGame.vue';
+import BubblesGame from './components/princess/BubblesGame.vue';
 import './registerServiceWorker';
 
 if (!localStorage.rewards) {
@@ -107,6 +109,16 @@ const router = createRouter({
       path: '/princess/makeup/:level',
       name: 'PrincessMakeup',
       component: MakeupGame,
+    },
+    {
+      path: '/princess/memory/:level',
+      name: 'PrincessMemory',
+      component: MemoryGame,
+    },
+    {
+      path: '/princess/bubbles/:level',
+      name: 'PrincessBubbles',
+      component: BubblesGame,
     },
     {
       path: '/princess/stage/:id',

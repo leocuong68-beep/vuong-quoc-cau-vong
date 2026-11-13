@@ -103,6 +103,67 @@ export const WORDS = [
   { id: 'star', vi: 'ngôi sao', src: 'img/star1.svg' },
   { id: 'rainbow', vi: 'cầu vồng', src: 'img/rainbow1.svg' },
   { id: 'tractor', vi: 'máy kéo', src: 'img/tractor1.svg' },
+  { id: 'banana', vi: 'quả chuối', src: 'img/princess/food_banana.webp', food: true },
+  { id: 'orange', vi: 'quả cam', src: 'img/princess/food_orange.webp', food: true },
+  { id: 'strawberry', vi: 'quả dâu', src: 'img/princess/food_strawberry.webp', food: true },
+  { id: 'grapes', vi: 'chùm nho', src: 'img/princess/food_grapes.webp', food: true },
+  { id: 'carrot', vi: 'củ cà rốt', src: 'img/princess/food_carrot.webp', food: true },
+  { id: 'tomato', vi: 'quả cà chua', src: 'img/princess/food_tomato.webp', food: true },
+  { id: 'corn', vi: 'bắp ngô', src: 'img/princess/food_corn.webp', food: true },
+  { id: 'watermelon', vi: 'miếng dưa hấu', src: 'img/princess/food_watermelon.webp', food: true },
+  { id: 'pear', vi: 'quả lê', src: 'img/princess/food_pear.webp', food: true },
+];
+
+export const EMOTIONS = [
+  { id: 'happy', vi: 'vui' },
+  { id: 'sad', vi: 'buồn' },
+  { id: 'angry', vi: 'giận' },
+  { id: 'sleepy', vi: 'buồn ngủ' },
+  { id: 'surprised', vi: 'ngạc nhiên' },
+  { id: 'scared', vi: 'sợ' },
+];
+
+export const BODY = [
+  { id: 'eye', vi: 'con mắt' },
+  { id: 'nose', vi: 'cái mũi' },
+  { id: 'mouth', vi: 'cái miệng' },
+  { id: 'ear', vi: 'cái tai' },
+  { id: 'hair', vi: 'mái tóc' },
+  { id: 'cheek', vi: 'cái má' },
+];
+
+const T = 'img/princess/thing_';
+export const DAY_NIGHT = [
+  { id: 'sleep', en: 'sleep', vi: 'đi ngủ', answer: 'night', src: 'img/princess/mia_outfit_pajamas.webp' },
+  { id: 'stars', en: 'see the stars', vi: 'thấy các ngôi sao', answer: 'night', src: 'img/star1.svg' },
+  { id: 'moon', en: 'see the moon', vi: 'thấy mặt trăng', answer: 'night', src: T + 'moon.webp' },
+  { id: 'school', en: 'go to school', vi: 'đi học', answer: 'day', src: 'img/princess/mia_outfit_school.webp' },
+  { id: 'sun', en: 'see the sun', vi: 'thấy mặt trời', answer: 'day', src: T + 'sun.webp' },
+  { id: 'football', en: 'play football', vi: 'đá bóng', answer: 'day', src: 'img/princess/mia_outfit_sport.webp' },
+];
+
+export const OPPOSITES = [
+  [{ id: 'big', vi: 'to', src: 'img/princess/apple.webp' }, { id: 'small', vi: 'nhỏ', src: 'img/princess/apple.webp', scale: 0.45 }],
+  [{ id: 'happy', vi: 'vui', src: 'img/princess/face_happy.webp' }, { id: 'sad', vi: 'buồn', src: 'img/princess/face_sad.webp' }],
+  [{ id: 'day', vi: 'ngày', src: T + 'sun.webp' }, { id: 'night', vi: 'đêm', src: T + 'moon.webp' }],
+  [{ id: 'hot', vi: 'nóng', src: T + 'sun.webp' }, { id: 'cold', vi: 'lạnh', src: 'img/snowman1.svg' }],
+  [{ id: 'fast', vi: 'nhanh', src: 'img/car1.svg' }, { id: 'slow', vi: 'chậm', src: 'img/snail1.svg' }],
+];
+
+export const RHYMES = [
+  [{ id: 'cat', src: 'img/cat1.png' }, { id: 'hat', src: T + 'hat.webp' }],
+  [{ id: 'tree', src: 'img/tree1.svg' }, { id: 'bee', src: T + 'bee.webp' }],
+  [{ id: 'fish', src: 'img/fish1.svg' }, { id: 'dish', src: T + 'plate.webp' }],
+  [{ id: 'goat', src: 'img/goat1.svg' }, { id: 'boat', src: T + 'boat.webp' }],
+  [{ id: 'snail', src: 'img/snail1.svg' }, { id: 'whale', src: T + 'whale.webp' }],
+  [{ id: 'dog', src: 'img/dog1.svg' }, { id: 'frog', src: 'img/frog1.svg' }],
+  [{ id: 'star', src: 'img/star1.svg' }, { id: 'car', src: 'img/car1.svg' }],
+];
+
+export const TABLE_ITEMS = [
+  { id: 'cup', en: 'cup', vi: 'cái cốc', src: T + 'cup.webp' },
+  { id: 'spoon', en: 'spoon', vi: 'cái thìa', src: T + 'spoon.webp' },
+  { id: 'plate', en: 'plate', vi: 'cái đĩa', src: T + 'plate.webp' },
 ];
 
 const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -290,6 +351,75 @@ export const Lines = {
     return line(`first_yes_${id}`, `Yes! ${cap(id)} starts with ${letter}!`, `Đúng rồi! "${cap(id)}" bắt đầu bằng chữ ${letter}!`);
   },
 
+  // --- the world around Mia ---
+  findFace(id) {
+    const e = EMOTIONS.find((x) => x.id === id);
+    return line(`face_${id}`, `Mia, find the ${id} face!`, `Mia ơi, tìm khuôn mặt ${e.vi} nào!`);
+  },
+  yesFace(id) {
+    const e = EMOTIONS.find((x) => x.id === id);
+    return line(`face_yes_${id}`, `Yes! Mia is ${id}!`, `Đúng rồi! Mia đang ${e.vi}!`);
+  },
+  touch(id) {
+    const b = BODY.find((x) => x.id === id);
+    return line(`touch_${id}`, `Mia, touch the ${id}!`, `Mia ơi, chạm vào ${b.vi} nào!`);
+  },
+  yesBody(id) {
+    const b = BODY.find((x) => x.id === id);
+    return line(`touch_yes_${id}`, `Yes! The ${id}!`, `Đúng rồi! ${cap(b.vi)}!`);
+  },
+  whatTime: () => line('what_time', 'Mia, what time is it?', 'Mia ơi, mấy giờ rồi?'),
+  yesTime: (h) => line(`time_${h}`, `Yes! It is ${en(h)} o'clock!`, `Đúng rồi! ${cap(vi(h))} giờ!`),
+  when(id) {
+    const q = DAY_NIGHT.find((x) => x.id === id);
+    return line(`when_${id}`, `Mia, when do we ${q.en}? Day or night?`, `Mia ơi, mình ${q.vi} vào ban ngày hay ban đêm?`);
+  },
+  yesDay: () => line('yes_day', 'Yes! In the daytime!', 'Đúng rồi! Vào ban ngày!'),
+  yesNight: () => line('yes_night', 'Yes! At night!', 'Đúng rồi! Vào ban đêm!'),
+  shadow: () => line('shadow', 'Mia, which shadow is the same?', 'Mia ơi, cái bóng nào giống nhỉ?'),
+  yesShadow: () => line('yes_shadow', 'Yes! That is the right shadow!', 'Đúng rồi! Đúng cái bóng đó!'),
+  odd: () => line('odd', 'Mia, which one is different?', 'Mia ơi, cái nào khác loại?'),
+  yesOdd: () => line('yes_odd', 'Yes! That one is different!', 'Đúng rồi! Cái đó khác loại!'),
+  biggest: () => line('biggest', 'Mia, find the biggest one!', 'Mia ơi, tìm cái to nhất nào!'),
+  smallest: () => line('smallest', 'Mia, find the smallest one!', 'Mia ơi, tìm cái nhỏ nhất nào!'),
+  yesBiggest: () => line('yes_biggest', 'Yes! That is the biggest!', 'Đúng rồi! Cái đó to nhất!'),
+  yesSmallest: () => line('yes_smallest', 'Yes! That is the smallest!', 'Đúng rồi! Cái đó nhỏ nhất!'),
+  howManyNeeded(id) {
+    const t = TABLE_ITEMS.find((x) => x.id === id);
+    return line(`table_${id}`, `Everyone needs a ${t.en}. How many, Mia?`, `Mỗi người cần một ${t.vi}. Cần mấy cái hả Mia?`);
+  },
+  pickFlowers: (n, color) =>
+    line(`pick_${n}_${color}`, `Mia, find ${en(n)} ${color} ${n === 1 ? 'flower' : 'flowers'}!`, `Mia ơi, tìm ${vi(n)} bông hoa màu ${colorVi(color)} nào!`),
+  memory: () => line('memory', 'Mia, find the two that are the same!', 'Mia ơi, tìm hai hình giống nhau nào!'),
+  bubbles(n, down) {
+    return down
+      ? line('bubbles_down', 'Mia, pop the bubbles from ten down to one!', 'Mia ơi, chạm bong bóng từ mười về một nào!')
+      : line(`bubbles_${n}`, `Mia, pop the bubbles from one to ${en(n)}!`, `Mia ơi, chạm bong bóng từ một đến ${vi(n)} nào!`);
+  },
+
+  // --- more number sense ---
+  nextNumber: () => line('next_number', 'Mia, what number comes next?', 'Mia ơi, số tiếp theo là số mấy?'),
+  bond: (n, a) => line(`bond_${n}_${a}`, `${cap(en(n))} is ${en(a)} and how many, Mia?`, `${cap(vi(n))} gồm ${vi(a)} và mấy hả Mia?`),
+  canShare: (n) =>
+    line(`can_share_${n}`, `Can Mia and Tin Tin share ${apples(n)} equally?`, `Mia và anh Tin Tin chia đều ${vi(n)} quả táo được không?`),
+  yesShare: () => line('yes_share', 'Yes! They get the same!', 'Đúng rồi! Hai anh em được bằng nhau!'),
+  noShare: () => line('no_share', 'Right! One apple is left over!', 'Đúng rồi! Còn thừa một quả!'),
+  shareHalf: (n) =>
+    line(`half_${n}`, `Mia and Tin Tin share ${apples(n)}. How many each, Mia?`, `Mia và anh Tin Tin chia đều ${vi(n)} quả táo. Mỗi người mấy quả hả Mia?`),
+  yesHalf: (n) => line(`half_yes_${n}`, `Yes! ${cap(en(n / 2))} each!`, `Đúng rồi! Mỗi người ${vi(n / 2)} quả!`),
+
+  // --- more words ---
+  lower: (letter) =>
+    line(`lower_${letter.toLowerCase()}`, `Mia, find the small letter ${letter}!`, `Mia ơi, tìm chữ ${letter} viết thường nào!`),
+  opposite(word) {
+    return line(`opposite_${word.id}`, `Mia, what is the opposite of ${word.id}?`, `Mia ơi, trái nghĩa với ${word.vi} là gì?`);
+  },
+  yesOpposite(a, b) {
+    return line(`opposite_yes_${a.id}`, `Yes! ${cap(a.id)} and ${b.id}!`, `Đúng rồi! ${cap(a.vi)} và ${b.vi}!`);
+  },
+  rhyme: (a) => line(`rhyme_${a.id}`, `${cap(a.id)}. Which word sounds like ${a.id}, Mia?`, `Từ nào có vần giống "${a.id}" hả Mia?`),
+  yesRhyme: (a, b) => line(`rhyme_yes_${a.id}`, `Yes! ${cap(a.id)} and ${b.id}!`, `Đúng rồi! "${cap(a.id)}" và "${b.id}"!`),
+
   // --- number sense ---
   missing: () => line('missing', 'Mia, which number is missing?', 'Mia ơi, số nào còn thiếu?'),
   bigger: () => line('bigger', 'Mia, which number is bigger?', 'Mia ơi, số nào lớn hơn?'),
@@ -350,6 +480,27 @@ export const Lines = {
       for (const c of COLORS) out.push(this.makeup(m.id, c.id), this.makeupYes(m.id, c.id));
     }
     for (const o of OUTFITS) out.push(this.findOutfit(o.id), this.yesOutfit(o.id));
+    out.push(this.whatTime(), this.yesDay(), this.yesNight(), this.shadow(), this.yesShadow(), this.odd(), this.yesOdd());
+    out.push(this.biggest(), this.smallest(), this.yesBiggest(), this.yesSmallest(), this.memory(), this.nextNumber());
+    out.push(this.bubbles(5), this.bubbles(10), this.bubbles(10, true), this.yesShare(), this.noShare());
+    for (const e of EMOTIONS) out.push(this.findFace(e.id), this.yesFace(e.id));
+    for (const b of BODY) out.push(this.touch(b.id), this.yesBody(b.id));
+    for (let h = 1; h <= 12; h++) out.push(this.yesTime(h));
+    for (const q of DAY_NIGHT) out.push(this.when(q.id));
+    for (const t of TABLE_ITEMS) out.push(this.howManyNeeded(t.id));
+    for (let n = 1; n <= 5; n++) for (const c of COLORS) out.push(this.pickFlowers(n, c.id));
+    for (let n = 3; n <= 10; n++) for (let a = 1; a < n; a++) out.push(this.bond(n, a));
+    for (let n = 2; n <= 10; n++) {
+      out.push(this.canShare(n));
+      if (n % 2 === 0) out.push(this.shareHalf(n), this.yesHalf(n));
+    }
+    for (const letter of LETTERS) out.push(this.lower(letter));
+    for (const [a, b] of OPPOSITES) {
+      out.push(this.opposite(a), this.opposite(b), this.yesOpposite(a, b), this.yesOpposite(b, a));
+    }
+    for (const [a, b] of RHYMES) {
+      out.push(this.rhyme(a), this.rhyme(b), this.yesRhyme(a, b), this.yesRhyme(b, a));
+    }
     for (const w of WORDS) {
       out.push(this.findWord(w.id), this.yesWord(w.id), this.firstLetter(w.id), this.yesFirst(w.id));
     }
