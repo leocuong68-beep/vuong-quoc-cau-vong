@@ -1,5 +1,9 @@
 <template>
   <NavPage nav-back-path="/">
+    <button v-if="showWelcome" type="button" class="welcome" data-test="welcome" @click="enter">
+      <img :src="'img/princess/banner_' + lang + '.webp'" class="no-drag" alt="" />
+      <span class="welcome-play"><em class="fas fa-play" /></span>
+    </button>
     <div class="path">
       <div class="path-top">
         <button type="button" class="path-mia mood-idle" data-test="mia" @click="tapMia">
@@ -80,6 +84,9 @@
   import { BUDDIES, Lines } from './princessLines.js';
   import { AREAS, MORE_GAMES, STAGES, areaOf, stageRoute, shapeSvg } from './stages.js';
 
+  // the welcome picture is shown once, when the game is opened
+  let welcomed = false;
+
   export default {
     name: 'PrincessNavPage',
     components: { NavPage, LangToggle },
@@ -92,6 +99,7 @@
         shown: Lines.hello(),
         lockedId: null,
         miaTaps: 0,
+        showWelcome: !welcomed,
       };
     },
     computed: {
@@ -103,12 +111,18 @@
       },
     },
     mounted() {
-      Speech.say(this.shown);
+      // with the welcome picture up, Mia says hello after the first tap (sound needs a tap to start)
+      if (!this.showWelcome) Speech.say(this.shown);
     },
     unmounted() {
       Speech.stop();
     },
     methods: {
+      enter() {
+        welcomed = true;
+        this.showWelcome = false;
+        this.hello();
+      },
       jump(areaId) {
         const title = this.$refs['area-' + areaId];
         const el = Array.isArray(title) ? title[0] : title;
@@ -212,6 +226,58 @@
   @media (max-width: 520px) {
     .path-family {
       display: none;
+    }
+  }
+
+  .welcome {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    // sky above and grass below the picture when the screen is taller than the picture
+    background: linear-gradient(#a9d8ee 0 50%, #a5db8c 50% 100%);
+    display: grid;
+    place-items: center;
+    touch-action: manipulation;
+  }
+
+  .welcome img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .welcome-play {
+    position: absolute;
+    right: 4%;
+    bottom: calc(7% + var(--safe-bottom, 0px));
+    width: 62pt;
+    height: 62pt;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 3pt solid #ffffff;
+    background: #35b36b;
+    color: #ffffff;
+    font-size: 1.7rem;
+    box-shadow: 0 4pt 0 rgba(74, 42, 87, 0.35);
+    animation: welcome-pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes welcome-pulse {
+    50% {
+      scale: 1.12;
+    }
+  }
+
+  // tall screen: the button sits in the middle, under the picture
+  @media (max-aspect-ratio: 1 / 1) {
+    .welcome-play {
+      right: calc(50% - 31pt);
+      bottom: calc(16% + var(--safe-bottom, 0px));
     }
   }
 
