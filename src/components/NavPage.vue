@@ -1,10 +1,7 @@
 <template>
   <div class="content">
-    <Header :nav-back-path="navBackPath">
-      <div class="game-button">
-        <a href="https://github.com/timmalich/edukiz" class="fab fa-github" />
-      </div>
-    </Header>
+    <!-- no link out of the game here: a child should not land in the browser (credits are in FORK.md) -->
+    <Header :nav-back-path="navBackPath" />
     <div class="link-area">
       <slot />
     </div>
