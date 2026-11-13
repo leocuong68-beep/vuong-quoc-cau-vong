@@ -2,6 +2,10 @@
 // Recorded voice: public/sounds/<lang>/mia/<key>.mp3 (lang = en | vi).
 // The text is shown on screen and read by the browser voice when the mp3 is missing.
 // scripts/princess-lines.mjs prints the full list for the voice batch.
+// A child who is not Mia hears the lines without the name: public/sounds/<lang>/kid/<key>.mp3.
+
+import { Profiles } from './state.js';
+import { noNameEn, noNameVi } from './noName.js';
 
 export const COLORS = [
   { id: 'pink', vi: 'hồng', hex: '#ff7eb6' },
@@ -228,7 +232,15 @@ const apples = (n) => en(n) + (n === 1 ? ' apple' : ' apples');
 const colorVi = (id) => (id === 'white' ? 'trắng' : COLORS.find((c) => c.id === id).vi);
 const partVi = (id) => PARTS.find((p) => p.id === id).vi;
 const shapeVi = (id) => SHAPES.find((s) => s.id === id).vi;
-const line = (key, enText, viText) => ({ key, en: enText, vi: viText });
+// A line to show and say. For a child who is not Mia the name is left out (see noName.js),
+// and `kid` lists the languages whose recording without the name is used.
+const line = (key, enText, viText) => {
+  if (!Profiles.nameless) return { key, en: enText, vi: viText };
+  const en = noNameEn(enText);
+  const vi = noNameVi(viText);
+  const kid = [en !== enText && 'en', vi !== viText && 'vi'].filter(Boolean);
+  return { key, en, vi, kid };
+};
 
 export const Lines = {
   // --- general ---

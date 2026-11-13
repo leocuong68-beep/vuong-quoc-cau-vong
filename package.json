@@ -15,7 +15,8 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "deploy-github": "scripts/deploy_github.sh",
-    "tag-deployment": "scripts/tagDeployment.sh"
+    "tag-deployment": "scripts/tagDeployment.sh",
+    "build:public": "VITE_PUBLIC=1 vite build --outDir dist-public && node scripts/public-meta.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^7.6.10",

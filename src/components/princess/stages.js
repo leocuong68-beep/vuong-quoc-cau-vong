@@ -3,6 +3,8 @@ import {
   BODY, BUDDIES, COLORS, DAY_NIGHT, EMOTIONS, LETTERS, MIXES, OPPOSITES, OUTFITS, PETS, PET_NEEDS, RHYMES, SHAPES, TABLE_ITEMS,
   WORDS, Lines,
 } from './princessLines.js';
+import { Profiles } from './state.js';
+import { noNameEn, noNameVi } from './noName.js';
 
 // The learning path, easiest first. `buddy` is the family member who plays along
 // (Pony when not set; stages whose sentences name Pony keep Pony).
@@ -480,7 +482,15 @@ const rhymeQuiz = () => {
 };
 
 const tableQuiz = () => {
-  const people = sample(['tintin', 'mommy', 'daddy'], between(1, 3));
+  // the player sits first: Mia for a girl, Tin Tin for a boy
+  const family = {
+    mia: { src: 'img/princess/mia_pink.webp', h: 0.74 },
+    tintin: { src: BUDDIES.tintin.src, h: BUDDIES.tintin.height / 100 },
+    mommy: { src: BUDDIES.mommy.src, h: BUDDIES.mommy.height / 100 },
+    daddy: { src: BUDDIES.daddy.src, h: BUDDIES.daddy.height / 100 },
+  };
+  const me = Profiles.isBoy ? 'tintin' : 'mia';
+  const people = sample(['mia', 'tintin', 'mommy', 'daddy'].filter((p) => p !== me), between(1, 3));
   const item = pickOne(TABLE_ITEMS);
   const n = people.length + 1;
   return {
@@ -489,7 +499,7 @@ const tableQuiz = () => {
     wrongLine: () => Lines.countAgain(),
     scene: {
       kind: 'people',
-      people: [{ src: 'img/princess/mia_pink.webp', h: 0.74 }, ...people.map((p) => ({ src: BUDDIES[p].src, h: BUDDIES[p].height / 100 }))],
+      people: [family[me], ...people.map((p) => family[p])],
       src: item.src,
     },
     choices: numberChoices(n, 1, 5),
@@ -682,4 +692,22 @@ export const clockSvg = (hour) => {
     '<line x1="50" y1="50" x2="' + (50 + 22 * Math.sin(a)).toFixed(1) + '" y2="' + (50 - 22 * Math.cos(a)).toFixed(1) + '" stroke-width="5" stroke="#ff5a5f"/>' +
     '<circle cx="50" cy="50" r="3.5" fill="#4a2a57"/></svg>'
   );
+};
+
+// Dressing up, makeup, hair and nails are left out for boys.
+export const isGirlOnly = (stage) => /^(dress|makeup|outfit)/.test(stage.id) || ['hair', 'nails'].includes(stage.id);
+
+export const stagesFor = (stages) => (Profiles.isBoy ? stages.filter((stage) => !isGirlOnly(stage)) : stages);
+
+// the stage name to show, without "Mia" for other children
+export const stageTitle = (stage, lang) => {
+  const text = stage[lang];
+  if (!Profiles.nameless) return text;
+  return lang === 'vi' ? noNameVi(text) : noNameEn(text);
+};
+
+// who keeps the child company in a stage: a boy plays as Tin Tin, so Daddy takes Tin Tin's place
+export const buddyOf = (stage) => {
+  const buddy = (stage && stage.buddy) || null;
+  return buddy === 'tintin' && Profiles.isBoy ? 'daddy' : buddy;
 };

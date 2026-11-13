@@ -1,16 +1,21 @@
 <template>
   <NavPage nav-back-path="/">
     <button v-if="showWelcome" type="button" class="welcome" data-test="welcome" @click="enter">
-      <img :src="'img/princess/banner_' + lang + '.webp'" class="no-drag" alt="" />
+      <img :src="bannerSrc" class="no-drag" alt="" />
       <span class="welcome-play"><em class="fas fa-play" /></span>
     </button>
+    <ProfilePicker v-else-if="!player" @chosen="hello" />
     <div class="path">
       <div class="path-top">
         <button type="button" class="path-mia mood-idle" data-test="mia" @click="tapMia">
-          <img :src="'img/princess/mia_pink.webp'" class="no-drag" alt="Mia" />
+          <img :src="playerSrc" class="no-drag" alt="" />
+        </button>
+        <button v-if="isPublic" type="button" class="player" data-test="player" @click="changePlayer">
+          <span>{{ player ? player.name : '' }}</span>
+          <em class="fas fa-user-friends" />
         </button>
         <div class="path-family">
-          <img v-for="who in ['tintin', 'mommy', 'daddy', 'pony']" :key="who" :src="buddies[who].src" class="no-drag" :alt="buddies[who].en" />
+          <img v-for="src in familySrcs" :key="src" :src="src" class="no-drag" alt="" />
         </div>
         <button type="button" class="ask-line" data-test="repeat" @click="hello">
           <em class="fas fa-volume-up" />
@@ -20,7 +25,7 @@
       </div>
       <div class="themes">
         <button
-          v-for="area in areas"
+          v-for="area in shownAreas"
           :key="area.id"
           type="button"
           class="theme"
@@ -32,7 +37,7 @@
           <span>{{ area[lang] }}</span>
         </button>
       </div>
-      <template v-for="area in areas" :key="area.id">
+      <template v-for="area in shownAreas" :key="area.id">
         <h2 :ref="'area-' + area.id" class="area-title" :style="{ background: area.hex }">
           <img :src="area.icon" class="no-drag" alt="" />
           <span>{{ area[lang] }}</span>
@@ -47,15 +52,15 @@
           :data-stage="stage.id"
           @click="open(stage, indexOf(stage))"
         >
-          <span class="stage-number">{{ indexOf(stage) + 1 }}</span>
+          <span class="stage-number">{{ numberOf(stage) }}</span>
           <span class="stage-icon">
             <img v-if="stage.icon.src" :src="stage.icon.src" class="no-drag" alt="" />
             <!-- eslint-disable-next-line vue/no-v-html -->
             <span v-else-if="stage.icon.shape" class="shape" v-html="shape(stage.icon)" />
             <span v-else class="stage-text">{{ stage.icon.text }}</span>
           </span>
-          <img v-if="stage.buddy" :src="buddies[stage.buddy].src" class="stage-buddy no-drag" alt="" />
-          <span class="stage-title">{{ stage[lang] }}</span>
+          <img v-if="buddyOf(stage)" :src="buddies[buddyOf(stage)].src" class="stage-buddy no-drag" alt="" />
+          <span class="stage-title">{{ title(stage) }}</span>
           <span class="stage-stars">
             <span v-for="n in 3" :key="n" :class="{ on: n <= starsOf(stage) }">★</span>
           </span>
@@ -80,16 +85,17 @@
   import NavPage from '../NavPage.vue';
   import LangToggle from './LangToggle.vue';
   import { Speech } from '../utils/Speech.js';
-  import { Lang, Progress } from './state.js';
+  import { IS_PUBLIC, Lang, Profiles, Progress } from './state.js';
   import { BUDDIES, Lines } from './princessLines.js';
-  import { AREAS, MORE_GAMES, STAGES, areaOf, stageRoute, shapeSvg } from './stages.js';
+  import { AREAS, MORE_GAMES, STAGES, areaOf, buddyOf, stageRoute, stageTitle, stagesFor, shapeSvg } from './stages.js';
+  import ProfilePicker from './ProfilePicker.vue';
 
   // the welcome picture is shown once, when the game is opened
   let welcomed = false;
 
   export default {
     name: 'PrincessNavPage',
-    components: { NavPage, LangToggle },
+    components: { NavPage, LangToggle, ProfilePicker },
     data() {
       return {
         stages: STAGES,
@@ -109,10 +115,31 @@
       greeting() {
         return this.shown[this.lang];
       },
+      player() {
+        return Profiles.current;
+      },
+      isPublic() {
+        return IS_PUBLIC;
+      },
+      // the family banner names Mia's family; the public version uses the one without names
+      bannerSrc() {
+        return 'img/princess/banner_' + (IS_PUBLIC ? 'public_' : '') + this.lang + '.webp';
+      },
+      playerSrc() {
+        return Profiles.isBoy ? 'img/princess/tintin.webp' : 'img/princess/mia_pink.webp';
+      },
+      familySrcs() {
+        const me = Profiles.isBoy ? 'tintin' : 'mia';
+        const all = { mia: 'img/princess/mia_pink.webp', tintin: BUDDIES.tintin.src, mommy: BUDDIES.mommy.src, daddy: BUDDIES.daddy.src, pony: BUDDIES.pony.src };
+        return ['mia', 'tintin', 'mommy', 'daddy', 'pony'].filter((who) => who !== me).map((who) => all[who]);
+      },
+      shownAreas() {
+        return this.areas.filter((area) => this.stagesOf(area.id).length > 0);
+      },
     },
     mounted() {
-      // with the welcome picture up, Mia says hello after the first tap (sound needs a tap to start)
-      if (!this.showWelcome) Speech.say(this.shown);
+      // with the welcome picture or the player list up, the hello comes after the child taps
+      if (!this.showWelcome && this.player) Speech.say(this.shown);
     },
     unmounted() {
       Speech.stop();
@@ -121,7 +148,7 @@
       enter() {
         welcomed = true;
         this.showWelcome = false;
-        this.hello();
+        if (this.player) this.hello();
       },
       jump(areaId) {
         const title = this.$refs['area-' + areaId];
@@ -129,7 +156,21 @@
         if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       },
       stagesOf(areaId) {
-        return this.stages.filter((stage) => areaOf(stage) === areaId);
+        return stagesFor(this.stages).filter((stage) => areaOf(stage) === areaId);
+      },
+      buddyOf(stage) {
+        return buddyOf(stage);
+      },
+      // numbers follow the stages this child can see, so a boy's list has no gaps
+      numberOf(stage) {
+        return stagesFor(this.stages).indexOf(stage) + 1;
+      },
+      title(stage) {
+        return stageTitle(stage, this.lang);
+      },
+      changePlayer() {
+        Speech.stop();
+        Profiles.currentId = null;
       },
       indexOf(stage) {
         return this.stages.indexOf(stage);
@@ -200,6 +241,31 @@
   .path-mia img {
     height: 100%;
     width: auto;
+  }
+
+  .player {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6pt;
+    max-width: 30%;
+    padding: 4pt 10pt;
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #4a2a57;
+    background: #fffaf2;
+    border: 2pt solid #4a2a57;
+    border-radius: 12pt;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .player span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .path-family {

@@ -22,7 +22,8 @@ export const Speech = {
     if (!line) return;
     this.stop();
     const lang = Lang.current;
-    const audio = new Audio('sounds/' + lang + '/mia/' + line.key + '.mp3');
+    const folder = line.kid && line.kid.includes(lang) ? 'kid' : 'mia';
+    const audio = new Audio('sounds/' + lang + '/' + folder + '/' + line.key + '.mp3');
     this.current = audio;
     let fellBack = false;
     const fallback = () => {

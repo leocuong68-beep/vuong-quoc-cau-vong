@@ -32,3 +32,4 @@ android/app/src/main/assets/public/
 android/local.properties
 *.apk
 _tts/
+dist-public

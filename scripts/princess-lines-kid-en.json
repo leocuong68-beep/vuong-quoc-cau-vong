@@ -1,0 +1,2907 @@
+[
+  {
+    "key": "hello",
+    "en": "Hi there! Let's play!",
+    "vi": "Chào Mia! Mình cùng chơi nhé!"
+  },
+  {
+    "key": "praise_1",
+    "en": "Great job!",
+    "vi": "Mia giỏi lắm!"
+  },
+  {
+    "key": "praise_2",
+    "en": "Well done!",
+    "vi": "Mia làm tốt lắm!"
+  },
+  {
+    "key": "praise_3",
+    "en": "You are a star!",
+    "vi": "Mia là ngôi sao nhỏ!"
+  },
+  {
+    "key": "stage_done",
+    "en": "Hooray! You did it!",
+    "vi": "Hoan hô! Mia giỏi quá!"
+  },
+  {
+    "key": "try_again",
+    "en": "Not quite. Try again!",
+    "vi": "Chưa đúng rồi, Mia thử lại nhé!"
+  },
+  {
+    "key": "count_again",
+    "en": "Not quite. Count again!",
+    "vi": "Chưa đúng, Mia đếm lại nhé!"
+  },
+  {
+    "key": "locked",
+    "en": "Play the game before this one first!",
+    "vi": "Mia chơi xong trò trước đã nhé!"
+  },
+  {
+    "key": "how_many_apples",
+    "en": "How many apples?",
+    "vi": "Mia ơi, có mấy quả táo?"
+  },
+  {
+    "key": "how_many_flowers",
+    "en": "How many flowers?",
+    "vi": "Mia ơi, có mấy bông hoa?"
+  },
+  {
+    "key": "more",
+    "en": "Which side has more apples?",
+    "vi": "Mia ơi, bên nào nhiều táo hơn?"
+  },
+  {
+    "key": "fewer",
+    "en": "Which side has fewer apples?",
+    "vi": "Mia ơi, bên nào ít táo hơn?"
+  },
+  {
+    "key": "pattern",
+    "en": "What comes next?",
+    "vi": "Mia ơi, tiếp theo là gì nhỉ?"
+  },
+  {
+    "key": "hello_tintin",
+    "en": "Tin Tin wants to play with you!",
+    "vi": "Anh Tin Tin muốn chơi cùng Mia!"
+  },
+  {
+    "key": "done_tintin",
+    "en": "Tin Tin says: you did it!",
+    "vi": "Anh Tin Tin nói: Mia giỏi quá!"
+  },
+  {
+    "key": "hello_mommy",
+    "en": "Mommy wants to play with you!",
+    "vi": "Mẹ muốn chơi cùng Mia!"
+  },
+  {
+    "key": "done_mommy",
+    "en": "Mommy is so proud of you!",
+    "vi": "Mẹ tự hào về Mia lắm!"
+  },
+  {
+    "key": "hello_daddy",
+    "en": "Daddy wants to play with you!",
+    "vi": "Ba muốn chơi cùng Mia!"
+  },
+  {
+    "key": "done_daddy",
+    "en": "Daddy is so proud of you!",
+    "vi": "Ba tự hào về Mia lắm!"
+  },
+  {
+    "key": "find_dress_pink",
+    "en": "Find the pink dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu hồng nào!"
+  },
+  {
+    "key": "find_dress_blue",
+    "en": "Find the blue dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu xanh dương nào!"
+  },
+  {
+    "key": "find_dress_yellow",
+    "en": "Find the yellow dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu vàng nào!"
+  },
+  {
+    "key": "find_dress_green",
+    "en": "Find the green dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu xanh lá nào!"
+  },
+  {
+    "key": "find_dress_purple",
+    "en": "Find the purple dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu tím nào!"
+  },
+  {
+    "key": "find_dress_red",
+    "en": "Find the red dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu đỏ nào!"
+  },
+  {
+    "key": "find_dress_orange",
+    "en": "Find the orange dress!",
+    "vi": "Mia ơi, tìm chiếc váy màu cam nào!"
+  },
+  {
+    "key": "find_crown_pink",
+    "en": "Find the pink crown!",
+    "vi": "Mia ơi, tìm vương miện màu hồng nào!"
+  },
+  {
+    "key": "find_crown_blue",
+    "en": "Find the blue crown!",
+    "vi": "Mia ơi, tìm vương miện màu xanh dương nào!"
+  },
+  {
+    "key": "find_crown_yellow",
+    "en": "Find the yellow crown!",
+    "vi": "Mia ơi, tìm vương miện màu vàng nào!"
+  },
+  {
+    "key": "find_crown_green",
+    "en": "Find the green crown!",
+    "vi": "Mia ơi, tìm vương miện màu xanh lá nào!"
+  },
+  {
+    "key": "find_crown_purple",
+    "en": "Find the purple crown!",
+    "vi": "Mia ơi, tìm vương miện màu tím nào!"
+  },
+  {
+    "key": "find_crown_red",
+    "en": "Find the red crown!",
+    "vi": "Mia ơi, tìm vương miện màu đỏ nào!"
+  },
+  {
+    "key": "find_crown_orange",
+    "en": "Find the orange crown!",
+    "vi": "Mia ơi, tìm vương miện màu cam nào!"
+  },
+  {
+    "key": "find_bow_pink",
+    "en": "Pony wants the pink bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu hồng!"
+  },
+  {
+    "key": "find_bow_blue",
+    "en": "Pony wants the blue bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu xanh dương!"
+  },
+  {
+    "key": "find_bow_yellow",
+    "en": "Pony wants the yellow bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu vàng!"
+  },
+  {
+    "key": "find_bow_green",
+    "en": "Pony wants the green bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu xanh lá!"
+  },
+  {
+    "key": "find_bow_purple",
+    "en": "Pony wants the purple bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu tím!"
+  },
+  {
+    "key": "find_bow_red",
+    "en": "Pony wants the red bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu đỏ!"
+  },
+  {
+    "key": "find_bow_orange",
+    "en": "Pony wants the orange bow!",
+    "vi": "Mia ơi, pony thích chiếc nơ màu cam!"
+  },
+  {
+    "key": "that_is_pink",
+    "en": "That is pink. Try again!",
+    "vi": "Đây là màu hồng. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_pink",
+    "en": "Find the pink flower!",
+    "vi": "Mia ơi, tìm bông hoa màu hồng nào!"
+  },
+  {
+    "key": "that_is_blue",
+    "en": "That is blue. Try again!",
+    "vi": "Đây là màu xanh dương. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_blue",
+    "en": "Find the blue flower!",
+    "vi": "Mia ơi, tìm bông hoa màu xanh dương nào!"
+  },
+  {
+    "key": "that_is_yellow",
+    "en": "That is yellow. Try again!",
+    "vi": "Đây là màu vàng. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_yellow",
+    "en": "Find the yellow flower!",
+    "vi": "Mia ơi, tìm bông hoa màu vàng nào!"
+  },
+  {
+    "key": "that_is_green",
+    "en": "That is green. Try again!",
+    "vi": "Đây là màu xanh lá. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_green",
+    "en": "Find the green flower!",
+    "vi": "Mia ơi, tìm bông hoa màu xanh lá nào!"
+  },
+  {
+    "key": "that_is_purple",
+    "en": "That is purple. Try again!",
+    "vi": "Đây là màu tím. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_purple",
+    "en": "Find the purple flower!",
+    "vi": "Mia ơi, tìm bông hoa màu tím nào!"
+  },
+  {
+    "key": "that_is_red",
+    "en": "That is red. Try again!",
+    "vi": "Đây là màu đỏ. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_red",
+    "en": "Find the red flower!",
+    "vi": "Mia ơi, tìm bông hoa màu đỏ nào!"
+  },
+  {
+    "key": "that_is_orange",
+    "en": "That is orange. Try again!",
+    "vi": "Đây là màu cam. Mia thử lại nhé!"
+  },
+  {
+    "key": "find_flower_orange",
+    "en": "Find the orange flower!",
+    "vi": "Mia ơi, tìm bông hoa màu cam nào!"
+  },
+  {
+    "key": "find_shape_circle",
+    "en": "Find the circle!",
+    "vi": "Mia ơi, tìm hình tròn nào!"
+  },
+  {
+    "key": "find_shape_square",
+    "en": "Find the square!",
+    "vi": "Mia ơi, tìm hình vuông nào!"
+  },
+  {
+    "key": "find_shape_triangle",
+    "en": "Find the triangle!",
+    "vi": "Mia ơi, tìm hình tam giác nào!"
+  },
+  {
+    "key": "find_shape_star",
+    "en": "Find the star!",
+    "vi": "Mia ơi, tìm ngôi sao nào!"
+  },
+  {
+    "key": "find_shape_heart",
+    "en": "Find the heart!",
+    "vi": "Mia ơi, tìm trái tim nào!"
+  },
+  {
+    "key": "find_number_1",
+    "en": "Find number one!",
+    "vi": "Mia ơi, tìm số một nào!"
+  },
+  {
+    "key": "give_1",
+    "en": "Give Pony one apple!",
+    "vi": "Mia ơi, cho pony một quả táo nào!"
+  },
+  {
+    "key": "find_number_2",
+    "en": "Find number two!",
+    "vi": "Mia ơi, tìm số hai nào!"
+  },
+  {
+    "key": "give_2",
+    "en": "Give Pony two apples!",
+    "vi": "Mia ơi, cho pony hai quả táo nào!"
+  },
+  {
+    "key": "find_number_3",
+    "en": "Find number three!",
+    "vi": "Mia ơi, tìm số ba nào!"
+  },
+  {
+    "key": "give_3",
+    "en": "Give Pony three apples!",
+    "vi": "Mia ơi, cho pony ba quả táo nào!"
+  },
+  {
+    "key": "find_number_4",
+    "en": "Find number four!",
+    "vi": "Mia ơi, tìm số bốn nào!"
+  },
+  {
+    "key": "give_4",
+    "en": "Give Pony four apples!",
+    "vi": "Mia ơi, cho pony bốn quả táo nào!"
+  },
+  {
+    "key": "find_number_5",
+    "en": "Find number five!",
+    "vi": "Mia ơi, tìm số năm nào!"
+  },
+  {
+    "key": "give_5",
+    "en": "Give Pony five apples!",
+    "vi": "Mia ơi, cho pony năm quả táo nào!"
+  },
+  {
+    "key": "find_number_6",
+    "en": "Find number six!",
+    "vi": "Mia ơi, tìm số sáu nào!"
+  },
+  {
+    "key": "give_6",
+    "en": "Give Pony six apples!",
+    "vi": "Mia ơi, cho pony sáu quả táo nào!"
+  },
+  {
+    "key": "find_number_7",
+    "en": "Find number seven!",
+    "vi": "Mia ơi, tìm số bảy nào!"
+  },
+  {
+    "key": "give_7",
+    "en": "Give Pony seven apples!",
+    "vi": "Mia ơi, cho pony bảy quả táo nào!"
+  },
+  {
+    "key": "find_number_8",
+    "en": "Find number eight!",
+    "vi": "Mia ơi, tìm số tám nào!"
+  },
+  {
+    "key": "give_8",
+    "en": "Give Pony eight apples!",
+    "vi": "Mia ơi, cho pony tám quả táo nào!"
+  },
+  {
+    "key": "find_number_9",
+    "en": "Find number nine!",
+    "vi": "Mia ơi, tìm số chín nào!"
+  },
+  {
+    "key": "give_9",
+    "en": "Give Pony nine apples!",
+    "vi": "Mia ơi, cho pony chín quả táo nào!"
+  },
+  {
+    "key": "find_number_10",
+    "en": "Find number ten!",
+    "vi": "Mia ơi, tìm số mười nào!"
+  },
+  {
+    "key": "give_10",
+    "en": "Give Pony ten apples!",
+    "vi": "Mia ơi, cho pony mười quả táo nào!"
+  },
+  {
+    "key": "find_number_11",
+    "en": "Find number eleven!",
+    "vi": "Mia ơi, tìm số mười một nào!"
+  },
+  {
+    "key": "find_number_12",
+    "en": "Find number twelve!",
+    "vi": "Mia ơi, tìm số mười hai nào!"
+  },
+  {
+    "key": "find_number_13",
+    "en": "Find number thirteen!",
+    "vi": "Mia ơi, tìm số mười ba nào!"
+  },
+  {
+    "key": "find_number_14",
+    "en": "Find number fourteen!",
+    "vi": "Mia ơi, tìm số mười bốn nào!"
+  },
+  {
+    "key": "find_number_15",
+    "en": "Find number fifteen!",
+    "vi": "Mia ơi, tìm số mười lăm nào!"
+  },
+  {
+    "key": "find_number_16",
+    "en": "Find number sixteen!",
+    "vi": "Mia ơi, tìm số mười sáu nào!"
+  },
+  {
+    "key": "find_number_17",
+    "en": "Find number seventeen!",
+    "vi": "Mia ơi, tìm số mười bảy nào!"
+  },
+  {
+    "key": "find_number_18",
+    "en": "Find number eighteen!",
+    "vi": "Mia ơi, tìm số mười tám nào!"
+  },
+  {
+    "key": "find_number_19",
+    "en": "Find number nineteen!",
+    "vi": "Mia ơi, tìm số mười chín nào!"
+  },
+  {
+    "key": "find_number_20",
+    "en": "Find number twenty!",
+    "vi": "Mia ơi, tìm số hai mươi nào!"
+  },
+  {
+    "key": "makeup_done",
+    "en": "Wow! You look beautiful!",
+    "vi": "Ồ! Mia xinh quá!"
+  },
+  {
+    "key": "missing",
+    "en": "Which number is missing?",
+    "vi": "Mia ơi, số nào còn thiếu?"
+  },
+  {
+    "key": "bigger",
+    "en": "Which number is bigger?",
+    "vi": "Mia ơi, số nào lớn hơn?"
+  },
+  {
+    "key": "smaller",
+    "en": "Which number is smaller?",
+    "vi": "Mia ơi, số nào nhỏ hơn?"
+  },
+  {
+    "key": "makeup_lipstick_pink",
+    "en": "Find the pink lipstick!",
+    "vi": "Mia ơi, tìm son môi màu hồng nào!"
+  },
+  {
+    "key": "makeup_lipstick_blue",
+    "en": "Find the blue lipstick!",
+    "vi": "Mia ơi, tìm son môi màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_lipstick_yellow",
+    "en": "Find the yellow lipstick!",
+    "vi": "Mia ơi, tìm son môi màu vàng nào!"
+  },
+  {
+    "key": "makeup_lipstick_green",
+    "en": "Find the green lipstick!",
+    "vi": "Mia ơi, tìm son môi màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_lipstick_purple",
+    "en": "Find the purple lipstick!",
+    "vi": "Mia ơi, tìm son môi màu tím nào!"
+  },
+  {
+    "key": "makeup_lipstick_red",
+    "en": "Find the red lipstick!",
+    "vi": "Mia ơi, tìm son môi màu đỏ nào!"
+  },
+  {
+    "key": "makeup_lipstick_orange",
+    "en": "Find the orange lipstick!",
+    "vi": "Mia ơi, tìm son môi màu cam nào!"
+  },
+  {
+    "key": "makeup_blush_pink",
+    "en": "Find the pink blush!",
+    "vi": "Mia ơi, tìm phấn má màu hồng nào!"
+  },
+  {
+    "key": "makeup_blush_blue",
+    "en": "Find the blue blush!",
+    "vi": "Mia ơi, tìm phấn má màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_blush_yellow",
+    "en": "Find the yellow blush!",
+    "vi": "Mia ơi, tìm phấn má màu vàng nào!"
+  },
+  {
+    "key": "makeup_blush_green",
+    "en": "Find the green blush!",
+    "vi": "Mia ơi, tìm phấn má màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_blush_purple",
+    "en": "Find the purple blush!",
+    "vi": "Mia ơi, tìm phấn má màu tím nào!"
+  },
+  {
+    "key": "makeup_blush_red",
+    "en": "Find the red blush!",
+    "vi": "Mia ơi, tìm phấn má màu đỏ nào!"
+  },
+  {
+    "key": "makeup_blush_orange",
+    "en": "Find the orange blush!",
+    "vi": "Mia ơi, tìm phấn má màu cam nào!"
+  },
+  {
+    "key": "makeup_eyeshadow_pink",
+    "en": "Find the pink eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu hồng nào!"
+  },
+  {
+    "key": "makeup_eyeshadow_blue",
+    "en": "Find the blue eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_eyeshadow_yellow",
+    "en": "Find the yellow eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu vàng nào!"
+  },
+  {
+    "key": "makeup_eyeshadow_green",
+    "en": "Find the green eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_eyeshadow_purple",
+    "en": "Find the purple eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu tím nào!"
+  },
+  {
+    "key": "makeup_eyeshadow_red",
+    "en": "Find the red eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu đỏ nào!"
+  },
+  {
+    "key": "makeup_eyeshadow_orange",
+    "en": "Find the orange eyeshadow!",
+    "vi": "Mia ơi, tìm phấn mắt màu cam nào!"
+  },
+  {
+    "key": "makeup_hairbow_pink",
+    "en": "Find the pink hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu hồng nào!"
+  },
+  {
+    "key": "makeup_hairbow_blue",
+    "en": "Find the blue hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu xanh dương nào!"
+  },
+  {
+    "key": "makeup_hairbow_yellow",
+    "en": "Find the yellow hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu vàng nào!"
+  },
+  {
+    "key": "makeup_hairbow_green",
+    "en": "Find the green hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu xanh lá nào!"
+  },
+  {
+    "key": "makeup_hairbow_purple",
+    "en": "Find the purple hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu tím nào!"
+  },
+  {
+    "key": "makeup_hairbow_red",
+    "en": "Find the red hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu đỏ nào!"
+  },
+  {
+    "key": "makeup_hairbow_orange",
+    "en": "Find the orange hair bow!",
+    "vi": "Mia ơi, tìm nơ cài tóc màu cam nào!"
+  },
+  {
+    "key": "outfit_rain",
+    "en": "It is raining. Find the raincoat!",
+    "vi": "Trời đang mưa. Mia ơi, tìm áo mưa nào!"
+  },
+  {
+    "key": "outfit_pajamas",
+    "en": "It is bedtime. Find the pajamas!",
+    "vi": "Đến giờ đi ngủ rồi. Mia ơi, tìm bộ đồ ngủ nào!"
+  },
+  {
+    "key": "outfit_winter",
+    "en": "It is snowing. Find the winter coat!",
+    "vi": "Trời đang có tuyết. Mia ơi, tìm áo khoác mùa đông nào!"
+  },
+  {
+    "key": "outfit_school",
+    "en": "It is time for school. Find the school uniform!",
+    "vi": "Đến giờ đi học rồi. Mia ơi, tìm đồng phục đi học nào!"
+  },
+  {
+    "key": "outfit_sunny",
+    "en": "It is sunny. Find the sun hat!",
+    "vi": "Trời nắng đẹp. Mia ơi, tìm mũ che nắng nào!"
+  },
+  {
+    "key": "outfit_sport",
+    "en": "It is time to play football. Find the football kit!",
+    "vi": "Đến giờ đá bóng rồi. Mia ơi, tìm bộ đồ đá bóng nào!"
+  },
+  {
+    "key": "what_time",
+    "en": "What time is it?",
+    "vi": "Mia ơi, mấy giờ rồi?"
+  },
+  {
+    "key": "shadow",
+    "en": "Which shadow is the same?",
+    "vi": "Mia ơi, cái bóng nào giống nhỉ?"
+  },
+  {
+    "key": "odd",
+    "en": "Which one is different?",
+    "vi": "Mia ơi, cái nào khác loại?"
+  },
+  {
+    "key": "biggest",
+    "en": "Find the biggest one!",
+    "vi": "Mia ơi, tìm cái to nhất nào!"
+  },
+  {
+    "key": "smallest",
+    "en": "Find the smallest one!",
+    "vi": "Mia ơi, tìm cái nhỏ nhất nào!"
+  },
+  {
+    "key": "memory",
+    "en": "Find the two that are the same!",
+    "vi": "Mia ơi, tìm hai hình giống nhau nào!"
+  },
+  {
+    "key": "next_number",
+    "en": "What number comes next?",
+    "vi": "Mia ơi, số tiếp theo là số mấy?"
+  },
+  {
+    "key": "bubbles_5",
+    "en": "Pop the bubbles from one to five!",
+    "vi": "Mia ơi, chạm bong bóng từ một đến năm nào!"
+  },
+  {
+    "key": "bubbles_10",
+    "en": "Pop the bubbles from one to ten!",
+    "vi": "Mia ơi, chạm bong bóng từ một đến mười nào!"
+  },
+  {
+    "key": "bubbles_down",
+    "en": "Pop the bubbles from ten down to one!",
+    "vi": "Mia ơi, chạm bong bóng từ mười về một nào!"
+  },
+  {
+    "key": "face_happy",
+    "en": "Find the happy face!",
+    "vi": "Mia ơi, tìm khuôn mặt vui nào!"
+  },
+  {
+    "key": "face_yes_happy",
+    "en": "Yes! You are happy!",
+    "vi": "Đúng rồi! Mia đang vui!"
+  },
+  {
+    "key": "face_sad",
+    "en": "Find the sad face!",
+    "vi": "Mia ơi, tìm khuôn mặt buồn nào!"
+  },
+  {
+    "key": "face_yes_sad",
+    "en": "Yes! You are sad!",
+    "vi": "Đúng rồi! Mia đang buồn!"
+  },
+  {
+    "key": "face_angry",
+    "en": "Find the angry face!",
+    "vi": "Mia ơi, tìm khuôn mặt giận nào!"
+  },
+  {
+    "key": "face_yes_angry",
+    "en": "Yes! You are angry!",
+    "vi": "Đúng rồi! Mia đang giận!"
+  },
+  {
+    "key": "face_sleepy",
+    "en": "Find the sleepy face!",
+    "vi": "Mia ơi, tìm khuôn mặt buồn ngủ nào!"
+  },
+  {
+    "key": "face_yes_sleepy",
+    "en": "Yes! You are sleepy!",
+    "vi": "Đúng rồi! Mia đang buồn ngủ!"
+  },
+  {
+    "key": "face_surprised",
+    "en": "Find the surprised face!",
+    "vi": "Mia ơi, tìm khuôn mặt ngạc nhiên nào!"
+  },
+  {
+    "key": "face_yes_surprised",
+    "en": "Yes! You are surprised!",
+    "vi": "Đúng rồi! Mia đang ngạc nhiên!"
+  },
+  {
+    "key": "face_scared",
+    "en": "Find the scared face!",
+    "vi": "Mia ơi, tìm khuôn mặt sợ nào!"
+  },
+  {
+    "key": "face_yes_scared",
+    "en": "Yes! You are scared!",
+    "vi": "Đúng rồi! Mia đang sợ!"
+  },
+  {
+    "key": "touch_eye",
+    "en": "Touch the eye!",
+    "vi": "Mia ơi, chạm vào con mắt nào!"
+  },
+  {
+    "key": "touch_nose",
+    "en": "Touch the nose!",
+    "vi": "Mia ơi, chạm vào cái mũi nào!"
+  },
+  {
+    "key": "touch_mouth",
+    "en": "Touch the mouth!",
+    "vi": "Mia ơi, chạm vào cái miệng nào!"
+  },
+  {
+    "key": "touch_ear",
+    "en": "Touch the ear!",
+    "vi": "Mia ơi, chạm vào cái tai nào!"
+  },
+  {
+    "key": "touch_hair",
+    "en": "Touch the hair!",
+    "vi": "Mia ơi, chạm vào mái tóc nào!"
+  },
+  {
+    "key": "touch_cheek",
+    "en": "Touch the cheek!",
+    "vi": "Mia ơi, chạm vào cái má nào!"
+  },
+  {
+    "key": "when_sleep",
+    "en": "When do we sleep? Day or night?",
+    "vi": "Mia ơi, mình đi ngủ vào ban ngày hay ban đêm?"
+  },
+  {
+    "key": "when_stars",
+    "en": "When do we see the stars? Day or night?",
+    "vi": "Mia ơi, mình thấy các ngôi sao vào ban ngày hay ban đêm?"
+  },
+  {
+    "key": "when_moon",
+    "en": "When do we see the moon? Day or night?",
+    "vi": "Mia ơi, mình thấy mặt trăng vào ban ngày hay ban đêm?"
+  },
+  {
+    "key": "when_school",
+    "en": "When do we go to school? Day or night?",
+    "vi": "Mia ơi, mình đi học vào ban ngày hay ban đêm?"
+  },
+  {
+    "key": "when_sun",
+    "en": "When do we see the sun? Day or night?",
+    "vi": "Mia ơi, mình thấy mặt trời vào ban ngày hay ban đêm?"
+  },
+  {
+    "key": "when_football",
+    "en": "When do we play football? Day or night?",
+    "vi": "Mia ơi, mình đá bóng vào ban ngày hay ban đêm?"
+  },
+  {
+    "key": "table_cup",
+    "en": "Everyone needs a cup. How many?",
+    "vi": "Mỗi người cần một cái cốc. Cần mấy cái hả Mia?"
+  },
+  {
+    "key": "table_spoon",
+    "en": "Everyone needs a spoon. How many?",
+    "vi": "Mỗi người cần một cái thìa. Cần mấy cái hả Mia?"
+  },
+  {
+    "key": "table_plate",
+    "en": "Everyone needs a plate. How many?",
+    "vi": "Mỗi người cần một cái đĩa. Cần mấy cái hả Mia?"
+  },
+  {
+    "key": "pick_1_pink",
+    "en": "Find one pink flower!",
+    "vi": "Mia ơi, tìm một bông hoa màu hồng nào!"
+  },
+  {
+    "key": "pick_1_blue",
+    "en": "Find one blue flower!",
+    "vi": "Mia ơi, tìm một bông hoa màu xanh dương nào!"
+  },
+  {
+    "key": "pick_1_yellow",
+    "en": "Find one yellow flower!",
+    "vi": "Mia ơi, tìm một bông hoa màu vàng nào!"
+  },
+  {
+    "key": "pick_1_green",
+    "en": "Find one green flower!",
+    "vi": "Mia ơi, tìm một bông hoa màu xanh lá nào!"
+  },
+  {
+    "key": "pick_1_purple",
+    "en": "Find one purple flower!",
+    "vi": "Mia ơi, tìm một bông hoa màu tím nào!"
+  },
+  {
+    "key": "pick_1_red",
+    "en": "Find one red flower!",
+    "vi": "Mia ơi, tìm một bông hoa màu đỏ nào!"
+  },
+  {
+    "key": "pick_1_orange",
+    "en": "Find one orange flower!",
+    "vi": "Mia ơi, tìm một bông hoa màu cam nào!"
+  },
+  {
+    "key": "pick_2_pink",
+    "en": "Find two pink flowers!",
+    "vi": "Mia ơi, tìm hai bông hoa màu hồng nào!"
+  },
+  {
+    "key": "pick_2_blue",
+    "en": "Find two blue flowers!",
+    "vi": "Mia ơi, tìm hai bông hoa màu xanh dương nào!"
+  },
+  {
+    "key": "pick_2_yellow",
+    "en": "Find two yellow flowers!",
+    "vi": "Mia ơi, tìm hai bông hoa màu vàng nào!"
+  },
+  {
+    "key": "pick_2_green",
+    "en": "Find two green flowers!",
+    "vi": "Mia ơi, tìm hai bông hoa màu xanh lá nào!"
+  },
+  {
+    "key": "pick_2_purple",
+    "en": "Find two purple flowers!",
+    "vi": "Mia ơi, tìm hai bông hoa màu tím nào!"
+  },
+  {
+    "key": "pick_2_red",
+    "en": "Find two red flowers!",
+    "vi": "Mia ơi, tìm hai bông hoa màu đỏ nào!"
+  },
+  {
+    "key": "pick_2_orange",
+    "en": "Find two orange flowers!",
+    "vi": "Mia ơi, tìm hai bông hoa màu cam nào!"
+  },
+  {
+    "key": "pick_3_pink",
+    "en": "Find three pink flowers!",
+    "vi": "Mia ơi, tìm ba bông hoa màu hồng nào!"
+  },
+  {
+    "key": "pick_3_blue",
+    "en": "Find three blue flowers!",
+    "vi": "Mia ơi, tìm ba bông hoa màu xanh dương nào!"
+  },
+  {
+    "key": "pick_3_yellow",
+    "en": "Find three yellow flowers!",
+    "vi": "Mia ơi, tìm ba bông hoa màu vàng nào!"
+  },
+  {
+    "key": "pick_3_green",
+    "en": "Find three green flowers!",
+    "vi": "Mia ơi, tìm ba bông hoa màu xanh lá nào!"
+  },
+  {
+    "key": "pick_3_purple",
+    "en": "Find three purple flowers!",
+    "vi": "Mia ơi, tìm ba bông hoa màu tím nào!"
+  },
+  {
+    "key": "pick_3_red",
+    "en": "Find three red flowers!",
+    "vi": "Mia ơi, tìm ba bông hoa màu đỏ nào!"
+  },
+  {
+    "key": "pick_3_orange",
+    "en": "Find three orange flowers!",
+    "vi": "Mia ơi, tìm ba bông hoa màu cam nào!"
+  },
+  {
+    "key": "pick_4_pink",
+    "en": "Find four pink flowers!",
+    "vi": "Mia ơi, tìm bốn bông hoa màu hồng nào!"
+  },
+  {
+    "key": "pick_4_blue",
+    "en": "Find four blue flowers!",
+    "vi": "Mia ơi, tìm bốn bông hoa màu xanh dương nào!"
+  },
+  {
+    "key": "pick_4_yellow",
+    "en": "Find four yellow flowers!",
+    "vi": "Mia ơi, tìm bốn bông hoa màu vàng nào!"
+  },
+  {
+    "key": "pick_4_green",
+    "en": "Find four green flowers!",
+    "vi": "Mia ơi, tìm bốn bông hoa màu xanh lá nào!"
+  },
+  {
+    "key": "pick_4_purple",
+    "en": "Find four purple flowers!",
+    "vi": "Mia ơi, tìm bốn bông hoa màu tím nào!"
+  },
+  {
+    "key": "pick_4_red",
+    "en": "Find four red flowers!",
+    "vi": "Mia ơi, tìm bốn bông hoa màu đỏ nào!"
+  },
+  {
+    "key": "pick_4_orange",
+    "en": "Find four orange flowers!",
+    "vi": "Mia ơi, tìm bốn bông hoa màu cam nào!"
+  },
+  {
+    "key": "pick_5_pink",
+    "en": "Find five pink flowers!",
+    "vi": "Mia ơi, tìm năm bông hoa màu hồng nào!"
+  },
+  {
+    "key": "pick_5_blue",
+    "en": "Find five blue flowers!",
+    "vi": "Mia ơi, tìm năm bông hoa màu xanh dương nào!"
+  },
+  {
+    "key": "pick_5_yellow",
+    "en": "Find five yellow flowers!",
+    "vi": "Mia ơi, tìm năm bông hoa màu vàng nào!"
+  },
+  {
+    "key": "pick_5_green",
+    "en": "Find five green flowers!",
+    "vi": "Mia ơi, tìm năm bông hoa màu xanh lá nào!"
+  },
+  {
+    "key": "pick_5_purple",
+    "en": "Find five purple flowers!",
+    "vi": "Mia ơi, tìm năm bông hoa màu tím nào!"
+  },
+  {
+    "key": "pick_5_red",
+    "en": "Find five red flowers!",
+    "vi": "Mia ơi, tìm năm bông hoa màu đỏ nào!"
+  },
+  {
+    "key": "pick_5_orange",
+    "en": "Find five orange flowers!",
+    "vi": "Mia ơi, tìm năm bông hoa màu cam nào!"
+  },
+  {
+    "key": "bond_3_1",
+    "en": "Three is one and how many?",
+    "vi": "Ba gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_3_2",
+    "en": "Three is two and how many?",
+    "vi": "Ba gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_4_1",
+    "en": "Four is one and how many?",
+    "vi": "Bốn gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_4_2",
+    "en": "Four is two and how many?",
+    "vi": "Bốn gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_4_3",
+    "en": "Four is three and how many?",
+    "vi": "Bốn gồm ba và mấy hả Mia?"
+  },
+  {
+    "key": "bond_5_1",
+    "en": "Five is one and how many?",
+    "vi": "Năm gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_5_2",
+    "en": "Five is two and how many?",
+    "vi": "Năm gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_5_3",
+    "en": "Five is three and how many?",
+    "vi": "Năm gồm ba và mấy hả Mia?"
+  },
+  {
+    "key": "bond_5_4",
+    "en": "Five is four and how many?",
+    "vi": "Năm gồm bốn và mấy hả Mia?"
+  },
+  {
+    "key": "bond_6_1",
+    "en": "Six is one and how many?",
+    "vi": "Sáu gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_6_2",
+    "en": "Six is two and how many?",
+    "vi": "Sáu gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_6_3",
+    "en": "Six is three and how many?",
+    "vi": "Sáu gồm ba và mấy hả Mia?"
+  },
+  {
+    "key": "bond_6_4",
+    "en": "Six is four and how many?",
+    "vi": "Sáu gồm bốn và mấy hả Mia?"
+  },
+  {
+    "key": "bond_6_5",
+    "en": "Six is five and how many?",
+    "vi": "Sáu gồm năm và mấy hả Mia?"
+  },
+  {
+    "key": "bond_7_1",
+    "en": "Seven is one and how many?",
+    "vi": "Bảy gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_7_2",
+    "en": "Seven is two and how many?",
+    "vi": "Bảy gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_7_3",
+    "en": "Seven is three and how many?",
+    "vi": "Bảy gồm ba và mấy hả Mia?"
+  },
+  {
+    "key": "bond_7_4",
+    "en": "Seven is four and how many?",
+    "vi": "Bảy gồm bốn và mấy hả Mia?"
+  },
+  {
+    "key": "bond_7_5",
+    "en": "Seven is five and how many?",
+    "vi": "Bảy gồm năm và mấy hả Mia?"
+  },
+  {
+    "key": "bond_7_6",
+    "en": "Seven is six and how many?",
+    "vi": "Bảy gồm sáu và mấy hả Mia?"
+  },
+  {
+    "key": "bond_8_1",
+    "en": "Eight is one and how many?",
+    "vi": "Tám gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_8_2",
+    "en": "Eight is two and how many?",
+    "vi": "Tám gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_8_3",
+    "en": "Eight is three and how many?",
+    "vi": "Tám gồm ba và mấy hả Mia?"
+  },
+  {
+    "key": "bond_8_4",
+    "en": "Eight is four and how many?",
+    "vi": "Tám gồm bốn và mấy hả Mia?"
+  },
+  {
+    "key": "bond_8_5",
+    "en": "Eight is five and how many?",
+    "vi": "Tám gồm năm và mấy hả Mia?"
+  },
+  {
+    "key": "bond_8_6",
+    "en": "Eight is six and how many?",
+    "vi": "Tám gồm sáu và mấy hả Mia?"
+  },
+  {
+    "key": "bond_8_7",
+    "en": "Eight is seven and how many?",
+    "vi": "Tám gồm bảy và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_1",
+    "en": "Nine is one and how many?",
+    "vi": "Chín gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_2",
+    "en": "Nine is two and how many?",
+    "vi": "Chín gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_3",
+    "en": "Nine is three and how many?",
+    "vi": "Chín gồm ba và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_4",
+    "en": "Nine is four and how many?",
+    "vi": "Chín gồm bốn và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_5",
+    "en": "Nine is five and how many?",
+    "vi": "Chín gồm năm và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_6",
+    "en": "Nine is six and how many?",
+    "vi": "Chín gồm sáu và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_7",
+    "en": "Nine is seven and how many?",
+    "vi": "Chín gồm bảy và mấy hả Mia?"
+  },
+  {
+    "key": "bond_9_8",
+    "en": "Nine is eight and how many?",
+    "vi": "Chín gồm tám và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_1",
+    "en": "Ten is one and how many?",
+    "vi": "Mười gồm một và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_2",
+    "en": "Ten is two and how many?",
+    "vi": "Mười gồm hai và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_3",
+    "en": "Ten is three and how many?",
+    "vi": "Mười gồm ba và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_4",
+    "en": "Ten is four and how many?",
+    "vi": "Mười gồm bốn và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_5",
+    "en": "Ten is five and how many?",
+    "vi": "Mười gồm năm và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_6",
+    "en": "Ten is six and how many?",
+    "vi": "Mười gồm sáu và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_7",
+    "en": "Ten is seven and how many?",
+    "vi": "Mười gồm bảy và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_8",
+    "en": "Ten is eight and how many?",
+    "vi": "Mười gồm tám và mấy hả Mia?"
+  },
+  {
+    "key": "bond_10_9",
+    "en": "Ten is nine and how many?",
+    "vi": "Mười gồm chín và mấy hả Mia?"
+  },
+  {
+    "key": "can_share_2",
+    "en": "Can you and Tin Tin share two apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều hai quả táo được không?"
+  },
+  {
+    "key": "half_2",
+    "en": "You and Tin Tin share two apples. How many each?",
+    "vi": "Mia và anh Tin Tin chia đều hai quả táo. Mỗi người mấy quả hả Mia?"
+  },
+  {
+    "key": "can_share_3",
+    "en": "Can you and Tin Tin share three apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều ba quả táo được không?"
+  },
+  {
+    "key": "can_share_4",
+    "en": "Can you and Tin Tin share four apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều bốn quả táo được không?"
+  },
+  {
+    "key": "half_4",
+    "en": "You and Tin Tin share four apples. How many each?",
+    "vi": "Mia và anh Tin Tin chia đều bốn quả táo. Mỗi người mấy quả hả Mia?"
+  },
+  {
+    "key": "can_share_5",
+    "en": "Can you and Tin Tin share five apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều năm quả táo được không?"
+  },
+  {
+    "key": "can_share_6",
+    "en": "Can you and Tin Tin share six apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều sáu quả táo được không?"
+  },
+  {
+    "key": "half_6",
+    "en": "You and Tin Tin share six apples. How many each?",
+    "vi": "Mia và anh Tin Tin chia đều sáu quả táo. Mỗi người mấy quả hả Mia?"
+  },
+  {
+    "key": "can_share_7",
+    "en": "Can you and Tin Tin share seven apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều bảy quả táo được không?"
+  },
+  {
+    "key": "can_share_8",
+    "en": "Can you and Tin Tin share eight apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều tám quả táo được không?"
+  },
+  {
+    "key": "half_8",
+    "en": "You and Tin Tin share eight apples. How many each?",
+    "vi": "Mia và anh Tin Tin chia đều tám quả táo. Mỗi người mấy quả hả Mia?"
+  },
+  {
+    "key": "can_share_9",
+    "en": "Can you and Tin Tin share nine apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều chín quả táo được không?"
+  },
+  {
+    "key": "can_share_10",
+    "en": "Can you and Tin Tin share ten apples equally?",
+    "vi": "Mia và anh Tin Tin chia đều mười quả táo được không?"
+  },
+  {
+    "key": "half_10",
+    "en": "You and Tin Tin share ten apples. How many each?",
+    "vi": "Mia và anh Tin Tin chia đều mười quả táo. Mỗi người mấy quả hả Mia?"
+  },
+  {
+    "key": "lower_a",
+    "en": "Find the small letter A!",
+    "vi": "Mia ơi, tìm chữ A viết thường nào!"
+  },
+  {
+    "key": "lower_b",
+    "en": "Find the small letter B!",
+    "vi": "Mia ơi, tìm chữ B viết thường nào!"
+  },
+  {
+    "key": "lower_c",
+    "en": "Find the small letter C!",
+    "vi": "Mia ơi, tìm chữ C viết thường nào!"
+  },
+  {
+    "key": "lower_d",
+    "en": "Find the small letter D!",
+    "vi": "Mia ơi, tìm chữ D viết thường nào!"
+  },
+  {
+    "key": "lower_e",
+    "en": "Find the small letter E!",
+    "vi": "Mia ơi, tìm chữ E viết thường nào!"
+  },
+  {
+    "key": "lower_f",
+    "en": "Find the small letter F!",
+    "vi": "Mia ơi, tìm chữ F viết thường nào!"
+  },
+  {
+    "key": "lower_g",
+    "en": "Find the small letter G!",
+    "vi": "Mia ơi, tìm chữ G viết thường nào!"
+  },
+  {
+    "key": "lower_h",
+    "en": "Find the small letter H!",
+    "vi": "Mia ơi, tìm chữ H viết thường nào!"
+  },
+  {
+    "key": "lower_i",
+    "en": "Find the small letter I!",
+    "vi": "Mia ơi, tìm chữ I viết thường nào!"
+  },
+  {
+    "key": "lower_j",
+    "en": "Find the small letter J!",
+    "vi": "Mia ơi, tìm chữ J viết thường nào!"
+  },
+  {
+    "key": "lower_k",
+    "en": "Find the small letter K!",
+    "vi": "Mia ơi, tìm chữ K viết thường nào!"
+  },
+  {
+    "key": "lower_l",
+    "en": "Find the small letter L!",
+    "vi": "Mia ơi, tìm chữ L viết thường nào!"
+  },
+  {
+    "key": "lower_m",
+    "en": "Find the small letter M!",
+    "vi": "Mia ơi, tìm chữ M viết thường nào!"
+  },
+  {
+    "key": "lower_n",
+    "en": "Find the small letter N!",
+    "vi": "Mia ơi, tìm chữ N viết thường nào!"
+  },
+  {
+    "key": "lower_o",
+    "en": "Find the small letter O!",
+    "vi": "Mia ơi, tìm chữ O viết thường nào!"
+  },
+  {
+    "key": "lower_p",
+    "en": "Find the small letter P!",
+    "vi": "Mia ơi, tìm chữ P viết thường nào!"
+  },
+  {
+    "key": "lower_q",
+    "en": "Find the small letter Q!",
+    "vi": "Mia ơi, tìm chữ Q viết thường nào!"
+  },
+  {
+    "key": "lower_r",
+    "en": "Find the small letter R!",
+    "vi": "Mia ơi, tìm chữ R viết thường nào!"
+  },
+  {
+    "key": "lower_s",
+    "en": "Find the small letter S!",
+    "vi": "Mia ơi, tìm chữ S viết thường nào!"
+  },
+  {
+    "key": "lower_t",
+    "en": "Find the small letter T!",
+    "vi": "Mia ơi, tìm chữ T viết thường nào!"
+  },
+  {
+    "key": "lower_u",
+    "en": "Find the small letter U!",
+    "vi": "Mia ơi, tìm chữ U viết thường nào!"
+  },
+  {
+    "key": "lower_v",
+    "en": "Find the small letter V!",
+    "vi": "Mia ơi, tìm chữ V viết thường nào!"
+  },
+  {
+    "key": "lower_w",
+    "en": "Find the small letter W!",
+    "vi": "Mia ơi, tìm chữ W viết thường nào!"
+  },
+  {
+    "key": "lower_x",
+    "en": "Find the small letter X!",
+    "vi": "Mia ơi, tìm chữ X viết thường nào!"
+  },
+  {
+    "key": "lower_y",
+    "en": "Find the small letter Y!",
+    "vi": "Mia ơi, tìm chữ Y viết thường nào!"
+  },
+  {
+    "key": "lower_z",
+    "en": "Find the small letter Z!",
+    "vi": "Mia ơi, tìm chữ Z viết thường nào!"
+  },
+  {
+    "key": "opposite_big",
+    "en": "What is the opposite of big?",
+    "vi": "Mia ơi, trái nghĩa với to là gì?"
+  },
+  {
+    "key": "opposite_small",
+    "en": "What is the opposite of small?",
+    "vi": "Mia ơi, trái nghĩa với nhỏ là gì?"
+  },
+  {
+    "key": "opposite_happy",
+    "en": "What is the opposite of happy?",
+    "vi": "Mia ơi, trái nghĩa với vui là gì?"
+  },
+  {
+    "key": "opposite_sad",
+    "en": "What is the opposite of sad?",
+    "vi": "Mia ơi, trái nghĩa với buồn là gì?"
+  },
+  {
+    "key": "opposite_day",
+    "en": "What is the opposite of day?",
+    "vi": "Mia ơi, trái nghĩa với ngày là gì?"
+  },
+  {
+    "key": "opposite_night",
+    "en": "What is the opposite of night?",
+    "vi": "Mia ơi, trái nghĩa với đêm là gì?"
+  },
+  {
+    "key": "opposite_hot",
+    "en": "What is the opposite of hot?",
+    "vi": "Mia ơi, trái nghĩa với nóng là gì?"
+  },
+  {
+    "key": "opposite_cold",
+    "en": "What is the opposite of cold?",
+    "vi": "Mia ơi, trái nghĩa với lạnh là gì?"
+  },
+  {
+    "key": "opposite_fast",
+    "en": "What is the opposite of fast?",
+    "vi": "Mia ơi, trái nghĩa với nhanh là gì?"
+  },
+  {
+    "key": "opposite_slow",
+    "en": "What is the opposite of slow?",
+    "vi": "Mia ơi, trái nghĩa với chậm là gì?"
+  },
+  {
+    "key": "rhyme_cat",
+    "en": "Cat. Which word sounds like cat?",
+    "vi": "Từ nào có vần giống \"cat\" hả Mia?"
+  },
+  {
+    "key": "rhyme_hat",
+    "en": "Hat. Which word sounds like hat?",
+    "vi": "Từ nào có vần giống \"hat\" hả Mia?"
+  },
+  {
+    "key": "rhyme_tree",
+    "en": "Tree. Which word sounds like tree?",
+    "vi": "Từ nào có vần giống \"tree\" hả Mia?"
+  },
+  {
+    "key": "rhyme_bee",
+    "en": "Bee. Which word sounds like bee?",
+    "vi": "Từ nào có vần giống \"bee\" hả Mia?"
+  },
+  {
+    "key": "rhyme_fish",
+    "en": "Fish. Which word sounds like fish?",
+    "vi": "Từ nào có vần giống \"fish\" hả Mia?"
+  },
+  {
+    "key": "rhyme_dish",
+    "en": "Dish. Which word sounds like dish?",
+    "vi": "Từ nào có vần giống \"dish\" hả Mia?"
+  },
+  {
+    "key": "rhyme_goat",
+    "en": "Goat. Which word sounds like goat?",
+    "vi": "Từ nào có vần giống \"goat\" hả Mia?"
+  },
+  {
+    "key": "rhyme_boat",
+    "en": "Boat. Which word sounds like boat?",
+    "vi": "Từ nào có vần giống \"boat\" hả Mia?"
+  },
+  {
+    "key": "rhyme_snail",
+    "en": "Snail. Which word sounds like snail?",
+    "vi": "Từ nào có vần giống \"snail\" hả Mia?"
+  },
+  {
+    "key": "rhyme_whale",
+    "en": "Whale. Which word sounds like whale?",
+    "vi": "Từ nào có vần giống \"whale\" hả Mia?"
+  },
+  {
+    "key": "rhyme_dog",
+    "en": "Dog. Which word sounds like dog?",
+    "vi": "Từ nào có vần giống \"dog\" hả Mia?"
+  },
+  {
+    "key": "rhyme_frog",
+    "en": "Frog. Which word sounds like frog?",
+    "vi": "Từ nào có vần giống \"frog\" hả Mia?"
+  },
+  {
+    "key": "rhyme_star",
+    "en": "Star. Which word sounds like star?",
+    "vi": "Từ nào có vần giống \"star\" hả Mia?"
+  },
+  {
+    "key": "rhyme_car",
+    "en": "Car. Which word sounds like car?",
+    "vi": "Từ nào có vần giống \"car\" hả Mia?"
+  },
+  {
+    "key": "word_cat",
+    "en": "Find the cat!",
+    "vi": "Mia ơi, tìm con mèo nào!"
+  },
+  {
+    "key": "first_cat",
+    "en": "Cat. Which letter does cat start with?",
+    "vi": "Con mèo tiếng Anh là \"cat\". Chữ đầu tiên của \"cat\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_dog",
+    "en": "Find the dog!",
+    "vi": "Mia ơi, tìm con chó nào!"
+  },
+  {
+    "key": "first_dog",
+    "en": "Dog. Which letter does dog start with?",
+    "vi": "Con chó tiếng Anh là \"dog\". Chữ đầu tiên của \"dog\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_bird",
+    "en": "Find the bird!",
+    "vi": "Mia ơi, tìm con chim nào!"
+  },
+  {
+    "key": "first_bird",
+    "en": "Bird. Which letter does bird start with?",
+    "vi": "Con chim tiếng Anh là \"bird\". Chữ đầu tiên của \"bird\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_fish",
+    "en": "Find the fish!",
+    "vi": "Mia ơi, tìm con cá nào!"
+  },
+  {
+    "key": "first_fish",
+    "en": "Fish. Which letter does fish start with?",
+    "vi": "Con cá tiếng Anh là \"fish\". Chữ đầu tiên của \"fish\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_frog",
+    "en": "Find the frog!",
+    "vi": "Mia ơi, tìm con ếch nào!"
+  },
+  {
+    "key": "first_frog",
+    "en": "Frog. Which letter does frog start with?",
+    "vi": "Con ếch tiếng Anh là \"frog\". Chữ đầu tiên của \"frog\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_rabbit",
+    "en": "Find the rabbit!",
+    "vi": "Mia ơi, tìm con thỏ nào!"
+  },
+  {
+    "key": "first_rabbit",
+    "en": "Rabbit. Which letter does rabbit start with?",
+    "vi": "Con thỏ tiếng Anh là \"rabbit\". Chữ đầu tiên của \"rabbit\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_goat",
+    "en": "Find the goat!",
+    "vi": "Mia ơi, tìm con dê nào!"
+  },
+  {
+    "key": "first_goat",
+    "en": "Goat. Which letter does goat start with?",
+    "vi": "Con dê tiếng Anh là \"goat\". Chữ đầu tiên của \"goat\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_penguin",
+    "en": "Find the penguin!",
+    "vi": "Mia ơi, tìm chim cánh cụt nào!"
+  },
+  {
+    "key": "first_penguin",
+    "en": "Penguin. Which letter does penguin start with?",
+    "vi": "Chim cánh cụt tiếng Anh là \"penguin\". Chữ đầu tiên của \"penguin\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_snail",
+    "en": "Find the snail!",
+    "vi": "Mia ơi, tìm con ốc sên nào!"
+  },
+  {
+    "key": "first_snail",
+    "en": "Snail. Which letter does snail start with?",
+    "vi": "Con ốc sên tiếng Anh là \"snail\". Chữ đầu tiên của \"snail\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_butterfly",
+    "en": "Find the butterfly!",
+    "vi": "Mia ơi, tìm con bướm nào!"
+  },
+  {
+    "key": "first_butterfly",
+    "en": "Butterfly. Which letter does butterfly start with?",
+    "vi": "Con bướm tiếng Anh là \"butterfly\". Chữ đầu tiên của \"butterfly\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_chicken",
+    "en": "Find the chicken!",
+    "vi": "Mia ơi, tìm con gà nào!"
+  },
+  {
+    "key": "first_chicken",
+    "en": "Chicken. Which letter does chicken start with?",
+    "vi": "Con gà tiếng Anh là \"chicken\". Chữ đầu tiên của \"chicken\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_car",
+    "en": "Find the car!",
+    "vi": "Mia ơi, tìm xe ô tô nào!"
+  },
+  {
+    "key": "first_car",
+    "en": "Car. Which letter does car start with?",
+    "vi": "Xe ô tô tiếng Anh là \"car\". Chữ đầu tiên của \"car\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_tree",
+    "en": "Find the tree!",
+    "vi": "Mia ơi, tìm cái cây nào!"
+  },
+  {
+    "key": "first_tree",
+    "en": "Tree. Which letter does tree start with?",
+    "vi": "Cái cây tiếng Anh là \"tree\". Chữ đầu tiên của \"tree\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_star",
+    "en": "Find the star!",
+    "vi": "Mia ơi, tìm ngôi sao nào!"
+  },
+  {
+    "key": "first_star",
+    "en": "Star. Which letter does star start with?",
+    "vi": "Ngôi sao tiếng Anh là \"star\". Chữ đầu tiên của \"star\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_rainbow",
+    "en": "Find the rainbow!",
+    "vi": "Mia ơi, tìm cầu vồng nào!"
+  },
+  {
+    "key": "first_rainbow",
+    "en": "Rainbow. Which letter does rainbow start with?",
+    "vi": "Cầu vồng tiếng Anh là \"rainbow\". Chữ đầu tiên của \"rainbow\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_tractor",
+    "en": "Find the tractor!",
+    "vi": "Mia ơi, tìm máy kéo nào!"
+  },
+  {
+    "key": "first_tractor",
+    "en": "Tractor. Which letter does tractor start with?",
+    "vi": "Máy kéo tiếng Anh là \"tractor\". Chữ đầu tiên của \"tractor\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_banana",
+    "en": "Find the banana!",
+    "vi": "Mia ơi, tìm quả chuối nào!"
+  },
+  {
+    "key": "first_banana",
+    "en": "Banana. Which letter does banana start with?",
+    "vi": "Quả chuối tiếng Anh là \"banana\". Chữ đầu tiên của \"banana\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_orange",
+    "en": "Find the orange!",
+    "vi": "Mia ơi, tìm quả cam nào!"
+  },
+  {
+    "key": "first_orange",
+    "en": "Orange. Which letter does orange start with?",
+    "vi": "Quả cam tiếng Anh là \"orange\". Chữ đầu tiên của \"orange\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_strawberry",
+    "en": "Find the strawberry!",
+    "vi": "Mia ơi, tìm quả dâu nào!"
+  },
+  {
+    "key": "first_strawberry",
+    "en": "Strawberry. Which letter does strawberry start with?",
+    "vi": "Quả dâu tiếng Anh là \"strawberry\". Chữ đầu tiên của \"strawberry\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_grapes",
+    "en": "Find the grapes!",
+    "vi": "Mia ơi, tìm chùm nho nào!"
+  },
+  {
+    "key": "first_grapes",
+    "en": "Grapes. Which letter does grapes start with?",
+    "vi": "Chùm nho tiếng Anh là \"grapes\". Chữ đầu tiên của \"grapes\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_carrot",
+    "en": "Find the carrot!",
+    "vi": "Mia ơi, tìm củ cà rốt nào!"
+  },
+  {
+    "key": "first_carrot",
+    "en": "Carrot. Which letter does carrot start with?",
+    "vi": "Củ cà rốt tiếng Anh là \"carrot\". Chữ đầu tiên của \"carrot\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_tomato",
+    "en": "Find the tomato!",
+    "vi": "Mia ơi, tìm quả cà chua nào!"
+  },
+  {
+    "key": "first_tomato",
+    "en": "Tomato. Which letter does tomato start with?",
+    "vi": "Quả cà chua tiếng Anh là \"tomato\". Chữ đầu tiên của \"tomato\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_corn",
+    "en": "Find the corn!",
+    "vi": "Mia ơi, tìm bắp ngô nào!"
+  },
+  {
+    "key": "first_corn",
+    "en": "Corn. Which letter does corn start with?",
+    "vi": "Bắp ngô tiếng Anh là \"corn\". Chữ đầu tiên của \"corn\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_watermelon",
+    "en": "Find the watermelon!",
+    "vi": "Mia ơi, tìm miếng dưa hấu nào!"
+  },
+  {
+    "key": "first_watermelon",
+    "en": "Watermelon. Which letter does watermelon start with?",
+    "vi": "Miếng dưa hấu tiếng Anh là \"watermelon\". Chữ đầu tiên của \"watermelon\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "word_pear",
+    "en": "Find the pear!",
+    "vi": "Mia ơi, tìm quả lê nào!"
+  },
+  {
+    "key": "first_pear",
+    "en": "Pear. Which letter does pear start with?",
+    "vi": "Quả lê tiếng Anh là \"pear\". Chữ đầu tiên của \"pear\" là chữ gì hả Mia?"
+  },
+  {
+    "key": "add_1_1",
+    "en": "Pony has one apple. Here is one more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_2",
+    "en": "Pony has one apple. Here are two more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_3",
+    "en": "Pony has one apple. Here are three more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_4",
+    "en": "Pony has one apple. Here are four more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_5",
+    "en": "Pony has one apple. Here are five more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_6",
+    "en": "Pony has one apple. Here are six more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_7",
+    "en": "Pony has one apple. Here are seven more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm bảy quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_8",
+    "en": "Pony has one apple. Here are eight more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm tám quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_1_9",
+    "en": "Pony has one apple. Here are nine more. How many apples?",
+    "vi": "Pony có một quả táo. Thêm chín quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_1",
+    "en": "Pony has two apples. Here is one more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_2",
+    "en": "Pony has two apples. Here are two more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_3",
+    "en": "Pony has two apples. Here are three more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_4",
+    "en": "Pony has two apples. Here are four more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_5",
+    "en": "Pony has two apples. Here are five more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_6",
+    "en": "Pony has two apples. Here are six more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_7",
+    "en": "Pony has two apples. Here are seven more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm bảy quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_2_8",
+    "en": "Pony has two apples. Here are eight more. How many apples?",
+    "vi": "Pony có hai quả táo. Thêm tám quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_3_1",
+    "en": "Pony has three apples. Here is one more. How many apples?",
+    "vi": "Pony có ba quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_3_2",
+    "en": "Pony has three apples. Here are two more. How many apples?",
+    "vi": "Pony có ba quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_3_3",
+    "en": "Pony has three apples. Here are three more. How many apples?",
+    "vi": "Pony có ba quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_3_4",
+    "en": "Pony has three apples. Here are four more. How many apples?",
+    "vi": "Pony có ba quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_3_5",
+    "en": "Pony has three apples. Here are five more. How many apples?",
+    "vi": "Pony có ba quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_3_6",
+    "en": "Pony has three apples. Here are six more. How many apples?",
+    "vi": "Pony có ba quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_3_7",
+    "en": "Pony has three apples. Here are seven more. How many apples?",
+    "vi": "Pony có ba quả táo. Thêm bảy quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_4_1",
+    "en": "Pony has four apples. Here is one more. How many apples?",
+    "vi": "Pony có bốn quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_4_2",
+    "en": "Pony has four apples. Here are two more. How many apples?",
+    "vi": "Pony có bốn quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_4_3",
+    "en": "Pony has four apples. Here are three more. How many apples?",
+    "vi": "Pony có bốn quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_4_4",
+    "en": "Pony has four apples. Here are four more. How many apples?",
+    "vi": "Pony có bốn quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_4_5",
+    "en": "Pony has four apples. Here are five more. How many apples?",
+    "vi": "Pony có bốn quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_4_6",
+    "en": "Pony has four apples. Here are six more. How many apples?",
+    "vi": "Pony có bốn quả táo. Thêm sáu quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_5_1",
+    "en": "Pony has five apples. Here is one more. How many apples?",
+    "vi": "Pony có năm quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_5_2",
+    "en": "Pony has five apples. Here are two more. How many apples?",
+    "vi": "Pony có năm quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_5_3",
+    "en": "Pony has five apples. Here are three more. How many apples?",
+    "vi": "Pony có năm quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_5_4",
+    "en": "Pony has five apples. Here are four more. How many apples?",
+    "vi": "Pony có năm quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_5_5",
+    "en": "Pony has five apples. Here are five more. How many apples?",
+    "vi": "Pony có năm quả táo. Thêm năm quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_6_1",
+    "en": "Pony has six apples. Here is one more. How many apples?",
+    "vi": "Pony có sáu quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_6_2",
+    "en": "Pony has six apples. Here are two more. How many apples?",
+    "vi": "Pony có sáu quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_6_3",
+    "en": "Pony has six apples. Here are three more. How many apples?",
+    "vi": "Pony có sáu quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_6_4",
+    "en": "Pony has six apples. Here are four more. How many apples?",
+    "vi": "Pony có sáu quả táo. Thêm bốn quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_7_1",
+    "en": "Pony has seven apples. Here is one more. How many apples?",
+    "vi": "Pony có bảy quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_7_2",
+    "en": "Pony has seven apples. Here are two more. How many apples?",
+    "vi": "Pony có bảy quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_7_3",
+    "en": "Pony has seven apples. Here are three more. How many apples?",
+    "vi": "Pony có bảy quả táo. Thêm ba quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_8_1",
+    "en": "Pony has eight apples. Here is one more. How many apples?",
+    "vi": "Pony có tám quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_8_2",
+    "en": "Pony has eight apples. Here are two more. How many apples?",
+    "vi": "Pony có tám quả táo. Thêm hai quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "add_9_1",
+    "en": "Pony has nine apples. Here is one more. How many apples?",
+    "vi": "Pony có chín quả táo. Thêm một quả nữa. Có tất cả mấy quả táo hả Mia?"
+  },
+  {
+    "key": "sub_2_1",
+    "en": "Pony has two apples. Pony eats one. How many are left?",
+    "vi": "Pony có hai quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_3_1",
+    "en": "Pony has three apples. Pony eats one. How many are left?",
+    "vi": "Pony có ba quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_3_2",
+    "en": "Pony has three apples. Pony eats two. How many are left?",
+    "vi": "Pony có ba quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_4_1",
+    "en": "Pony has four apples. Pony eats one. How many are left?",
+    "vi": "Pony có bốn quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_4_2",
+    "en": "Pony has four apples. Pony eats two. How many are left?",
+    "vi": "Pony có bốn quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_4_3",
+    "en": "Pony has four apples. Pony eats three. How many are left?",
+    "vi": "Pony có bốn quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_5_1",
+    "en": "Pony has five apples. Pony eats one. How many are left?",
+    "vi": "Pony có năm quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_5_2",
+    "en": "Pony has five apples. Pony eats two. How many are left?",
+    "vi": "Pony có năm quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_5_3",
+    "en": "Pony has five apples. Pony eats three. How many are left?",
+    "vi": "Pony có năm quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_5_4",
+    "en": "Pony has five apples. Pony eats four. How many are left?",
+    "vi": "Pony có năm quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_6_1",
+    "en": "Pony has six apples. Pony eats one. How many are left?",
+    "vi": "Pony có sáu quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_6_2",
+    "en": "Pony has six apples. Pony eats two. How many are left?",
+    "vi": "Pony có sáu quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_6_3",
+    "en": "Pony has six apples. Pony eats three. How many are left?",
+    "vi": "Pony có sáu quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_6_4",
+    "en": "Pony has six apples. Pony eats four. How many are left?",
+    "vi": "Pony có sáu quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_6_5",
+    "en": "Pony has six apples. Pony eats five. How many are left?",
+    "vi": "Pony có sáu quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_7_1",
+    "en": "Pony has seven apples. Pony eats one. How many are left?",
+    "vi": "Pony có bảy quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_7_2",
+    "en": "Pony has seven apples. Pony eats two. How many are left?",
+    "vi": "Pony có bảy quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_7_3",
+    "en": "Pony has seven apples. Pony eats three. How many are left?",
+    "vi": "Pony có bảy quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_7_4",
+    "en": "Pony has seven apples. Pony eats four. How many are left?",
+    "vi": "Pony có bảy quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_7_5",
+    "en": "Pony has seven apples. Pony eats five. How many are left?",
+    "vi": "Pony có bảy quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_7_6",
+    "en": "Pony has seven apples. Pony eats six. How many are left?",
+    "vi": "Pony có bảy quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_8_1",
+    "en": "Pony has eight apples. Pony eats one. How many are left?",
+    "vi": "Pony có tám quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_8_2",
+    "en": "Pony has eight apples. Pony eats two. How many are left?",
+    "vi": "Pony có tám quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_8_3",
+    "en": "Pony has eight apples. Pony eats three. How many are left?",
+    "vi": "Pony có tám quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_8_4",
+    "en": "Pony has eight apples. Pony eats four. How many are left?",
+    "vi": "Pony có tám quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_8_5",
+    "en": "Pony has eight apples. Pony eats five. How many are left?",
+    "vi": "Pony có tám quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_8_6",
+    "en": "Pony has eight apples. Pony eats six. How many are left?",
+    "vi": "Pony có tám quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_8_7",
+    "en": "Pony has eight apples. Pony eats seven. How many are left?",
+    "vi": "Pony có tám quả táo. Pony ăn bảy quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_1",
+    "en": "Pony has nine apples. Pony eats one. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_2",
+    "en": "Pony has nine apples. Pony eats two. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_3",
+    "en": "Pony has nine apples. Pony eats three. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_4",
+    "en": "Pony has nine apples. Pony eats four. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_5",
+    "en": "Pony has nine apples. Pony eats five. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_6",
+    "en": "Pony has nine apples. Pony eats six. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_7",
+    "en": "Pony has nine apples. Pony eats seven. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn bảy quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_9_8",
+    "en": "Pony has nine apples. Pony eats eight. How many are left?",
+    "vi": "Pony có chín quả táo. Pony ăn tám quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_1",
+    "en": "Pony has ten apples. Pony eats one. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn một quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_2",
+    "en": "Pony has ten apples. Pony eats two. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn hai quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_3",
+    "en": "Pony has ten apples. Pony eats three. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn ba quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_4",
+    "en": "Pony has ten apples. Pony eats four. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn bốn quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_5",
+    "en": "Pony has ten apples. Pony eats five. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn năm quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_6",
+    "en": "Pony has ten apples. Pony eats six. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn sáu quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_7",
+    "en": "Pony has ten apples. Pony eats seven. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn bảy quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_8",
+    "en": "Pony has ten apples. Pony eats eight. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn tám quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "sub_10_9",
+    "en": "Pony has ten apples. Pony eats nine. How many are left?",
+    "vi": "Pony có mười quả táo. Pony ăn chín quả. Còn lại mấy quả hả Mia?"
+  },
+  {
+    "key": "find_letter_a",
+    "en": "Find the letter A!",
+    "vi": "Mia ơi, tìm chữ A nào!"
+  },
+  {
+    "key": "find_letter_b",
+    "en": "Find the letter B!",
+    "vi": "Mia ơi, tìm chữ B nào!"
+  },
+  {
+    "key": "find_letter_c",
+    "en": "Find the letter C!",
+    "vi": "Mia ơi, tìm chữ C nào!"
+  },
+  {
+    "key": "find_letter_d",
+    "en": "Find the letter D!",
+    "vi": "Mia ơi, tìm chữ D nào!"
+  },
+  {
+    "key": "find_letter_e",
+    "en": "Find the letter E!",
+    "vi": "Mia ơi, tìm chữ E nào!"
+  },
+  {
+    "key": "find_letter_f",
+    "en": "Find the letter F!",
+    "vi": "Mia ơi, tìm chữ F nào!"
+  },
+  {
+    "key": "find_letter_g",
+    "en": "Find the letter G!",
+    "vi": "Mia ơi, tìm chữ G nào!"
+  },
+  {
+    "key": "find_letter_h",
+    "en": "Find the letter H!",
+    "vi": "Mia ơi, tìm chữ H nào!"
+  },
+  {
+    "key": "find_letter_i",
+    "en": "Find the letter I!",
+    "vi": "Mia ơi, tìm chữ I nào!"
+  },
+  {
+    "key": "find_letter_j",
+    "en": "Find the letter J!",
+    "vi": "Mia ơi, tìm chữ J nào!"
+  },
+  {
+    "key": "find_letter_k",
+    "en": "Find the letter K!",
+    "vi": "Mia ơi, tìm chữ K nào!"
+  },
+  {
+    "key": "find_letter_l",
+    "en": "Find the letter L!",
+    "vi": "Mia ơi, tìm chữ L nào!"
+  },
+  {
+    "key": "find_letter_m",
+    "en": "Find the letter M!",
+    "vi": "Mia ơi, tìm chữ M nào!"
+  },
+  {
+    "key": "find_letter_n",
+    "en": "Find the letter N!",
+    "vi": "Mia ơi, tìm chữ N nào!"
+  },
+  {
+    "key": "find_letter_o",
+    "en": "Find the letter O!",
+    "vi": "Mia ơi, tìm chữ O nào!"
+  },
+  {
+    "key": "find_letter_p",
+    "en": "Find the letter P!",
+    "vi": "Mia ơi, tìm chữ P nào!"
+  },
+  {
+    "key": "find_letter_q",
+    "en": "Find the letter Q!",
+    "vi": "Mia ơi, tìm chữ Q nào!"
+  },
+  {
+    "key": "find_letter_r",
+    "en": "Find the letter R!",
+    "vi": "Mia ơi, tìm chữ R nào!"
+  },
+  {
+    "key": "find_letter_s",
+    "en": "Find the letter S!",
+    "vi": "Mia ơi, tìm chữ S nào!"
+  },
+  {
+    "key": "find_letter_t",
+    "en": "Find the letter T!",
+    "vi": "Mia ơi, tìm chữ T nào!"
+  },
+  {
+    "key": "find_letter_u",
+    "en": "Find the letter U!",
+    "vi": "Mia ơi, tìm chữ U nào!"
+  },
+  {
+    "key": "find_letter_v",
+    "en": "Find the letter V!",
+    "vi": "Mia ơi, tìm chữ V nào!"
+  },
+  {
+    "key": "find_letter_w",
+    "en": "Find the letter W!",
+    "vi": "Mia ơi, tìm chữ W nào!"
+  },
+  {
+    "key": "find_letter_x",
+    "en": "Find the letter X!",
+    "vi": "Mia ơi, tìm chữ X nào!"
+  },
+  {
+    "key": "find_letter_y",
+    "en": "Find the letter Y!",
+    "vi": "Mia ơi, tìm chữ Y nào!"
+  },
+  {
+    "key": "find_letter_z",
+    "en": "Find the letter Z!",
+    "vi": "Mia ơi, tìm chữ Z nào!"
+  },
+  {
+    "key": "room_done",
+    "en": "Your room looks lovely!",
+    "vi": "Phòng của Mia đẹp quá!"
+  },
+  {
+    "key": "plant_grow",
+    "en": "Look! A beautiful flower!",
+    "vi": "Mia nhìn kìa! Một bông hoa thật đẹp!"
+  },
+  {
+    "key": "color_by_number",
+    "en": "Colour the picture by the numbers!",
+    "vi": "Mia ơi, tô màu theo số nào!"
+  },
+  {
+    "key": "free_paint",
+    "en": "Draw anything you like!",
+    "vi": "Mia ơi, vẽ gì cũng được nhé!"
+  },
+  {
+    "key": "plant_dig",
+    "en": "First, dig a hole. Find the shovel!",
+    "vi": "Đầu tiên, mình đào một cái hố. Mia ơi, tìm cái xẻng nào!"
+  },
+  {
+    "key": "plant_seed",
+    "en": "Now put in a seed. Find the seeds!",
+    "vi": "Bây giờ gieo hạt. Mia ơi, tìm túi hạt giống nào!"
+  },
+  {
+    "key": "plant_water",
+    "en": "The seed is thirsty. Find the watering can!",
+    "vi": "Hạt đang khát nước. Mia ơi, tìm bình tưới nào!"
+  },
+  {
+    "key": "plant_sun",
+    "en": "The plant needs sunshine. Find the sun!",
+    "vi": "Cây cần ánh nắng. Mia ơi, tìm mặt trời nào!"
+  },
+  {
+    "key": "put_teddy_on_bed",
+    "en": "Put the teddy on the bed!",
+    "vi": "Mia ơi, đặt gấu bông lên giường nào!"
+  },
+  {
+    "key": "put_ball_on_bed",
+    "en": "Put the ball on the bed!",
+    "vi": "Mia ơi, đặt quả bóng lên giường nào!"
+  },
+  {
+    "key": "put_book_on_bed",
+    "en": "Put the book on the bed!",
+    "vi": "Mia ơi, đặt quyển sách lên giường nào!"
+  },
+  {
+    "key": "put_lamp_on_bed",
+    "en": "Put the lamp on the bed!",
+    "vi": "Mia ơi, đặt cái đèn lên giường nào!"
+  },
+  {
+    "key": "put_teddy_next_bed",
+    "en": "Put the teddy next to the bed!",
+    "vi": "Mia ơi, đặt gấu bông cạnh giường nào!"
+  },
+  {
+    "key": "put_ball_next_bed",
+    "en": "Put the ball next to the bed!",
+    "vi": "Mia ơi, đặt quả bóng cạnh giường nào!"
+  },
+  {
+    "key": "put_book_next_bed",
+    "en": "Put the book next to the bed!",
+    "vi": "Mia ơi, đặt quyển sách cạnh giường nào!"
+  },
+  {
+    "key": "put_lamp_next_bed",
+    "en": "Put the lamp next to the bed!",
+    "vi": "Mia ơi, đặt cái đèn cạnh giường nào!"
+  },
+  {
+    "key": "put_teddy_on_table",
+    "en": "Put the teddy on the table!",
+    "vi": "Mia ơi, đặt gấu bông lên bàn nào!"
+  },
+  {
+    "key": "put_ball_on_table",
+    "en": "Put the ball on the table!",
+    "vi": "Mia ơi, đặt quả bóng lên bàn nào!"
+  },
+  {
+    "key": "put_book_on_table",
+    "en": "Put the book on the table!",
+    "vi": "Mia ơi, đặt quyển sách lên bàn nào!"
+  },
+  {
+    "key": "put_lamp_on_table",
+    "en": "Put the lamp on the table!",
+    "vi": "Mia ơi, đặt cái đèn lên bàn nào!"
+  },
+  {
+    "key": "put_teddy_under_table",
+    "en": "Put the teddy under the table!",
+    "vi": "Mia ơi, đặt gấu bông xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "put_ball_under_table",
+    "en": "Put the ball under the table!",
+    "vi": "Mia ơi, đặt quả bóng xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "put_book_under_table",
+    "en": "Put the book under the table!",
+    "vi": "Mia ơi, đặt quyển sách xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "put_lamp_under_table",
+    "en": "Put the lamp under the table!",
+    "vi": "Mia ơi, đặt cái đèn xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "harvest_1_carrot",
+    "en": "Pick one carrot!",
+    "vi": "Mia ơi, hái một củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_1_tomato",
+    "en": "Pick one tomato!",
+    "vi": "Mia ơi, hái một quả cà chua nào!"
+  },
+  {
+    "key": "harvest_1_corn",
+    "en": "Pick one corn cob!",
+    "vi": "Mia ơi, hái một bắp ngô nào!"
+  },
+  {
+    "key": "bake_1_egg",
+    "en": "Put one egg in the bowl!",
+    "vi": "Mia ơi, cho một quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_1_strawberry",
+    "en": "Put one strawberry in the bowl!",
+    "vi": "Mia ơi, cho một quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_1_banana",
+    "en": "Put one banana in the bowl!",
+    "vi": "Mia ơi, cho một quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_1_pink",
+    "en": "Paint one nail pink!",
+    "vi": "Mia ơi, sơn một móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_1_blue",
+    "en": "Paint one nail blue!",
+    "vi": "Mia ơi, sơn một móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_1_yellow",
+    "en": "Paint one nail yellow!",
+    "vi": "Mia ơi, sơn một móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_1_green",
+    "en": "Paint one nail green!",
+    "vi": "Mia ơi, sơn một móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_1_purple",
+    "en": "Paint one nail purple!",
+    "vi": "Mia ơi, sơn một móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_1_red",
+    "en": "Paint one nail red!",
+    "vi": "Mia ơi, sơn một móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_1_orange",
+    "en": "Paint one nail orange!",
+    "vi": "Mia ơi, sơn một móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_2_carrot",
+    "en": "Pick two carrots!",
+    "vi": "Mia ơi, hái hai củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_2_tomato",
+    "en": "Pick two tomatoes!",
+    "vi": "Mia ơi, hái hai quả cà chua nào!"
+  },
+  {
+    "key": "harvest_2_corn",
+    "en": "Pick two corn cobs!",
+    "vi": "Mia ơi, hái hai bắp ngô nào!"
+  },
+  {
+    "key": "bake_2_egg",
+    "en": "Put two eggs in the bowl!",
+    "vi": "Mia ơi, cho hai quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_2_strawberry",
+    "en": "Put two strawberries in the bowl!",
+    "vi": "Mia ơi, cho hai quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_2_banana",
+    "en": "Put two bananas in the bowl!",
+    "vi": "Mia ơi, cho hai quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_2_pink",
+    "en": "Paint two nails pink!",
+    "vi": "Mia ơi, sơn hai móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_2_blue",
+    "en": "Paint two nails blue!",
+    "vi": "Mia ơi, sơn hai móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_2_yellow",
+    "en": "Paint two nails yellow!",
+    "vi": "Mia ơi, sơn hai móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_2_green",
+    "en": "Paint two nails green!",
+    "vi": "Mia ơi, sơn hai móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_2_purple",
+    "en": "Paint two nails purple!",
+    "vi": "Mia ơi, sơn hai móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_2_red",
+    "en": "Paint two nails red!",
+    "vi": "Mia ơi, sơn hai móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_2_orange",
+    "en": "Paint two nails orange!",
+    "vi": "Mia ơi, sơn hai móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_3_carrot",
+    "en": "Pick three carrots!",
+    "vi": "Mia ơi, hái ba củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_3_tomato",
+    "en": "Pick three tomatoes!",
+    "vi": "Mia ơi, hái ba quả cà chua nào!"
+  },
+  {
+    "key": "harvest_3_corn",
+    "en": "Pick three corn cobs!",
+    "vi": "Mia ơi, hái ba bắp ngô nào!"
+  },
+  {
+    "key": "bake_3_egg",
+    "en": "Put three eggs in the bowl!",
+    "vi": "Mia ơi, cho ba quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_3_strawberry",
+    "en": "Put three strawberries in the bowl!",
+    "vi": "Mia ơi, cho ba quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_3_banana",
+    "en": "Put three bananas in the bowl!",
+    "vi": "Mia ơi, cho ba quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_3_pink",
+    "en": "Paint three nails pink!",
+    "vi": "Mia ơi, sơn ba móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_3_blue",
+    "en": "Paint three nails blue!",
+    "vi": "Mia ơi, sơn ba móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_3_yellow",
+    "en": "Paint three nails yellow!",
+    "vi": "Mia ơi, sơn ba móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_3_green",
+    "en": "Paint three nails green!",
+    "vi": "Mia ơi, sơn ba móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_3_purple",
+    "en": "Paint three nails purple!",
+    "vi": "Mia ơi, sơn ba móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_3_red",
+    "en": "Paint three nails red!",
+    "vi": "Mia ơi, sơn ba móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_3_orange",
+    "en": "Paint three nails orange!",
+    "vi": "Mia ơi, sơn ba móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_4_carrot",
+    "en": "Pick four carrots!",
+    "vi": "Mia ơi, hái bốn củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_4_tomato",
+    "en": "Pick four tomatoes!",
+    "vi": "Mia ơi, hái bốn quả cà chua nào!"
+  },
+  {
+    "key": "harvest_4_corn",
+    "en": "Pick four corn cobs!",
+    "vi": "Mia ơi, hái bốn bắp ngô nào!"
+  },
+  {
+    "key": "bake_4_egg",
+    "en": "Put four eggs in the bowl!",
+    "vi": "Mia ơi, cho bốn quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_4_strawberry",
+    "en": "Put four strawberries in the bowl!",
+    "vi": "Mia ơi, cho bốn quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_4_banana",
+    "en": "Put four bananas in the bowl!",
+    "vi": "Mia ơi, cho bốn quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_4_pink",
+    "en": "Paint four nails pink!",
+    "vi": "Mia ơi, sơn bốn móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_4_blue",
+    "en": "Paint four nails blue!",
+    "vi": "Mia ơi, sơn bốn móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_4_yellow",
+    "en": "Paint four nails yellow!",
+    "vi": "Mia ơi, sơn bốn móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_4_green",
+    "en": "Paint four nails green!",
+    "vi": "Mia ơi, sơn bốn móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_4_purple",
+    "en": "Paint four nails purple!",
+    "vi": "Mia ơi, sơn bốn móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_4_red",
+    "en": "Paint four nails red!",
+    "vi": "Mia ơi, sơn bốn móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_4_orange",
+    "en": "Paint four nails orange!",
+    "vi": "Mia ơi, sơn bốn móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_5_carrot",
+    "en": "Pick five carrots!",
+    "vi": "Mia ơi, hái năm củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_5_tomato",
+    "en": "Pick five tomatoes!",
+    "vi": "Mia ơi, hái năm quả cà chua nào!"
+  },
+  {
+    "key": "harvest_5_corn",
+    "en": "Pick five corn cobs!",
+    "vi": "Mia ơi, hái năm bắp ngô nào!"
+  },
+  {
+    "key": "bake_5_egg",
+    "en": "Put five eggs in the bowl!",
+    "vi": "Mia ơi, cho năm quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_5_strawberry",
+    "en": "Put five strawberries in the bowl!",
+    "vi": "Mia ơi, cho năm quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_5_banana",
+    "en": "Put five bananas in the bowl!",
+    "vi": "Mia ơi, cho năm quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_5_pink",
+    "en": "Paint five nails pink!",
+    "vi": "Mia ơi, sơn năm móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_5_blue",
+    "en": "Paint five nails blue!",
+    "vi": "Mia ơi, sơn năm móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_5_yellow",
+    "en": "Paint five nails yellow!",
+    "vi": "Mia ơi, sơn năm móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_5_green",
+    "en": "Paint five nails green!",
+    "vi": "Mia ơi, sơn năm móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_5_purple",
+    "en": "Paint five nails purple!",
+    "vi": "Mia ơi, sơn năm móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_5_red",
+    "en": "Paint five nails red!",
+    "vi": "Mia ơi, sơn năm móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_5_orange",
+    "en": "Paint five nails orange!",
+    "vi": "Mia ơi, sơn năm móng tay màu cam nào!"
+  },
+  {
+    "key": "pet_puppy_hungry",
+    "en": "The puppy is hungry. What does it need?",
+    "vi": "Cún con đang đói. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_hungry",
+    "en": "The kitten is hungry. What does it need?",
+    "vi": "Mèo con đang đói. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_puppy_dirty",
+    "en": "The puppy is dirty. What does it need?",
+    "vi": "Cún con bị bẩn rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_dirty",
+    "en": "The kitten is dirty. What does it need?",
+    "vi": "Mèo con bị bẩn rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_puppy_sleepy",
+    "en": "The puppy is sleepy. What does it need?",
+    "vi": "Cún con buồn ngủ rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_sleepy",
+    "en": "The kitten is sleepy. What does it need?",
+    "vi": "Mèo con buồn ngủ rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_puppy_play",
+    "en": "The puppy wants to play. What does it need?",
+    "vi": "Cún con muốn chơi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_play",
+    "en": "The kitten wants to play. What does it need?",
+    "vi": "Mèo con muốn chơi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_puppy_messy",
+    "en": "The puppy has messy fur. What does it need?",
+    "vi": "Cún con bị rối lông. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_messy",
+    "en": "The kitten has messy fur. What does it need?",
+    "vi": "Mèo con bị rối lông. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "hair_long",
+    "en": "Find the long hair!",
+    "vi": "Mia ơi, tìm kiểu tóc dài nào!"
+  },
+  {
+    "key": "hair_pigtails",
+    "en": "Find the pigtails!",
+    "vi": "Mia ơi, tìm kiểu tóc buộc hai bên nào!"
+  },
+  {
+    "key": "hair_braids",
+    "en": "Find the braids!",
+    "vi": "Mia ơi, tìm kiểu tóc tết bím nào!"
+  },
+  {
+    "key": "hair_bun",
+    "en": "Find the bun!",
+    "vi": "Mia ơi, tìm kiểu tóc búi nào!"
+  },
+  {
+    "key": "hair_bob",
+    "en": "Find the short hair!",
+    "vi": "Mia ơi, tìm kiểu tóc ngắn nào!"
+  },
+  {
+    "key": "mix_red_yellow",
+    "en": "Red and yellow. What colour do they make?",
+    "vi": "Màu đỏ pha với màu vàng ra màu gì hả Mia?"
+  },
+  {
+    "key": "mix_blue_yellow",
+    "en": "Blue and yellow. What colour do they make?",
+    "vi": "Màu xanh dương pha với màu vàng ra màu gì hả Mia?"
+  },
+  {
+    "key": "mix_red_blue",
+    "en": "Red and blue. What colour do they make?",
+    "vi": "Màu đỏ pha với màu xanh dương ra màu gì hả Mia?"
+  },
+  {
+    "key": "mix_red_white",
+    "en": "Red and white. What colour do they make?",
+    "vi": "Màu đỏ pha với màu trắng ra màu gì hả Mia?"
+  }
+]

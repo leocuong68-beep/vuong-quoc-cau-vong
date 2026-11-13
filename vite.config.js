@@ -45,14 +45,15 @@ export default defineConfig({
       filename: 'service-worker.js',
       includeAssets: ['favicon.svg', 'img/**/*', 'sounds/**/*'],
       manifest: {
-        name: 'Edukiz - Educational Games for Kids',
-        short_name: 'Edukiz',
-        description: 'Simple educational games for children',
+        name: 'Vương Quốc Cầu Vồng',
+        short_name: 'Cầu Vồng',
+        description: 'Học toán, tiếng Anh và sáng tạo cho bé',
         theme_color: '#37373e',
         background_color: '#37373e',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        // relative, so the game also works inside a folder of a website (www.leocuong.com/rainbow/)
+        scope: './',
+        start_url: './',
         icons: [
           {
             src: 'favicon.svg',
@@ -62,7 +63,17 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,mp3,woff2}'],
+        // pictures (webp, jpg) stay on the tablet too, so the game works without Wi-Fi
+        globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,mp3,woff2}'],
+        // the voice without a name is only needed by children other than Mia: kept once heard
+        globIgnores: ['**/sounds/*/kid/**'],
+        runtimeCaching: [
+          {
+            urlPattern: /\/sounds\/(en|vi)\/kid\/.*\.mp3$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'voice-kid', expiration: { maxEntries: 1500 } },
+          },
+        ],
         cleanupOutdatedCaches: true,
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
       }

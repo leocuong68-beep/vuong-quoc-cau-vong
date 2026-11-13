@@ -156,8 +156,9 @@
   import LangToggle from './LangToggle.vue';
   import { ArrayUtils } from '../utils/ArrayUtils.js';
   import { BUDDIES, COLORS, Lines } from './princessLines.js';
-  import { stageById, shapeSvg, clockSvg } from './stages.js';
+  import { buddyOf, stageById, shapeSvg, clockSvg } from './stages.js';
   import { gameMixin } from './gameMixin.js';
+  import { Profiles } from './state.js';
 
   export default {
     name: 'QuizGame',
@@ -177,17 +178,18 @@
     },
     computed: {
       buddyId() {
-        const stage = stageById(this.stageId);
-        return (stage && stage.buddy) || 'pony';
+        return buddyOf(stageById(this.stageId)) || 'pony';
       },
       buddy() {
         return BUDDIES[this.buddyId];
       },
       miaSrc() {
+        if (Profiles.isBoy) return 'img/princess/tintin.webp';
         return this.miaOverride || 'img/princess/mia_' + this.dressColor + '.webp';
       },
       miaHeight() {
         // Mia is the smallest of the family, but taller than Pony
+        if (Profiles.isBoy) return this.buddyId === 'pony' ? 96 : 86;
         return this.buddyId === 'pony' ? 96 : 74;
       },
       scene() {
