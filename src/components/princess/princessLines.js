@@ -166,11 +166,66 @@ export const TABLE_ITEMS = [
   { id: 'plate', en: 'plate', vi: 'cái đĩa', src: T + 'plate.webp' },
 ];
 
+// --- home, garden and art games ---
+export const ROOM_ITEMS = [
+  { id: 'teddy', en: 'teddy', vi: 'gấu bông', src: T + 'teddy.webp' },
+  { id: 'ball', en: 'ball', vi: 'quả bóng', src: T + 'ball.webp' },
+  { id: 'book', en: 'book', vi: 'quyển sách', src: T + 'book.webp' },
+  { id: 'lamp', en: 'lamp', vi: 'cái đèn', src: T + 'lamp.webp' },
+];
+
+export const ROOM_SPOTS = [
+  { id: 'on_bed', en: 'on the bed', vi: 'lên giường', yesVi: 'Trên giường' },
+  { id: 'next_bed', en: 'next to the bed', vi: 'cạnh giường', yesVi: 'Cạnh giường' },
+  { id: 'on_table', en: 'on the table', vi: 'lên bàn', yesVi: 'Trên bàn' },
+  { id: 'under_table', en: 'under the table', vi: 'xuống dưới gầm bàn', yesVi: 'Dưới gầm bàn' },
+];
+
+export const VEGS = [
+  { id: 'carrot', one: 'carrot', many: 'carrots', vi: 'củ cà rốt', src: 'img/princess/food_carrot.webp' },
+  { id: 'tomato', one: 'tomato', many: 'tomatoes', vi: 'quả cà chua', src: 'img/princess/food_tomato.webp' },
+  { id: 'corn', one: 'corn cob', many: 'corn cobs', vi: 'bắp ngô', src: 'img/princess/food_corn.webp' },
+];
+
+export const INGREDIENTS = [
+  { id: 'egg', one: 'egg', many: 'eggs', vi: 'quả trứng', src: T + 'egg.webp' },
+  { id: 'strawberry', one: 'strawberry', many: 'strawberries', vi: 'quả dâu', src: 'img/princess/food_strawberry.webp' },
+  { id: 'banana', one: 'banana', many: 'bananas', vi: 'quả chuối', src: 'img/princess/food_banana.webp' },
+];
+
+export const PETS = [
+  { id: 'puppy', vi: 'Cún con', src: 'img/princess/pet_puppy.webp' },
+  { id: 'kitten', vi: 'Mèo con', src: 'img/princess/pet_kitten.webp' },
+];
+
+export const PET_NEEDS = [
+  { id: 'hungry', en: 'is hungry', vi: 'đang đói', yesEn: 'Food', yesVi: 'Đồ ăn', src: T + 'bowl.webp' },
+  { id: 'dirty', en: 'is dirty', vi: 'bị bẩn rồi', yesEn: 'A bath', yesVi: 'Đi tắm thôi', src: T + 'soap.webp' },
+  { id: 'sleepy', en: 'is sleepy', vi: 'buồn ngủ rồi', yesEn: 'A bed', yesVi: 'Cái giường', src: T + 'petbed.webp' },
+  { id: 'play', en: 'wants to play', vi: 'muốn chơi', yesEn: 'A ball', yesVi: 'Quả bóng', src: T + 'ball.webp' },
+  { id: 'messy', en: 'has messy fur', vi: 'bị rối lông', yesEn: 'A brush', yesVi: 'Cái lược', src: T + 'brush.webp' },
+];
+
+export const HAIRS = [
+  { id: 'long', en: 'long hair', vi: 'tóc dài', src: 'img/princess/mia_face.webp' },
+  { id: 'pigtails', en: 'pigtails', vi: 'tóc buộc hai bên', src: 'img/princess/hair_pigtails.webp' },
+  { id: 'braids', en: 'braids', vi: 'tóc tết bím', src: 'img/princess/hair_braids.webp' },
+  { id: 'bun', en: 'bun', vi: 'tóc búi', src: 'img/princess/hair_bun.webp' },
+  { id: 'bob', en: 'short hair', vi: 'tóc ngắn', src: 'img/princess/hair_bob.webp' },
+];
+
+export const MIXES = [
+  { a: 'red', b: 'yellow', result: 'orange' },
+  { a: 'blue', b: 'yellow', result: 'green' },
+  { a: 'red', b: 'blue', result: 'purple' },
+  { a: 'red', b: 'white', result: 'pink' },
+];
+
 const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const en = (n) => NUMBER_WORDS[n];
 const vi = (n) => NUMBER_WORDS_VI[n];
 const apples = (n) => en(n) + (n === 1 ? ' apple' : ' apples');
-const colorVi = (id) => COLORS.find((c) => c.id === id).vi;
+const colorVi = (id) => (id === 'white' ? 'trắng' : COLORS.find((c) => c.id === id).vi);
 const partVi = (id) => PARTS.find((p) => p.id === id).vi;
 const shapeVi = (id) => SHAPES.find((s) => s.id === id).vi;
 const line = (key, enText, viText) => ({ key, en: enText, vi: viText });
@@ -441,6 +496,60 @@ export const Lines = {
       `Đúng rồi! Chữ ${letter}!`
     ),
 
+  // --- home, garden and art ---
+  putItem(itemId, spotId) {
+    const item = ROOM_ITEMS.find((x) => x.id === itemId);
+    const spot = ROOM_SPOTS.find((x) => x.id === spotId);
+    return line(`put_${itemId}_${spotId}`, `Mia, put the ${item.en} ${spot.en}!`, `Mia ơi, đặt ${item.vi} ${spot.vi} nào!`);
+  },
+  yesSpot(spotId) {
+    const spot = ROOM_SPOTS.find((x) => x.id === spotId);
+    return line(`put_yes_${spotId}`, `Yes! ${cap(spot.en)}!`, `Đúng rồi! ${spot.yesVi}!`);
+  },
+  roomDone: () => line('room_done', "Mia's room looks lovely!", 'Phòng của Mia đẹp quá!'),
+  plantStep(step) {
+    return [
+      line('plant_dig', 'First, dig a hole. Mia, find the shovel!', 'Đầu tiên, mình đào một cái hố. Mia ơi, tìm cái xẻng nào!'),
+      line('plant_seed', 'Now put in a seed. Mia, find the seeds!', 'Bây giờ gieo hạt. Mia ơi, tìm túi hạt giống nào!'),
+      line('plant_water', 'The seed is thirsty. Mia, find the watering can!', 'Hạt đang khát nước. Mia ơi, tìm bình tưới nào!'),
+      line('plant_sun', 'The plant needs sunshine. Mia, find the sun!', 'Cây cần ánh nắng. Mia ơi, tìm mặt trời nào!'),
+    ][step];
+  },
+  plantGrow: () => line('plant_grow', 'Look, Mia! A beautiful flower!', 'Mia nhìn kìa! Một bông hoa thật đẹp!'),
+  harvest(n, id) {
+    const v = VEGS.find((x) => x.id === id);
+    return line(`harvest_${n}_${id}`, `Mia, pick ${en(n)} ${n === 1 ? v.one : v.many}!`, `Mia ơi, hái ${vi(n)} ${v.vi} nào!`);
+  },
+  bake(n, id) {
+    const g = INGREDIENTS.find((x) => x.id === id);
+    return line(`bake_${n}_${id}`, `Mia, put ${en(n)} ${n === 1 ? g.one : g.many} in the bowl!`, `Mia ơi, cho ${vi(n)} ${g.vi} vào tô nào!`);
+  },
+  bakeDone: () => line('bake_done', 'Yummy! The cake is ready!', 'Ngon quá! Bánh chín rồi!'),
+  petNeeds(petId, needId) {
+    const pet = PETS.find((x) => x.id === petId);
+    const need = PET_NEEDS.find((x) => x.id === needId);
+    return line(`pet_${petId}_${needId}`, `The ${petId} ${need.en}. What does it need, Mia?`, `${pet.vi} ${need.vi}. Bạn ấy cần gì hả Mia?`);
+  },
+  yesPet(needId) {
+    const need = PET_NEEDS.find((x) => x.id === needId);
+    return line(`pet_yes_${needId}`, `Yes! ${need.yesEn}!`, `Đúng rồi! ${need.yesVi}!`);
+  },
+  findHair(id) {
+    const h = HAIRS.find((x) => x.id === id);
+    return line(`hair_${id}`, `Mia, find the ${h.en}!`, `Mia ơi, tìm kiểu ${h.vi} nào!`);
+  },
+  yesHair(id) {
+    const h = HAIRS.find((x) => x.id === id);
+    return line(`hair_yes_${id}`, `Yes! ${cap(h.en)}!`, `Đúng rồi! ${cap(h.vi)}!`);
+  },
+  paintNails: (n, color) =>
+    line(`nails_${n}_${color}`, `Mia, paint ${en(n)} ${n === 1 ? 'nail' : 'nails'} ${color}!`, `Mia ơi, sơn ${vi(n)} móng tay màu ${colorVi(color)} nào!`),
+  mix: (a, b) =>
+    line(`mix_${a}_${b}`, `${cap(a)} and ${b}. What colour do they make, Mia?`, `Màu ${colorVi(a)} pha với màu ${colorVi(b)} ra màu gì hả Mia?`),
+  yesMix: (c) => line(`mix_yes_${c}`, `Yes! They make ${c}!`, `Đúng rồi! Ra màu ${colorVi(c)}!`),
+  colorByNumber: () => line('color_by_number', 'Mia, colour the picture by the numbers!', 'Mia ơi, tô màu theo số nào!'),
+  freePaint: () => line('free_paint', 'Mia, draw anything you like!', 'Mia ơi, vẽ gì cũng được nhé!'),
+
   all() {
     const out = [
       this.hello(),
@@ -513,6 +622,23 @@ export const Lines = {
       for (let b = 1; b < a; b++) out.push(this.sub(a, b), this.subYes(a, b));
     }
     for (const letter of LETTERS) out.push(this.findLetter(letter), this.yesLetter(letter));
+    out.push(this.roomDone(), this.plantGrow(), this.bakeDone(), this.colorByNumber(), this.freePaint());
+    for (let step = 0; step < 4; step++) out.push(this.plantStep(step));
+    for (const spot of ROOM_SPOTS) {
+      out.push(this.yesSpot(spot.id));
+      for (const item of ROOM_ITEMS) out.push(this.putItem(item.id, spot.id));
+    }
+    for (let n = 1; n <= 5; n++) {
+      for (const v of VEGS) out.push(this.harvest(n, v.id));
+      for (const g of INGREDIENTS) out.push(this.bake(n, g.id));
+      for (const c of COLORS) out.push(this.paintNails(n, c.id));
+    }
+    for (const need of PET_NEEDS) {
+      out.push(this.yesPet(need.id));
+      for (const pet of PETS) out.push(this.petNeeds(pet.id, need.id));
+    }
+    for (const h of HAIRS) out.push(this.findHair(h.id), this.yesHair(h.id));
+    for (const m of MIXES) out.push(this.mix(m.a, m.b), this.yesMix(m.result));
     return out;
   },
 };

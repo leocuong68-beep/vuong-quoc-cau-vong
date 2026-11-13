@@ -4183,5 +4183,640 @@
     "key": "yes_letter_z",
     "en": "Yes! The letter Z!",
     "vi": "Đúng rồi! Chữ Z!"
+  },
+  {
+    "key": "room_done",
+    "en": "Mia's room looks lovely!",
+    "vi": "Phòng của Mia đẹp quá!"
+  },
+  {
+    "key": "plant_grow",
+    "en": "Look, Mia! A beautiful flower!",
+    "vi": "Mia nhìn kìa! Một bông hoa thật đẹp!"
+  },
+  {
+    "key": "bake_done",
+    "en": "Yummy! The cake is ready!",
+    "vi": "Ngon quá! Bánh chín rồi!"
+  },
+  {
+    "key": "color_by_number",
+    "en": "Mia, colour the picture by the numbers!",
+    "vi": "Mia ơi, tô màu theo số nào!"
+  },
+  {
+    "key": "free_paint",
+    "en": "Mia, draw anything you like!",
+    "vi": "Mia ơi, vẽ gì cũng được nhé!"
+  },
+  {
+    "key": "plant_dig",
+    "en": "First, dig a hole. Mia, find the shovel!",
+    "vi": "Đầu tiên, mình đào một cái hố. Mia ơi, tìm cái xẻng nào!"
+  },
+  {
+    "key": "plant_seed",
+    "en": "Now put in a seed. Mia, find the seeds!",
+    "vi": "Bây giờ gieo hạt. Mia ơi, tìm túi hạt giống nào!"
+  },
+  {
+    "key": "plant_water",
+    "en": "The seed is thirsty. Mia, find the watering can!",
+    "vi": "Hạt đang khát nước. Mia ơi, tìm bình tưới nào!"
+  },
+  {
+    "key": "plant_sun",
+    "en": "The plant needs sunshine. Mia, find the sun!",
+    "vi": "Cây cần ánh nắng. Mia ơi, tìm mặt trời nào!"
+  },
+  {
+    "key": "put_yes_on_bed",
+    "en": "Yes! On the bed!",
+    "vi": "Đúng rồi! Trên giường!"
+  },
+  {
+    "key": "put_teddy_on_bed",
+    "en": "Mia, put the teddy on the bed!",
+    "vi": "Mia ơi, đặt gấu bông lên giường nào!"
+  },
+  {
+    "key": "put_ball_on_bed",
+    "en": "Mia, put the ball on the bed!",
+    "vi": "Mia ơi, đặt quả bóng lên giường nào!"
+  },
+  {
+    "key": "put_book_on_bed",
+    "en": "Mia, put the book on the bed!",
+    "vi": "Mia ơi, đặt quyển sách lên giường nào!"
+  },
+  {
+    "key": "put_lamp_on_bed",
+    "en": "Mia, put the lamp on the bed!",
+    "vi": "Mia ơi, đặt cái đèn lên giường nào!"
+  },
+  {
+    "key": "put_yes_next_bed",
+    "en": "Yes! Next to the bed!",
+    "vi": "Đúng rồi! Cạnh giường!"
+  },
+  {
+    "key": "put_teddy_next_bed",
+    "en": "Mia, put the teddy next to the bed!",
+    "vi": "Mia ơi, đặt gấu bông cạnh giường nào!"
+  },
+  {
+    "key": "put_ball_next_bed",
+    "en": "Mia, put the ball next to the bed!",
+    "vi": "Mia ơi, đặt quả bóng cạnh giường nào!"
+  },
+  {
+    "key": "put_book_next_bed",
+    "en": "Mia, put the book next to the bed!",
+    "vi": "Mia ơi, đặt quyển sách cạnh giường nào!"
+  },
+  {
+    "key": "put_lamp_next_bed",
+    "en": "Mia, put the lamp next to the bed!",
+    "vi": "Mia ơi, đặt cái đèn cạnh giường nào!"
+  },
+  {
+    "key": "put_yes_on_table",
+    "en": "Yes! On the table!",
+    "vi": "Đúng rồi! Trên bàn!"
+  },
+  {
+    "key": "put_teddy_on_table",
+    "en": "Mia, put the teddy on the table!",
+    "vi": "Mia ơi, đặt gấu bông lên bàn nào!"
+  },
+  {
+    "key": "put_ball_on_table",
+    "en": "Mia, put the ball on the table!",
+    "vi": "Mia ơi, đặt quả bóng lên bàn nào!"
+  },
+  {
+    "key": "put_book_on_table",
+    "en": "Mia, put the book on the table!",
+    "vi": "Mia ơi, đặt quyển sách lên bàn nào!"
+  },
+  {
+    "key": "put_lamp_on_table",
+    "en": "Mia, put the lamp on the table!",
+    "vi": "Mia ơi, đặt cái đèn lên bàn nào!"
+  },
+  {
+    "key": "put_yes_under_table",
+    "en": "Yes! Under the table!",
+    "vi": "Đúng rồi! Dưới gầm bàn!"
+  },
+  {
+    "key": "put_teddy_under_table",
+    "en": "Mia, put the teddy under the table!",
+    "vi": "Mia ơi, đặt gấu bông xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "put_ball_under_table",
+    "en": "Mia, put the ball under the table!",
+    "vi": "Mia ơi, đặt quả bóng xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "put_book_under_table",
+    "en": "Mia, put the book under the table!",
+    "vi": "Mia ơi, đặt quyển sách xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "put_lamp_under_table",
+    "en": "Mia, put the lamp under the table!",
+    "vi": "Mia ơi, đặt cái đèn xuống dưới gầm bàn nào!"
+  },
+  {
+    "key": "harvest_1_carrot",
+    "en": "Mia, pick one carrot!",
+    "vi": "Mia ơi, hái một củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_1_tomato",
+    "en": "Mia, pick one tomato!",
+    "vi": "Mia ơi, hái một quả cà chua nào!"
+  },
+  {
+    "key": "harvest_1_corn",
+    "en": "Mia, pick one corn cob!",
+    "vi": "Mia ơi, hái một bắp ngô nào!"
+  },
+  {
+    "key": "bake_1_egg",
+    "en": "Mia, put one egg in the bowl!",
+    "vi": "Mia ơi, cho một quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_1_strawberry",
+    "en": "Mia, put one strawberry in the bowl!",
+    "vi": "Mia ơi, cho một quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_1_banana",
+    "en": "Mia, put one banana in the bowl!",
+    "vi": "Mia ơi, cho một quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_1_pink",
+    "en": "Mia, paint one nail pink!",
+    "vi": "Mia ơi, sơn một móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_1_blue",
+    "en": "Mia, paint one nail blue!",
+    "vi": "Mia ơi, sơn một móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_1_yellow",
+    "en": "Mia, paint one nail yellow!",
+    "vi": "Mia ơi, sơn một móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_1_green",
+    "en": "Mia, paint one nail green!",
+    "vi": "Mia ơi, sơn một móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_1_purple",
+    "en": "Mia, paint one nail purple!",
+    "vi": "Mia ơi, sơn một móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_1_red",
+    "en": "Mia, paint one nail red!",
+    "vi": "Mia ơi, sơn một móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_1_orange",
+    "en": "Mia, paint one nail orange!",
+    "vi": "Mia ơi, sơn một móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_2_carrot",
+    "en": "Mia, pick two carrots!",
+    "vi": "Mia ơi, hái hai củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_2_tomato",
+    "en": "Mia, pick two tomatoes!",
+    "vi": "Mia ơi, hái hai quả cà chua nào!"
+  },
+  {
+    "key": "harvest_2_corn",
+    "en": "Mia, pick two corn cobs!",
+    "vi": "Mia ơi, hái hai bắp ngô nào!"
+  },
+  {
+    "key": "bake_2_egg",
+    "en": "Mia, put two eggs in the bowl!",
+    "vi": "Mia ơi, cho hai quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_2_strawberry",
+    "en": "Mia, put two strawberries in the bowl!",
+    "vi": "Mia ơi, cho hai quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_2_banana",
+    "en": "Mia, put two bananas in the bowl!",
+    "vi": "Mia ơi, cho hai quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_2_pink",
+    "en": "Mia, paint two nails pink!",
+    "vi": "Mia ơi, sơn hai móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_2_blue",
+    "en": "Mia, paint two nails blue!",
+    "vi": "Mia ơi, sơn hai móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_2_yellow",
+    "en": "Mia, paint two nails yellow!",
+    "vi": "Mia ơi, sơn hai móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_2_green",
+    "en": "Mia, paint two nails green!",
+    "vi": "Mia ơi, sơn hai móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_2_purple",
+    "en": "Mia, paint two nails purple!",
+    "vi": "Mia ơi, sơn hai móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_2_red",
+    "en": "Mia, paint two nails red!",
+    "vi": "Mia ơi, sơn hai móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_2_orange",
+    "en": "Mia, paint two nails orange!",
+    "vi": "Mia ơi, sơn hai móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_3_carrot",
+    "en": "Mia, pick three carrots!",
+    "vi": "Mia ơi, hái ba củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_3_tomato",
+    "en": "Mia, pick three tomatoes!",
+    "vi": "Mia ơi, hái ba quả cà chua nào!"
+  },
+  {
+    "key": "harvest_3_corn",
+    "en": "Mia, pick three corn cobs!",
+    "vi": "Mia ơi, hái ba bắp ngô nào!"
+  },
+  {
+    "key": "bake_3_egg",
+    "en": "Mia, put three eggs in the bowl!",
+    "vi": "Mia ơi, cho ba quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_3_strawberry",
+    "en": "Mia, put three strawberries in the bowl!",
+    "vi": "Mia ơi, cho ba quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_3_banana",
+    "en": "Mia, put three bananas in the bowl!",
+    "vi": "Mia ơi, cho ba quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_3_pink",
+    "en": "Mia, paint three nails pink!",
+    "vi": "Mia ơi, sơn ba móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_3_blue",
+    "en": "Mia, paint three nails blue!",
+    "vi": "Mia ơi, sơn ba móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_3_yellow",
+    "en": "Mia, paint three nails yellow!",
+    "vi": "Mia ơi, sơn ba móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_3_green",
+    "en": "Mia, paint three nails green!",
+    "vi": "Mia ơi, sơn ba móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_3_purple",
+    "en": "Mia, paint three nails purple!",
+    "vi": "Mia ơi, sơn ba móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_3_red",
+    "en": "Mia, paint three nails red!",
+    "vi": "Mia ơi, sơn ba móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_3_orange",
+    "en": "Mia, paint three nails orange!",
+    "vi": "Mia ơi, sơn ba móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_4_carrot",
+    "en": "Mia, pick four carrots!",
+    "vi": "Mia ơi, hái bốn củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_4_tomato",
+    "en": "Mia, pick four tomatoes!",
+    "vi": "Mia ơi, hái bốn quả cà chua nào!"
+  },
+  {
+    "key": "harvest_4_corn",
+    "en": "Mia, pick four corn cobs!",
+    "vi": "Mia ơi, hái bốn bắp ngô nào!"
+  },
+  {
+    "key": "bake_4_egg",
+    "en": "Mia, put four eggs in the bowl!",
+    "vi": "Mia ơi, cho bốn quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_4_strawberry",
+    "en": "Mia, put four strawberries in the bowl!",
+    "vi": "Mia ơi, cho bốn quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_4_banana",
+    "en": "Mia, put four bananas in the bowl!",
+    "vi": "Mia ơi, cho bốn quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_4_pink",
+    "en": "Mia, paint four nails pink!",
+    "vi": "Mia ơi, sơn bốn móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_4_blue",
+    "en": "Mia, paint four nails blue!",
+    "vi": "Mia ơi, sơn bốn móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_4_yellow",
+    "en": "Mia, paint four nails yellow!",
+    "vi": "Mia ơi, sơn bốn móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_4_green",
+    "en": "Mia, paint four nails green!",
+    "vi": "Mia ơi, sơn bốn móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_4_purple",
+    "en": "Mia, paint four nails purple!",
+    "vi": "Mia ơi, sơn bốn móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_4_red",
+    "en": "Mia, paint four nails red!",
+    "vi": "Mia ơi, sơn bốn móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_4_orange",
+    "en": "Mia, paint four nails orange!",
+    "vi": "Mia ơi, sơn bốn móng tay màu cam nào!"
+  },
+  {
+    "key": "harvest_5_carrot",
+    "en": "Mia, pick five carrots!",
+    "vi": "Mia ơi, hái năm củ cà rốt nào!"
+  },
+  {
+    "key": "harvest_5_tomato",
+    "en": "Mia, pick five tomatoes!",
+    "vi": "Mia ơi, hái năm quả cà chua nào!"
+  },
+  {
+    "key": "harvest_5_corn",
+    "en": "Mia, pick five corn cobs!",
+    "vi": "Mia ơi, hái năm bắp ngô nào!"
+  },
+  {
+    "key": "bake_5_egg",
+    "en": "Mia, put five eggs in the bowl!",
+    "vi": "Mia ơi, cho năm quả trứng vào tô nào!"
+  },
+  {
+    "key": "bake_5_strawberry",
+    "en": "Mia, put five strawberries in the bowl!",
+    "vi": "Mia ơi, cho năm quả dâu vào tô nào!"
+  },
+  {
+    "key": "bake_5_banana",
+    "en": "Mia, put five bananas in the bowl!",
+    "vi": "Mia ơi, cho năm quả chuối vào tô nào!"
+  },
+  {
+    "key": "nails_5_pink",
+    "en": "Mia, paint five nails pink!",
+    "vi": "Mia ơi, sơn năm móng tay màu hồng nào!"
+  },
+  {
+    "key": "nails_5_blue",
+    "en": "Mia, paint five nails blue!",
+    "vi": "Mia ơi, sơn năm móng tay màu xanh dương nào!"
+  },
+  {
+    "key": "nails_5_yellow",
+    "en": "Mia, paint five nails yellow!",
+    "vi": "Mia ơi, sơn năm móng tay màu vàng nào!"
+  },
+  {
+    "key": "nails_5_green",
+    "en": "Mia, paint five nails green!",
+    "vi": "Mia ơi, sơn năm móng tay màu xanh lá nào!"
+  },
+  {
+    "key": "nails_5_purple",
+    "en": "Mia, paint five nails purple!",
+    "vi": "Mia ơi, sơn năm móng tay màu tím nào!"
+  },
+  {
+    "key": "nails_5_red",
+    "en": "Mia, paint five nails red!",
+    "vi": "Mia ơi, sơn năm móng tay màu đỏ nào!"
+  },
+  {
+    "key": "nails_5_orange",
+    "en": "Mia, paint five nails orange!",
+    "vi": "Mia ơi, sơn năm móng tay màu cam nào!"
+  },
+  {
+    "key": "pet_yes_hungry",
+    "en": "Yes! Food!",
+    "vi": "Đúng rồi! Đồ ăn!"
+  },
+  {
+    "key": "pet_puppy_hungry",
+    "en": "The puppy is hungry. What does it need, Mia?",
+    "vi": "Cún con đang đói. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_hungry",
+    "en": "The kitten is hungry. What does it need, Mia?",
+    "vi": "Mèo con đang đói. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_yes_dirty",
+    "en": "Yes! A bath!",
+    "vi": "Đúng rồi! Đi tắm thôi!"
+  },
+  {
+    "key": "pet_puppy_dirty",
+    "en": "The puppy is dirty. What does it need, Mia?",
+    "vi": "Cún con bị bẩn rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_dirty",
+    "en": "The kitten is dirty. What does it need, Mia?",
+    "vi": "Mèo con bị bẩn rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_yes_sleepy",
+    "en": "Yes! A bed!",
+    "vi": "Đúng rồi! Cái giường!"
+  },
+  {
+    "key": "pet_puppy_sleepy",
+    "en": "The puppy is sleepy. What does it need, Mia?",
+    "vi": "Cún con buồn ngủ rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_sleepy",
+    "en": "The kitten is sleepy. What does it need, Mia?",
+    "vi": "Mèo con buồn ngủ rồi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_yes_play",
+    "en": "Yes! A ball!",
+    "vi": "Đúng rồi! Quả bóng!"
+  },
+  {
+    "key": "pet_puppy_play",
+    "en": "The puppy wants to play. What does it need, Mia?",
+    "vi": "Cún con muốn chơi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_play",
+    "en": "The kitten wants to play. What does it need, Mia?",
+    "vi": "Mèo con muốn chơi. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_yes_messy",
+    "en": "Yes! A brush!",
+    "vi": "Đúng rồi! Cái lược!"
+  },
+  {
+    "key": "pet_puppy_messy",
+    "en": "The puppy has messy fur. What does it need, Mia?",
+    "vi": "Cún con bị rối lông. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "pet_kitten_messy",
+    "en": "The kitten has messy fur. What does it need, Mia?",
+    "vi": "Mèo con bị rối lông. Bạn ấy cần gì hả Mia?"
+  },
+  {
+    "key": "hair_long",
+    "en": "Mia, find the long hair!",
+    "vi": "Mia ơi, tìm kiểu tóc dài nào!"
+  },
+  {
+    "key": "hair_yes_long",
+    "en": "Yes! Long hair!",
+    "vi": "Đúng rồi! Tóc dài!"
+  },
+  {
+    "key": "hair_pigtails",
+    "en": "Mia, find the pigtails!",
+    "vi": "Mia ơi, tìm kiểu tóc buộc hai bên nào!"
+  },
+  {
+    "key": "hair_yes_pigtails",
+    "en": "Yes! Pigtails!",
+    "vi": "Đúng rồi! Tóc buộc hai bên!"
+  },
+  {
+    "key": "hair_braids",
+    "en": "Mia, find the braids!",
+    "vi": "Mia ơi, tìm kiểu tóc tết bím nào!"
+  },
+  {
+    "key": "hair_yes_braids",
+    "en": "Yes! Braids!",
+    "vi": "Đúng rồi! Tóc tết bím!"
+  },
+  {
+    "key": "hair_bun",
+    "en": "Mia, find the bun!",
+    "vi": "Mia ơi, tìm kiểu tóc búi nào!"
+  },
+  {
+    "key": "hair_yes_bun",
+    "en": "Yes! Bun!",
+    "vi": "Đúng rồi! Tóc búi!"
+  },
+  {
+    "key": "hair_bob",
+    "en": "Mia, find the short hair!",
+    "vi": "Mia ơi, tìm kiểu tóc ngắn nào!"
+  },
+  {
+    "key": "hair_yes_bob",
+    "en": "Yes! Short hair!",
+    "vi": "Đúng rồi! Tóc ngắn!"
+  },
+  {
+    "key": "mix_red_yellow",
+    "en": "Red and yellow. What colour do they make, Mia?",
+    "vi": "Màu đỏ pha với màu vàng ra màu gì hả Mia?"
+  },
+  {
+    "key": "mix_yes_orange",
+    "en": "Yes! They make orange!",
+    "vi": "Đúng rồi! Ra màu cam!"
+  },
+  {
+    "key": "mix_blue_yellow",
+    "en": "Blue and yellow. What colour do they make, Mia?",
+    "vi": "Màu xanh dương pha với màu vàng ra màu gì hả Mia?"
+  },
+  {
+    "key": "mix_yes_green",
+    "en": "Yes! They make green!",
+    "vi": "Đúng rồi! Ra màu xanh lá!"
+  },
+  {
+    "key": "mix_red_blue",
+    "en": "Red and blue. What colour do they make, Mia?",
+    "vi": "Màu đỏ pha với màu xanh dương ra màu gì hả Mia?"
+  },
+  {
+    "key": "mix_yes_purple",
+    "en": "Yes! They make purple!",
+    "vi": "Đúng rồi! Ra màu tím!"
+  },
+  {
+    "key": "mix_red_white",
+    "en": "Red and white. What colour do they make, Mia?",
+    "vi": "Màu đỏ pha với màu trắng ra màu gì hả Mia?"
+  },
+  {
+    "key": "mix_yes_pink",
+    "en": "Yes! They make pink!",
+    "vi": "Đúng rồi! Ra màu hồng!"
   }
 ]

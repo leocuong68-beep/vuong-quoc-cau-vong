@@ -1,6 +1,7 @@
 import { ArrayUtils } from '../utils/ArrayUtils.js';
 import {
-  BODY, BUDDIES, COLORS, DAY_NIGHT, EMOTIONS, LETTERS, OPPOSITES, OUTFITS, RHYMES, SHAPES, TABLE_ITEMS, WORDS, Lines,
+  BODY, BUDDIES, COLORS, DAY_NIGHT, EMOTIONS, LETTERS, MIXES, OPPOSITES, OUTFITS, PETS, PET_NEEDS, RHYMES, SHAPES, TABLE_ITEMS,
+  WORDS, Lines,
 } from './princessLines.js';
 
 // The learning path, easiest first. `buddy` is the family member who plays along
@@ -511,6 +512,37 @@ const flowerShopQuiz = () => {
   };
 };
 
+const petQuiz = () => {
+  const pet = pickOne(PETS);
+  const options = sample(PET_NEEDS, 3);
+  const need = pickOne(options);
+  return {
+    line: Lines.petNeeds(pet.id, need.id),
+    okLine: Lines.yesPet(need.id),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'picture', src: pet.src },
+    choices: options.map((o) => img(o.id, o.src)),
+    big: true,
+    answerId: need.id,
+  };
+};
+
+const hexOf = (id) => (id === 'white' ? '#ffffff' : COLORS.find((c) => c.id === id).hex);
+
+const mixQuiz = () => {
+  const m = pickOne(MIXES);
+  const others = sample(COLORS.filter((c) => ![m.a, m.b, m.result].includes(c.id)), 2);
+  const blob = (id) => ({ id, kind: 'shape', shape: 'circle', hex: hexOf(id) });
+  return {
+    line: Lines.mix(m.a, m.b),
+    okLine: Lines.yesMix(m.result),
+    wrongLine: () => Lines.tryAgain(),
+    scene: { kind: 'mix', a: hexOf(m.a), b: hexOf(m.b), result: hexOf(m.result) },
+    choices: shuffled([blob(m.result), ...others.map((c) => blob(c.id))]),
+    answerId: m.result,
+  };
+};
+
 const icon = (src) => ({ src });
 const text = (value) => ({ text: value });
 
@@ -578,6 +610,18 @@ export const STAGES = [
   { id: 'bonds', area: 'math', buddy: 'daddy', make: bondQuiz(10), en: 'Number pairs', vi: 'Tách số', icon: text('5=2+?') },
   { id: 'skip', area: 'math', buddy: 'daddy', make: skipQuiz, en: 'Skip counting', vi: 'Đếm nhảy', icon: text('2 4 6') },
   { id: 'bubbles3', area: 'math', route: '/princess/bubbles/3', en: 'Count down', vi: 'Đếm ngược', icon: text('10→1') },
+  // --- wave 2: home, garden, salon and art ---
+  { id: 'hair', area: 'beauty', route: '/princess/hair', en: 'Hair salon', vi: 'Tiệm tóc', icon: icon('img/princess/hair_pigtails.webp') },
+  { id: 'nails', area: 'beauty', route: '/princess/nails', en: 'Nail salon', vi: 'Sơn móng tay', icon: icon('img/princess/hand.webp') },
+  { id: 'room', area: 'home', route: '/princess/room', en: "Mia's room", vi: 'Phòng của Mia', icon: icon('img/princess/thing_bed.webp') },
+  { id: 'pets', area: 'home', make: petQuiz, buddy: 'tintin', en: 'Pet care', vi: 'Chăm thú cưng', icon: icon('img/princess/pet_puppy.webp') },
+  { id: 'plant', area: 'home', route: '/princess/plant', en: 'Grow flowers', vi: 'Trồng hoa', icon: icon('img/princess/thing_sprout.webp') },
+  { id: 'harvest', area: 'home', route: '/princess/collect/harvest', en: 'Veggie garden', vi: 'Vườn rau', icon: icon('img/princess/thing_basket.webp') },
+  { id: 'bake', area: 'home', route: '/princess/collect/bake', en: 'Bake a cake', vi: 'Làm bánh với Mẹ', icon: icon('img/princess/thing_cake.webp') },
+  { id: 'mix', area: 'art', make: mixQuiz, buddy: 'daddy', en: 'Mix colours', vi: 'Pha màu', icon: text('+ =') },
+  { id: 'colornumber1', area: 'art', route: '/princess/colornumber/1', en: 'Colour by number', vi: 'Tô màu theo số', icon: text('1 2 3') },
+  { id: 'colornumber2', area: 'art', route: '/princess/colornumber/2', en: 'Colour by number 2', vi: 'Tô màu theo số 2', icon: text('1–5') },
+  { id: 'paint', area: 'art', route: '/princess/paint', en: 'Art room', vi: 'Phòng tranh', icon: text('✎') },
 ];
 
 export const stageById = (id) => STAGES.find((s) => s.id === id);
@@ -605,6 +649,8 @@ export const AREAS = [
   { id: 'math', en: 'Numbers', vi: 'Học số' },
   { id: 'english', en: 'Words and letters', vi: 'Học chữ' },
   { id: 'world', en: 'My world', vi: 'Thế giới quanh bé' },
+  { id: 'home', en: 'Home and garden', vi: 'Nhà và vườn' },
+  { id: 'art', en: 'Art', vi: 'Vẽ và tô màu' },
 ];
 
 export const areaOf = (stage) => {

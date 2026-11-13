@@ -70,6 +70,16 @@
               <!-- eslint-disable-next-line vue/no-v-html -->
               <span :key="questionId" class="clock" v-html="clock(scene.hour)" />
             </template>
+            <template v-else-if="scene.kind === 'mix'">
+              <!-- eslint-disable vue/no-v-html -->
+              <span class="blob" v-html="blob(scene.a)" />
+              <span class="plus">+</span>
+              <span class="blob" v-html="blob(scene.b)" />
+              <span class="plus">=</span>
+              <span v-if="isBusy" class="blob" v-html="blob(scene.result)" />
+              <span v-else class="mystery">?</span>
+              <!-- eslint-enable vue/no-v-html -->
+            </template>
             <template v-else-if="scene.kind === 'numbers'">
               <span
                 v-for="(n, index) in scene.sequence"
@@ -199,6 +209,9 @@
       this.restart();
     },
     methods: {
+      blob(hex) {
+        return shapeSvg('circle', hex);
+      },
       clock(hour) {
         return clockSvg(hour);
       },

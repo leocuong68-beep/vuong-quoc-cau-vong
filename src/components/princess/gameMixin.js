@@ -52,6 +52,17 @@ export const gameMixin = {
       this.isGameOver = true;
       this.emitter.emit('showReward', [1]);
     },
+    // Wrong answer: show the cross, say "try again", then ask the same question once more.
+    wrongThenRepeat(line = Lines.tryAgain()) {
+      const question = this.shown;
+      this.$refs.errorAnimation.showError(() => {
+        if (this.isGameOver || !this.shown || this.shown.key !== question.key) return;
+        this.say(line);
+        this.later(() => {
+          if (!this.isGameOver && this.shown && this.shown.key === line.key) this.say(question);
+        }, 1800);
+      });
+    },
     goToPath() {
       this.$router.push('/princess');
     },

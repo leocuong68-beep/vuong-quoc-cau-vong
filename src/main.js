@@ -31,6 +31,13 @@ import QuizGame from './components/princess/QuizGame.vue';
 import MakeupGame from './components/princess/MakeupGame.vue';
 import MemoryGame from './components/princess/MemoryGame.vue';
 import BubblesGame from './components/princess/BubblesGame.vue';
+import RoomGame from './components/princess/RoomGame.vue';
+import PlantGame from './components/princess/PlantGame.vue';
+import CollectGame from './components/princess/CollectGame.vue';
+import HairGame from './components/princess/HairGame.vue';
+import NailGame from './components/princess/NailGame.vue';
+import ColorNumberGame from './components/princess/ColorNumberGame.vue';
+import PaintGame from './components/princess/PaintGame.vue';
 import './registerServiceWorker';
 
 if (!localStorage.rewards) {
@@ -120,6 +127,13 @@ const router = createRouter({
       name: 'PrincessBubbles',
       component: BubblesGame,
     },
+    { path: '/princess/room', name: 'PrincessRoom', component: RoomGame },
+    { path: '/princess/plant', name: 'PrincessPlant', component: PlantGame },
+    { path: '/princess/collect/:kind', name: 'PrincessCollect', component: CollectGame },
+    { path: '/princess/hair', name: 'PrincessHair', component: HairGame },
+    { path: '/princess/nails', name: 'PrincessNails', component: NailGame },
+    { path: '/princess/colornumber/:level', name: 'PrincessColorNumber', component: ColorNumberGame },
+    { path: '/princess/paint', name: 'PrincessPaint', component: PaintGame },
     {
       path: '/princess/stage/:id',
       name: 'PrincessStage',
