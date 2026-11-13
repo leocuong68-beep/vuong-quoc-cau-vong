@@ -14,8 +14,25 @@
         </button>
         <LangToggle @change="hello" />
       </div>
+      <div class="themes">
+        <button
+          v-for="area in areas"
+          :key="area.id"
+          type="button"
+          class="theme"
+          :data-theme="area.id"
+          :style="{ background: area.hex }"
+          @click="jump(area.id)"
+        >
+          <img :src="area.icon" class="no-drag" alt="" />
+          <span>{{ area[lang] }}</span>
+        </button>
+      </div>
       <template v-for="area in areas" :key="area.id">
-        <h2 class="area-title">{{ area[lang] }}</h2>
+        <h2 :ref="'area-' + area.id" class="area-title" :style="{ background: area.hex }">
+          <img :src="area.icon" class="no-drag" alt="" />
+          <span>{{ area[lang] }}</span>
+        </h2>
       <div class="path-grid">
         <button
           v-for="stage in stagesOf(area.id)"
@@ -42,6 +59,15 @@
         </button>
       </div>
       </template>
+      <h2 class="area-title more">
+        <span>{{ lang === 'vi' ? 'Trò chơi khác' : 'More games' }}</span>
+      </h2>
+      <div class="path-grid">
+        <button v-for="game in moreGames" :key="game.id" type="button" class="stage" :data-more="game.id" @click="$router.push(game.route)">
+          <span class="stage-icon"><img :src="game.src" class="no-drag" alt="" /></span>
+          <span class="stage-title">{{ game[lang] }}</span>
+        </button>
+      </div>
     </div>
   </NavPage>
 </template>
@@ -52,7 +78,7 @@
   import { Speech } from '../utils/Speech.js';
   import { Lang, Progress } from './state.js';
   import { BUDDIES, Lines } from './princessLines.js';
-  import { AREAS, STAGES, areaOf, stageRoute, shapeSvg } from './stages.js';
+  import { AREAS, MORE_GAMES, STAGES, areaOf, stageRoute, shapeSvg } from './stages.js';
 
   export default {
     name: 'PrincessNavPage',
@@ -61,6 +87,7 @@
       return {
         stages: STAGES,
         areas: AREAS,
+        moreGames: MORE_GAMES,
         buddies: BUDDIES,
         shown: Lines.hello(),
         lockedId: null,
@@ -82,6 +109,11 @@
       Speech.stop();
     },
     methods: {
+      jump(areaId) {
+        const title = this.$refs['area-' + areaId];
+        const el = Array.isArray(title) ? title[0] : title;
+        if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      },
       stagesOf(areaId) {
         return this.stages.filter((stage) => areaOf(stage) === areaId);
       },
@@ -183,11 +215,53 @@
     }
   }
 
+  .themes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(96pt, 1fr));
+    gap: 6pt;
+    margin-bottom: 4pt;
+  }
+
+  .theme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2pt;
+    padding: 6pt 4pt;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #4a2a57;
+    border: 2pt solid #4a2a57;
+    border-radius: 14pt;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .theme img {
+    height: 40pt;
+    width: auto;
+  }
+
   .area-title {
-    margin: 10pt 2pt 6pt;
+    display: flex;
+    align-items: center;
+    gap: 8pt;
+    margin: 12pt 0 6pt;
+    padding: 4pt 10pt;
     font-size: 1.15rem;
     font-weight: 800;
-    color: #fffaf2;
+    color: #4a2a57;
+    border-radius: 10pt;
+  }
+
+  .area-title img {
+    height: 24pt;
+    width: auto;
+  }
+
+  .area-title.more {
+    background: #cfcbd6;
   }
 
   .path-grid {

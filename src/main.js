@@ -5,7 +5,6 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import mitt from 'mitt';
 import { logger } from './utils/logger.js';
 
-import Home from './components/Home.vue';
 
 const APP_VERSION = import.meta.env.APP_VERSION;
 const APP_COMMIT = import.meta.env.APP_COMMIT;
@@ -50,7 +49,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: Home,
+      component: PrincessNavPage,
     },
     {
       path: '/memory',

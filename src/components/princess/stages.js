@@ -645,12 +645,19 @@ export const shapeSvg = (shape, hex) =>
 
 // The path page shows the stages in these groups.
 export const AREAS = [
-  { id: 'beauty', en: 'Dress up and makeup', vi: 'Làm đẹp' },
-  { id: 'math', en: 'Numbers', vi: 'Học số' },
-  { id: 'english', en: 'Words and letters', vi: 'Học chữ' },
-  { id: 'world', en: 'My world', vi: 'Thế giới quanh bé' },
-  { id: 'home', en: 'Home and garden', vi: 'Nhà và vườn' },
-  { id: 'art', en: 'Art', vi: 'Vẽ và tô màu' },
+  { id: 'beauty', en: 'Dress up', vi: 'Làm đẹp', icon: 'img/princess/crown_pink.webp', hex: '#ff7eb6' },
+  { id: 'math', en: 'Numbers', vi: 'Học số', icon: 'img/princess/apple.webp', hex: '#ff9f43' },
+  { id: 'english', en: 'Words', vi: 'Học chữ', icon: 'img/characters/A.svg', hex: '#ffd23f' },
+  { id: 'world', en: 'My world', vi: 'Quanh bé', icon: 'img/princess/thing_sun.webp', hex: '#4aa8ff' },
+  { id: 'home', en: 'Home and garden', vi: 'Nhà và vườn', icon: 'img/princess/thing_sprout.webp', hex: '#5fd38d' },
+  { id: 'art', en: 'Art', vi: 'Vẽ và tô màu', icon: 'img/princess/flower_purple.webp', hex: '#a77bff' },
+];
+
+// The games that came with edukiz, shown as the last group on the home page.
+export const MORE_GAMES = [
+  { id: 'memory', route: '/memory', en: 'Memory', vi: 'Lật hình', src: 'img/games/MemoryBackface.png' },
+  { id: 'dragdrop', route: '/dragdrop', en: 'Drag and drop', vi: 'Kéo thả', src: 'img/games/DD.png' },
+  { id: 'misc', route: '/misc', en: 'Number games', vi: 'Trò chơi số', src: 'img/games/Calculate.png' },
 ];
 
 export const areaOf = (stage) => {
