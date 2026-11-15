@@ -14,6 +14,10 @@
           <span>{{ player ? player.name : '' }}</span>
           <em class="fas fa-user-friends" />
         </button>
+        <button v-if="!isPublic" type="button" class="player" data-test="to-tintin" @click="$router.push('/tintin')">
+          <span>Tin Tin</span>
+          <em class="fas fa-graduation-cap" />
+        </button>
         <div class="path-family">
           <img v-for="src in familySrcs" :key="src" :src="src" class="no-drag" alt="" />
         </div>

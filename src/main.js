@@ -37,6 +37,9 @@ import HairGame from './components/princess/HairGame.vue';
 import NailGame from './components/princess/NailGame.vue';
 import ColorNumberGame from './components/princess/ColorNumberGame.vue';
 import PaintGame from './components/princess/PaintGame.vue';
+import AcademyHome from './components/academy/AcademyHome.vue';
+import SubjectPage from './components/academy/SubjectPage.vue';
+import LessonGame from './components/academy/LessonGame.vue';
 import './registerServiceWorker';
 
 if (!localStorage.rewards) {
@@ -51,6 +54,9 @@ const router = createRouter({
       name: 'Home',
       component: PrincessNavPage,
     },
+    { path: '/tintin', name: 'Academy', component: AcademyHome },
+    { path: '/tintin/:subject', name: 'AcademySubject', component: SubjectPage },
+    { path: '/tintin/:subject/:lesson', name: 'AcademyLesson', component: LessonGame },
     {
       path: '/memory',
       name: 'Memory',
@@ -146,6 +152,24 @@ const router = createRouter({
       },
     },
   ],
+});
+
+// A device where Tin Tin studies opens straight on his study page; Mia's tablet keeps her kingdom.
+let firstNavigation = true;
+router.beforeEach((to) => {
+  const isAcademy = to.path.startsWith('/tintin');
+  try {
+    if (firstNavigation && to.path === '/' && localStorage.academy_device === '1') {
+      firstNavigation = false;
+      return '/tintin';
+    }
+    if (isAcademy) localStorage.academy_device = '1';
+    else if (to.path === '/' && !firstNavigation) localStorage.academy_device = '0';
+  } catch (e) {
+    // no storage: every visit starts on the home page
+  }
+  firstNavigation = false;
+  return true;
 });
 
 const emitter = mitt();

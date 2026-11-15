@@ -36,3 +36,12 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Game chạy tại https://leocuong68-beep.github.io/vuong-quoc-cau-vong/ (nhánh `gh-pages` của repo `leocuong68-beep/vuong-quoc-cau-vong`; mã nguồn ở nhánh `main`).
 - APK từ bản 1.4 chỉ là vỏ mở trang đó: build bằng `VQCV_REMOTE=1 npx cap sync android` rồi `gradle assembleDebug`.
 - Ra bản mới: `npx vite build`, chép nội dung `dist/` (kèm file `.nojekyll`) lên nhánh `gh-pages`. Tablet tự lấy bản mới khi mở app có mạng; không cần cài lại APK.
+
+## Học viện Tin Tin (từ 15/11/2026)
+- Hồ sơ riêng của Tin Tin: `#/tintin` (giao diện tối, chững chạc). Ở trang của Mia có nút "Tin Tin" để chuyển sang. Máy nào đã mở `#/tintin` thì lần sau mở game sẽ vào thẳng trang của Tin Tin.
+- 4 môn: Tiếng Hy Lạp, Tiếng Anh, Toán, Vật lý & Robot. Nội dung ở `src/components/academy/curriculum/<môn>.js`; mỗi bài sinh 10 câu ngẫu nhiên.
+- Luật: đúng 8/10 mới qua bài, bài sau mới mở. 10/10 = 3 sao, 9 = 2 sao, 8 = 1 sao. Sao vào ví chỉ khi đạt kết quả tốt hơn trước (ôn bài cũ: 1 sao/môn/ngày).
+- Nhiệm vụ ngày: qua mỗi môn 1 bài → mở Minecraft cho hôm nay (+5 sao thưởng). Trạng thái lưu ở localStorage `academy_minecraft_open` (= ngày hôm nay khi đã mở) để nối với máy chủ Minecraft sau.
+- Phụ huynh: bấm avatar Tin Tin 7 lần để mở hết các bài. Nút góc trên đổi giọng hướng dẫn Tiếng Việt / Ελληνικά.
+- Giọng: hiện dùng giọng có sẵn của máy (Mac có giọng Hy Lạp Melina). File thu sẵn đặt ở `public/sounds/academy/<vi|el|en>/<id>.mp3`, liệt kê trong `public/sounds/academy/manifest.json` (id = hàm `lineId` trong `academySpeech.js`).
+- Test nội dung: `npx vitest run tests/unit/academy.spec.js`.

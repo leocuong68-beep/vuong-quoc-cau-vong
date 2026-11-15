@@ -1,0 +1,55 @@
+// Tin Tin's study space: dark navy, calm, for an older child.
+.academy {
+  --bg: #0b1220;
+  --card: #131c2e;
+  --line: #22304a;
+  --text: #e6edf7;
+  --muted: #8aa0bf;
+  --accent: #38bdf8;
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 0 calc(1.4rem + var(--safe-right, 0px)) 1rem calc(1.4rem + var(--safe-left, 0px));
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(56, 189, 248, 0.12), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(20, 184, 166, 0.1), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+
+  button {
+    font-family: inherit;
+  }
+  .icon-btn {
+    width: 2.8rem;
+    height: 2.8rem;
+    flex: none;
+    border-radius: 0.9rem;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text);
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .primary,
+  .secondary {
+    border-radius: 0.9rem;
+    padding: 0.8rem 1.5rem;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .primary {
+    background: var(--accent);
+    color: #0b1220;
+    border: none;
+  }
+  .secondary {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+}
