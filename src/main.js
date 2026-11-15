@@ -159,7 +159,19 @@ const router = createRouter({
 
 // A device where Tin Tin studies opens straight on his study page; Mia's tablet keeps her kingdom.
 let firstNavigation = true;
+// Mia's Android tablet app (Capacitor shell) is Mia's only: Tin Tin's study space stays off it.
+const onMiaTablet = (() => {
+  try {
+    const cap = window.Capacitor;
+    if (cap && cap.isNativePlatform && cap.isNativePlatform()) return true;
+    return /; wv\)/.test(navigator.userAgent);
+  } catch (e) {
+    return false;
+  }
+})();
+window.__onMiaTablet = onMiaTablet;
 router.beforeEach((to) => {
+  if (onMiaTablet && to.path.startsWith('/tintin')) return '/princess';
   const isAcademy = to.path.startsWith('/tintin');
   try {
     if (firstNavigation && to.path === '/' && localStorage.academy_device === '1') {

@@ -17,7 +17,7 @@
         <button v-if="!isPublic" type="button" class="player school" data-test="to-mia-school" @click="$router.push('/mia')">
           <span>📚 Lớp học</span>
         </button>
-        <button v-if="!isPublic" type="button" class="player" data-test="to-tintin" @click="$router.push('/tintin')">
+        <button v-if="!isPublic && !onMiaTablet" type="button" class="player" data-test="to-tintin" @click="$router.push('/tintin')">
           <span>Tin Tin</span>
           <em class="fas fa-graduation-cap" />
         </button>
@@ -116,6 +116,7 @@
       };
     },
     computed: {
+      onMiaTablet: () => typeof window !== 'undefined' && !!window.__onMiaTablet,
       lang() {
         return Lang.current;
       },
