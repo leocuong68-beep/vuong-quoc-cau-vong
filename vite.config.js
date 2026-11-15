@@ -75,7 +75,7 @@ export default defineConfig({
             options: { cacheName: 'voice-kid', expiration: { maxEntries: 1500 } },
           },
           {
-            urlPattern: /\/sounds\/academy\/(vi|en|el)\/.*\.mp3$/,
+            urlPattern: /\/sounds\/academy(_mia)?\/(vi|en|el)\/.*\.mp3$/,
             handler: 'CacheFirst',
             options: { cacheName: 'voice-academy', expiration: { maxEntries: 4000 } },
           },

@@ -34,13 +34,22 @@ export const splitGreek = (part) => {
     .filter((p) => /[\p{L}\d]/u.test(p.text));
 };
 
-let manifest = null;
-const loadManifest = () => {
-  if (manifest) return manifest;
-  manifest = fetch('sounds/academy/manifest.json')
+// Each child has an own voice: Tin Tin's guide is Coach Leo (vi) + Wiselady (en, el),
+// Mia keeps her Lovely_Girl voice in every language.
+const voiceBase = () => {
+  try {
+    return /^#\/mia/.test(window.location.hash) ? 'sounds/academy_mia/' : 'sounds/academy/';
+  } catch (e) {
+    return 'sounds/academy/';
+  }
+};
+const manifests = {};
+const loadManifest = (base) => {
+  if (manifests[base]) return manifests[base];
+  manifests[base] = fetch(base + 'manifest.json')
     .then((r) => (r.ok ? r.json() : {}))
     .catch(() => ({}));
-  return manifest;
+  return manifests[base];
 };
 
 const pickVoice = (locale) => {
@@ -77,12 +86,15 @@ export const AcademySpeech = {
   },
   async say(parts) {
     if (!parts) return;
+    const base = voiceBase();
+    const files = await loadManifest(base);
+    const has = (lang, text) => (files[lang] || []).includes(lineId(lang, text));
+    // a whole recorded line first; otherwise Greek words by the Greek voice
     const list = (Array.isArray(parts) ? parts : [parts])
       .filter((p) => p && p.text)
-      .flatMap(splitGreek);
+      .flatMap((p) => (has(p.lang, p.text) ? [p] : splitGreek(p)));
     this.stop();
     const token = this.token;
-    const files = await loadManifest();
     for (const part of list) {
       if (token !== this.token) return;
       const id = lineId(part.lang, part.text);
@@ -90,11 +102,11 @@ export const AcademySpeech = {
       const pieces = chunksOf(part.text);
       const pieceIds = pieces.map((p) => lineId(part.lang, p));
       if (have.includes(id)) {
-        await this.playFile('sounds/academy/' + part.lang + '/' + id + '.mp3', token, part);
+        await this.playFile(base + part.lang + '/' + id + '.mp3', token, part);
       } else if (pieces.length > 1 && pieceIds.every((p) => have.includes(p))) {
         for (const p of pieceIds) {
           if (token !== this.token) return;
-          await this.playFile('sounds/academy/' + part.lang + '/' + p + '.mp3', token, part);
+          await this.playFile(base + part.lang + '/' + p + '.mp3', token, part);
         }
       } else {
         await this.browserVoice(part, token);

@@ -67,7 +67,7 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 
 ## Giọng hướng dẫn (15/11/2026)
 
-- Tiếng Việt: giọng Coach Leo Cường (MiniMax clone `moss_audio_46ffd69b-…`, speed 0.92). Tiếng Anh: `English_Wiselady` (speed 0.95). Tiếng Hy Lạp (cả chữ Hy Lạp nằm trong câu Việt/Anh): `English_Wiselady` + language_boost Greek (speed 0.9). Câu khen "Yay, Bravo…" giữ giọng bé (vox/, vox_mia/).
+- Tin Tin (`sounds/academy/`): tiếng Việt giọng Coach Leo Cường (MiniMax clone `moss_audio_46ffd69b-…`, speed 0.92). Tiếng Anh: `English_Wiselady` (speed 0.95). Tiếng Hy Lạp (cả chữ Hy Lạp nằm trong câu Việt/Anh): `English_Wiselady` + language_boost Greek (speed 0.9). Mia (`sounds/academy_mia/`) giữ Lovely_Girl cho cả 3 thứ tiếng (thêm 139 câu tiếng Anh bằng `scripts/tts_mia_en.py`); `AcademySpeech` chọn thư mục theo đường dẫn #/mia. Câu khen "Yay, Bravo…" giữ giọng bé (vox/, vox_mia/).
 - Nút ngôn ngữ trong Học viện: VI → EN → EL. Lời tiếng Anh nằm trong `curriculum/en.js` (từ điển EN + `pickText`), câu có số thì có trường `en` riêng.
 - Câu toán có quá nhiều biến thể số không thu nguyên câu mà thu từng mảnh (số và chữ giữa các số); `AcademySpeech` ghép các mảnh (`chunksOf`).
 - Thu: `scripts/collect-guide-lines.spec.js` (chép vào tests/unit để chạy) → `/tmp/guide-lines.json` → `scripts/tts_guide.py` chạy trên Mac → `_tts/guide/<vi|en>/*.mp3` → chép vào `public/sounds/academy/<lang>/` và cập nhật manifest.
