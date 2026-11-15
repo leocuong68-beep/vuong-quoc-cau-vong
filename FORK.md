@@ -64,3 +64,10 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Giọng phản ứng bé gái ở `public/sounds/academy/vox_mia/` (Gemini TTS giọng Leda qua fal); hình biểu cảm `img/academy/mia_{think,cheer,wow,oops}.webp`; nền `mia_world.webp`; biểu tượng môn `mia_block_*.webp` (Recraft).
 - Trang chính của Mia có nút "📚 Lớp học" để vào.
 - Giọng đọc Lớp học của Mia (15/11/2026): 381 câu (vi/el/en) thu bằng MiniMax gói Plan, giọng Lovely_Girl, ở `public/sounds/academy/<vi|el|en>/<id>.mp3`, liệt kê trong `manifest.json`. Thêm/sửa câu: chạy `npx vitest run scripts/collect-mia-lines.spec.js --dir scripts` để lấy danh sách câu (ra `/tmp/mia-lines.json`), chép thành `_tts/mia-school-lines.json` trên Mac rồi chạy `caffeinate -dimsu python3 scripts/tts_mia_school.py` (bỏ qua câu đã có).
+
+## Giọng hướng dẫn (15/11/2026)
+
+- Tiếng Việt: giọng Coach Leo Cường (MiniMax clone `moss_audio_46ffd69b-…`, speed 0.92). Tiếng Anh: `English_Wiselady` (speed 0.95). Tiếng Hy Lạp (cả chữ Hy Lạp nằm trong câu Việt/Anh): `English_Wiselady` + language_boost Greek (speed 0.9). Câu khen "Yay, Bravo…" giữ giọng bé (vox/, vox_mia/).
+- Nút ngôn ngữ trong Học viện: VI → EN → EL. Lời tiếng Anh nằm trong `curriculum/en.js` (từ điển EN + `pickText`), câu có số thì có trường `en` riêng.
+- Câu toán có quá nhiều biến thể số không thu nguyên câu mà thu từng mảnh (số và chữ giữa các số); `AcademySpeech` ghép các mảnh (`chunksOf`).
+- Thu: `scripts/collect-guide-lines.spec.js` (chép vào tests/unit để chạy) → `/tmp/guide-lines.json` → `scripts/tts_guide.py` chạy trên Mac → `_tts/guide/<vi|en>/*.mp3` → chép vào `public/sounds/academy/<lang>/` và cập nhật manifest.

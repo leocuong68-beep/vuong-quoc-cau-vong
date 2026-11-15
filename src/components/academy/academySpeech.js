@@ -16,6 +16,24 @@ export const lineId = (lang, text) => {
   return (h >>> 0).toString(36);
 };
 
+// Long number questions ("58 cộng 39 bằng mấy?") are not recorded whole: they are
+// spoken as recorded pieces, numbers and the words between them.
+export const chunksOf = (text) =>
+  text
+    .split(/(\d+)/)
+    .map((p) => p.trim())
+    .filter((p) => /[\p{L}\d]/u.test(p));
+
+// Greek words inside a Vietnamese or English line are read by the Greek voice.
+const GREEK = /([\u0370-\u03FF\u1F00-\u1FFF]+(?:[\s,.'’-]+[\u0370-\u03FF\u1F00-\u1FFF]+)*)/;
+export const splitGreek = (part) => {
+  if (!part || part.lang === 'el' || !GREEK.test(part.text)) return [part];
+  return part.text
+    .split(GREEK)
+    .map((t, i) => ({ ...part, text: t.trim(), lang: i % 2 ? 'el' : part.lang }))
+    .filter((p) => /[\p{L}\d]/u.test(p.text));
+};
+
 let manifest = null;
 const loadManifest = () => {
   if (manifest) return manifest;
@@ -59,15 +77,25 @@ export const AcademySpeech = {
   },
   async say(parts) {
     if (!parts) return;
-    const list = (Array.isArray(parts) ? parts : [parts]).filter((p) => p && p.text);
+    const list = (Array.isArray(parts) ? parts : [parts])
+      .filter((p) => p && p.text)
+      .flatMap(splitGreek);
     this.stop();
     const token = this.token;
     const files = await loadManifest();
     for (const part of list) {
       if (token !== this.token) return;
       const id = lineId(part.lang, part.text);
-      if (files[part.lang] && files[part.lang].includes(id)) {
+      const have = files[part.lang] || [];
+      const pieces = chunksOf(part.text);
+      const pieceIds = pieces.map((p) => lineId(part.lang, p));
+      if (have.includes(id)) {
         await this.playFile('sounds/academy/' + part.lang + '/' + id + '.mp3', token, part);
+      } else if (pieces.length > 1 && pieceIds.every((p) => have.includes(p))) {
+        for (const p of pieceIds) {
+          if (token !== this.token) return;
+          await this.playFile('sounds/academy/' + part.lang + '/' + p + '.mp3', token, part);
+        }
       } else {
         await this.browserVoice(part, token);
       }

@@ -43,7 +43,7 @@ export default defineConfig({
     isProduction && VitePWA({
       registerType: 'autoUpdate',
       filename: 'service-worker.js',
-      includeAssets: ['favicon.svg', 'img/**/*', 'sounds/**/*'],
+      includeAssets: ['favicon.svg', 'img/**/*', 'sounds/**/*', '!sounds/academy/{vi,en,el}/**'],
       manifest: {
         name: 'Vương Quốc Cầu Vồng',
         short_name: 'Cầu Vồng',
@@ -66,13 +66,25 @@ export default defineConfig({
         // pictures (webp, jpg) stay on the tablet too, so the game works without Wi-Fi
         globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,mp3,woff2}'],
         // the voice without a name is only needed by children other than Mia: kept once heard
-        globIgnores: ['**/sounds/*/kid/**'],
+        // the guide voice of the Academy (thousands of lines) is kept once heard, not downloaded up front
+        globIgnores: ['**/sounds/*/kid/**', '**/sounds/academy/{vi,en,el}/**'],
         runtimeCaching: [
           {
             urlPattern: /\/sounds\/(en|vi)\/kid\/.*\.mp3$/,
             handler: 'CacheFirst',
             options: { cacheName: 'voice-kid', expiration: { maxEntries: 1500 } },
           },
+          {
+            urlPattern: /\/sounds\/academy\/(vi|en|el)\/.*\.mp3$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'voice-academy', expiration: { maxEntries: 4000 } },
+          },
+        ],
+        manifestTransforms: [
+          async (entries) => ({
+            manifest: entries.filter((e) => !/sounds\/academy\/(vi|en|el)\//.test(e.url)),
+            warnings: [],
+          }),
         ],
         cleanupOutdatedCaches: true,
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
