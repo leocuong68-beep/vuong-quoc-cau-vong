@@ -1,9 +1,9 @@
 <template>
-  <div class="academy home">
+  <div class="academy home" :class="'theme-' + profile.theme">
     <aside class="hero">
       <div class="bubble slab pixel">{{ greeting }}</div>
       <button type="button" class="tintin" data-test="avatar" @click="secretTap">
-        <img :src="player.avatar" alt="Tin Tin" class="no-drag" />
+        <img :src="profile.avatar" :alt="profile.name" class="no-drag" />
       </button>
       <div class="shadow" />
     </aside>
@@ -11,14 +11,14 @@
     <main class="board">
       <header class="top">
         <h1 class="pixel title">
-          <span class="small">{{ t({ vi: 'Học viện', el: 'Ακαδημία' }) }}</span>
-          Tin Tin
+          <span class="small">{{ t(profile.kicker) }}</span>
+          {{ profile.name }}
         </h1>
         <div class="spacer" />
         <div
           class="wallet slab pixel"
           data-test="wallet"
-          :title="t({ vi: 'Sao để đổi đồ Minecraft', el: 'Αστέρια' })"
+          :title="t({ vi: 'Sao của ' + profile.name, el: 'Αστέρια' })"
         >
           <span class="star">★</span>
           <b>{{ wallet }}</b>
@@ -31,22 +31,7 @@
       <section class="mission slab" :class="{ open: minecraftOpen }">
         <div class="mission-head">
           <h2 class="pixel">{{ t({ vi: 'Nhiệm vụ hôm nay', el: 'Η αποστολή σήμερα' }) }}</h2>
-          <p v-if="!minecraftOpen">
-            {{
-              t({
-                vi: 'Qua mỗi môn 1 bài để mở khóa Minecraft.',
-                el: 'Πέρασε ένα μάθημα σε κάθε μάθημα για το Minecraft.',
-              })
-            }}
-          </p>
-          <p v-else>
-            {{
-              t({
-                vi: 'Hoàn thành! Minecraft đã mở cho hôm nay.',
-                el: 'Ολοκληρώθηκε! Το Minecraft είναι ανοιχτό σήμερα.',
-              })
-            }}
-          </p>
+          <p>{{ missionText }}</p>
         </div>
         <div class="hotbar">
           <div
@@ -62,12 +47,12 @@
           </div>
           <span class="arrow pixel">➜</span>
           <div class="slot mine" :class="{ done: minecraftOpen }" data-test="minecraft">
-            <span class="pick">⛏️</span>
+            <span class="pick">{{ profile.minecraft ? '⛏️' : '👑' }}</span>
             <span class="lock">{{ minecraftOpen ? '🔓' : '🔒' }}</span>
           </div>
         </div>
         <button
-          v-if="inApp"
+          v-if="inApp && profile.minecraft"
           type="button"
           class="play-mc pixel"
           :class="{ ready: minecraftOpen }"
@@ -91,7 +76,7 @@
           class="subject slab"
           :style="{ '--c': s.color, '--delay': i * 0.4 + 's' }"
           :data-subject="s.id"
-          @click="go('/tintin/' + s.id)"
+          @click="go(profile.base + '/' + s.id)"
         >
           <img :src="s.icon" alt="" class="block no-drag" />
           <span class="info">
@@ -108,8 +93,8 @@
       </section>
 
       <footer class="foot">
-        <button type="button" class="link" @click="$router.push('/')">
-          ← {{ t({ vi: 'Vương Quốc Cầu Vồng của Mia', el: 'Το παιχνίδι της Μία' }) }}
+        <button type="button" class="link" @click="$router.push(profile.back.path)">
+          ← {{ t(profile.back.label) }}
         </button>
       </footer>
     </main>
@@ -118,8 +103,7 @@
 
 <script>
   import './academy.scss';
-  import { SUBJECTS } from './curriculum/index.js';
-  import { Academy, PLAYER } from './academyState.js';
+  import { profileOf } from './profiles.js';
   import { AcademySpeech } from './academySpeech.js';
   import { sfx, voice } from './sfx.js';
 
@@ -129,29 +113,77 @@
       return { taps: 0, tapTimer: null };
     },
     computed: {
-      player: () => PLAYER,
-      subjects: () => SUBJECTS,
-      lang: () => Academy.voiceLang,
-      wallet: () => Academy.wallet - Academy.spent,
-      minecraftOpen: () => Academy.minecraftOpen,
+      profile() {
+        return profileOf(this.$route);
+      },
+      acad() {
+        return this.profile.state;
+      },
+      subjects() {
+        return this.profile.subjects;
+      },
+      lang() {
+        return this.acad.voiceLang;
+      },
+      wallet() {
+        return this.acad.wallet - this.acad.spent;
+      },
+      // daily mission done (Tin Tin: Minecraft opens; Mia: she gets the crown)
+      minecraftOpen() {
+        return this.acad.minecraftOpen;
+      },
       // only inside the Mac app "Học viện Tin Tin", which can open the Minecraft launcher
       inApp: () => typeof window !== 'undefined' && !!window.hocVienApp,
+      missionText() {
+        if (this.profile.minecraft)
+          return this.minecraftOpen
+            ? this.t({
+                vi: 'Hoàn thành! Minecraft đã mở cho hôm nay.',
+                el: 'Ολοκληρώθηκε! Το Minecraft είναι ανοιχτό σήμερα.',
+              })
+            : this.t({
+                vi: 'Qua mỗi môn 1 bài để mở khóa Minecraft.',
+                el: 'Πέρασε ένα μάθημα σε κάθε μάθημα για το Minecraft.',
+              });
+        return this.minecraftOpen
+          ? this.t({
+              vi: 'Hoàn thành! Mia được đội vương miện hôm nay.',
+              el: 'Ολοκληρώθηκε! Η Μία φοράει το στέμμα.',
+            })
+          : this.t({
+              vi: 'Học mỗi môn 1 bài để nhận vương miện.',
+              el: 'Ένα μάθημα σε κάθε μάθημα για το στέμμα.',
+            });
+      },
       greeting() {
+        const mc = this.profile.minecraft;
+        const name = this.profile.name;
+        const elName = mc ? 'Τιν Τιν' : 'Μία';
         if (this.minecraftOpen)
+          return mc
+            ? this.t({
+                vi: 'Xong nhiệm vụ rồi! Vào Minecraft thôi!',
+                el: 'Τα κατάφερες! Πάμε για Minecraft!',
+              })
+            : this.t({
+                vi: 'Mia giỏi quá! Vương miện là của Mia!',
+                el: 'Μπράβο Μία! Το στέμμα είναι δικό σου!',
+              });
+        const left = this.subjects.filter((s) => !this.acad.doneToday(s.id)).length;
+        if (left === this.subjects.length)
           return this.t({
-            vi: 'Xong nhiệm vụ rồi! Vào Minecraft thôi!',
-            el: 'Τα κατάφερες! Πάμε για Minecraft!',
+            vi: 'Chào ' + name + '! Hôm nay học gì nào?',
+            el: 'Γεια σου ' + elName + '! Τι θα μάθουμε σήμερα;',
           });
-        const left = SUBJECTS.filter((s) => !Academy.doneToday(s.id)).length;
-        if (left === SUBJECTS.length)
-          return this.t({
-            vi: 'Chào Tin Tin! Hôm nay học gì nào?',
-            el: 'Γεια σου Τιν Τιν! Τι θα μάθουμε σήμερα;',
-          });
-        return this.t({
-          vi: 'Còn ' + left + ' môn nữa là mở Minecraft!',
-          el: 'Άλλα ' + left + ' μαθήματα για το Minecraft!',
-        });
+        return mc
+          ? this.t({
+              vi: 'Còn ' + left + ' môn nữa là mở Minecraft!',
+              el: 'Άλλα ' + left + ' μαθήματα για το Minecraft!',
+            })
+          : this.t({
+              vi: 'Còn ' + left + ' môn nữa là có vương miện!',
+              el: 'Άλλα ' + left + ' για το στέμμα!',
+            });
       },
     },
     unmounted() {
@@ -160,7 +192,7 @@
     methods: {
       playMinecraft() {
         sfx.chest();
-        voice('unlock');
+        voice('unlock', this.profile.vox);
         window.hocVienApp.openMinecraft();
       },
       go(path) {
@@ -171,16 +203,16 @@
         return typeof text === 'string' ? text : text[this.lang] || text.vi;
       },
       passed(s) {
-        return s.lessons.filter((l) => Academy.isPassed(l.id)).length;
+        return s.lessons.filter((l) => this.acad.isPassed(l.id)).length;
       },
       nextIndex(s) {
-        return Academy.nextLessonIndex(s);
+        return this.acad.nextLessonIndex(s);
       },
       doneToday(id) {
-        return Academy.doneToday(id);
+        return this.acad.doneToday(id);
       },
       toggleVoice() {
-        Academy.toggleVoice();
+        this.acad.toggleVoice();
         AcademySpeech.say([{ text: this.greeting, lang: this.lang }]);
       },
       // a tap says hello; 7 quick taps (for a parent) open every lesson
@@ -190,7 +222,7 @@
         clearTimeout(this.tapTimer);
         this.tapTimer = setTimeout(() => (this.taps = 0), 2500);
         if (this.taps >= 7) {
-          Academy.openEverything();
+          this.acad.openEverything();
           this.taps = 0;
         }
       },

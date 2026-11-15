@@ -150,3 +150,310 @@
     opacity: 0;
   }
 }
+
+// ---------- Mia's theme: soft pastel princess world ----------
+@import '@fontsource/baloo-2/latin-800.css';
+@import '@fontsource/baloo-2/latin-ext-800.css';
+@import '@fontsource/baloo-2/vietnamese-800.css';
+
+.academy.theme-princess {
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-solid: #fff6fb;
+  --line: #c25d9a;
+  --text: #4a2a57;
+  --muted: #8a5f8f;
+  --gold: #ffb020;
+  --pixel: 'Baloo 2', 'Nunito', system-ui, sans-serif;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 240, 248, 0.35) 70%,
+      rgba(255, 230, 245, 0.7) 100%
+    ),
+    url('../../../public/img/academy/mia_world.webp') center / cover fixed,
+    #ffe9f4;
+
+  .slab {
+    border: 3px solid #f3b6d8;
+    border-radius: 1.6rem;
+    box-shadow: 0 8px 24px rgba(194, 93, 154, 0.18);
+  }
+  .icon-btn,
+  .primary,
+  .secondary,
+  .mc-btn {
+    border-radius: 1.2rem;
+    border: 3px solid #fff;
+    box-shadow: 0 5px 0 rgba(194, 93, 154, 0.35);
+  }
+  .icon-btn {
+    background: #ff8fc8;
+  }
+  .primary {
+    background: #ff6fb5;
+  }
+  .secondary {
+    background: #b79be0;
+  }
+  .xp {
+    border: 2px solid #f3b6d8;
+    border-radius: 1rem;
+    background: #fff;
+    > span {
+      border-radius: 1rem;
+      background: linear-gradient(90deg, #ff9ad5, #c79bff, #8fd3ff);
+    }
+  }
+
+  // Home
+  .title {
+    color: #ff5fae;
+    text-shadow:
+      3px 3px 0 #fff,
+      0 0 18px rgba(255, 255, 255, 0.8);
+    .small {
+      color: #a86bd8;
+      letter-spacing: 0.06em;
+    }
+  }
+  .bubble {
+    border-radius: 1.4rem;
+    color: #c2387f;
+    &::after {
+      background: #fff;
+      border-radius: 50%;
+    }
+  }
+  .tintin img {
+    filter: drop-shadow(0 10px 12px rgba(194, 93, 154, 0.25));
+  }
+  .shadow {
+    border-radius: 50%;
+    background: rgba(194, 93, 154, 0.18);
+  }
+  .wallet .star {
+    text-shadow: 2px 2px 0 #fff;
+  }
+  .lang {
+    background: #a86bd8;
+  }
+  .mission {
+    h2 {
+      color: #ff5fae;
+    }
+    &.open {
+      background: rgba(255, 236, 250, 0.95);
+      border-color: #ffb020;
+    }
+  }
+  .hotbar {
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid #f3b6d8;
+    border-radius: 1.2rem;
+  }
+  .slot {
+    border-radius: 1rem;
+    border: 2px solid #f3b6d8;
+    background: #fff;
+    box-shadow: none;
+    img {
+      filter: grayscale(0.6) opacity(0.6);
+    }
+    &.done {
+      background: #fff0f8;
+      outline: 3px solid #ff8fc8;
+      img {
+        filter: none;
+      }
+    }
+  }
+  .tick {
+    color: #ff5fae;
+    text-shadow: 1px 1px 0 #fff;
+  }
+  .arrow {
+    color: #c25d9a;
+  }
+  .mine {
+    background: #fff;
+    &.done {
+      background: #ffe08a;
+    }
+    .pick {
+      filter: grayscale(0.7);
+    }
+    &.done .pick {
+      filter: none;
+    }
+  }
+  .subject {
+    border-left: 3px solid #f3b6d8;
+    &:hover {
+      background: rgba(255, 255, 255, 0.95);
+    }
+  }
+  .name {
+    color: var(--c);
+    text-shadow: 2px 2px 0 #fff;
+    filter: brightness(0.9);
+  }
+  .next {
+    filter: brightness(0.85);
+  }
+  .foot .link {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 1rem;
+    color: #8a5f8f;
+  }
+
+  // Subject page
+  .bar h1 {
+    color: #ff5fae;
+    text-shadow: 3px 3px 0 #fff;
+  }
+  .total {
+    text-shadow: 2px 2px 0 #fff;
+  }
+  .sign {
+    background: #fff;
+    color: #c2387f;
+    border: 3px solid #f3b6d8;
+    border-radius: 2rem;
+    text-shadow: none;
+    box-shadow: 0 4px 0 rgba(194, 93, 154, 0.2);
+  }
+  .unit-no {
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .tile {
+    border: 3px solid #f3b6d8;
+    border-radius: 1.4rem;
+    box-shadow: 0 6px 0 rgba(194, 93, 154, 0.2);
+    &.open {
+      outline: 4px solid #ff8fc8;
+    }
+    &.locked {
+      filter: grayscale(0.6) opacity(0.55);
+    }
+  }
+  .cube {
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
+  }
+  .tile.passed .cube {
+    background: #ff8fc8;
+  }
+  .here {
+    border-radius: 1rem;
+    border: 2px solid #fff;
+    background: #ffd166;
+  }
+  .stars span {
+    color: #f0d6e6;
+  }
+
+  // Lesson
+  .titles {
+    text-shadow: 2px 2px 0 #fff;
+  }
+  .score {
+    color: #ff5fae;
+    text-shadow: 2px 2px 0 #fff;
+  }
+  .show {
+    --card: rgba(255, 255, 255, 0.4);
+  }
+  .ask {
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid #f3b6d8;
+    border-radius: 1.2rem;
+    color: #4a2a57;
+    text-shadow: none;
+    em {
+      color: #ff5fae;
+    }
+  }
+  .choice {
+    background: #fff;
+    color: #4a2a57;
+    text-shadow: none;
+    border: 3px solid #f3b6d8;
+    border-radius: 1.6rem;
+    box-shadow: 0 6px 0 rgba(194, 93, 154, 0.3);
+    font-size: 1.6rem;
+    &:hover:not(:disabled) {
+      background: #fff4fa;
+    }
+    &.right {
+      background: #b8f2c9;
+      border-color: #46c46b;
+    }
+    &.wrong {
+      background: #ffd0d6;
+      border-color: #ff6b81;
+    }
+  }
+  .choices.style-big .choice,
+  .choices.style-emoji .choice {
+    font-size: 4rem;
+  }
+  .choices.style-big,
+  .choices.style-emoji {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .explain {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 1rem;
+    color: #c2387f;
+    &.good {
+      color: #2f9e55;
+    }
+  }
+  .feedback .next {
+    border-radius: 1.2rem;
+    border: 3px solid #fff;
+    background: #ffd166;
+    font-family: var(--pixel);
+  }
+  .result {
+    text-shadow: 2px 2px 0 #fff;
+    color: #4a2a57;
+  }
+  .medal .star {
+    color: #f0d6e6;
+    &.on {
+      color: #ffb020;
+      text-shadow: 0 0 18px rgba(255, 176, 32, 0.6);
+    }
+  }
+  .minecraft {
+    background: #fff0f8;
+    border: 3px solid #ffb020;
+    border-radius: 1.2rem;
+    color: #c2387f;
+  }
+  .combo {
+    color: #ff5fae;
+    text-shadow:
+      3px 3px 0 #fff,
+      0 0 18px rgba(255, 95, 174, 0.5);
+  }
+  // visuals
+  .big,
+  .word,
+  .expr {
+    color: #ff5fae;
+    text-shadow: 4px 4px 0 #fff;
+  }
+  .listen {
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 8px 0 rgba(194, 93, 154, 0.3);
+  }
+  .sub {
+    color: #4a2a57;
+  }
+}

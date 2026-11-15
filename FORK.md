@@ -56,3 +56,10 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - App kiểm tra 2 giây/lần: hôm nay chưa xong nhiệm vụ mà launcher (`Minecraft.app/Contents/MacOS`) hoặc game (`net.minecraft.client.main.Main`) đang chạy thì tắt và mở lại trang học.
 - App tự cài LaunchAgent `~/Library/LaunchAgents/com.leocuong.hocvientintin.plist` (chạy khi đăng nhập, tự bật lại nếu bị Force Quit). Thoát app cần mã phụ huynh (mặc định 6868, đổi trong `~/Library/Application Support/Hoc vien Tin Tin/hoc-vien.json`, khóa `parentCode`).
 - Gỡ hẳn khóa (Terminal trên MacBook): `launchctl bootout gui/$(id -u)/com.leocuong.hocvientintin; rm ~/Library/LaunchAgents/com.leocuong.hocvientintin.plist`.
+
+## Lớp học của Mia (từ 15/11/2026)
+- `#/mia`: cùng khung với Học viện Tin Tin (cùng component, `src/components/academy/profiles.js` chọn hồ sơ theo `route.meta.profile`), giao diện pastel công chúa, chữ Baloo 2.
+- 4 môn dễ hơn cho bé mẫu giáo, mỗi câu 3 đáp án: Tiếng Hy Lạp (chữ cái, số, màu, con vật, gia đình), Tiếng Anh (màu, số, con vật, trái cây, cơ thể, chữ A–J), Toán (đếm, tìm số, nhiều/ít, to/nhỏ, hình, quy luật, thêm/bớt đến 5), Khám phá & Robot (ngày/đêm, nóng/lạnh, giác quan, thiên nhiên, nổi/chìm, nam châm, robot 1–2 bước). Nội dung ở `curriculum/mia/`.
+- Tiến độ riêng ở localStorage `mia_academy_*`. Xong mỗi môn 1 bài thì Mia "được vương miện" và +5 sao (không có Minecraft).
+- Giọng phản ứng bé gái ở `public/sounds/academy/vox_mia/` (Gemini TTS giọng Leda qua fal); hình biểu cảm `img/academy/mia_{think,cheer,wow,oops}.webp`; nền `mia_world.webp`; biểu tượng môn `mia_block_*.webp` (Recraft).
+- Trang chính của Mia có nút "📚 Lớp học" để vào.

@@ -14,6 +14,9 @@
           <span>{{ player ? player.name : '' }}</span>
           <em class="fas fa-user-friends" />
         </button>
+        <button v-if="!isPublic" type="button" class="player school" data-test="to-mia-school" @click="$router.push('/mia')">
+          <span>📚 Lớp học</span>
+        </button>
         <button v-if="!isPublic" type="button" class="player" data-test="to-tintin" @click="$router.push('/tintin')">
           <span>Tin Tin</span>
           <em class="fas fa-graduation-cap" />
@@ -247,6 +250,17 @@
     width: auto;
   }
 
+  .player.school {
+    background: #ff8fc8;
+    color: #fff;
+    text-shadow: 1px 1px 0 #b0306f;
+    animation: schoolPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes schoolPulse {
+    50% {
+      transform: scale(1.06);
+    }
+  }
   .player {
     flex: none;
     display: flex;

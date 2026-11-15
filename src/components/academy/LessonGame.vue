@@ -1,5 +1,9 @@
 <template>
-  <div class="academy lesson" :style="{ '--accent': subject.color }">
+  <div
+    class="academy lesson"
+    :class="'theme-' + profile.theme"
+    :style="{ '--accent': subject.color }"
+  >
     <header class="bar">
       <button type="button" class="icon-btn" data-test="back" @click="leave">
         <em class="fas fa-arrow-left" />
@@ -18,7 +22,7 @@
       <div class="show slab">
         <img :src="subject.icon" alt="" class="corner-block no-drag" />
         <div class="buddy" :class="'mood-' + mood">
-          <img :src="'img/academy/tintin_' + mood + '.webp'" alt="" class="no-drag" />
+          <img :src="profile.mood(mood)" alt="" class="no-drag" />
         </div>
         <div v-if="streak >= 3" :key="'s' + streak" class="combo pixel">x{{ streak }} COMBO!</div>
         <LessonVisual :show="shownVisual" @replay="speakQuestion" />
@@ -59,7 +63,7 @@
 
     <main v-else-if="finished" class="result" data-test="result">
       <img
-        :src="outcome.passed ? 'img/academy/tintin_cheer.webp' : 'img/academy/tintin_oops.webp'"
+        :src="profile.mood(outcome.passed ? 'cheer' : 'oops')"
         alt=""
         class="cheer no-drag"
         :class="{ sad: !outcome.passed }"
@@ -78,12 +82,16 @@
         >
       </p>
       <p v-if="outcome.bonus" class="minecraft">
-        ⛏️
         {{
-          t({
-            vi: 'Xong cả 4 môn! Minecraft đã mở cho hôm nay.',
-            el: 'Τέλεια! Το Minecraft άνοιξε για σήμερα.',
-          })
+          profile.minecraft
+            ? t({
+                vi: '⛏️ Xong cả 4 môn! Minecraft đã mở cho hôm nay.',
+                el: '⛏️ Τέλεια! Το Minecraft άνοιξε για σήμερα.',
+              })
+            : t({
+                vi: '👑 Xong cả 4 môn! Mia được vương miện hôm nay.',
+                el: '👑 Τέλεια! Η Μία πήρε το στέμμα σήμερα.',
+              })
         }}
       </p>
       <div class="actions">
@@ -99,7 +107,7 @@
         >
           {{ t({ vi: 'Bài tiếp', el: 'Επόμενο μάθημα' }) }} <em class="fas fa-arrow-right" />
         </button>
-        <button type="button" class="secondary" @click="$router.push('/tintin')">
+        <button type="button" class="secondary" @click="$router.push(profile.base)">
           {{ t({ vi: 'Trang chính', el: 'Αρχική' }) }}
         </button>
       </div>
@@ -110,8 +118,7 @@
 <script>
   import './academy.scss';
   import LessonVisual from './LessonVisual.vue';
-  import { subjectById } from './curriculum/index.js';
-  import { Academy, PLAYER } from './academyState.js';
+  import { profileOf } from './profiles.js';
   import { AcademySpeech } from './academySpeech.js';
   import { burst } from './burst.js';
   import { sfx, voice } from './sfx.js';
@@ -135,12 +142,17 @@
       };
     },
     computed: {
-      avatar: () => PLAYER.avatar,
+      profile() {
+        return profileOf(this.$route);
+      },
+      acad() {
+        return this.profile.state;
+      },
       lang() {
-        return Academy.voiceLang;
+        return this.acad.voiceLang;
       },
       subject() {
-        return subjectById(this.$route.params.subject);
+        return this.profile.subjects.find((s) => s.id === this.$route.params.subject);
       },
       lessonIndex() {
         return this.subject.lessons.findIndex((l) => l.id === this.$route.params.lesson);
@@ -185,8 +197,8 @@
       },
     },
     mounted() {
-      if (!this.subject || !this.lesson || !Academy.isOpen(this.subject, this.lessonIndex)) {
-        this.$router.replace('/tintin');
+      if (!this.subject || !this.lesson || !this.acad.isOpen(this.subject, this.lessonIndex)) {
+        this.$router.replace(this.profile.base);
         return;
       }
       this.start();
@@ -251,7 +263,8 @@
           if (this.q.explainAlways && this.q.explain)
             parts.push({ text: this.t(this.q.explain), lang: this.lang });
           // a word to hear again (e.g. the English word) comes first, then the cheer
-          const cheer = () => (token === this.reactToken ? voice(combo ? 'combo' : 'right') : null);
+          const cheer = () =>
+            token === this.reactToken ? voice(combo ? 'combo' : 'right', this.profile.vox) : null;
           if (parts.length) AcademySpeech.say(parts).then(cheer);
           else cheer();
           if (!this.q.explainAlways)
@@ -263,7 +276,7 @@
           const parts = [];
           if (this.q.explain) parts.push({ text: this.t(this.q.explain), lang: this.lang });
           if (this.q.explainSay) parts.push(...this.q.explainSay);
-          voice('wrong').then(() => {
+          voice('wrong', this.profile.vox).then(() => {
             if (token === this.reactToken) AcademySpeech.say(parts);
           });
         }
@@ -283,7 +296,7 @@
       finish() {
         this.picked = null;
         this.finished = true;
-        this.outcome = Academy.finish(
+        this.outcome = this.acad.finish(
           this.subject.id,
           this.lesson.id,
           this.right,
@@ -296,24 +309,24 @@
         };
         if (!this.outcome.passed) {
           sfx.fail();
-          voice('fail').then(sayVerdict);
+          voice('fail', this.profile.vox).then(sayVerdict);
         } else {
           sfx.levelUp();
-          let chain = voice(this.outcome.stars === 3 ? 'perfect' : 'pass');
+          let chain = voice(this.outcome.stars === 3 ? 'perfect' : 'pass', this.profile.vox);
           if (this.outcome.bonus) {
             chain = chain.then(() => {
               sfx.chest();
-              return token === this.reactToken ? voice('unlock') : null;
+              return token === this.reactToken ? voice('unlock', this.profile.vox) : null;
             });
           }
           chain.then(sayVerdict);
         }
       },
       goNext() {
-        this.$router.replace('/tintin/' + this.subject.id + '/' + this.nextLesson.id);
+        this.$router.replace(this.profile.base + '/' + this.subject.id + '/' + this.nextLesson.id);
       },
       leave() {
-        this.$router.push('/tintin/' + this.subject.id);
+        this.$router.push(this.profile.base + '/' + this.subject.id);
       },
     },
   };

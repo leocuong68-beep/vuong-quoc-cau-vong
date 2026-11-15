@@ -40,8 +40,10 @@ export const build = (count, generators) => {
     const gen = generators[out.length % generators.length];
     const q = gen();
     const prev = out[out.length - 1];
-    if (prev && prev.sig && q.sig && prev.sig === q.sig) continue;
-    if (out.filter((x) => x.sig && x.sig === q.sig).length >= 2) continue;
+    // after many tries (small sets of items) allow more repeats, never twice in a row if avoidable
+    const relaxed = guard > count * 8;
+    if (prev && prev.sig && q.sig && prev.sig === q.sig && guard < count * 15) continue;
+    if (!relaxed && out.filter((x) => x.sig && x.sig === q.sig).length >= 2) continue;
     out.push(q);
   }
   return shuffle(out);

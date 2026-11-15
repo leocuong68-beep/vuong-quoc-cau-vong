@@ -1,11 +1,13 @@
 // Game sounds for Tin Tin's study space: a boy's voice reactions ("Yay!", "Oh no!")
 // plus small blocky sound effects made on the fly with Web Audio (no sound files needed).
 
-const VOX = 'sounds/academy/vox/';
 export const VOICE = {
   right: ['yay', 'hooray', 'bravo', 'awesome', 'gotit', 'nice', 'bravo_el'],
   wrong: ['ohno', 'oops', 'tryagain'],
   combo: ['combo', 'wow'],
+  // Mia's voice set has its own words
+  right_mia: ['yay', 'hooray', 'bravo', 'goodjob', 'youdidit', 'bravo_el'],
+  combo_mia: ['superstar', 'wow'],
   pass: ['levelup'],
   perfect: ['wow'],
   fail: ['almost'],
@@ -16,15 +18,17 @@ let last = '';
 let current = null;
 
 // Play one voice line from a group; resolves when it ends (or fails), never rejects.
-export const voice = (group) =>
+// dir: 'vox' (Tin Tin, a boy) or 'vox_mia' (Mia, a girl)
+export const voice = (group, dir = 'vox') =>
   new Promise((resolve) => {
-    const list = VOICE[group] || [group];
+    const mia = dir === 'vox_mia';
+    const list = (mia && VOICE[group + '_mia']) || VOICE[group] || [group];
     let name = list[Math.floor(Math.random() * list.length)];
     if (list.length > 1 && name === last) name = list[(list.indexOf(name) + 1) % list.length];
     last = name;
     try {
       if (current) current.pause();
-      const a = new Audio(VOX + name + '.mp3');
+      const a = new Audio('sounds/academy/' + dir + '/' + name + '.mp3');
       current = a;
       a.volume = 0.9;
       a.addEventListener('ended', resolve, { once: true });

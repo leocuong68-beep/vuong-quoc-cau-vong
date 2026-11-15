@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { SUBJECTS } from '../../src/components/academy/curriculum/index.js';
+import { SUBJECTS, MIA_SUBJECTS } from '../../src/components/academy/curriculum/index.js';
 
 describe('Tin Tin academy lessons', () => {
-  for (const s of SUBJECTS) {
+  for (const s of [...SUBJECTS, ...MIA_SUBJECTS]) {
     for (const lesson of s.lessons) {
       it(s.id + ' / ' + lesson.id + ' makes 10 good questions', () => {
         for (let round = 0; round < 15; round++) {
@@ -21,7 +21,7 @@ describe('Tin Tin academy lessons', () => {
     }
   }
   it('lesson ids are unique', () => {
-    const ids = SUBJECTS.flatMap((s) => s.lessons.map((l) => l.id));
+    const ids = [...SUBJECTS, ...MIA_SUBJECTS].flatMap((s) => s.lessons.map((l) => l.id));
     expect(new Set(ids).size).toBe(ids.length);
   });
 });

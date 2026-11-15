@@ -1,7 +1,7 @@
 import { reactive } from 'vue';
 
-// Tin Tin's study path: his own profile, kept apart from Mia's princess stars.
-// Saved in localStorage under academy_* keys on the device he studies on.
+// Study paths for each child (Tin Tin, Mia): progress, stars and the daily mission,
+// saved in localStorage under the child's own key prefix on the device they study on.
 
 const read = (key) => {
   try {
@@ -47,87 +47,92 @@ export const today = () => {
   return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
 };
 
-const saved = parseJson('academy_progress', {});
+// prefix 'academy' (Tin Tin, kept for existing progress) or 'mia_academy'
+const makeAcademy = (prefix) => {
+  const saved = parseJson(prefix + '_progress', {});
+  return reactive({
+    // best stars per lesson id (1..3 means passed)
+    best: saved.best || {},
+    // stars to spend (shop comes with the Minecraft link)
+    wallet: Number(saved.wallet) || 0,
+    spent: Number(saved.spent) || 0,
+    // date -> list of subject ids passed that day
+    days: saved.days || {},
+    bonusDays: saved.bonusDays || {},
+    unlockAll: read(prefix + '_unlock_all') === '1',
+    // instruction language: vi (Vietnamese) or el (Greek)
+    voiceLang: read(prefix + '_voice_lang') === 'el' ? 'el' : 'vi',
 
-export const Academy = reactive({
-  // best stars per lesson id (1..3 means passed)
-  best: saved.best || {},
-  // stars to spend (shop comes with the Minecraft link)
-  wallet: Number(saved.wallet) || 0,
-  spent: Number(saved.spent) || 0,
-  // date -> list of subject ids passed that day
-  days: saved.days || {},
-  bonusDays: saved.bonusDays || {},
-  unlockAll: read('academy_unlock_all') === '1',
-  // instruction language: vi (Vietnamese) or el (Greek)
-  voiceLang: read('academy_voice_lang') === 'el' ? 'el' : 'vi',
-
-  save() {
-    write(
-      'academy_progress',
-      JSON.stringify({
-        best: this.best,
-        wallet: this.wallet,
-        spent: this.spent,
-        days: this.days,
-        bonusDays: this.bonusDays,
-      })
-    );
-    write('academy_minecraft_open', this.minecraftOpen ? today() : '');
-  },
-  starsOf(lessonId) {
-    return Number(this.best[lessonId]) || 0;
-  },
-  isPassed(lessonId) {
-    return this.starsOf(lessonId) > 0;
-  },
-  // A lesson opens when the one before it in the subject is passed.
-  isOpen(subject, index) {
-    if (this.unlockAll || index === 0) return true;
-    const prev = subject.lessons[index - 1];
-    return !!prev && this.isPassed(prev.id);
-  },
-  nextLessonIndex(subject) {
-    const i = subject.lessons.findIndex((l) => !this.isPassed(l.id));
-    return i === -1 ? subject.lessons.length - 1 : i;
-  },
-  doneToday(subjectId) {
-    return (this.days[today()] || []).includes(subjectId);
-  },
-  get minecraftOpen() {
-    return this.subjectIds.length > 0 && this.subjectIds.every((id) => this.doneToday(id));
-  },
-  subjectIds: [],
-  // Record one finished attempt. Returns what was won, for the result screen.
-  finish(subjectId, lessonId, right, total) {
-    const stars = starsForScore(right, total);
-    const before = this.starsOf(lessonId);
-    let earned = 0;
-    let bonus = 0;
-    if (stars > 0) {
-      // new stars only for a better result than before, so stars mean progress
-      earned = Math.max(0, stars - before);
-      if (stars > before) this.best[lessonId] = stars;
-      const day = today();
-      const list = this.days[day] || [];
-      if (!list.includes(subjectId)) this.days[day] = [...list, subjectId];
-      // practising an old lesson again still counts for today's goal, worth 1 star once a day
-      if (earned === 0 && !list.includes(subjectId)) earned = 1;
-      if (this.minecraftOpen && !this.bonusDays[day]) {
-        this.bonusDays[day] = true;
-        bonus = DAILY_BONUS;
+    save() {
+      write(
+        prefix + '_progress',
+        JSON.stringify({
+          best: this.best,
+          wallet: this.wallet,
+          spent: this.spent,
+          days: this.days,
+          bonusDays: this.bonusDays,
+        })
+      );
+      write(prefix + '_minecraft_open', this.minecraftOpen ? today() : '');
+    },
+    starsOf(lessonId) {
+      return Number(this.best[lessonId]) || 0;
+    },
+    isPassed(lessonId) {
+      return this.starsOf(lessonId) > 0;
+    },
+    // A lesson opens when the one before it in the subject is passed.
+    isOpen(subject, index) {
+      if (this.unlockAll || index === 0) return true;
+      const prev = subject.lessons[index - 1];
+      return !!prev && this.isPassed(prev.id);
+    },
+    nextLessonIndex(subject) {
+      const i = subject.lessons.findIndex((l) => !this.isPassed(l.id));
+      return i === -1 ? subject.lessons.length - 1 : i;
+    },
+    doneToday(subjectId) {
+      return (this.days[today()] || []).includes(subjectId);
+    },
+    get minecraftOpen() {
+      return this.subjectIds.length > 0 && this.subjectIds.every((id) => this.doneToday(id));
+    },
+    subjectIds: [],
+    // Record one finished attempt. Returns what was won, for the result screen.
+    finish(subjectId, lessonId, right, total) {
+      const stars = starsForScore(right, total);
+      const before = this.starsOf(lessonId);
+      let earned = 0;
+      let bonus = 0;
+      if (stars > 0) {
+        // new stars only for a better result than before, so stars mean progress
+        earned = Math.max(0, stars - before);
+        if (stars > before) this.best[lessonId] = stars;
+        const day = today();
+        const list = this.days[day] || [];
+        if (!list.includes(subjectId)) this.days[day] = [...list, subjectId];
+        // practising an old lesson again still counts for today's goal, worth 1 star once a day
+        if (earned === 0 && !list.includes(subjectId)) earned = 1;
+        if (this.minecraftOpen && !this.bonusDays[day]) {
+          this.bonusDays[day] = true;
+          bonus = DAILY_BONUS;
+        }
+        this.wallet += earned + bonus;
+        this.save();
       }
-      this.wallet += earned + bonus;
-      this.save();
-    }
-    return { stars, earned, bonus, passed: stars > 0, firstPass: before === 0 && stars > 0 };
-  },
-  toggleVoice() {
-    this.voiceLang = this.voiceLang === 'vi' ? 'el' : 'vi';
-    write('academy_voice_lang', this.voiceLang);
-  },
-  openEverything() {
-    this.unlockAll = true;
-    write('academy_unlock_all', '1');
-  },
-});
+      return { stars, earned, bonus, passed: stars > 0, firstPass: before === 0 && stars > 0 };
+    },
+    toggleVoice() {
+      this.voiceLang = this.voiceLang === 'vi' ? 'el' : 'vi';
+      write(prefix + '_voice_lang', this.voiceLang);
+    },
+    openEverything() {
+      this.unlockAll = true;
+      write(prefix + '_unlock_all', '1');
+    },
+  });
+};
+
+export const Academy = makeAcademy('academy');
+export const MiaAcademy = makeAcademy('mia_academy');

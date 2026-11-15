@@ -1,7 +1,11 @@
 <template>
-  <div class="academy subject-page" :style="{ '--accent': subject.color }">
+  <div
+    class="academy subject-page"
+    :class="'theme-' + profile.theme"
+    :style="{ '--accent': subject.color }"
+  >
     <header class="bar">
-      <button type="button" class="icon-btn" data-test="back" @click="$router.push('/tintin')">
+      <button type="button" class="icon-btn" data-test="back" @click="$router.push(profile.base)">
         <em class="fas fa-arrow-left" />
       </button>
       <img :src="subject.icon" alt="" class="block no-drag" />
@@ -49,23 +53,30 @@
 
 <script>
   import './academy.scss';
-  import { subjectById } from './curriculum/index.js';
-  import { Academy } from './academyState.js';
+  import { profileOf } from './profiles.js';
   import { sfx } from './sfx.js';
 
   export default {
     name: 'SubjectPage',
     computed: {
-      subject() {
-        return subjectById(this.$route.params.subject);
+      profile() {
+        return profileOf(this.$route);
       },
-      lang: () => Academy.voiceLang,
+      acad() {
+        return this.profile.state;
+      },
+      subject() {
+        return this.profile.subjects.find((s) => s.id === this.$route.params.subject);
+      },
+      lang() {
+        return this.acad.voiceLang;
+      },
       passedCount() {
-        return this.subject.lessons.filter((l) => Academy.isPassed(l.id)).length;
+        return this.subject.lessons.filter((l) => this.acad.isPassed(l.id)).length;
       },
     },
     created() {
-      if (!this.subject) this.$router.replace('/tintin');
+      if (!this.subject) this.$router.replace(this.profile.base);
     },
     methods: {
       t(text) {
@@ -75,15 +86,15 @@
         return this.subject.lessons.findIndex((l) => l.id === lesson.id);
       },
       stars(lesson) {
-        return Academy.starsOf(lesson.id);
+        return this.acad.starsOf(lesson.id);
       },
       state(lesson) {
-        if (Academy.isPassed(lesson.id)) return 'passed';
-        return Academy.isOpen(this.subject, this.position(lesson)) ? 'open' : 'locked';
+        if (this.acad.isPassed(lesson.id)) return 'passed';
+        return this.acad.isOpen(this.subject, this.position(lesson)) ? 'open' : 'locked';
       },
       open(lesson) {
         sfx.click();
-        this.$router.push('/tintin/' + this.subject.id + '/' + lesson.id);
+        this.$router.push(this.profile.base + '/' + this.subject.id + '/' + lesson.id);
       },
     },
   };

@@ -23,6 +23,48 @@
       <span v-for="(line, i) in String(show.value).split('\n')" :key="i">{{ line }}</span>
     </div>
 
+    <div v-else-if="show.kind === 'count'" class="count" :class="{ many: show.n > 5 }">
+      <span
+        v-for="i in show.n"
+        :key="i"
+        class="thing"
+        :style="{ animationDelay: i * 0.08 + 's' }"
+        >{{ show.emoji }}</span
+      >
+    </div>
+
+    <div v-else-if="show.kind === 'compare'" class="compare">
+      <div class="side">
+        <span v-for="i in show.a" :key="'a' + i" class="thing">{{ show.emoji }}</span>
+      </div>
+      <div class="side">
+        <span v-for="i in show.b" :key="'b' + i" class="thing">{{ show.emoji }}</span>
+      </div>
+    </div>
+
+    <div v-else-if="show.kind === 'sum' && show.op === '+'" class="sum">
+      <span class="pile"
+        ><span v-for="i in show.a" :key="'a' + i" class="thing">{{ show.emoji }}</span></span
+      >
+      <span class="op">+</span>
+      <span class="pile"
+        ><span v-for="i in show.b" :key="'b' + i" class="thing">{{ show.emoji }}</span></span
+      >
+    </div>
+
+    <!-- taking away: all the things, the last ones fly off and fade -->
+    <div v-else-if="show.kind === 'sum'" class="sum">
+      <span class="pile wide"
+        ><span
+          v-for="i in show.a"
+          :key="'t' + i"
+          class="thing"
+          :class="{ away: i > show.a - show.b }"
+          >{{ show.emoji }}</span
+        ></span
+      >
+    </div>
+
     <div v-else-if="show.kind === 'dots'" class="groups">
       <div
         v-for="g in show.groups"
@@ -55,7 +97,7 @@
 </template>
 
 <script>
-  import { Academy } from './academyState.js';
+  import { profileOf } from './profiles.js';
 
   export default {
     name: 'LessonVisual',
@@ -65,7 +107,7 @@
       sub() {
         const s = this.show.sub;
         if (!s) return '';
-        return typeof s === 'string' ? s : s[Academy.voiceLang] || s.vi;
+        return typeof s === 'string' ? s : s[profileOf(this.$route).state.voiceLang] || s.vi;
       },
       circuitSvg() {
         const c = this.show;
@@ -180,6 +222,74 @@
     font-variant-numeric: tabular-nums;
     span + span {
       font-size: 0.8em;
+    }
+  }
+  .count {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 0.6rem 1rem;
+    justify-content: center;
+    .thing {
+      font-size: 4.2rem;
+      animation: popIn 0.35s backwards;
+    }
+    &.many .thing {
+      font-size: 3.2rem;
+    }
+  }
+  @keyframes popIn {
+    from {
+      transform: scale(0);
+    }
+  }
+  .compare {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    .side {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 0.4rem;
+      padding: 1rem;
+      border: 3px dashed rgba(194, 93, 154, 0.5);
+      border-radius: 1.4rem;
+      min-width: 9rem;
+      justify-content: center;
+    }
+    .thing {
+      font-size: 3rem;
+    }
+  }
+  .sum {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    .pile {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 14rem;
+      gap: 0.3rem;
+    }
+    .thing {
+      font-size: 3.4rem;
+    }
+    .wide {
+      max-width: 26rem;
+    }
+    .away {
+      animation: flyAway 1.6s 0.6s ease-in forwards;
+    }
+    .op {
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: #ff5fae;
+    }
+  }
+  @keyframes flyAway {
+    to {
+      transform: translate(40px, -60px) rotate(25deg);
+      opacity: 0.15;
+      filter: grayscale(1);
     }
   }
   .groups {
