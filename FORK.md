@@ -50,3 +50,9 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Mã ở `macos/` (Electron 33): cửa sổ mở thẳng `#/tintin` trên GitHub Pages, nên game tự cập nhật, không cần cài lại app.
 - Đóng gói (chạy được cả trên Linux): `cd macos && npm i -D electron@33 @electron/packager && npx @electron/packager . "Hoc vien Tin Tin" --platform=darwin --arch=x64 --icon=icon.icns --out=out --app-bundle-id=com.leocuong.hocvientintin`, rồi nén bằng `zip -qry` để giữ symlink.
 - App chưa ký Apple: lần đầu mở bằng chuột phải → Open (hoặc System Settings → Privacy & Security → Open Anyway).
+
+## Khóa Minecraft trong app macOS (bản 1.1, 15/11/2026)
+- Trang Tin Tin có nút "CHƠI MINECRAFT" (chỉ hiện khi chạy trong app macOS; `window.hocVienApp` do `macos/preload.js` cung cấp). Nút sáng khi xong nhiệm vụ ngày.
+- App kiểm tra 2 giây/lần: hôm nay chưa xong nhiệm vụ mà launcher (`Minecraft.app/Contents/MacOS`) hoặc game (`net.minecraft.client.main.Main`) đang chạy thì tắt và mở lại trang học.
+- App tự cài LaunchAgent `~/Library/LaunchAgents/com.leocuong.hocvientintin.plist` (chạy khi đăng nhập, tự bật lại nếu bị Force Quit). Thoát app cần mã phụ huynh (mặc định 6868, đổi trong `~/Library/Application Support/Hoc vien Tin Tin/hoc-vien.json`, khóa `parentCode`).
+- Gỡ hẳn khóa (Terminal trên MacBook): `launchctl bootout gui/$(id -u)/com.leocuong.hocvientintin; rm ~/Library/LaunchAgents/com.leocuong.hocvientintin.plist`.

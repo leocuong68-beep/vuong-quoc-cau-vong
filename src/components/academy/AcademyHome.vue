@@ -66,6 +66,21 @@
             <span class="lock">{{ minecraftOpen ? '🔓' : '🔒' }}</span>
           </div>
         </div>
+        <button
+          v-if="inApp"
+          type="button"
+          class="play-mc pixel"
+          :class="{ ready: minecraftOpen }"
+          :disabled="!minecraftOpen"
+          data-test="play-minecraft"
+          @click="playMinecraft"
+        >
+          {{
+            minecraftOpen
+              ? t({ vi: '⛏️ CHƠI MINECRAFT', el: '⛏️ ΠΑΙΞΕ MINECRAFT' })
+              : t({ vi: '🔒 Minecraft đang khóa', el: '🔒 Κλειδωμένο' })
+          }}
+        </button>
       </section>
 
       <section class="subjects">
@@ -106,7 +121,7 @@
   import { SUBJECTS } from './curriculum/index.js';
   import { Academy, PLAYER } from './academyState.js';
   import { AcademySpeech } from './academySpeech.js';
-  import { sfx } from './sfx.js';
+  import { sfx, voice } from './sfx.js';
 
   export default {
     name: 'AcademyHome',
@@ -119,6 +134,8 @@
       lang: () => Academy.voiceLang,
       wallet: () => Academy.wallet - Academy.spent,
       minecraftOpen: () => Academy.minecraftOpen,
+      // only inside the Mac app "Học viện Tin Tin", which can open the Minecraft launcher
+      inApp: () => typeof window !== 'undefined' && !!window.hocVienApp,
       greeting() {
         if (this.minecraftOpen)
           return this.t({
@@ -141,6 +158,11 @@
       AcademySpeech.stop();
     },
     methods: {
+      playMinecraft() {
+        sfx.chest();
+        voice('unlock');
+        window.hocVienApp.openMinecraft();
+      },
       go(path) {
         sfx.click();
         this.$router.push(path);
@@ -315,6 +337,29 @@
       margin: 0.1rem 0 0;
       color: var(--muted);
       font-weight: 600;
+    }
+  }
+  .play-mc {
+    flex-basis: 100%;
+    font-size: 2rem;
+    font-weight: 800;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background: #6b6b75;
+    border: 4px solid #0d0c10;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+    box-shadow:
+      inset 4px 4px 0 rgba(255, 255, 255, 0.3),
+      inset -4px -4px 0 rgba(0, 0, 0, 0.35),
+      0 5px 0 #0d0c10;
+    cursor: not-allowed;
+    &.ready {
+      background: #5fbf3a;
+      cursor: pointer;
+      animation: glow 1.4s ease-in-out infinite;
+    }
+    &.ready:active {
+      transform: translateY(4px);
     }
   }
   .mission-head {
