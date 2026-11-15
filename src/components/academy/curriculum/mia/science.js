@@ -3,6 +3,8 @@ import { build, choicesFrom, rand, shuffle } from '../helpers.js';
 // Khám phá & Robot for Mia (pre-school): day/night, hot/cold, float/sink, magnets, plants,
 // weather, senses, and a first robot that moves one or two squares.
 
+const plain = (t) => t.replace(/^[^\p{L}]+/u, '');
+
 // Sort a picture into one of two groups: [emoji, name vi, name el, answer index]
 const sorter = (prefix, askVi, askEl, answers, rows) => () => {
   const i = rand(0, rows.length - 1);
@@ -14,7 +16,11 @@ const sorter = (prefix, askVi, askEl, answers, rows) => () => {
     show: { kind: 'emoji', value: emoji, sub: { vi, el } },
     choiceStyle: 'text',
     choices: answers.map((a, k) => ({ label: a, correct: k === ok })),
-    explain: { vi: vi + ': ' + answers[ok].vi + '.', el: el + ': ' + answers[ok].el + '.' },
+    // read aloud without the emoji in front of the answer
+    explain: {
+      vi: vi + ': ' + plain(answers[ok].vi) + '.',
+      el: el + ': ' + plain(answers[ok].el) + '.',
+    },
   };
 };
 

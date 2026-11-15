@@ -63,3 +63,4 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Tiến độ riêng ở localStorage `mia_academy_*`. Xong mỗi môn 1 bài thì Mia "được vương miện" và +5 sao (không có Minecraft).
 - Giọng phản ứng bé gái ở `public/sounds/academy/vox_mia/` (Gemini TTS giọng Leda qua fal); hình biểu cảm `img/academy/mia_{think,cheer,wow,oops}.webp`; nền `mia_world.webp`; biểu tượng môn `mia_block_*.webp` (Recraft).
 - Trang chính của Mia có nút "📚 Lớp học" để vào.
+- Giọng đọc Lớp học của Mia (15/11/2026): 381 câu (vi/el/en) thu bằng MiniMax gói Plan, giọng Lovely_Girl, ở `public/sounds/academy/<vi|el|en>/<id>.mp3`, liệt kê trong `manifest.json`. Thêm/sửa câu: chạy `npx vitest run scripts/collect-mia-lines.spec.js --dir scripts` để lấy danh sách câu (ra `/tmp/mia-lines.json`), chép thành `_tts/mia-school-lines.json` trên Mac rồi chạy `caffeinate -dimsu python3 scripts/tts_mia_school.py` (bỏ qua câu đã có).
