@@ -1,0 +1,13 @@
+{
+  "name": "hoc-vien-tintin",
+  "productName": "Học viện Tin Tin",
+  "version": "1.0.0",
+  "description": "Tin Tin's study space (Greek, English, Maths, Physics & Robots)",
+  "main": "main.js",
+  "author": "Leo Cuong",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^33.4.11"
+  }
+}

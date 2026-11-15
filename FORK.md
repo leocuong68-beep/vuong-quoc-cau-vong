@@ -45,3 +45,8 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Phụ huynh: bấm avatar Tin Tin 7 lần để mở hết các bài. Nút góc trên đổi giọng hướng dẫn Tiếng Việt / Ελληνικά.
 - Giọng: hiện dùng giọng có sẵn của máy (Mac có giọng Hy Lạp Melina). File thu sẵn đặt ở `public/sounds/academy/<vi|el|en>/<id>.mp3`, liệt kê trong `public/sounds/academy/manifest.json` (id = hàm `lineId` trong `academySpeech.js`).
 - Test nội dung: `npx vitest run tests/unit/academy.spec.js`.
+
+## App macOS "Học viện Tin Tin" (từ 15/11/2026)
+- Mã ở `macos/` (Electron 33): cửa sổ mở thẳng `#/tintin` trên GitHub Pages, nên game tự cập nhật, không cần cài lại app.
+- Đóng gói (chạy được cả trên Linux): `cd macos && npm i -D electron@33 @electron/packager && npx @electron/packager . "Hoc vien Tin Tin" --platform=darwin --arch=x64 --icon=icon.icns --out=out --app-bundle-id=com.leocuong.hocvientintin`, rồi nén bằng `zip -qry` để giữ symlink.
+- App chưa ký Apple: lần đầu mở bằng chuột phải → Open (hoặc System Settings → Privacy & Security → Open Anyway).
