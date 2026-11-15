@@ -29,6 +29,10 @@
           <span>{{ greeting }}</span>
         </button>
         <LangToggle @change="hello" />
+        <UpdateButton
+          :label="lang === 'en' ? 'Update' : 'Cập nhật'"
+          :busy-label="lang === 'en' ? 'Loading…' : 'Đang tải…'"
+        />
       </div>
       <div class="themes">
         <button
@@ -96,13 +100,14 @@
   import { BUDDIES, Lines } from './princessLines.js';
   import { AREAS, MORE_GAMES, STAGES, areaOf, buddyOf, stageRoute, stageTitle, stagesFor, shapeSvg } from './stages.js';
   import ProfilePicker from './ProfilePicker.vue';
+  import UpdateButton from '../common/UpdateButton.vue';
 
   // the welcome picture is shown once, when the game is opened
   let welcomed = false;
 
   export default {
     name: 'PrincessNavPage',
-    components: { NavPage, LangToggle, ProfilePicker },
+    components: { NavPage, LangToggle, ProfilePicker, UpdateButton },
     data() {
       return {
         stages: STAGES,

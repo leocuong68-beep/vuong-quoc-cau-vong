@@ -26,6 +26,10 @@
         <button type="button" class="mc-btn lang" data-test="voice" @click="toggleVoice">
           {{ { vi: 'VI · Tiếng Việt', en: 'EN · English', el: 'EL · Ελληνικά' }[lang] }}
         </button>
+        <UpdateButton
+          :label="t({ vi: 'Cập nhật', el: 'Ενημέρωση', en: 'Update' })"
+          :busy-label="t({ vi: 'Đang tải…', el: 'Φόρτωση…', en: 'Loading…' })"
+        />
       </header>
 
       <section class="mission slab" :class="{ open: minecraftOpen }">
@@ -104,12 +108,14 @@
 <script>
   import './academy.scss';
   import { profileOf } from './profiles.js';
+  import UpdateButton from '../common/UpdateButton.vue';
   import { pickText } from './curriculum/en.js';
   import { AcademySpeech } from './academySpeech.js';
   import { sfx, voice } from './sfx.js';
 
   export default {
     name: 'AcademyHome',
+    components: { UpdateButton },
     data() {
       return { taps: 0, tapTimer: null };
     },
