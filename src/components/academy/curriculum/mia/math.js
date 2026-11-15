@@ -5,6 +5,7 @@ import { build, choicesFrom, pick, rand, shuffle } from '../helpers.js';
 
 const THINGS = ['🍎', '🍓', '⭐', '🌸', '🐞', '🦋', '🎈', '🍪', '🐟', '🧁'];
 const VI_NUM = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín', 'mười'];
+const EN_NUM = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 const EL_NUM = [
   'μηδέν',
   'ένα',
@@ -32,7 +33,7 @@ const count = (from, to) => () => {
     show: { kind: 'count', emoji: e, n },
     choiceStyle: 'big',
     choices: numChoices(n, Math.max(1, from - 1), to + 1),
-    explain: { vi: 'Có ' + VI_NUM[n] + '.', el: 'Είναι ' + EL_NUM[n] + '.' },
+    explain: { vi: 'Có ' + VI_NUM[n] + '.', el: 'Είναι ' + EL_NUM[n] + '.', en: 'There are ' + EN_NUM[n] + '.' },
   };
 };
 
@@ -40,7 +41,7 @@ const findNumber = (to) => () => {
   const n = rand(1, to);
   return {
     sig: 'num-' + n,
-    ask: { vi: 'Số ' + VI_NUM[n] + ' đâu nhỉ?', el: 'Πού είναι το ' + EL_NUM[n] + ';' },
+    ask: { vi: 'Số ' + VI_NUM[n] + ' đâu nhỉ?', el: 'Πού είναι το ' + EL_NUM[n] + ';', en: 'Where is number ' + EN_NUM[n] + '?' },
     target: null,
     show: { kind: 'listen' },
     choiceStyle: 'big',
@@ -85,6 +86,7 @@ const addPics = () => {
     explain: {
       vi: VI_NUM[a] + ' thêm ' + VI_NUM[b] + ' là ' + VI_NUM[a + b] + '.',
       el: EL_NUM[a] + ' και ' + EL_NUM[b] + ' κάνουν ' + EL_NUM[a + b] + '.',
+      en: EN_NUM[a] + ' and ' + EN_NUM[b] + ' make ' + EN_NUM[a + b] + '.',
     },
   };
 };
@@ -98,27 +100,28 @@ const takeAway = () => {
     ask: {
       vi: 'Có ' + VI_NUM[a] + ', bớt đi ' + VI_NUM[b] + '. Còn lại mấy?',
       el: 'Έχουμε ' + EL_NUM[a] + ', φεύγουν ' + EL_NUM[b] + '. Πόσα μένουν;',
+      en: 'There are ' + EN_NUM[a] + '. ' + EN_NUM[b].replace(/^./, (c) => c.toUpperCase()) + ' go away. How many are left?',
     },
     target: null,
     show: { kind: 'sum', emoji: e, a, b, op: '−' },
     choiceStyle: 'big',
     choices: numChoices(a - b, 0, 5),
-    explain: { vi: 'Còn lại ' + VI_NUM[a - b] + '.', el: 'Μένουν ' + EL_NUM[a - b] + '.' },
+    explain: { vi: 'Còn lại ' + VI_NUM[a - b] + '.', el: 'Μένουν ' + EL_NUM[a - b] + '.', en: EN_NUM[a - b].replace(/^./, (c) => c.toUpperCase()) + ' left.' },
   };
 };
 
 const SHAPES = [
-  ['🔴', 'hình tròn', 'κύκλος'],
-  ['🟥', 'hình vuông', 'τετράγωνο'],
-  ['🔺', 'hình tam giác', 'τρίγωνο'],
-  ['⭐', 'ngôi sao', 'αστέρι'],
-  ['❤️', 'trái tim', 'καρδιά'],
+  ['🔴', 'hình tròn', 'κύκλος', 'circle'],
+  ['🟥', 'hình vuông', 'τετράγωνο', 'square'],
+  ['🔺', 'hình tam giác', 'τρίγωνο', 'triangle'],
+  ['⭐', 'ngôi sao', 'αστέρι', 'star'],
+  ['❤️', 'trái tim', 'καρδιά', 'heart'],
 ];
 const shape = () => {
-  const [e, vi, elName] = pick(SHAPES);
+  const [e, vi, elName, enName] = pick(SHAPES);
   return {
     sig: 'sh-' + e,
-    ask: { vi: 'Chạm vào ' + vi + '.', el: 'Βρες το σχήμα: ' + elName + '.' },
+    ask: { vi: 'Chạm vào ' + vi + '.', el: 'Βρες το σχήμα: ' + elName + '.', en: 'Tap the ' + enName + '.' },
     target: null,
     show: { kind: 'listen' },
     choiceStyle: 'emoji',

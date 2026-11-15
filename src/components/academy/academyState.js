@@ -60,8 +60,8 @@ const makeAcademy = (prefix) => {
     days: saved.days || {},
     bonusDays: saved.bonusDays || {},
     unlockAll: read(prefix + '_unlock_all') === '1',
-    // instruction language: vi (Vietnamese) or el (Greek)
-    voiceLang: read(prefix + '_voice_lang') === 'el' ? 'el' : 'vi',
+    // instruction language: vi (Vietnamese), en (English) or el (Greek)
+    voiceLang: ['vi', 'en', 'el'].includes(read(prefix + '_voice_lang')) ? read(prefix + '_voice_lang') : 'vi',
 
     save() {
       write(
@@ -124,7 +124,8 @@ const makeAcademy = (prefix) => {
       return { stars, earned, bonus, passed: stars > 0, firstPass: before === 0 && stars > 0 };
     },
     toggleVoice() {
-      this.voiceLang = this.voiceLang === 'vi' ? 'el' : 'vi';
+      const order = ['vi', 'en', 'el'];
+      this.voiceLang = order[(order.indexOf(this.voiceLang) + 1) % order.length];
       write(prefix + '_voice_lang', this.voiceLang);
     },
     openEverything() {

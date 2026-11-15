@@ -1,4 +1,5 @@
 import { build, choicesFrom, rand, shuffle } from '../helpers.js';
+import { EN, enAsk } from '../en.js';
 
 // Khám phá & Robot for Mia (pre-school): day/night, hot/cold, float/sink, magnets, plants,
 // weather, senses, and a first robot that moves one or two squares.
@@ -11,15 +12,16 @@ const sorter = (prefix, askVi, askEl, answers, rows) => () => {
   const [emoji, vi, el, ok] = rows[i];
   return {
     sig: prefix + i,
-    ask: { vi: askVi.replace('{x}', vi), el: askEl.replace('{x}', el) },
+    ask: { vi: askVi.replace('{x}', vi), el: askEl.replace('{x}', el), en: enAsk(askVi, vi) },
     target: null,
-    show: { kind: 'emoji', value: emoji, sub: { vi, el } },
+    show: { kind: 'emoji', value: emoji, sub: { vi, el, en: EN[vi] } },
     choiceStyle: 'text',
     choices: answers.map((a, k) => ({ label: a, correct: k === ok })),
     // read aloud without the emoji in front of the answer
     explain: {
       vi: vi + ': ' + plain(answers[ok].vi) + '.',
       el: el + ': ' + plain(answers[ok].el) + '.',
+      en: (EN[vi] || vi) + ': ' + plain(EN[answers[ok].vi] || '') + '.',
     },
   };
 };
@@ -30,7 +32,7 @@ const picker = (prefix, rows) => () => {
   const [vi, el, right, ...wrong] = rows[i];
   return {
     sig: prefix + i,
-    ask: { vi, el },
+    ask: { vi, el, en: EN[vi] },
     target: null,
     show: { kind: 'listen' },
     choiceStyle: 'emoji',

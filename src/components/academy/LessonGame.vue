@@ -119,6 +119,7 @@
   import './academy.scss';
   import LessonVisual from './LessonVisual.vue';
   import { profileOf } from './profiles.js';
+  import { pickText } from './curriculum/en.js';
   import { AcademySpeech } from './academySpeech.js';
   import { burst } from './burst.js';
   import { sfx, voice } from './sfx.js';
@@ -210,8 +211,7 @@
     },
     methods: {
       t(text) {
-        if (!text) return '';
-        return typeof text === 'string' ? text : text[this.lang] || text.vi;
+        return pickText(text, this.lang);
       },
       label(c) {
         return this.t(c.label);

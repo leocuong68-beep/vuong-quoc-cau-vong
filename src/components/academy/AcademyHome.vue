@@ -18,13 +18,13 @@
         <div
           class="wallet slab pixel"
           data-test="wallet"
-          :title="t({ vi: 'Sao của ' + profile.name, el: 'Αστέρια' })"
+          :title="t({ vi: 'Sao của ' + profile.name, el: 'Αστέρια', en: profile.name + '\'s stars' })"
         >
           <span class="star">★</span>
           <b>{{ wallet }}</b>
         </div>
         <button type="button" class="mc-btn lang" data-test="voice" @click="toggleVoice">
-          {{ lang === 'vi' ? 'VI · Tiếng Việt' : 'EL · Ελληνικά' }}
+          {{ { vi: 'VI · Tiếng Việt', en: 'EN · English', el: 'EL · Ελληνικά' }[lang] }}
         </button>
       </header>
 
@@ -104,6 +104,7 @@
 <script>
   import './academy.scss';
   import { profileOf } from './profiles.js';
+  import { pickText } from './curriculum/en.js';
   import { AcademySpeech } from './academySpeech.js';
   import { sfx, voice } from './sfx.js';
 
@@ -174,15 +175,18 @@
           return this.t({
             vi: 'Chào ' + name + '! Hôm nay học gì nào?',
             el: 'Γεια σου ' + elName + '! Τι θα μάθουμε σήμερα;',
+            en: 'Hi ' + name + '! What shall we learn today?',
           });
         return mc
           ? this.t({
               vi: 'Còn ' + left + ' môn nữa là mở Minecraft!',
               el: 'Άλλα ' + left + ' μαθήματα για το Minecraft!',
+              en: left + ' more ' + (left === 1 ? 'subject' : 'subjects') + ' to open Minecraft!',
             })
           : this.t({
               vi: 'Còn ' + left + ' môn nữa là có vương miện!',
               el: 'Άλλα ' + left + ' για το στέμμα!',
+              en: left + ' more ' + (left === 1 ? 'subject' : 'subjects') + ' to win the crown!',
             });
       },
     },
@@ -200,7 +204,7 @@
         this.$router.push(path);
       },
       t(text) {
-        return typeof text === 'string' ? text : text[this.lang] || text.vi;
+        return pickText(text, this.lang);
       },
       passed(s) {
         return s.lessons.filter((l) => this.acad.isPassed(l.id)).length;

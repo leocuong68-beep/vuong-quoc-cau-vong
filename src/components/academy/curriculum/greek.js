@@ -77,6 +77,7 @@ const hearLetter = (set, pool) => () => {
     explain: {
       vi: 'Chữ ' + l.name + ' viết là ' + l.lower + '.',
       el: 'Το ' + l.name + ' γράφεται ' + l.lower + '.',
+      en: l.name + ' is written ' + l.lower + '.',
     },
     explainSay: [el(l.name)],
   };
@@ -201,7 +202,7 @@ const spell = (items, sigPrefix, ask) => () => {
     show: it.emoji ? { kind: 'emoji', value: it.emoji } : { kind: 'listen' },
     choiceStyle: 'text',
     choices: choicesFrom(it.word, it.wrong, 3).map((c) => ({ label: c.value, correct: c.correct })),
-    explain: { vi: 'Viết đúng là: ' + it.word, el: 'Σωστά γράφεται: ' + it.word },
+    explain: { vi: 'Viết đúng là: ' + it.word, el: 'Σωστά γράφεται: ' + it.word, en: 'The right spelling is: ' + it.word },
   };
 };
 
@@ -284,7 +285,7 @@ const tonos = () => {
       label: c.value,
       correct: c.correct,
     })),
-    explain: { vi: 'Đúng là: ' + word, el: 'Σωστά: ' + word },
+    explain: { vi: 'Đúng là: ' + word, el: 'Σωστά: ' + word, en: 'The right one is: ' + word },
   };
 };
 

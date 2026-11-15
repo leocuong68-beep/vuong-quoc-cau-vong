@@ -98,6 +98,7 @@
 
 <script>
   import { profileOf } from './profiles.js';
+  import { pickText } from './curriculum/en.js';
 
   export default {
     name: 'LessonVisual',
@@ -107,7 +108,7 @@
       sub() {
         const s = this.show.sub;
         if (!s) return '';
-        return typeof s === 'string' ? s : s[profileOf(this.$route).state.voiceLang] || s.vi;
+        return pickText(s, profileOf(this.$route).state.voiceLang);
       },
       circuitSvg() {
         const c = this.show;

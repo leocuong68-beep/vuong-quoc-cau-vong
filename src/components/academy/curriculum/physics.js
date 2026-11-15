@@ -1,4 +1,5 @@
 import { build, rand, shuffle } from './helpers.js';
+import { EN, enAsk } from './en.js';
 
 // Vật lý cơ bản — lực, điện, ánh sáng, âm thanh, máy đơn giản; rồi tư duy lập trình cho robot.
 // A fact question: [emoji, question vi, question el, [answer vi, answer el] (right first), ...wrong answers]
@@ -8,15 +9,19 @@ const fact = (prefix, rows) => () => {
   const [emoji, qVi, qEl, right, ...wrong] = rows[i];
   return {
     sig: prefix + i,
-    ask: { vi: qVi, el: qEl },
+    ask: { vi: qVi, el: qEl, en: EN[qVi] },
     target: null,
     show: { kind: 'emoji', value: emoji },
     choiceStyle: 'text',
     choices: shuffle([
-      { label: { vi: right[0], el: right[1] }, correct: true },
-      ...wrong.map((w) => ({ label: { vi: w[0], el: w[1] }, correct: false })),
+      { label: { vi: right[0], el: right[1], en: EN[right[0]] }, correct: true },
+      ...wrong.map((w) => ({ label: { vi: w[0], el: w[1], en: EN[w[0]] }, correct: false })),
     ]),
-    explain: { vi: 'Đáp án đúng: ' + right[0] + '.', el: 'Σωστό: ' + right[1] + '.' },
+    explain: {
+      vi: 'Đáp án đúng: ' + right[0] + '.',
+      el: 'Σωστό: ' + right[1] + '.',
+      en: 'The answer is: ' + (EN[right[0]] || right[0]) + '.',
+    },
   };
 };
 
@@ -26,12 +31,16 @@ const sorter = (prefix, askVi, askEl, answers, rows) => () => {
   const [emoji, vi, el, ok] = rows[i];
   return {
     sig: prefix + i,
-    ask: { vi: askVi.replace('{x}', vi), el: askEl.replace('{x}', el) },
+    ask: { vi: askVi.replace('{x}', vi), el: askEl.replace('{x}', el), en: enAsk(askVi, vi) },
     target: null,
-    show: { kind: 'emoji', value: emoji, sub: { vi, el } },
+    show: { kind: 'emoji', value: emoji, sub: { vi, el, en: EN[vi] } },
     choiceStyle: 'text',
     choices: answers.map((a, k) => ({ label: a, correct: k === ok })),
-    explain: { vi: vi + ': ' + answers[ok].vi + '.', el: el + ': ' + answers[ok].el + '.' },
+    explain: {
+      vi: vi + ': ' + answers[ok].vi + '.',
+      el: el + ': ' + answers[ok].el + '.',
+      en: (EN[vi] || vi) + ': ' + EN[answers[ok].vi] + '.',
+    },
   };
 };
 
@@ -498,7 +507,11 @@ const robot = (withLoops) => () => {
     show: { kind: 'grid', size, from, to },
     choiceStyle: 'code',
     choices: shuffle(choices),
-    explain: { vi: 'Đếm từng ô: ' + fmt(path), el: 'Μέτρα τα τετράγωνα: ' + fmt(path) },
+    explain: {
+      vi: 'Đếm từng ô: ' + fmt(path),
+      el: 'Μέτρα τα τετράγωνα: ' + fmt(path),
+      en: 'Count the squares: ' + fmt(path),
+    },
   };
 };
 

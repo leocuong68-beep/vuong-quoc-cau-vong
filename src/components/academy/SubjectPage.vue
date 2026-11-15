@@ -54,6 +54,7 @@
 <script>
   import './academy.scss';
   import { profileOf } from './profiles.js';
+  import { pickText } from './curriculum/en.js';
   import { sfx } from './sfx.js';
 
   export default {
@@ -80,7 +81,7 @@
     },
     methods: {
       t(text) {
-        return typeof text === 'string' ? text : text[this.lang] || text.vi;
+        return pickText(text, this.lang);
       },
       position(lesson) {
         return this.subject.lessons.findIndex((l) => l.id === lesson.id);

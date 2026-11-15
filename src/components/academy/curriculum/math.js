@@ -10,10 +10,10 @@ const near = (ans, spread = 3) => {
 };
 
 const OPS = {
-  '+': { vi: 'cộng', el: 'συν' },
-  '-': { vi: 'trừ', el: 'μείον' },
-  '×': { vi: 'nhân', el: 'επί' },
-  ':': { vi: 'chia', el: 'διά' },
+  '+': { vi: 'cộng', el: 'συν', en: 'plus' },
+  '-': { vi: 'trừ', el: 'μείον', en: 'minus' },
+  '×': { vi: 'nhân', el: 'επί', en: 'times' },
+  ':': { vi: 'chia', el: 'διά', en: 'divided by' },
 };
 
 const exprQ = (a, op, b, ans, sig) => ({
@@ -21,6 +21,7 @@ const exprQ = (a, op, b, ans, sig) => ({
   ask: {
     vi: a + ' ' + OPS[op].vi + ' ' + b + ' bằng mấy?',
     el: 'Πόσο κάνει ' + a + ' ' + OPS[op].el + ' ' + b + ';',
+    en: 'What is ' + a + ' ' + OPS[op].en + ' ' + b + '?',
   },
   target: null,
   show: { kind: 'expr', value: a + ' ' + op + ' ' + b + ' = ?' },
@@ -29,6 +30,7 @@ const exprQ = (a, op, b, ans, sig) => ({
   explain: {
     vi: a + ' ' + OPS[op].vi + ' ' + b + ' bằng ' + ans + '.',
     el: a + ' ' + OPS[op].el + ' ' + b + ' κάνει ' + ans + '.',
+    en: a + ' ' + OPS[op].en + ' ' + b + ' is ' + ans + '.',
   },
 });
 
@@ -64,6 +66,7 @@ const missing = () => {
     explain: {
       vi: a + b + ' trừ ' + b + ' bằng ' + a + '.',
       el: a + b + ' μείον ' + b + ' κάνει ' + a + '.',
+      en: a + b + ' minus ' + b + ' is ' + a + '.',
     },
   };
 };
@@ -101,6 +104,7 @@ const groupsPicture = () => {
     explain: {
       vi: groups + ' nhóm, mỗi nhóm ' + each + ': ' + groups + ' nhân ' + each + '.',
       el: groups + ' ομάδες των ' + each + '.',
+      en: groups + ' groups of ' + each + ': ' + groups + ' times ' + each + '.',
     },
   };
 };
@@ -114,6 +118,7 @@ const share = () => {
     ask: {
       vi: 'Chia đều ' + total + ' tấm thẻ cho ' + people + ' bạn. Mỗi bạn được mấy tấm?',
       el: 'Μοιράζουμε ' + total + ' κάρτες σε ' + people + ' παιδιά. Πόσες παίρνει το καθένα;',
+      en: 'Share ' + total + ' cards equally between ' + people + ' children. How many does each child get?',
     },
     target: null,
     show: { kind: 'share', total, people },
@@ -125,6 +130,7 @@ const share = () => {
     explain: {
       vi: total + ' chia ' + people + ' bằng ' + each + '.',
       el: total + ' διά ' + people + ' κάνει ' + each + '.',
+      en: total + ' divided by ' + people + ' is ' + each + '.',
     },
   };
 };
@@ -155,6 +161,7 @@ const fact = () => {
         ' bằng mấy?',
       el:
         'Αφού ' + a + ' επί ' + b + ' κάνει ' + a * b + ', πόσο κάνει ' + a * b + ' διά ' + a + ';',
+      en: a + ' times ' + b + ' is ' + a * b + '. So what is ' + a * b + ' divided by ' + a + '?',
     },
     target: null,
     show: {
@@ -179,24 +186,28 @@ const STORY = [
       b +
       ' viên. Tin Tin có tất cả bao nhiêu viên?',
     el: 'Ο Τιν Τιν έχει ' + a + ' βόλους και παίρνει άλλους ' + b + '. Πόσους έχει τώρα;',
+    en: 'Tin Tin has ' + a + ' marbles and gets ' + b + ' more. How many marbles does he have now?',
     ans: a + b,
     emoji: '🔵',
   }),
   (a, b) => ({
     vi: 'Trên cây có ' + (a + b) + ' con chim, ' + b + ' con bay đi. Còn lại mấy con?',
     el: 'Στο δέντρο είναι ' + (a + b) + ' πουλιά. Φεύγουν ' + b + '. Πόσα μένουν;',
+    en: 'There are ' + (a + b) + ' birds in the tree. ' + b + ' fly away. How many are left?',
     ans: a,
     emoji: '🐦',
   }),
   (a, b) => ({
     vi: 'Có ' + a + ' hộp, mỗi hộp ' + b + ' cái bánh. Có tất cả bao nhiêu cái bánh?',
     el: 'Έχουμε ' + a + ' κουτιά με ' + b + ' μπισκότα το καθένα. Πόσα μπισκότα έχουμε;',
+    en: 'There are ' + a + ' boxes with ' + b + ' biscuits in each. How many biscuits are there?',
     ans: a * b,
     emoji: '🍪',
   }),
   (a, b) => ({
     vi: 'Mẹ chia đều ' + a * b + ' quả táo vào ' + a + ' đĩa. Mỗi đĩa mấy quả?',
     el: 'Η μαμά βάζει ' + a * b + ' μήλα σε ' + a + ' πιάτα. Πόσα σε κάθε πιάτο;',
+    en: 'Mum shares ' + a * b + ' apples equally on ' + a + ' plates. How many on each plate?',
     ans: b,
     emoji: '🍎',
   }),
@@ -206,7 +217,7 @@ const story = (kinds) => () => {
   const s = STORY[k](rand(2, 5), rand(2, 5));
   return {
     sig: 'story-' + k + '-' + s.ans,
-    ask: { vi: s.vi, el: s.el },
+    ask: { vi: s.vi, el: s.el, en: s.en },
     target: null,
     show: { kind: 'emoji', value: s.emoji },
     choiceStyle: 'big',

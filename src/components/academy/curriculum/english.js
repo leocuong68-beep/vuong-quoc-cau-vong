@@ -49,7 +49,7 @@ const startsWith = (letters, pool) => () => {
     show: { kind: 'emoji', value: emoji, sub: word },
     choiceStyle: 'big',
     choices: choicesFrom(l, pool).map((c) => ({ label: c.value, correct: c.correct })),
-    explain: { vi: word + ' bắt đầu bằng chữ ' + l + '.', el: word + ': ' + l },
+    explain: { vi: word + ' bắt đầu bằng chữ ' + l + '.', el: word + ': ' + l, en: word + ' starts with ' + l + '.' },
   };
 };
 
