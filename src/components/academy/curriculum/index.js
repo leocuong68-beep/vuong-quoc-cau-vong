@@ -8,6 +8,7 @@ import { PHYSICS } from './physics.js';
 // Each subject also gets a flat `lessons` list: a lesson opens when the one before it is passed.
 export const SUBJECTS = [GREEK, ENGLISH, MATH, PHYSICS].map((s) => ({
   ...s,
+  icon: 'img/academy/block_' + s.id + '.webp',
   lessons: s.units.flatMap((u, unitIndex) => u.lessons.map((l) => ({ ...l, unitIndex }))),
 }));
 

@@ -1,55 +1,152 @@
-// Tin Tin's study space: dark navy, calm, for an older child.
+// Tin Tin's study space: a blocky voxel world (inspired by block-building games, all art our own).
+@import '@fontsource/handjet/latin-700.css';
+@import '@fontsource/handjet/latin-ext-700.css';
+@import '@fontsource/handjet/vietnamese-700.css';
+@import '@fontsource/handjet/greek-700.css';
+@import '@fontsource/handjet/latin-800.css';
+@import '@fontsource/handjet/latin-ext-800.css';
+@import '@fontsource/handjet/vietnamese-800.css';
+@import '@fontsource/handjet/greek-800.css';
+
 .academy {
-  --bg: #0b1220;
-  --card: #131c2e;
-  --line: #22304a;
-  --text: #e6edf7;
-  --muted: #8aa0bf;
-  --accent: #38bdf8;
+  --panel: rgba(24, 22, 30, 0.86);
+  --panel-solid: #24212c;
+  --stone: #6b6b75;
+  --line: #0d0c10;
+  --text: #f7f3e8;
+  --muted: #c9c2b0;
+  --grass: #5fbf3a;
+  --grass-dark: #3d8a22;
+  --gold: #ffcf3f;
+  --accent: #5fbf3a;
+  --pixel: 'Handjet', 'Courier New', monospace;
   position: absolute;
   inset: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   box-sizing: border-box;
-  padding: 0 calc(1.4rem + var(--safe-right, 0px)) 1rem calc(1.4rem + var(--safe-left, 0px));
+  padding: 0 calc(1.4rem + var(--safe-right, 0px)) 1.2rem calc(1.4rem + var(--safe-left, 0px));
   background:
-    radial-gradient(1200px 500px at 85% -10%, rgba(56, 189, 248, 0.12), transparent 60%),
-    radial-gradient(900px 500px at -10% 110%, rgba(20, 184, 166, 0.1), transparent 60%),
-    var(--bg);
+    linear-gradient(
+      180deg,
+      rgba(10, 16, 30, 0.15) 0%,
+      rgba(10, 12, 20, 0.55) 55%,
+      rgba(8, 8, 12, 0.88) 100%
+    ),
+    url('../../../public/img/academy/world.webp') center / cover fixed,
+    #1d2a44;
   color: var(--text);
-  font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, 'SF Pro Rounded', 'Segoe UI', 'Noto Sans', system-ui, sans-serif;
   -webkit-user-select: none;
   user-select: none;
+  image-rendering: auto;
 
   button {
     font-family: inherit;
   }
-  .icon-btn {
-    width: 2.8rem;
-    height: 2.8rem;
-    flex: none;
-    border-radius: 0.9rem;
-    border: 1px solid var(--line);
-    background: var(--card);
-    color: var(--text);
-    font-size: 1.1rem;
-    cursor: pointer;
+
+  // a stone slab: hard edges, light top-left, dark bottom-right, like a carved block
+  .slab {
+    background: var(--panel);
+    border: 4px solid var(--line);
+    box-shadow:
+      inset 4px 4px 0 rgba(255, 255, 255, 0.12),
+      inset -4px -4px 0 rgba(0, 0, 0, 0.35),
+      0 6px 0 rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
   }
+
+  .pixel {
+    font-family: var(--pixel);
+    letter-spacing: 0.02em;
+  }
+
+  .icon-btn,
   .primary,
-  .secondary {
-    border-radius: 0.9rem;
-    padding: 0.8rem 1.5rem;
+  .secondary,
+  .mc-btn {
+    font-family: var(--pixel);
     font-weight: 800;
-    font-size: 1.1rem;
     cursor: pointer;
+    border: 4px solid var(--line);
+    border-radius: 0;
+    box-shadow:
+      inset 4px 4px 0 rgba(255, 255, 255, 0.35),
+      inset -4px -4px 0 rgba(0, 0, 0, 0.35),
+      0 5px 0 var(--line);
+    transition:
+      transform 0.06s,
+      box-shadow 0.06s,
+      filter 0.15s;
+    &:hover:not(:disabled) {
+      filter: brightness(1.12);
+    }
+    &:active:not(:disabled) {
+      transform: translateY(4px);
+      box-shadow:
+        inset 4px 4px 0 rgba(255, 255, 255, 0.25),
+        inset -4px -4px 0 rgba(0, 0, 0, 0.35),
+        0 1px 0 var(--line);
+    }
+  }
+  .icon-btn {
+    width: 3.2rem;
+    height: 3.2rem;
+    flex: none;
+    background: #8b8b93;
+    color: #fff;
+    font-size: 1.2rem;
   }
   .primary {
-    background: var(--accent);
-    color: #0b1220;
-    border: none;
+    background: var(--grass);
+    color: #fff;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+    padding: 0.7rem 1.6rem;
+    font-size: 1.7rem;
   }
   .secondary {
-    background: var(--card);
-    color: var(--text);
-    border: 1px solid var(--line);
+    background: #8b8b93;
+    color: #fff;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+    padding: 0.7rem 1.4rem;
+    font-size: 1.6rem;
+  }
+
+  // XP bar: green segments on a dark track
+  .xp {
+    height: 1rem;
+    background: #1a1a1f;
+    border: 3px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    > span {
+      display: block;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0 calc(10% - 3px),
+          rgba(0, 0, 0, 0.45) calc(10% - 3px) 10%
+        ),
+        linear-gradient(180deg, #a6ff5a, #5fbf3a 60%, #3d8a22);
+      transition: width 0.35s steps(6);
+    }
+  }
+}
+
+// little squares that burst from a right answer
+.mc-burst {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.3);
+  animation: mc-burst 0.7s ease-out forwards;
+}
+@keyframes mc-burst {
+  to {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
+    opacity: 0;
   }
 }

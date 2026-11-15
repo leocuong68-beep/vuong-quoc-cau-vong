@@ -24,7 +24,15 @@
     </div>
 
     <div v-else-if="show.kind === 'dots'" class="groups">
-      <div v-for="g in show.groups" :key="g" class="group">
+      <div
+        v-for="g in show.groups"
+        :key="g"
+        class="group"
+        :style="{
+          gridTemplateColumns:
+            'repeat(' + (show.each === 4 ? 2 : Math.min(show.each, 3)) + ', 1.6rem)',
+        }"
+      >
         <span v-for="d in show.each" :key="d" class="dot" />
       </div>
     </div>
@@ -90,7 +98,7 @@
         let out = '';
         for (let y = 0; y < size; y++)
           for (let x = 0; x < size; x++)
-            out += `<rect x="${pad + x * cell}" y="${pad + y * cell}" width="${cell - 4}" height="${cell - 4}" rx="8" fill="#16223a" stroke="#22304a"/>`;
+            out += `<rect x="${pad + x * cell}" y="${pad + y * cell}" width="${cell - 4}" height="${cell - 4}" fill="${(x + y) % 2 ? '#4fae30' : '#5fbf3a'}" stroke="#2d6b18" stroke-width="3"/>`;
         const at = (p, ch) =>
           `<text x="${pad + p[0] * cell + (cell - 4) / 2}" y="${pad + p[1] * cell + (cell - 4) / 2 + 12}" font-size="34" text-anchor="middle">${ch}</text>`;
         out += at(to, '⭐') + at(from, '🤖');
@@ -112,31 +120,39 @@
   .listen {
     width: 9rem;
     height: 9rem;
-    border-radius: 50%;
-    border: none;
+    border: 5px solid #0d0c10;
     background: var(--accent);
-    color: #0b1220;
-    font-size: 3.6rem;
+    color: #fff;
+    font-size: 3.8rem;
     cursor: pointer;
-    box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 25%, transparent);
-    animation: pulse 1.8s ease-in-out infinite;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+    box-shadow:
+      inset 6px 6px 0 rgba(255, 255, 255, 0.35),
+      inset -6px -6px 0 rgba(0, 0, 0, 0.3),
+      0 8px 0 #0d0c10;
+    animation: pulse 1.6s ease-in-out infinite;
+    &:active {
+      transform: translateY(6px);
+    }
   }
   @keyframes pulse {
     50% {
-      box-shadow: 0 0 0 18px color-mix(in srgb, var(--accent) 12%, transparent);
+      transform: scale(1.06);
     }
   }
   .big {
-    font-size: 8rem;
+    font-size: 8.5rem;
     font-weight: 800;
     line-height: 1;
-    color: #f1f5f9;
+    color: #fff;
+    text-shadow: 6px 6px 0 #0d0c10;
   }
   .word {
     font-size: 4.2rem;
     font-weight: 800;
     letter-spacing: 0.04em;
-    color: #f1f5f9;
+    color: #fff;
+    text-shadow: 4px 4px 0 #0d0c10;
   }
   .emoji-wrap {
     display: flex;
@@ -157,9 +173,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 4.6rem;
+    font-size: 4.8rem;
     font-weight: 800;
-    color: #f1f5f9;
+    color: #fff;
+    text-shadow: 5px 5px 0 #0d0c10;
     font-variant-numeric: tabular-nums;
     span + span {
       font-size: 0.8em;
@@ -176,14 +193,14 @@
     grid-template-columns: repeat(3, 1.6rem);
     gap: 0.4rem;
     padding: 0.8rem;
-    border: 2px solid var(--accent);
-    border-radius: 1rem;
+    border: 4px solid #0d0c10;
+    background: rgba(0, 0, 0, 0.35);
   }
   .dot {
     width: 1.6rem;
     height: 1.6rem;
-    border-radius: 50%;
-    background: var(--accent);
+    background: var(--gold);
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.3);
   }
   .share {
     display: flex;
@@ -201,8 +218,9 @@
   .card {
     width: 1.6rem;
     height: 2.2rem;
-    border-radius: 0.3rem;
-    background: linear-gradient(135deg, #f472b6, #a78bfa);
+    background: #e35d9b;
+    border: 2px solid #0d0c10;
+    box-shadow: inset 3px 3px 0 rgba(255, 255, 255, 0.35);
   }
   .kid {
     font-size: 2.6rem;
