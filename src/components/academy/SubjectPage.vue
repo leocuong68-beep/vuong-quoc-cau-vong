@@ -51,6 +51,7 @@
   import './academy.scss';
   import { subjectById } from './curriculum/index.js';
   import { Academy } from './academyState.js';
+  import { sfx } from './sfx.js';
 
   export default {
     name: 'SubjectPage',
@@ -81,6 +82,7 @@
         return Academy.isOpen(this.subject, this.position(lesson)) ? 'open' : 'locked';
       },
       open(lesson) {
+        sfx.click();
         this.$router.push('/tintin/' + this.subject.id + '/' + lesson.id);
       },
     },

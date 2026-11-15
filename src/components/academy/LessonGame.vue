@@ -17,6 +17,10 @@
     <main v-if="!finished && q" class="stage">
       <div class="show slab">
         <img :src="subject.icon" alt="" class="corner-block no-drag" />
+        <div class="buddy" :class="'mood-' + mood">
+          <img :src="'img/academy/tintin_' + mood + '.webp'" alt="" class="no-drag" />
+        </div>
+        <div v-if="streak >= 3" :key="'s' + streak" class="combo pixel">x{{ streak }} COMBO!</div>
         <LessonVisual :show="shownVisual" @replay="speakQuestion" />
       </div>
       <button type="button" class="ask" data-test="ask" @click="speakQuestion">
@@ -55,7 +59,7 @@
 
     <main v-else-if="finished" class="result" data-test="result">
       <img
-        :src="avatar"
+        :src="outcome.passed ? 'img/academy/tintin_cheer.webp' : 'img/academy/tintin_oops.webp'"
         alt=""
         class="cheer no-drag"
         :class="{ sad: !outcome.passed }"
@@ -110,22 +114,16 @@
   import { Academy, PLAYER } from './academyState.js';
   import { AcademySpeech } from './academySpeech.js';
   import { burst } from './burst.js';
-
-  const playSound = (name) => {
-    try {
-      const a = new Audio('sounds/' + name + '.mp3');
-      a.volume = 0.5;
-      a.play().catch(() => {});
-    } catch (e) {
-      // no sound
-    }
-  };
+  import { sfx, voice } from './sfx.js';
 
   export default {
     name: 'LessonGame',
     components: { LessonVisual },
     data() {
       return {
+        mood: 'think',
+        streak: 0,
+        reactToken: 0,
         questions: [],
         index: 0,
         right: 0,
@@ -195,6 +193,7 @@
     },
     unmounted() {
       clearTimeout(this.timer);
+      this.reactToken++;
       AcademySpeech.stop();
     },
     methods: {
@@ -212,6 +211,9 @@
         this.picked = null;
         this.finished = false;
         this.outcome = null;
+        this.mood = 'think';
+        this.streak = 0;
+        this.reactToken++;
         this.$nextTick(() => this.speakQuestion());
       },
       restart() {
@@ -235,22 +237,35 @@
         if (c.correct && event) burst(event.currentTarget, this.subject.color);
         this.picked = i;
         this.wasRight = !!c.correct;
+        AcademySpeech.stop();
+        const token = ++this.reactToken;
         if (c.correct) {
           this.right++;
-          playSound('success' + (1 + Math.floor(Math.random() * 5)));
+          this.streak++;
+          const combo = this.streak === 3 || this.streak === 5 || this.streak === 8;
+          this.mood = combo ? 'wow' : 'cheer';
+          sfx.right();
+          if (combo) setTimeout(() => sfx.combo(), 120);
           const parts = [];
           if (c.say) parts.push(...c.say);
           if (this.q.explainAlways && this.q.explain)
             parts.push({ text: this.t(this.q.explain), lang: this.lang });
-          if (parts.length) AcademySpeech.say(parts);
-          else AcademySpeech.stop();
-          if (!this.q.explainAlways) this.timer = setTimeout(() => this.next(), c.say ? 1500 : 900);
+          // a word to hear again (e.g. the English word) comes first, then the cheer
+          const cheer = () => (token === this.reactToken ? voice(combo ? 'combo' : 'right') : null);
+          if (parts.length) AcademySpeech.say(parts).then(cheer);
+          else cheer();
+          if (!this.q.explainAlways)
+            this.timer = setTimeout(() => this.next(), (c.say ? 2300 : 1500) + (combo ? 900 : 0));
         } else {
-          playSound('error1');
+          this.streak = 0;
+          this.mood = 'oops';
+          sfx.wrong();
           const parts = [];
           if (this.q.explain) parts.push({ text: this.t(this.q.explain), lang: this.lang });
           if (this.q.explainSay) parts.push(...this.q.explainSay);
-          AcademySpeech.say(parts);
+          voice('wrong').then(() => {
+            if (token === this.reactToken) AcademySpeech.say(parts);
+          });
         }
       },
       next() {
@@ -261,6 +276,8 @@
         }
         this.index++;
         this.picked = null;
+        this.mood = 'think';
+        this.reactToken++;
         this.$nextTick(() => this.speakQuestion());
       },
       finish() {
@@ -272,8 +289,25 @@
           this.right,
           this.questions.length
         );
-        playSound(this.outcome.passed ? 'success3' : 'error2');
-        AcademySpeech.say([{ text: this.verdict, lang: this.lang }]);
+        const token = ++this.reactToken;
+        const sayVerdict = () => {
+          if (token === this.reactToken)
+            AcademySpeech.say([{ text: this.verdict, lang: this.lang }]);
+        };
+        if (!this.outcome.passed) {
+          sfx.fail();
+          voice('fail').then(sayVerdict);
+        } else {
+          sfx.levelUp();
+          let chain = voice(this.outcome.stars === 3 ? 'perfect' : 'pass');
+          if (this.outcome.bonus) {
+            chain = chain.then(() => {
+              sfx.chest();
+              return token === this.reactToken ? voice('unlock') : null;
+            });
+          }
+          chain.then(sayVerdict);
+        }
       },
       goNext() {
         this.$router.replace('/tintin/' + this.subject.id + '/' + this.nextLesson.id);
@@ -342,6 +376,73 @@
     padding: 1rem;
     display: flex;
     --card: rgba(255, 255, 255, 0.06);
+  }
+  .buddy {
+    position: absolute;
+    right: 1rem;
+    bottom: 0;
+    height: 92%;
+    max-height: 17rem;
+    pointer-events: none;
+    transform-origin: bottom center;
+    img {
+      height: 100%;
+      filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.3));
+    }
+    &.mood-think {
+      animation: sway 3s ease-in-out infinite;
+    }
+    &.mood-cheer {
+      animation: hop 0.5s ease-out 2;
+    }
+    &.mood-wow {
+      animation: zoom 0.6s ease-out;
+    }
+    &.mood-oops {
+      animation: wobble 0.5s ease-in-out;
+    }
+  }
+  @keyframes sway {
+    50% {
+      transform: rotate(-2deg) translateY(-3px);
+    }
+  }
+  @keyframes zoom {
+    40% {
+      transform: scale(1.15) rotate(3deg);
+    }
+  }
+  @keyframes wobble {
+    25% {
+      transform: rotate(-6deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+  }
+  .combo {
+    position: absolute;
+    top: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-shadow:
+      3px 3px 0 #7a5400,
+      0 0 18px rgba(255, 207, 63, 0.6);
+    animation: comboPop 0.6s ease-out;
+    z-index: 2;
+  }
+  @keyframes comboPop {
+    0% {
+      transform: translateX(-50%) scale(0.3);
+      opacity: 0;
+    }
+    60% {
+      transform: translateX(-50%) scale(1.25);
+      opacity: 1;
+    }
   }
   .corner-block {
     position: absolute;

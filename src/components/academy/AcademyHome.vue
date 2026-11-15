@@ -76,7 +76,7 @@
           class="subject slab"
           :style="{ '--c': s.color, '--delay': i * 0.4 + 's' }"
           :data-subject="s.id"
-          @click="$router.push('/tintin/' + s.id)"
+          @click="go('/tintin/' + s.id)"
         >
           <img :src="s.icon" alt="" class="block no-drag" />
           <span class="info">
@@ -106,6 +106,7 @@
   import { SUBJECTS } from './curriculum/index.js';
   import { Academy, PLAYER } from './academyState.js';
   import { AcademySpeech } from './academySpeech.js';
+  import { sfx } from './sfx.js';
 
   export default {
     name: 'AcademyHome',
@@ -140,6 +141,10 @@
       AcademySpeech.stop();
     },
     methods: {
+      go(path) {
+        sfx.click();
+        this.$router.push(path);
+      },
       t(text) {
         return typeof text === 'string' ? text : text[this.lang] || text.vi;
       },
