@@ -119,6 +119,30 @@ export const sfx = {
     noise(0.05, 0.2, 0.12, 700);
     [1320, 1568, 1760, 2093].forEach((f, i) => tone(f, 0.35 + i * 0.07, 0.25, 'triangle', 0.1));
   },
+  // the daily reward (crown / cup): a short victory fanfare with fireworks pops
+  fanfare() {
+    const n = [
+      [523, 0, 0.16],
+      [523, 0.18, 0.12],
+      [523, 0.32, 0.12],
+      [698, 0.46, 0.5],
+      [784, 1.0, 0.16],
+      [698, 1.18, 0.12],
+      [784, 1.32, 0.7],
+    ];
+    n.forEach(([f, t, d]) => {
+      tone(f, t, d, 'square', 0.08);
+      tone(f * 2, t, d, 'triangle', 0.06);
+    });
+    [262, 349, 392].forEach((f, i) => tone(f, [0, 0.46, 1.32][i], 0.6, 'triangle', 0.1));
+    [2.2, 2.6, 3.1, 3.5].forEach((t) => {
+      tone(300, t, 0.25, 'sawtooth', 0.04, 4);
+      noise(t + 0.25, 0.35, 0.22, 1500);
+    });
+  },
+  pop() {
+    noise(0, 0.3, 0.2, 1400);
+  },
   // lesson not passed yet
   fail() {
     [392, 330, 262].forEach((f, i) => tone(f, i * 0.14, 0.2, 'square', 0.08));

@@ -83,6 +83,11 @@ export const REWARD = {
       el: 'Άλλα ' + n + ' για το στέμμα!',
       en: n + ' more ' + (n === 1 ? 'subject' : 'subjects') + ' to win the crown!',
     }),
+    claim: {
+      vi: 'Hoàn thành! Chạm vào vương miện để đội lên nào!',
+      el: 'Τα κατάφερες! Άγγιξε το στέμμα να το φορέσεις!',
+      en: 'Done! Tap the crown to put it on!',
+    },
     bonus: { vi: '👑 Xong cả 4 môn! Mia được vương miện hôm nay.', el: '👑 Τέλεια! Η Μία πήρε το στέμμα σήμερα.' },
   },
   cup: {
@@ -107,6 +112,11 @@ export const REWARD = {
       el: 'Άλλα ' + n + ' για το κύπελλο!',
       en: n + ' more ' + (n === 1 ? 'subject' : 'subjects') + ' to win the gold cup!',
     }),
+    claim: {
+      vi: 'Hoàn thành! Chạm vào cúp vàng để nhận cúp nào!',
+      el: 'Τα κατάφερες! Άγγιξε το κύπελλο!',
+      en: 'Done! Tap the gold cup to take it!',
+    },
     bonus: {
       vi: '🏆 Xong cả 4 môn! Con nhận cúp vàng hôm nay.',
       el: '🏆 Τέλεια! Πήρες το χρυσό κύπελλο σήμερα.',

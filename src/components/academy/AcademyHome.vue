@@ -1,10 +1,12 @@
 <template>
   <div class="academy home" :class="'theme-' + profile.theme">
     <PickName v-if="needName" @picked="picked" />
+    <canvas v-if="celebrating" ref="fireworks" class="fireworks" />
     <aside class="hero">
       <div class="bubble slab pixel">{{ greeting }}</div>
-      <button type="button" class="tintin" data-test="avatar" @click="secretTap">
+      <button type="button" class="tintin" :class="{ jump: celebrating }" data-test="avatar" @click="secretTap">
         <img :src="profile.avatar" :alt="profile.name" class="no-drag" />
+        <span v-if="crowned" class="worn" :class="{ landing: celebrating }" data-test="worn">{{ reward.icon }}</span>
       </button>
       <div class="shadow" />
     </aside>
@@ -51,10 +53,17 @@
             <span v-if="doneToday(s.id)" class="tick">✔</span>
           </div>
           <span class="arrow pixel">➜</span>
-          <div class="slot mine" :class="{ done: minecraftOpen }" data-test="minecraft">
+          <button
+            type="button"
+            class="slot mine"
+            :class="{ done: minecraftOpen, claim: canClaim }"
+            :disabled="!canClaim && !crowned"
+            data-test="minecraft"
+            @click="claimReward"
+          >
             <span class="pick">{{ reward.icon }}</span>
-            <span class="lock">{{ minecraftOpen ? '🔓' : '🔒' }}</span>
-          </div>
+            <span v-if="!minecraftOpen" class="lock">🔒</span>
+          </button>
         </div>
         <button
           v-if="inApp && profile.minecraft"
@@ -123,7 +132,7 @@
     name: 'AcademyHome',
     components: { UpdateButton, PickName },
     data() {
-      return { taps: 0, tapTimer: null };
+      return { taps: 0, tapTimer: null, crowned: false, celebrating: false, celebrateTimer: null };
     },
     computed: {
       profile() {
@@ -150,10 +159,18 @@
       needName() {
         return !!this.profile.public && (!Kids.chosen || !Kids.current);
       },
+      // crown / cup: done for today, waiting to be put on
+      canClaim() {
+        return this.minecraftOpen && this.profile.reward !== 'minecraft' && !this.crowned;
+      },
+      crownKey() {
+        return 'reward_' + this.profile.id + '_' + (this.profile.public ? this.profile.name : '');
+      },
       reward() {
         return REWARD[this.profile.reward];
       },
       missionText() {
+        if (this.canClaim) return this.t(this.reward.claim);
         return this.t(this.minecraftOpen ? this.reward.open : this.reward.todo);
       },
       greeting() {
@@ -164,7 +181,23 @@
         return this.profile.public ? this.greet('') : this.greeting;
       },
     },
+    watch: {
+      crownKey: {
+        immediate: true,
+        handler() {
+          let day = '';
+          try {
+            day = localStorage[this.crownKey] || '';
+          } catch (e) {
+            day = '';
+          }
+          this.crowned = day === new Date().toDateString() && this.minecraftOpen;
+        },
+      },
+    },
     unmounted() {
+      clearTimeout(this.celebrateTimer);
+      this.celebrating = false;
       AcademySpeech.stop();
     },
     methods: {
@@ -201,6 +234,68 @@
       picked(lang) {
         while (this.acad.voiceLang !== lang) this.acad.toggleVoice();
         AcademySpeech.say([{ text: this.spokenGreeting, lang: this.lang }]);
+      },
+      // tap the crown (or cup) once the mission is done: it flies onto the head,
+      // fireworks, a fanfare, and the avatar jumps for joy
+      claimReward() {
+        if (this.profile.reward === 'minecraft' || !this.minecraftOpen) return;
+        this.crowned = true;
+        try {
+          localStorage[this.crownKey] = new Date().toDateString();
+        } catch (e) {
+          // fine for this visit
+        }
+        this.celebrating = true;
+        sfx.fanfare();
+        setTimeout(() => voice('pass', this.profile.vox), 1700);
+        setTimeout(() => AcademySpeech.say([{ text: this.t(this.reward.done), lang: this.lang }]), 3200);
+        this.$nextTick(() => this.fireworks());
+        clearTimeout(this.celebrateTimer);
+        this.celebrateTimer = setTimeout(() => (this.celebrating = false), 6500);
+      },
+      fireworks() {
+        const c = this.$refs.fireworks;
+        if (!c || !c.getContext) return;
+        const g = c.getContext('2d');
+        const W = (c.width = window.innerWidth);
+        const H = (c.height = window.innerHeight);
+        const colors = ['#ff5fa2', '#ffd84a', '#7ee0ff', '#b98cff', '#7dff9a', '#ffffff'];
+        const parts = [];
+        const burst = () => {
+          const x = W * (0.15 + Math.random() * 0.7);
+          const y = H * (0.12 + Math.random() * 0.35);
+          const col = colors[Math.floor(Math.random() * colors.length)];
+          for (let i = 0; i < 80; i++) {
+            const a = (Math.PI * 2 * i) / 80;
+            const v = 2 + Math.random() * 3.5;
+            parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, life: 70 + Math.random() * 30, col });
+          }
+          sfx.pop();
+        };
+        let frame = 0;
+        const step = () => {
+          if (!this.celebrating || !this.$refs.fireworks) return;
+          if (frame % 28 === 0 && frame < 300) burst();
+          g.clearRect(0, 0, W, H);
+          for (let i = parts.length - 1; i >= 0; i--) {
+            const p = parts[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.05;
+            p.vx *= 0.985;
+            p.life -= 1;
+            if (p.life <= 0) {
+              parts.splice(i, 1);
+              continue;
+            }
+            g.globalAlpha = Math.min(1, p.life / 40);
+            g.fillStyle = p.col;
+            g.fillRect(p.x - 3, p.y - 3, 7, 7);
+          }
+          frame += 1;
+          requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
       },
       switchKid() {
         sfx.click();
@@ -239,6 +334,77 @@
     display: grid;
     grid-template-columns: minmax(14rem, 22rem) 1fr;
     gap: 1.5rem;
+  }
+  .fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 60;
+    pointer-events: none;
+  }
+  .tintin {
+    position: relative;
+  }
+  .tintin.jump {
+    animation: joy 0.55s ease-in-out 6;
+  }
+  @keyframes joy {
+    0%,
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+    20% {
+      transform: translateY(0) scale(1.06, 0.94);
+    }
+    55% {
+      transform: translateY(-18%) scale(0.97, 1.03);
+    }
+  }
+  // the crown (or cup) sitting on the head
+  .worn {
+    position: absolute;
+    left: 50%;
+    top: -3%;
+    font-size: min(9vh, 4.5rem);
+    line-height: 1;
+    transform: translateX(-50%) rotate(-6deg);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 12px rgba(255, 216, 74, 0.8));
+    pointer-events: none;
+  }
+  .worn.landing {
+    animation: land 1.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  }
+  @keyframes land {
+    0% {
+      transform: translate(120%, -260%) scale(2.6) rotate(25deg);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-50%) rotate(-6deg) scale(1);
+    }
+  }
+  .slot.mine {
+    font: inherit;
+    padding: 0;
+  }
+  .slot.mine.claim {
+    cursor: pointer;
+    animation: claim 1s ease-in-out infinite;
+  }
+  @keyframes claim {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(255, 216, 74, 0.9);
+    }
+    50% {
+      transform: scale(1.12);
+      box-shadow: 0 0 0 10px rgba(255, 216, 74, 0);
+    }
   }
   .hero {
     position: sticky;
