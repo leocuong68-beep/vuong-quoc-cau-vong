@@ -82,17 +82,7 @@
         >
       </p>
       <p v-if="outcome.bonus" class="minecraft">
-        {{
-          profile.minecraft
-            ? t({
-                vi: '⛏️ Xong cả 4 môn! Minecraft đã mở cho hôm nay.',
-                el: '⛏️ Τέλεια! Το Minecraft άνοιξε για σήμερα.',
-              })
-            : t({
-                vi: '👑 Xong cả 4 môn! Mia được vương miện hôm nay.',
-                el: '👑 Τέλεια! Η Μία πήρε το στέμμα σήμερα.',
-              })
-        }}
+        {{ t(rewardBonus) }}
       </p>
       <div class="actions">
         <button type="button" class="secondary" data-test="again" @click="restart">
@@ -118,7 +108,7 @@
 <script>
   import './academy.scss';
   import LessonVisual from './LessonVisual.vue';
-  import { profileOf } from './profiles.js';
+  import { profileOf, REWARD } from './profiles.js';
   import { pickText } from './curriculum/en.js';
   import { AcademySpeech } from './academySpeech.js';
   import { burst } from './burst.js';
@@ -145,6 +135,9 @@
     computed: {
       profile() {
         return profileOf(this.$route);
+      },
+      rewardBonus() {
+        return REWARD[this.profile.reward].bonus;
       },
       acad() {
         return this.profile.state;

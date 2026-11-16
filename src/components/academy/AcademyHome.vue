@@ -1,5 +1,6 @@
 <template>
   <div class="academy home" :class="'theme-' + profile.theme">
+    <PickName v-if="needName" @picked="picked" />
     <aside class="hero">
       <div class="bubble slab pixel">{{ greeting }}</div>
       <button type="button" class="tintin" data-test="avatar" @click="secretTap">
@@ -51,7 +52,7 @@
           </div>
           <span class="arrow pixel">➜</span>
           <div class="slot mine" :class="{ done: minecraftOpen }" data-test="minecraft">
-            <span class="pick">{{ profile.minecraft ? '⛏️' : '👑' }}</span>
+            <span class="pick">{{ reward.icon }}</span>
             <span class="lock">{{ minecraftOpen ? '🔓' : '🔒' }}</span>
           </div>
         </div>
@@ -97,8 +98,11 @@
       </section>
 
       <footer class="foot">
-        <button type="button" class="link" @click="$router.push(profile.back.path)">
+        <button v-if="profile.back" type="button" class="link" @click="$router.push(profile.back.path)">
           ← {{ t(profile.back.label) }}
+        </button>
+        <button v-if="profile.public" type="button" class="link" data-test="switch-kid" @click="switchKid">
+          👤 {{ t({ vi: 'Đổi bạn học', el: 'Άλλο παιδί', en: 'Change player' }) }}
         </button>
       </footer>
     </main>
@@ -107,7 +111,9 @@
 
 <script>
   import './academy.scss';
-  import { profileOf } from './profiles.js';
+  import { profileOf, REWARD } from './profiles.js';
+  import { Kids, showPicker } from './publicKids.js';
+  import PickName from './PickName.vue';
   import UpdateButton from '../common/UpdateButton.vue';
   import { pickText } from './curriculum/en.js';
   import { AcademySpeech } from './academySpeech.js';
@@ -115,7 +121,7 @@
 
   export default {
     name: 'AcademyHome',
-    components: { UpdateButton },
+    components: { UpdateButton, PickName },
     data() {
       return { taps: 0, tapTimer: null };
     },
@@ -141,59 +147,21 @@
       },
       // only inside the Mac app "Học viện Tin Tin", which can open the Minecraft launcher
       inApp: () => typeof window !== 'undefined' && !!window.hocVienApp,
+      needName() {
+        return !!this.profile.public && (!Kids.chosen || !Kids.current);
+      },
+      reward() {
+        return REWARD[this.profile.reward];
+      },
       missionText() {
-        if (this.profile.minecraft)
-          return this.minecraftOpen
-            ? this.t({
-                vi: 'Hoàn thành! Minecraft đã mở cho hôm nay.',
-                el: 'Ολοκληρώθηκε! Το Minecraft είναι ανοιχτό σήμερα.',
-              })
-            : this.t({
-                vi: 'Qua mỗi môn 1 bài để mở khóa Minecraft.',
-                el: 'Πέρασε ένα μάθημα σε κάθε μάθημα για το Minecraft.',
-              });
-        return this.minecraftOpen
-          ? this.t({
-              vi: 'Hoàn thành! Mia được đội vương miện hôm nay.',
-              el: 'Ολοκληρώθηκε! Η Μία φοράει το στέμμα.',
-            })
-          : this.t({
-              vi: 'Học mỗi môn 1 bài để nhận vương miện.',
-              el: 'Ένα μάθημα σε κάθε μάθημα για το στέμμα.',
-            });
+        return this.t(this.minecraftOpen ? this.reward.open : this.reward.todo);
       },
       greeting() {
-        const mc = this.profile.minecraft;
-        const name = this.profile.name;
-        const elName = mc ? 'Τιν Τιν' : 'Μία';
-        if (this.minecraftOpen)
-          return mc
-            ? this.t({
-                vi: 'Xong nhiệm vụ rồi! Vào Minecraft thôi!',
-                el: 'Τα κατάφερες! Πάμε για Minecraft!',
-              })
-            : this.t({
-                vi: 'Mia giỏi quá! Vương miện là của Mia!',
-                el: 'Μπράβο Μία! Το στέμμα είναι δικό σου!',
-              });
-        const left = this.subjects.filter((s) => !this.acad.doneToday(s.id)).length;
-        if (left === this.subjects.length)
-          return this.t({
-            vi: 'Chào ' + name + '! Hôm nay học gì nào?',
-            el: 'Γεια σου ' + elName + '! Τι θα μάθουμε σήμερα;',
-            en: 'Hi ' + name + '! What shall we learn today?',
-          });
-        return mc
-          ? this.t({
-              vi: 'Còn ' + left + ' môn nữa là mở Minecraft!',
-              el: 'Άλλα ' + left + ' μαθήματα για το Minecraft!',
-              en: left + ' more ' + (left === 1 ? 'subject' : 'subjects') + ' to open Minecraft!',
-            })
-          : this.t({
-              vi: 'Còn ' + left + ' môn nữa là có vương miện!',
-              el: 'Άλλα ' + left + ' για το στέμμα!',
-              en: left + ' more ' + (left === 1 ? 'subject' : 'subjects') + ' to win the crown!',
-            });
+        return this.greet(this.profile.name);
+      },
+      // the public space has no recording of each child's name: the voice says it without a name
+      spokenGreeting() {
+        return this.profile.public ? this.greet('') : this.greeting;
       },
     },
     unmounted() {
@@ -212,6 +180,32 @@
       t(text) {
         return pickText(text, this.lang);
       },
+      greet(name) {
+        if (this.minecraftOpen) return this.t(this.reward.done);
+        const left = this.subjects.filter((s) => !this.acad.doneToday(s.id)).length;
+        if (left === this.subjects.length)
+          return name
+            ? this.t({
+                vi: 'Chào ' + name + '! Hôm nay học gì nào?',
+                el: 'Γεια σου ' + (this.profile.elName || name) + '! Τι θα μάθουμε σήμερα;',
+                en: 'Hi ' + name + '! What shall we learn today?',
+              })
+            : this.t({
+                vi: 'Chào con! Hôm nay học gì nào?',
+                el: 'Γεια σου! Τι θα μάθουμε σήμερα;',
+                en: 'Hi there! What shall we learn today?',
+              });
+        return this.t(this.reward.left(left));
+      },
+      // the child studies in the language chosen on the name screen
+      picked(lang) {
+        while (this.acad.voiceLang !== lang) this.acad.toggleVoice();
+        AcademySpeech.say([{ text: this.spokenGreeting, lang: this.lang }]);
+      },
+      switchKid() {
+        sfx.click();
+        showPicker();
+      },
       passed(s) {
         return s.lessons.filter((l) => this.acad.isPassed(l.id)).length;
       },
@@ -223,11 +217,11 @@
       },
       toggleVoice() {
         this.acad.toggleVoice();
-        AcademySpeech.say([{ text: this.greeting, lang: this.lang }]);
+        AcademySpeech.say([{ text: this.spokenGreeting, lang: this.lang }]);
       },
       // a tap says hello; 7 quick taps (for a parent) open every lesson
       secretTap() {
-        AcademySpeech.say([{ text: this.greeting, lang: this.lang }]);
+        AcademySpeech.say([{ text: this.spokenGreeting, lang: this.lang }]);
         this.taps++;
         clearTimeout(this.tapTimer);
         this.tapTimer = setTimeout(() => (this.taps = 0), 2500);

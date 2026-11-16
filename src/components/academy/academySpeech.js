@@ -36,9 +36,14 @@ export const splitGreek = (part) => {
 
 // Each child has an own voice: Tin Tin's guide is Coach Leo (vi) + Wiselady (en, el),
 // Mia keeps her Lovely_Girl voice in every language.
-const voiceBase = () => {
+// The public Academy (#/hoc) reads Vietnamese with MiniMax's own Vietnamese voice;
+// English and Greek are shared with Tin Tin's.
+const voiceBase = (lang) => {
   try {
-    return /^#\/mia/.test(window.location.hash) ? 'sounds/academy_mia/' : 'sounds/academy/';
+    const h = window.location.hash;
+    if (/^#\/mia/.test(h)) return 'sounds/academy_mia/';
+    if (/^#\/hoc/.test(h) && lang === 'vi') return 'sounds/academy_pub/';
+    return 'sounds/academy/';
   } catch (e) {
     return 'sounds/academy/';
   }
@@ -86,8 +91,12 @@ export const AcademySpeech = {
   },
   async say(parts) {
     if (!parts) return;
-    const base = voiceBase();
-    const files = await loadManifest(base);
+    const bases = {};
+    const files = {};
+    for (const lang of ['vi', 'en', 'el']) {
+      bases[lang] = voiceBase(lang);
+      files[lang] = ((await loadManifest(bases[lang])) || {})[lang] || [];
+    }
     const has = (lang, text) => (files[lang] || []).includes(lineId(lang, text));
     // a whole recorded line first; otherwise Greek words by the Greek voice
     const list = (Array.isArray(parts) ? parts : [parts])
@@ -99,6 +108,7 @@ export const AcademySpeech = {
       if (token !== this.token) return;
       const id = lineId(part.lang, part.text);
       const have = files[part.lang] || [];
+      const base = bases[part.lang] || 'sounds/academy/';
       const pieces = chunksOf(part.text);
       const pieceIds = pieces.map((p) => lineId(part.lang, p));
       if (have.includes(id)) {

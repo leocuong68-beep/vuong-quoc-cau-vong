@@ -48,7 +48,7 @@ export const today = () => {
 };
 
 // prefix 'academy' (Tin Tin, kept for existing progress) or 'mia_academy'
-const makeAcademy = (prefix) => {
+export const makeAcademy = (prefix) => {
   const saved = parseJson(prefix + '_progress', {});
   return reactive({
     // best stars per lesson id (1..3 means passed)

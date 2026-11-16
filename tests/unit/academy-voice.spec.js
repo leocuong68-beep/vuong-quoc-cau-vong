@@ -4,8 +4,10 @@ import { SUBJECTS, MIA_SUBJECTS } from '../../src/components/academy/curriculum/
 import { pickText } from '../../src/components/academy/curriculum/en.js';
 import { lineId, chunksOf, splitGreek } from '../../src/components/academy/academySpeech.js';
 it('both voices cover every line', () => {
-  for (const [dir, subs] of [['academy', SUBJECTS], ['academy_mia', MIA_SUBJECTS]]) {
-    const m = JSON.parse(fs.readFileSync('public/sounds/' + dir + '/manifest.json'));
+  const load = (d) => JSON.parse(fs.readFileSync('public/sounds/' + d + '/manifest.json'));
+  for (const [dir, subs] of [['academy', SUBJECTS], ['academy_mia', MIA_SUBJECTS], ['academy_pub', SUBJECTS]]) {
+    // the public space: Vietnamese from academy_pub, English and Greek shared with Tin Tin
+    const m = dir === 'academy_pub' ? { ...load('academy'), vi: load('academy_pub').vi } : load(dir);
     const has = (l, t) => (m[l] || []).includes(lineId(l, t));
     const miss = new Set();
     const ok = (lang, text) => { if (!text) return;

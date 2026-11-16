@@ -40,6 +40,7 @@ import PaintGame from './components/princess/PaintGame.vue';
 import AcademyHome from './components/academy/AcademyHome.vue';
 import SubjectPage from './components/academy/SubjectPage.vue';
 import LessonGame from './components/academy/LessonGame.vue';
+import { Kids } from './components/academy/publicKids.js';
 import './registerServiceWorker';
 
 if (!localStorage.rewards) {
@@ -57,6 +58,9 @@ const router = createRouter({
     { path: '/tintin', name: 'Academy', component: AcademyHome, meta: { profile: 'tintin' } },
     { path: '/tintin/:subject', name: 'AcademySubject', component: SubjectPage, meta: { profile: 'tintin' } },
     { path: '/tintin/:subject/:lesson', name: 'AcademyLesson', component: LessonGame, meta: { profile: 'tintin' } },
+    { path: '/hoc', name: 'PublicAcademy', component: AcademyHome, meta: { profile: 'hoc' } },
+    { path: '/hoc/:subject', name: 'PublicSubject', component: SubjectPage, meta: { profile: 'hoc' } },
+    { path: '/hoc/:subject/:lesson', name: 'PublicLesson', component: LessonGame, meta: { profile: 'hoc' } },
     { path: '/mia', name: 'MiaSchool', component: AcademyHome, meta: { profile: 'mia' } },
     { path: '/mia/:subject', name: 'MiaSubject', component: SubjectPage, meta: { profile: 'mia' } },
     { path: '/mia/:subject/:lesson', name: 'MiaLesson', component: LessonGame, meta: { profile: 'mia' } },
@@ -171,6 +175,8 @@ const onMiaTablet = (() => {
 })();
 window.__onMiaTablet = onMiaTablet;
 router.beforeEach((to) => {
+  // the public Academy starts on the name screen
+  if (to.path.startsWith('/hoc/') && !(Kids.chosen && Kids.current)) return '/hoc';
   if (onMiaTablet && to.path.startsWith('/tintin')) return '/princess';
   const isAcademy = to.path.startsWith('/tintin');
   try {

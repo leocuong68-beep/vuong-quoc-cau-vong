@@ -43,7 +43,7 @@ export default defineConfig({
     isProduction && VitePWA({
       registerType: 'autoUpdate',
       filename: 'service-worker.js',
-      includeAssets: ['favicon.svg', 'img/**/*', 'sounds/**/*', '!sounds/academy/{vi,en,el}/**'],
+      includeAssets: ['favicon.svg', 'img/**/*', 'sounds/**/*', '!sounds/academy/{vi,en,el}/**', '!sounds/academy_pub/**/*.mp3'],
       manifest: {
         name: 'Vương Quốc Cầu Vồng',
         short_name: 'Cầu Vồng',
@@ -67,7 +67,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,mp3,woff2}'],
         // the voice without a name is only needed by children other than Mia: kept once heard
         // the guide voice of the Academy (thousands of lines) is kept once heard, not downloaded up front
-        globIgnores: ['**/sounds/*/kid/**', '**/sounds/academy/{vi,en,el}/**'],
+        globIgnores: ['**/sounds/*/kid/**', '**/sounds/academy/{vi,en,el}/**', '**/sounds/academy_pub/**/*.mp3'],
         runtimeCaching: [
           {
             urlPattern: /\/sounds\/(en|vi)\/kid\/.*\.mp3$/,
@@ -75,14 +75,14 @@ export default defineConfig({
             options: { cacheName: 'voice-kid', expiration: { maxEntries: 1500 } },
           },
           {
-            urlPattern: /\/sounds\/academy(_mia)?\/(vi|en|el)\/.*\.mp3$/,
+            urlPattern: /\/sounds\/academy(_mia|_pub)?\/(vi|en|el)\/.*\.mp3$/,
             handler: 'CacheFirst',
             options: { cacheName: 'voice-academy', expiration: { maxEntries: 4000 } },
           },
         ],
         manifestTransforms: [
           async (entries) => ({
-            manifest: entries.filter((e) => !/sounds\/academy\/(vi|en|el)\//.test(e.url)),
+            manifest: entries.filter((e) => !/sounds\/academy(_pub)?\/(vi|en|el)\//.test(e.url)),
             warnings: [],
           }),
         ],

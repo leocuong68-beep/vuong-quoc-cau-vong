@@ -1,0 +1,32 @@
+{
+  "name": "hoc-vien",
+  "productName": "Hoc vien",
+  "version": "1.0.0",
+  "description": "Học viện: Greek, English, Maths, Physics & Robots for children",
+  "main": "main.js",
+  "author": "Leo Cuong",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.leocuong.hocvien",
+    "productName": "Hoc vien",
+    "files": ["main.js", "package.json"],
+    "win": {
+      "target": [{ "target": "dir", "arch": ["x64"] }],
+      "icon": "icon.png",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Học viện",
+      "artifactName": "Hoc-vien-Setup-${version}.exe"
+    }
+  }
+}

@@ -71,3 +71,9 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Nút ngôn ngữ trong Học viện: VI → EN → EL. Lời tiếng Anh nằm trong `curriculum/en.js` (từ điển EN + `pickText`), câu có số thì có trường `en` riêng.
 - Câu toán có quá nhiều biến thể số không thu nguyên câu mà thu từng mảnh (số và chữ giữa các số); `AcademySpeech` ghép các mảnh (`chunksOf`).
 - Thu: `scripts/collect-guide-lines.spec.js` (chép vào tests/unit để chạy) → `/tmp/guide-lines.json` → `scripts/tts_guide.py` chạy trên Mac → `_tts/guide/<vi|en>/*.mp3` → chép vào `public/sounds/academy/<lang>/` và cập nhật manifest.
+
+## Học viện công khai (#/hoc) và bản Windows (16/11/2026)
+
+- `#/hoc`: cùng giáo trình với Tin Tin, mở đầu là màn chọn tên (`PickName.vue`, `publicKids.js`); nhiều bé dùng chung một máy, mỗi tên giữ tiến độ riêng (`hoc_<id>_progress`). Nhân vật là robot (img/academy/bot*.webp, Recraft), phần thưởng ngày là cúp vàng (không có Minecraft).
+- Giọng: tiếng Việt `Vietnamese_kindhearted_girl` trong `sounds/academy_pub/` (không gọi tên bé); tiếng Anh/Hy Lạp dùng chung `sounds/academy/` (Wiselady). Thu: `scripts/collect-public-lines.spec.js` → `scripts/tts_public.py`.
+- `windows/`: Electron mở https://leocuong68-beep.github.io/vuong-quoc-cau-vong/#/hoc. Build trên Linux: `npx electron-builder --win dir --x64` rồi `makensis installer.nsi` (cài cho người dùng hiện tại, không cần quyền admin, có lối tắt Desktop/Start và gỡ cài đặt).
