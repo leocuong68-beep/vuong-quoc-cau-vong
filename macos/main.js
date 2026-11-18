@@ -233,6 +233,28 @@ function createWindow() {
     },
   });
   win.loadURL(START);
+  // The app starts at login, often before Wi-Fi is up: a failed load used to leave an empty
+  // dark window. Now it tries again every few seconds until the game shows.
+  let loaded = false;
+  win.webContents.on('did-fail-load', (e, code, desc, url, isMain) => {
+    if (!isMain) return;
+    loaded = false;
+    setTimeout(() => win && !win.isDestroyed() && win.loadURL(START), 4000);
+  });
+  win.webContents.on('did-finish-load', () => {
+    loaded = true;
+    // the page loaded but shows nothing (e.g. an old cache): reload once from the network
+    setTimeout(async () => {
+      if (!win || win.isDestroyed()) return;
+      const empty = await win.webContents
+        .executeJavaScript("!document.querySelector('#app') || !document.querySelector('#app').children.length")
+        .catch(() => false);
+      if (empty) win.webContents.reloadIgnoringCache();
+    }, 8000);
+  });
+  win.on('show', () => {
+    if (!loaded) win.loadURL(START);
+  });
   // stay inside the game; anything else opens in the normal browser
   win.webContents.on('will-navigate', (e, url) => {
     if (!url.startsWith(HOME)) {

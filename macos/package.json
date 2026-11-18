@@ -1,7 +1,7 @@
 {
   "name": "hoc-vien-tintin",
   "productName": "Học viện Tin Tin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Tin Tin's study space (Greek, English, Maths, Physics & Robots)",
   "main": "main.js",
   "author": "Leo Cuong",
