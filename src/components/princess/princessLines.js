@@ -253,6 +253,25 @@ export const Lines = {
     ];
     return all[i % all.length];
   },
+  // --- Rainbow World: make your own pony ---
+  ponyHello: () => line('pony_hello', "Let's make your own pony, Mia!", 'Mình cùng tạo pony của Mia nào!'),
+  ponyTab(id) {
+    const all = {
+      body: ['pony_tab_body', 'Pick a colour for your pony!', 'Chọn màu lông cho pony nhé!'],
+      mane: ['pony_tab_mane', 'Choose a mane and its colour!', 'Chọn kiểu bờm và màu bờm nào!'],
+      eyes: ['pony_tab_eyes', 'Choose the eyes!', 'Chọn đôi mắt cho pony nhé!'],
+      nose: ['pony_tab_nose', 'Choose the nose!', 'Chọn chiếc mũi xinh nào!'],
+      mouth: ['pony_tab_mouth', 'Choose the mouth!', 'Chọn cái miệng cho pony nhé!'],
+      horn: ['pony_tab_horn', 'A magic horn for a unicorn!', 'Gắn sừng phép thuật cho kỳ lân nào!'],
+      wings: ['pony_tab_wings', 'Wings to fly high!', 'Gắn đôi cánh để bay thật cao!'],
+      acc: ['pony_tab_acc', 'A crown, a bow or a flower?', 'Vương miện, nơ hay bông hoa nhỉ?'],
+      pose: ['pony_tab_pose', 'What will your pony do?', 'Pony của Mia làm gì nào?'],
+      bg: ['pony_tab_bg', 'Where does your pony live?', 'Pony sống ở đâu nhỉ?'],
+    }[id];
+    return all ? line(all[0], all[1], all[2]) : null;
+  },
+  ponySaved: () => line('pony_saved', 'Wow! What a beautiful pony, Mia!', 'Oa! Pony của Mia đẹp quá!'),
+  ponyLove: () => line('pony_love', 'Neigh! I love you, Mia!', 'Hí hí! Pony yêu Mia lắm!'),
   stageDone: () => line('stage_done', 'Hooray! You did it, Mia!', 'Hoan hô! Mia giỏi quá!'),
   tryAgain: () =>
     line('try_again', 'Not quite, Mia. Try again!', 'Chưa đúng rồi, Mia thử lại nhé!'),

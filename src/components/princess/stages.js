@@ -620,6 +620,8 @@ export const STAGES = [
   { id: 'bonds', area: 'math', buddy: 'daddy', make: bondQuiz(10), en: 'Number pairs', vi: 'Tách số', icon: text('5=2+?') },
   { id: 'skip', area: 'math', buddy: 'daddy', make: skipQuiz, en: 'Skip counting', vi: 'Đếm nhảy', icon: text('2 4 6') },
   { id: 'bubbles3', area: 'math', route: '/princess/bubbles/3', en: 'Count down', vi: 'Đếm ngược', icon: text('10→1') },
+  // --- Rainbow World (like BabyBus): pretend play ---
+  { id: 'pony', area: 'rainbow', route: '/princess/pony', en: 'Make a pony', vi: 'Tạo pony', icon: icon('img/pony/icon.webp') },
   // --- wave 2: home, garden, salon and art ---
   { id: 'hair', area: 'beauty', route: '/princess/hair', en: 'Hair salon', vi: 'Tiệm tóc', icon: icon('img/princess/hair_pigtails.webp') },
   { id: 'nails', area: 'beauty', route: '/princess/nails', en: 'Nail salon', vi: 'Sơn móng tay', icon: icon('img/princess/hand.webp') },
@@ -655,6 +657,7 @@ export const shapeSvg = (shape, hex) =>
 
 // The path page shows the stages in these groups.
 export const AREAS = [
+  { id: 'rainbow', en: 'Rainbow World', vi: 'Thế giới Cầu Vồng', icon: 'img/pony/icon.webp', hex: '#ff7eb6' },
   { id: 'beauty', en: 'Dress up', vi: 'Làm đẹp', icon: 'img/princess/crown_pink.webp', hex: '#ff7eb6' },
   { id: 'math', en: 'Numbers', vi: 'Học số', icon: 'img/princess/apple.webp', hex: '#ff9f43' },
   { id: 'english', en: 'Words', vi: 'Học chữ', icon: 'img/characters/A.svg', hex: '#ffd23f' },
