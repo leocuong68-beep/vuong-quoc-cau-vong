@@ -622,6 +622,7 @@ export const STAGES = [
   { id: 'bubbles3', area: 'math', route: '/princess/bubbles/3', en: 'Count down', vi: 'Đếm ngược', icon: text('10→1') },
   // --- Rainbow World (like BabyBus): pretend play ---
   { id: 'pony', area: 'rainbow', route: '/princess/pony', en: 'Make a pony', vi: 'Tạo pony', icon: icon('img/pony/icon.webp') },
+  { id: 'baby', area: 'rainbow', route: '/princess/baby', en: 'Baby care', vi: 'Chăm em bé', icon: icon('img/baby/baby_happy.webp') },
   // --- wave 2: home, garden, salon and art ---
   { id: 'hair', area: 'beauty', route: '/princess/hair', en: 'Hair salon', vi: 'Tiệm tóc', icon: icon('img/princess/hair_pigtails.webp') },
   { id: 'nails', area: 'beauty', route: '/princess/nails', en: 'Nail salon', vi: 'Sơn móng tay', icon: icon('img/princess/hand.webp') },

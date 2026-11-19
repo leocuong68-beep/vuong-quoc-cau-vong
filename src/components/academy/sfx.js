@@ -140,6 +140,11 @@ export const sfx = {
       noise(t + 0.25, 0.35, 0.22, 1500);
     });
   },
+  // a soft lullaby (Twinkle Twinkle) for the sleeping baby
+  lullaby() {
+    const notes = [262, 262, 392, 392, 440, 440, 392, 349, 349, 330, 330, 294, 294, 262];
+    notes.forEach((f, i) => tone(f, i * 0.32, i === 6 || i === 13 ? 0.6 : 0.28, 'sine', 0.09));
+  },
   pop() {
     noise(0, 0.3, 0.2, 1400);
   },

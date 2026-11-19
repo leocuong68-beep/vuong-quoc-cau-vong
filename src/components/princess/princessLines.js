@@ -272,6 +272,32 @@ export const Lines = {
   },
   ponySaved: () => line('pony_saved', 'Wow! What a beautiful pony, Mia!', 'Oa! Pony của Mia đẹp quá!'),
   ponyLove: () => line('pony_love', 'Neigh! I love you, Mia!', 'Hí hí! Pony yêu Mia lắm!'),
+  // --- Rainbow World: look after the baby ---
+  babyHello: () => line('baby_hello', "Let's look after the baby, Mia!", 'Mia cùng chăm em bé nào!'),
+  babyNeed(n) {
+    const all = {
+      hungry: ['baby_need_hungry', 'The baby is hungry! What can the baby eat?', 'Em bé đói bụng rồi! Cho em bé ăn gì nhỉ?'],
+      dirty: ['baby_need_dirty', 'Oh no, the baby is dirty! Time for a bath!', 'Ôi, em bé lấm lem quá! Tắm cho em bé nào!'],
+      stinky: ['baby_need_stinky', 'Phew! The baby needs a clean diaper!', 'Úi, em bé cần thay tã mới rồi!'],
+      cry: ['baby_need_cry', 'The baby is crying! Give the baby a toy!', 'Em bé khóc rồi! Đưa đồ chơi dỗ em bé nhé!'],
+      sleepy: ['baby_need_sleepy', 'The baby is sleepy. Help the baby go to sleep!', 'Em bé buồn ngủ rồi. Ru em bé ngủ nào!'],
+    }[n];
+    return line(all[0], all[1], all[2]);
+  },
+  babyGood(n) {
+    const all = {
+      hungry: ['baby_good_hungry', 'Yummy! The baby is full now!', 'Ngon quá! Em bé no bụng rồi!'],
+      dirty: ['baby_good_dirty', 'All clean and dry! Well done, Mia!', 'Sạch thơm rồi! Mia giỏi quá!'],
+      stinky: ['baby_good_stinky', 'A fresh diaper! The baby is happy!', 'Tã mới sạch sẽ! Em bé vui rồi!'],
+      cry: ['baby_good_cry', 'The baby is smiling again!', 'Em bé cười lại rồi!'],
+      sleepy: ['baby_good_sleepy', 'Good morning! The baby had a nice nap!', 'Chào buổi sáng! Em bé ngủ ngon quá!'],
+    }[n];
+    return line(all[0], all[1], all[2]);
+  },
+  babyScrub: () => line('baby_scrub', 'Tap the baby to make lots of bubbles!', 'Chạm vào em bé để kỳ xà phòng nào!'),
+  babyTowel: () => line('baby_towel', 'Now dry the baby with the towel!', 'Giờ lau khô em bé bằng khăn nhé!'),
+  babyWrong: () => line('baby_wrong', 'Hmm, not that one. Try another!', 'Ừm, không phải cái này. Thử cái khác nhé!'),
+  babyDone: () => line('baby_done', 'Hooray! You are a great big sister, Mia!', 'Hoan hô! Mia là chị cả tuyệt vời!'),
   stageDone: () => line('stage_done', 'Hooray! You did it, Mia!', 'Hoan hô! Mia giỏi quá!'),
   tryAgain: () =>
     line('try_again', 'Not quite, Mia. Try again!', 'Chưa đúng rồi, Mia thử lại nhé!'),
