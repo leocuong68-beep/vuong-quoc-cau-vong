@@ -234,6 +234,26 @@ const partVi = (id) => PARTS.find((p) => p.id === id).vi;
 const shapeVi = (id) => SHAPES.find((s) => s.id === id).vi;
 // A line to show and say. For a child who is not Mia the name is left out (see noName.js),
 // and `kid` lists the languages whose recording without the name is used.
+// Supermarket (Rainbow World): things to buy and their price in coins.
+export const SHOP_ITEMS = [
+  { id: 'milk', src: 'img/shop/milk.webp', price: 2, en: 'milk', vi: 'sữa' },
+  { id: 'bread', src: 'img/shop/bread.webp', price: 1, en: 'bread', vi: 'bánh mì' },
+  { id: 'cheese', src: 'img/shop/cheese.webp', price: 2, en: 'cheese', vi: 'phô mai' },
+  { id: 'eggs', src: 'img/shop/eggs.webp', price: 2, en: 'eggs', vi: 'trứng' },
+  { id: 'juice', src: 'img/shop/juice.webp', price: 2, en: 'juice', vi: 'nước ép' },
+  { id: 'cookies', src: 'img/shop/cookies.webp', price: 1, en: 'cookies', vi: 'bánh quy' },
+  { id: 'icecream', src: 'img/shop/icecream.webp', price: 3, en: 'ice cream', vi: 'kem' },
+  { id: 'cupcake', src: 'img/shop/cupcake.webp', price: 1, en: 'a cupcake', vi: 'bánh kem nhỏ' },
+  { id: 'fish', src: 'img/shop/fish.webp', price: 3, en: 'fish', vi: 'cá' },
+  { id: 'broccoli', src: 'img/shop/broccoli.webp', price: 1, en: 'broccoli', vi: 'súp lơ xanh' },
+  { id: 'cereal', src: 'img/shop/cereal.webp', price: 2, en: 'cereal', vi: 'ngũ cốc' },
+  { id: 'banana', src: 'img/princess/food_banana.webp', price: 1, en: 'bananas', vi: 'chuối' },
+  { id: 'strawberry', src: 'img/princess/food_strawberry.webp', price: 2, en: 'strawberries', vi: 'dâu tây' },
+  { id: 'carrot', src: 'img/princess/food_carrot.webp', price: 1, en: 'carrots', vi: 'cà rốt' },
+  { id: 'watermelon', src: 'img/princess/food_watermelon.webp', price: 3, en: 'a watermelon', vi: 'dưa hấu' },
+  { id: 'apple', src: 'img/princess/apple.webp', price: 1, en: 'apples', vi: 'táo' },
+];
+
 const line = (key, enText, viText) => {
   if (!Profiles.nameless) return { key, en: enText, vi: viText };
   const en = noNameEn(enText);
@@ -298,6 +318,19 @@ export const Lines = {
   babyTowel: () => line('baby_towel', 'Now dry the baby with the towel!', 'Giờ lau khô em bé bằng khăn nhé!'),
   babyWrong: () => line('baby_wrong', 'Hmm, not that one. Try another!', 'Ừm, không phải cái này. Thử cái khác nhé!'),
   babyDone: () => line('baby_done', 'Hooray! You are a great big sister, Mia!', 'Hoan hô! Mia là chị cả tuyệt vời!'),
+  // --- Rainbow World: supermarket ---
+  shopHello: () => line('shop_hello', "Let's go shopping, Mia! Find the things on the list!", 'Mia cùng đi siêu thị nào! Tìm các món trong danh sách nhé!'),
+  shopList: () => line('shop_list', 'Here is a new shopping list!', 'Đây là danh sách mua sắm mới!'),
+  shopItem(id) {
+    const it = SHOP_ITEMS.find((p) => p.id === id);
+    return line(`shop_item_${id}`, `Yes! ${it.en[0].toUpperCase() + it.en.slice(1)} in the basket!`, `Đúng rồi! Bỏ ${it.vi} vào giỏ!`);
+  },
+  shopNotOnList: () => line('shop_not_on_list', "Hmm, that's not on the list!", 'Ừm, món này không có trong danh sách!'),
+  shopPay: (n) => line(`shop_pay_${n}`, `Let's pay! It costs ${en(n)} ${n === 1 ? 'coin' : 'coins'}. Tap the coins to count!`, `Mình trả tiền nhé! Hết ${vi(n)} đồng xu. Chạm vào đồng xu để đếm nào!`),
+  shopMore: () => line('shop_more', 'Not enough coins yet. Add some more!', 'Chưa đủ tiền đâu. Thêm đồng xu nữa nhé!'),
+  shopTooMuch: () => line('shop_too_much', 'Oops, too many coins! Tap a coin to take it back.', 'Ôi, nhiều đồng xu quá! Chạm vào một đồng để lấy lại nhé.'),
+  shopThanks: () => line('shop_thanks', 'Thank you, Mia! See you next time!', 'Cảm ơn Mia nhé! Hẹn gặp lại!'),
+  shopDone: () => line('shop_done', 'Hooray! Mia is a super shopper!', 'Hoan hô! Mia đi chợ giỏi quá!'),
   stageDone: () => line('stage_done', 'Hooray! You did it, Mia!', 'Hoan hô! Mia giỏi quá!'),
   tryAgain: () =>
     line('try_again', 'Not quite, Mia. Try again!', 'Chưa đúng rồi, Mia thử lại nhé!'),

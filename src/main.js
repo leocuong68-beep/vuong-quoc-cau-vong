@@ -37,6 +37,7 @@ import HairGame from './components/princess/HairGame.vue';
 import NailGame from './components/princess/NailGame.vue';
 import ColorNumberGame from './components/princess/ColorNumberGame.vue';
 import BabyCare from './components/princess/BabyCare.vue';
+import ShopGame from './components/princess/ShopGame.vue';
 import PonyMaker from './components/princess/PonyMaker.vue';
 import PaintGame from './components/princess/PaintGame.vue';
 import AcademyHome from './components/academy/AcademyHome.vue';
@@ -150,6 +151,7 @@ const router = createRouter({
     { path: '/princess/paint', name: 'PrincessPaint', component: PaintGame },
     { path: '/princess/pony', name: 'PrincessPony', component: PonyMaker },
     { path: '/princess/baby', name: 'PrincessBaby', component: BabyCare },
+    { path: '/princess/shop', name: 'PrincessShop', component: ShopGame },
     {
       path: '/princess/stage/:id',
       name: 'PrincessStage',
