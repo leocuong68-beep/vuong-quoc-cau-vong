@@ -41,6 +41,8 @@
           :disabled="picked !== null"
           :data-correct="c.correct ? '1' : '0'"
           @click="answer(c, i, $event)"
+          @mouseenter="hoverSay(c)"
+          @focus="hoverSay(c)"
         >
           {{ label(c) }}
         </button>
@@ -113,6 +115,8 @@
   import { AcademySpeech } from './academySpeech.js';
   import { burst } from './burst.js';
   import { sfx, voice } from './sfx.js';
+
+  const RIGHT_IS = { vi: 'Đáp án đúng là', el: 'Η σωστή απάντηση είναι', en: 'The right answer is' };
 
   export default {
     name: 'LessonGame',
@@ -199,6 +203,7 @@
     },
     unmounted() {
       clearTimeout(this.timer);
+      clearTimeout(this.hoverTimer);
       this.reactToken++;
       AcademySpeech.stop();
     },
@@ -231,6 +236,27 @@
           ...(this.q.target || []),
         ]);
       },
+      // what a choice sounds like: its own recording if it has one, else its label
+      choiceParts(c) {
+        if (c.say && c.say.length) return c.say;
+        const text = String(this.label(c) || '')
+          .replace(/[\p{Extended_Pictographic}\uFE0F\u200D]/gu, '')
+          .trim();
+        if (!text) return [];
+        // an English word in the English lessons is read in English
+        const lang = this.subject.id === 'english' && /^[A-Za-z][A-Za-z '\-]*$/.test(text) ? 'en' : this.lang;
+        return [{ text, lang }];
+      },
+      // a child who cannot read yet: pointing at an answer reads it aloud
+      hoverSay(c) {
+        if (this.picked !== null) return;
+        clearTimeout(this.hoverTimer);
+        this.hoverTimer = setTimeout(() => {
+          if (this.picked !== null) return;
+          const parts = this.choiceParts(c);
+          if (parts.length) AcademySpeech.say(parts);
+        }, 180);
+      },
       choiceClass(c, i) {
         if (this.picked === null) return '';
         if (c.correct) return 'right';
@@ -239,6 +265,7 @@
       },
       answer(c, i, event) {
         if (this.picked !== null) return;
+        clearTimeout(this.hoverTimer);
         if (c.correct && event) burst(event.currentTarget, this.subject.color);
         this.picked = i;
         this.wasRight = !!c.correct;
@@ -251,8 +278,7 @@
           this.mood = combo ? 'wow' : 'cheer';
           sfx.right();
           if (combo) setTimeout(() => sfx.combo(), 120);
-          const parts = [];
-          if (c.say) parts.push(...c.say);
+          const parts = [...this.choiceParts(c)];
           if (this.q.explainAlways && this.q.explain)
             parts.push({ text: this.t(this.q.explain), lang: this.lang });
           // a word to hear again (e.g. the English word) comes first, then the cheer
@@ -261,7 +287,7 @@
           if (parts.length) AcademySpeech.say(parts).then(cheer);
           else cheer();
           if (!this.q.explainAlways)
-            this.timer = setTimeout(() => this.next(), (c.say ? 2300 : 1500) + (combo ? 900 : 0));
+            this.timer = setTimeout(() => this.next(), (parts.length ? 2300 : 1500) + (combo ? 900 : 0));
         } else {
           this.streak = 0;
           this.mood = 'oops';
@@ -269,6 +295,11 @@
           const parts = [];
           if (this.q.explain) parts.push({ text: this.t(this.q.explain), lang: this.lang });
           if (this.q.explainSay) parts.push(...this.q.explainSay);
+          // no explanation: say which answer was right
+          if (!parts.length) {
+            const right = this.q.choices.find((x) => x.correct);
+            parts.push({ text: this.t(RIGHT_IS), lang: this.lang }, ...this.choiceParts(right));
+          }
           voice('wrong', this.profile.vox).then(() => {
             if (token === this.reactToken) AcademySpeech.say(parts);
           });
