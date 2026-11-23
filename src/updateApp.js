@@ -22,3 +22,21 @@ export async function updateApp() {
 
 export const appVersion = () =>
   (import.meta.env.APP_VERSION || '') + (import.meta.env.APP_COMMIT ? ' · ' + import.meta.env.APP_COMMIT : '');
+
+// On start (and every few minutes): if the server has a newer build, take it.
+// A guard in sessionStorage stops a reload loop if the server and the cache disagree for a while.
+export async function checkForNewVersion() {
+  try {
+    const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return;
+    const { build } = await r.json();
+    const mine = import.meta.env.APP_BUILD;
+    if (!build || !mine || build === mine) return;
+    const key = 'vqcv_updating_to';
+    if (sessionStorage.getItem(key) === build) return;
+    sessionStorage.setItem(key, build);
+    await updateApp();
+  } catch (e) {
+    // offline: keep playing the version we have
+  }
+}

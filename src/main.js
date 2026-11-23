@@ -46,6 +46,7 @@ import LessonGame from './components/academy/LessonGame.vue';
 import { Kids } from './components/academy/publicKids.js';
 import { IS_PUBLIC } from './components/princess/state.js';
 import './registerServiceWorker';
+import { checkForNewVersion } from './updateApp.js';
 
 if (!localStorage.rewards) {
   localStorage.rewards = 0;
@@ -212,3 +213,12 @@ app.mount('#app');
 const userAgent = navigator.userAgent || '';
 const inAndroidShell = (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) || /; wv\)/.test(userAgent);
 if (inAndroidShell && !/VQCV\//.test(userAgent)) document.documentElement.classList.add('under-system-bars');
+
+// Always run the newest version: check on start and every 10 minutes (not in the middle of a lesson question).
+if (import.meta.env.PROD) {
+  setTimeout(checkForNewVersion, 1500);
+  setInterval(() => {
+    const h = window.location.hash;
+    if (!/\/(tintin|mia|hoc)\/[^/]+\/[^/]+/.test(h)) checkForNewVersion();
+  }, 10 * 60 * 1000);
+}

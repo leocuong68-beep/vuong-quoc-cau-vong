@@ -16,6 +16,16 @@ const commitHash = (() => {
   }
 })()
 
+// Every build has its own id; the app compares it with version.json on the server and
+// updates itself when they differ (23/11/2026: updates were stuck behind the offline cache).
+const BUILD_ID = commitHash + '-' + Date.now().toString(36)
+const versionFile = () => ({
+  name: 'version-file',
+  generateBundle() {
+    this.emitFile({ type: 'asset', fileName: 'version.json', source: JSON.stringify({ build: BUILD_ID }) })
+  },
+})
+
 const interactjsKeepSideEffects = () => ({
   name: 'interactjs-keep-side-effects',
   enforce: 'pre',
@@ -35,15 +45,17 @@ export default defineConfig({
   define: {
     'import.meta.env.APP_VERSION': JSON.stringify(pkg.version),
     'import.meta.env.APP_COMMIT': JSON.stringify(commitHash),
+    'import.meta.env.APP_BUILD': JSON.stringify(BUILD_ID),
   },
   base: '',
   plugins: [
     interactjsKeepSideEffects(),
     vue(),
+    versionFile(),
     isProduction && VitePWA({
       registerType: 'autoUpdate',
       filename: 'service-worker.js',
-      includeAssets: ['favicon.svg', 'img/**/*', 'sounds/**/*', '!sounds/academy/{vi,en,el}/**', '!sounds/academy_pub/**/*.mp3'],
+      includeAssets: ['favicon.svg'],
       manifest: {
         name: 'Vương Quốc Cầu Vồng',
         short_name: 'Cầu Vồng',
@@ -63,28 +75,27 @@ export default defineConfig({
         ]
       },
       workbox: {
-        // pictures (webp, jpg) stay on the tablet too, so the game works without Wi-Fi
-        globPatterns: ['**/*.{js,css,html,svg,png,webp,jpg,mp3,woff2}'],
-        // the voice without a name is only needed by children other than Mia: kept once heard
-        // the guide voice of the Academy (thousands of lines) is kept once heard, not downloaded up front
-        globIgnores: ['**/sounds/*/kid/**', '**/sounds/academy/{vi,en,el}/**', '**/sounds/academy_pub/**/*.mp3'],
+        // Web only (23/11/2026): just the app itself is cached up front, so a new version installs in seconds.
+        // Pictures and sounds are kept once seen or heard.
+        globPatterns: ['**/*.{js,css,html,svg,woff2}'],
+        globIgnores: ['**/version.json'],
+        skipWaiting: true,
+        clientsClaim: true,
         runtimeCaching: [
           {
-            urlPattern: /\/sounds\/(en|vi)\/kid\/.*\.mp3$/,
-            handler: 'CacheFirst',
-            options: { cacheName: 'voice-kid', expiration: { maxEntries: 1500 } },
+            urlPattern: /\/version\.json$/,
+            handler: 'NetworkOnly',
           },
           {
-            urlPattern: /\/sounds\/academy(_mia|_pub)?\/(vi|en|el)\/.*\.mp3$/,
+            urlPattern: /\.(?:mp3|m4a)$/,
             handler: 'CacheFirst',
-            options: { cacheName: 'voice-academy', expiration: { maxEntries: 4000 } },
+            options: { cacheName: 'sounds', expiration: { maxEntries: 8000 } },
           },
-        ],
-        manifestTransforms: [
-          async (entries) => ({
-            manifest: entries.filter((e) => !/sounds\/academy(_pub)?\/(vi|en|el)\//.test(e.url)),
-            warnings: [],
-          }),
+          {
+            urlPattern: /\.(?:webp|png|jpg|jpeg)$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'pictures', expiration: { maxEntries: 3000 } },
+          },
         ],
         cleanupOutdatedCaches: true,
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024

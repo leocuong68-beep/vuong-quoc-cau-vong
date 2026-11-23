@@ -90,3 +90,4 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Âm phonics thu sẵn giọng Anh: `public/sounds/phonics/*.mp3` (từ buzzphonics, MIT, xem CREDITS.md). Bài giảng đọc tên chữ → âm (2 lần) → từ mẫu → nghĩa; phần chơi có câu "nghe âm, chọn chữ" (`hearSound`). `AcademySpeech.say` nhận phần `{ file }` (helper `phon(g)`).
 - Menu "🔑 Ba mẹ" ở cuối trang Học viện/Lớp học: nhập mã 6868 (`PARENT_CODE` trong `academyState.js`) để mở hết bài kiểm tra nội dung; nút "Khóa lại như cũ" trả về thứ tự mở dần.
 - Tiếng Anh trong Lớp học của Mia dùng giọng giáo viên của Tin Tin (`sounds/academy/en`, Wiselady), không dùng giọng bé; tiếng Việt và Hy Lạp của Mia giữ Lovely_Girl.
+- Cập nhật (23/11/2026): chỉ lưu sẵn mã game (js/css/html/svg, ~130 file); hình và âm thanh lưu khi dùng tới. Service worker `skipWaiting` + `clientsClaim`; mỗi lần mở game (và 10 phút một lần ngoài màn câu hỏi) so `version.json` với `APP_BUILD`, khác thì tự cập nhật.
