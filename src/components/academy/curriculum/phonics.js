@@ -1,4 +1,4 @@
-import { en } from '../academySpeech.js';
+import { en, vi } from '../academySpeech.js';
 import { build, choicesFrom, pick, shuffle } from './helpers.js';
 
 // Phonics: đọc – viết tiếng Anh cho Tin Tin và Mia, chung một giáo trình (23/11/2026).
@@ -285,6 +285,7 @@ export const phonicsUnits = (level, prefix) =>
       id: prefix + '-' + l.n.replace('–', '-'),
       title: lessonTitle(l),
       make: makeLesson(u.from + k, level),
+      teach: () => lessonSlides(u.from + k, level),
     })),
   }));
 
@@ -353,6 +354,7 @@ export const alphabetUnit = (level, prefix) => {
         id: prefix + '-abc' + (i + 1),
         title: { vi: 'Chữ ' + title(g), el: title(g), en: 'Letters ' + title(g) },
         make: () => build(10, gens(g, g)),
+        teach: () => alphabetSlides(g),
       })),
       {
         id: prefix + '-abc-all',
@@ -362,3 +364,99 @@ export const alphabetUnit = (level, prefix) => {
     ],
   };
 };
+
+// ---------- Bài giảng trước phần chơi (23/11/2026) ----------
+// Ba hoặc mẹ đứng cạnh bảng, đọc chữ, âm, từ mẫu có hình và nghĩa tiếng Việt; bé bấm Tiếp.
+
+const VI_MEAN = {
+  sun: 'mặt trời', apple: 'quả táo', tiger: 'con hổ', pig: 'con heo', insect: 'côn trùng', nose: 'cái mũi',
+  moon: 'mặt trăng', dog: 'con chó', goat: 'con dê', octopus: 'bạch tuộc', cat: 'con mèo', kite: 'con diều',
+  egg: 'quả trứng', umbrella: 'cái ô', rabbit: 'con thỏ', hat: 'cái mũ', ball: 'quả bóng', fish: 'con cá',
+  lion: 'sư tử', juice: 'nước ép', van: 'xe tải nhỏ', whale: 'cá voi', fox: 'con cáo', 'yo-yo': 'cái yo-yo',
+  zebra: 'ngựa vằn', queen: 'nữ hoàng', tap: 'vòi nước', pin: 'đinh ghim', man: 'người đàn ông', map: 'bản đồ',
+  dad: 'ba', kid: 'em bé', pen: 'cây bút', red: 'màu đỏ', duck: 'con vịt', run: 'chạy', kick: 'đá',
+  bed: 'cái giường', bug: 'con bọ', hen: 'con gà mái', bun: 'bánh mì tròn', hug: 'ôm', fan: 'cái quạt',
+  leg: 'cái chân', bell: 'cái chuông', doll: 'búp bê', kiss: 'hôn', jam: 'mứt', box: 'cái hộp', web: 'mạng nhện',
+  six: 'số sáu', zip: 'khóa kéo', buzz: 'tiếng vo ve', quack: 'tiếng vịt kêu', yum: 'ngon quá', chip: 'khoai tây chiên',
+  ship: 'con tàu', shop: 'cửa hàng', dish: 'cái đĩa', ring: 'chiếc nhẫn', king: 'nhà vua', bath: 'bồn tắm',
+  sing: 'hát', rain: 'mưa', tree: 'cái cây', feet: 'bàn chân', sheep: 'con cừu', see: 'nhìn thấy', night: 'ban đêm',
+  boat: 'con thuyền', light: 'bóng đèn', coat: 'áo khoác', zoo: 'sở thú', book: 'quyển sách', food: 'đồ ăn',
+  cool: 'ngầu', car: 'xe hơi', star: 'ngôi sao', fork: 'cái nĩa', park: 'công viên', corn: 'bắp ngô', sport: 'thể thao',
+  cow: 'con bò', coin: 'đồng xu', down: 'xuống', town: 'thị trấn', ear: 'cái tai', hair: 'mái tóc', letter: 'lá thư',
+  hammer: 'cái búa', fair: 'hội chợ', tent: 'cái lều', hand: 'bàn tay', milk: 'sữa', jump: 'nhảy', lamp: 'cái đèn',
+  chimp: 'con tinh tinh', frog: 'con ếch', stop: 'dừng lại', crab: 'con cua', flag: 'lá cờ', swim: 'bơi',
+  green: 'màu xanh lá', sunset: 'hoàng hôn', lunchbox: 'hộp cơm', twist: 'xoắn', desk: 'cái bàn', sat: 'đã ngồi',
+  at: 'ở', in: 'trong', it: 'nó', pot: 'cái nồi', this: 'cái này', yes: 'vâng', chop: 'chặt', rich: 'giàu',
+  that: 'cái kia', thin: 'gầy', long: 'dài', tail: 'cái đuôi', high: 'cao', look: 'nhìn', turn: 'quay',
+  boil: 'đun sôi', near: 'gần', sure: 'chắc chắn', belt: 'thắt lưng', trip: 'chuyến đi', wet: 'ướt',
+  quiz: 'câu đố', got: 'đã có', kit: 'bộ đồ nghề', cot: 'giường cũi', rug: 'tấm thảm', neck: 'cái cổ',
+  hop: 'nhảy lò cò', off: 'tắt', fit: 'vừa vặn', lot: 'nhiều', mat: 'tấm thảm', tin: 'cái lon', sit: 'ngồi',
+  nap: 'ngủ trưa', pat: 'vỗ nhẹ', sap: 'nhựa cây', pats: 'vỗ nhẹ',
+};
+
+// Âm của chữ (giọng Anh–Anh) — hiện trên bảng.
+const IPA = {
+  a: 'æ', b: 'b', c: 'k', d: 'd', e: 'e', f: 'f', g: 'g', h: 'h', i: 'ɪ', j: 'dʒ', k: 'k', l: 'l', m: 'm',
+  n: 'n', o: 'ɒ', p: 'p', q: 'kw', r: 'r', s: 's', t: 't', u: 'ʌ', v: 'v', w: 'w', x: 'ks', y: 'j', z: 'z',
+  ck: 'k', ff: 'f', ll: 'l', ss: 's', zz: 'z', qu: 'kw', ch: 'tʃ', sh: 'ʃ', th: 'θ / ð', ng: 'ŋ', ai: 'eɪ',
+  ee: 'iː', igh: 'aɪ', oa: 'əʊ', oo: 'uː / ʊ', ar: 'ɑː', or: 'ɔː', ur: 'ɜː', ow: 'aʊ', oi: 'ɔɪ', ear: 'ɪə',
+  air: 'eə', ure: 'ʊə', er: 'ə',
+};
+
+const slide = (o) => {
+  const parts = [];
+  if (o.letterName) parts.push(en(o.letterName, true));
+  (o.words || []).forEach((w) => {
+    parts.push(en(w, true));
+    if (VI_MEAN[w]) parts.push(vi(VI_MEAN[w]));
+  });
+  if (o.sentence) parts.push(en(o.sentence, true));
+  return {
+    big: o.big,
+    ipa: o.ipa ? '/' + o.ipa + '/' : '',
+    words: (o.words || []).map((w) => ({ word: w, pic: picOf(w) || '', vi: VI_MEAN[w] || '' })),
+    sentence: o.sentence || '',
+    pic: o.pic || '',
+    note: o.note || null,
+    say: parts,
+  };
+};
+
+// Bảng chữ cái: mỗi chữ một trang — chữ thường + chữ hoa, âm, một từ có hình.
+const alphabetSlides = (set) =>
+  set.map((l) => slide({ big: l + '  ' + l.toUpperCase(), ipa: IPA[l], letterName: l.toUpperCase(), words: [KEY[l]] }));
+
+// Bài ghép âm: mỗi âm mới một trang (2 từ mẫu), rồi từ khó, rồi câu.
+const lessonSlides = (i, level) => {
+  const l = LESSONS[i];
+  const mia = level === 'mia';
+  const ws = words(mia ? l.mia : l.words);
+  const out = [];
+  (l.sounds || []).forEach((snd) => {
+    const pickEx = (list) => list.filter((w) => w.includes(snd)).sort((a, b) => !!picOf(b) - !!picOf(a)).slice(0, 2);
+    let ex = pickEx(ws);
+    if (!ex.length) ex = pickEx(words(l.words)); // Mia's short list may not have this sound
+    if (!ex.length && KEY[snd]) ex = [KEY[snd]];
+    out.push(slide({ big: snd, ipa: IPA[snd], words: ex }));
+  });
+  if (!(l.sounds || []).length && ws.length) {
+    // cụm phụ âm, từ dài: từng cặp từ mẫu
+    for (let k = 0; k < Math.min(ws.length, 6); k += 2) out.push(slide({ big: ws[k], words: ws.slice(k, k + 2) }));
+  }
+  const tricky = words(l.tricky).filter((w) => !mia || MIA_TRICKY.includes(w));
+  if (tricky.length)
+    out.push({
+      big: tricky.join('  '),
+      ipa: '',
+      words: [],
+      sentence: '',
+      pic: '⭐',
+      note: { vi: 'Từ khó: không ghép âm được, nhìn và nhớ cả từ.', en: 'Tricky words: look and remember the whole word.' },
+      say: tricky.map((w) => en(w, true)),
+    });
+  (mia ? [] : l.sentences || []).slice(0, 4).forEach(([text, emoji]) => out.push(slide({ big: '', sentence: text, pic: emoji })));
+  return out;
+};
+
+export const alphabetTeach = (g) => () => alphabetSlides(g);
+export const phonicsTeach = (i, level) => () => lessonSlides(i, level);

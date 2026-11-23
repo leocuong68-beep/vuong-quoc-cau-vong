@@ -15,10 +15,29 @@
       <div class="xp progress" :title="index + ' / ' + questions.length">
         <span :style="{ width: (100 * answered) / questions.length + '%' }" />
       </div>
+      <button
+        v-if="hasTeach && !teaching"
+        type="button"
+        class="icon-btn"
+        data-test="reteach"
+        :title="t({ vi: 'Xem lại bài giảng', en: 'Watch the lesson again', el: 'Ξανά το μάθημα' })"
+        @click="openTeach"
+      >
+        📖
+      </button>
       <span class="score pixel">✔ {{ right }}</span>
     </header>
 
-    <main v-if="!finished && q" class="stage">
+    <LessonTeach
+      v-if="teaching"
+      :key="'teach-' + lesson.id"
+      class="teach-stage"
+      :slides="slides"
+      :teacher="profile.teacher || { img: profile.avatar, name: { vi: '' } }"
+      :lang="lang"
+      @done="endTeach"
+    />
+    <main v-else-if="!finished && q" class="stage">
       <div class="show slab">
         <img :src="subject.icon" alt="" class="corner-block no-drag" />
         <div class="buddy" :class="'mood-' + mood">
@@ -118,13 +137,14 @@
   import { pickText } from './curriculum/en.js';
   import { AcademySpeech } from './academySpeech.js';
   import { burst } from './burst.js';
+  import LessonTeach from './LessonTeach.vue';
   import { sfx, voice } from './sfx.js';
 
   const RIGHT_IS = { vi: 'Đáp án đúng là', el: 'Η σωστή απάντηση είναι', en: 'The right answer is' };
 
   export default {
     name: 'LessonGame',
-    components: { LessonVisual },
+    components: { LessonVisual, LessonTeach },
     data() {
       return {
         mood: 'think',
@@ -137,6 +157,9 @@
         wasRight: false,
         finished: false,
         outcome: null,
+        // bài giảng trước phần chơi
+        teaching: false,
+        slides: [],
         timer: null,
       };
     },
@@ -146,6 +169,9 @@
       },
       rewardBonus() {
         return REWARD[this.profile.reward].bonus;
+      },
+      hasTeach() {
+        return this.slides.length > 0;
       },
       giftText() {
         const n = this.outcome ? this.outcome.gift * 30 : 30;
@@ -203,7 +229,7 @@
     },
     watch: {
       '$route.params.lesson'() {
-        if (this.$route.params.lesson) this.start();
+        if (this.$route.params.lesson) this.start(true);
       },
     },
     mounted() {
@@ -211,7 +237,7 @@
         this.$router.replace(this.profile.base);
         return;
       }
-      this.start();
+      this.start(true);
     },
     unmounted() {
       clearTimeout(this.timer);
@@ -226,7 +252,10 @@
       label(c) {
         return this.t(c.label);
       },
-      start() {
+      // withTeach: a new lesson opens on its lecture first; "play again" goes straight to the game
+      start(withTeach) {
+        this.slides = this.lesson.teach ? this.lesson.teach() : [];
+        this.teaching = !!withTeach && this.slides.length > 0;
         this.questions = this.lesson.make();
         this.index = 0;
         this.right = 0;
@@ -236,7 +265,16 @@
         this.mood = 'think';
         this.streak = 0;
         this.reactToken++;
+        if (!this.teaching) this.$nextTick(() => this.speakQuestion());
+      },
+      endTeach() {
+        this.teaching = false;
         this.$nextTick(() => this.speakQuestion());
+      },
+      openTeach() {
+        this.reactToken++;
+        AcademySpeech.stop();
+        this.teaching = true;
       },
       restart() {
         this.start();
@@ -706,5 +744,9 @@
   }
   .old {
     opacity: 0.8;
+  }
+  .teach-stage {
+    flex: 1;
+    min-height: 0;
   }
 </style>

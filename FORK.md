@@ -85,3 +85,4 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Môn Tiếng Anh đứng đầu. Giáo trình `curriculum/phonics.js`: Bảng chữ cái (5 bài) → 27 bài phonics theo Letters and Sounds (4 giai đoạn) → từ vựng. Tin 4 đáp án, Mia 3 đáp án. Giọng máy tiếng Anh là en-GB.
 - Tin Tin không còn khóa Minecraft; nhiệm vụ ngày được cúp vàng.
 - Sao: chỉ nhận ở lần đầu qua bài (làm lại bài cũ không có sao, cũng không tính nhiệm vụ ngày). Mỗi 30 sao: màn chúc mừng "Ba sẽ tặng quà" (`gifts` trong tiến độ, `toNextGift` hiện ở trang chủ).
+- Bài giảng trước phần chơi (`LessonTeach.vue`, dữ liệu `teach()` trong `phonics.js`): ba (daddy.webp) dạy Tin Tin, mẹ (mommy.webp) dạy Mia; bảng đen hiện chữ thường – hoa, âm (IPA Anh–Anh), từ mẫu có hình + nghĩa tiếng Việt; đọc to, bấm Tiếp. Nút 📖 trên thanh bài học để xem lại; "Làm lại" vào thẳng phần chơi.

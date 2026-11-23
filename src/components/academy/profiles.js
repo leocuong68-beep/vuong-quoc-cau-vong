@@ -13,6 +13,8 @@ export const PROFILES = {
     state: Academy,
     subjects: SUBJECTS,
     avatar: 'img/academy/tintin.webp',
+    // bài giảng: ba dạy Tin Tin, mẹ dạy Mia (23/11/2026)
+    teacher: { img: 'img/princess/daddy.webp', name: { vi: 'Ba', en: 'Dad', el: 'Μπαμπάς' } },
     mood: (m) => 'img/academy/tintin_' + m + '.webp',
     vox: 'vox',
     // 23/11/2026: bỏ khóa Minecraft; xong nhiệm vụ ngày được cúp vàng
@@ -30,6 +32,7 @@ export const PROFILES = {
     state: MiaAcademy,
     subjects: MIA_SUBJECTS,
     avatar: 'img/academy/mia_think.webp',
+    teacher: { img: 'img/princess/mommy.webp', name: { vi: 'Mẹ', en: 'Mum', el: 'Μαμά' } },
     mood: (m) => 'img/academy/mia_' + m + '.webp',
     vox: 'vox_mia',
     minecraft: false,
@@ -52,6 +55,7 @@ export const PROFILES = {
     },
     subjects: SUBJECTS,
     avatar: 'img/academy/bot.webp',
+    teacher: { img: 'img/princess/mommy.webp', name: { vi: 'Cô', en: 'Teacher', el: 'Δασκάλα' } },
     mood: (m) => 'img/academy/bot_' + m + '.webp',
     vox: 'vox',
     minecraft: false,
