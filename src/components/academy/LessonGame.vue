@@ -33,7 +33,7 @@
       :key="'teach-' + lesson.id"
       class="teach-stage"
       :slides="slides"
-      :teacher="profile.teacher || { img: profile.avatar, name: { vi: '' } }"
+      :teachers="profile.teachers"
       :lang="lang"
       @done="endTeach"
     />

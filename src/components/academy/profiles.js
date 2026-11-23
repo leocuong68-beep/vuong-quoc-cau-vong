@@ -2,6 +2,12 @@ import { Academy, MiaAcademy } from './academyState.js';
 import { SUBJECTS, MIA_SUBJECTS } from './curriculum/index.js';
 import { Kids, stateOf } from './publicKids.js';
 
+// Bài giảng: ba và mẹ thay phiên dạy từng trang, cho cả hai bé (23/11/2026)
+const FAMILY_TEACHERS = [
+  { img: 'img/princess/daddy.webp', name: { vi: 'Ba', en: 'Dad', el: 'Μπαμπάς' } },
+  { img: 'img/princess/mommy.webp', name: { vi: 'Mẹ', en: 'Mum', el: 'Μαμά' } },
+];
+
 // Each child has an own study space: progress, subjects, look, voice and reward.
 export const PROFILES = {
   tintin: {
@@ -12,10 +18,10 @@ export const PROFILES = {
     theme: 'mc',
     state: Academy,
     subjects: SUBJECTS,
-    avatar: 'img/academy/tintin.webp',
-    // bài giảng: ba dạy Tin Tin, mẹ dạy Mia (23/11/2026)
-    teacher: { img: 'img/princess/daddy.webp', name: { vi: 'Ba', en: 'Dad', el: 'Μπαμπάς' } },
-    mood: (m) => 'img/academy/tintin_' + m + '.webp',
+    // 23/11/2026: avatar 3D chibi như trong Vương Quốc Cầu Vồng
+    avatar: 'img/princess/tintin.webp',
+    teachers: FAMILY_TEACHERS,
+    mood: () => 'img/princess/tintin.webp',
     vox: 'vox',
     // 23/11/2026: bỏ khóa Minecraft; xong nhiệm vụ ngày được cúp vàng
     minecraft: false,
@@ -32,7 +38,7 @@ export const PROFILES = {
     state: MiaAcademy,
     subjects: MIA_SUBJECTS,
     avatar: 'img/academy/mia_think.webp',
-    teacher: { img: 'img/princess/mommy.webp', name: { vi: 'Mẹ', en: 'Mum', el: 'Μαμά' } },
+    teachers: FAMILY_TEACHERS,
     mood: (m) => 'img/academy/mia_' + m + '.webp',
     vox: 'vox_mia',
     minecraft: false,
@@ -55,7 +61,10 @@ export const PROFILES = {
     },
     subjects: SUBJECTS,
     avatar: 'img/academy/bot.webp',
-    teacher: { img: 'img/princess/mommy.webp', name: { vi: 'Cô', en: 'Teacher', el: 'Δασκάλα' } },
+    teachers: [
+      { img: 'img/princess/daddy.webp', name: { vi: 'Thầy', en: 'Teacher', el: 'Δάσκαλος' } },
+      { img: 'img/princess/mommy.webp', name: { vi: 'Cô', en: 'Teacher', el: 'Δασκάλα' } },
+    ],
     mood: (m) => 'img/academy/bot_' + m + '.webp',
     vox: 'vox',
     minecraft: false,

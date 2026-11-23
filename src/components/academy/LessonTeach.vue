@@ -1,9 +1,15 @@
 <template>
   <!-- Bài giảng trước phần chơi: ba/mẹ đứng cạnh bảng, đọc từng mục, bé bấm Tiếp (23/11/2026) -->
   <div class="teach" data-test="teach">
-    <div class="teacher" :class="{ talking }">
-      <img :src="teacher.img" :alt="t(teacher.name)" class="no-drag" />
-      <span class="name pixel">{{ t(teacher.name) }}</span>
+    <!-- ba và mẹ thay phiên: người đang dạy sáng và cử động, người kia đứng chờ -->
+    <div
+      v-for="(p, k) in teachers.slice(0, 2)"
+      :key="p.img"
+      class="teacher"
+      :class="['side-' + k, { active: k === speaker, talking: talking && k === speaker }]"
+    >
+      <img :src="p.img" :alt="t(p.name)" class="no-drag" />
+      <span class="name pixel">{{ t(p.name) }}</span>
     </div>
 
     <section class="board">
@@ -56,7 +62,7 @@
     name: 'LessonTeach',
     props: {
       slides: { type: Array, required: true },
-      teacher: { type: Object, required: true },
+      teachers: { type: Array, required: true },
       lang: { type: String, default: 'vi' },
     },
     emits: ['done'],
@@ -66,6 +72,10 @@
     computed: {
       s() {
         return this.slides[this.index];
+      },
+      // trang 1 ba dạy, trang 2 mẹ dạy, cứ thế luân phiên
+      speaker() {
+        return this.teachers.length > 1 ? this.index % 2 : 0;
       },
     },
     mounted() {
@@ -108,14 +118,21 @@
   .teach {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(120px, 26%) 1fr;
+    grid-template-columns: minmax(90px, 17%) 1fr minmax(90px, 17%);
     grid-template-rows: 1fr auto;
-    gap: 10pt 14pt;
+    grid-template-areas: 'left board right' 'left nav right';
+    gap: 10pt 12pt;
     height: calc(100vh - 64px);
     height: calc(100dvh - 64px);
     min-height: 0;
     padding: 10pt;
     box-sizing: border-box;
+  }
+  .board {
+    grid-area: board;
+  }
+  .nav {
+    grid-area: nav;
   }
   .teacher {
     grid-row: 1 / span 2;
@@ -124,6 +141,20 @@
     align-items: center;
     justify-content: flex-end;
     min-height: 0;
+    opacity: 0.55;
+    filter: saturate(0.6);
+    transition: opacity 0.3s, filter 0.3s, transform 0.3s;
+    &.side-0 {
+      grid-area: left;
+    }
+    &.side-1 {
+      grid-area: right;
+    }
+    &.active {
+      opacity: 1;
+      filter: none;
+      transform: scale(1.06);
+    }
     img {
       max-width: 100%;
       max-height: calc(100dvh - 140px);
@@ -260,7 +291,7 @@
   .skip {
     position: absolute;
     top: 14pt;
-    left: calc(26% + 26pt);
+    left: calc(17% + 26pt);
     border: 0;
     background: rgba(0, 0, 0, 0.35);
     color: #fff;
@@ -271,13 +302,14 @@
   }
   @media (max-aspect-ratio: 1/1) {
     .teach {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: auto 1fr auto;
+      grid-template-areas: 'left right' 'board board' 'nav nav';
     }
     .teacher {
       grid-row: auto;
       img {
-        max-height: 22vh;
+        max-height: 20vh;
       }
     }
     .skip {

@@ -103,11 +103,17 @@ export const AcademySpeech = {
     const has = (lang, text) => (files[lang] || []).includes(lineId(lang, text));
     // a whole recorded line first; otherwise Greek words by the Greek voice
     const list = (Array.isArray(parts) ? parts : [parts])
-      .filter((p) => p && p.text)
-      .flatMap((p) => (has(p.lang, p.text) ? [p] : splitGreek(p)));
+      .filter((p) => p && (p.text || p.file))
+      .flatMap((p) => (p.file || has(p.lang, p.text) ? [p] : splitGreek(p)));
     this.stop();
     const token = this.token;
     for (const part of list) {
+      // a ready sound file (e.g. a phonics sound /s/)
+      if (part.file) {
+        if (token !== this.token) return;
+        await this.playFile(part.file, token, { text: '', lang: 'en' });
+        continue;
+      }
       if (token !== this.token) return;
       const id = lineId(part.lang, part.text);
       const have = files[part.lang] || [];
@@ -171,3 +177,5 @@ export const AcademySpeech = {
 export const vi = (text) => ({ text, lang: 'vi' });
 export const el = (text, slow) => ({ text, lang: 'el', slow });
 export const en = (text, slow) => ({ text, lang: 'en', slow });
+// a recorded phonics sound (sounds/phonics/<grapheme>.mp3, from buzzphonics, MIT)
+export const phon = (g) => ({ file: 'sounds/phonics/' + g + '.mp3' });

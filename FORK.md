@@ -86,3 +86,5 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - Tin Tin không còn khóa Minecraft; nhiệm vụ ngày được cúp vàng.
 - Sao: chỉ nhận ở lần đầu qua bài (làm lại bài cũ không có sao, cũng không tính nhiệm vụ ngày). Mỗi 30 sao: màn chúc mừng "Ba sẽ tặng quà" (`gifts` trong tiến độ, `toNextGift` hiện ở trang chủ).
 - Bài giảng trước phần chơi (`LessonTeach.vue`, dữ liệu `teach()` trong `phonics.js`): ba (daddy.webp) dạy Tin Tin, mẹ (mommy.webp) dạy Mia; bảng đen hiện chữ thường – hoa, âm (IPA Anh–Anh), từ mẫu có hình + nghĩa tiếng Việt; đọc to, bấm Tiếp. Nút 📖 trên thanh bài học để xem lại; "Làm lại" vào thẳng phần chơi.
+- Ba và mẹ thay phiên dạy từng trang bài giảng cho cả hai bé (`FAMILY_TEACHERS` trong `profiles.js`); bản công khai #/hoc là Thầy/Cô. Avatar Tin Tin trong Học viện dùng bản 3D chibi (`img/princess/tintin.webp`).
+- Âm phonics thu sẵn giọng Anh: `public/sounds/phonics/*.mp3` (từ buzzphonics, MIT, xem CREDITS.md). Bài giảng đọc tên chữ → âm (2 lần) → từ mẫu → nghĩa; phần chơi có câu "nghe âm, chọn chữ" (`hearSound`). `AcademySpeech.say` nhận phần `{ file }` (helper `phon(g)`).

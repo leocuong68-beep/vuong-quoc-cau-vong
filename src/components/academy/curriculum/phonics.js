@@ -1,4 +1,4 @@
-import { en, vi } from '../academySpeech.js';
+import { en, vi, phon } from '../academySpeech.js';
 import { build, choicesFrom, pick, shuffle } from './helpers.js';
 
 // Phonics: đọc – viết tiếng Anh cho Tin Tin và Mia, chung một giáo trình (23/11/2026).
@@ -146,6 +146,26 @@ const soundQ = (lessonSounds, pool, n, lessonWords, mia) => () => {
   };
 };
 
+// Nghe âm thu sẵn (/s/, /sh/…) → chọn chữ hoặc cặp chữ.
+const hearSound = (lessonSounds, pool, n, mia) => () => {
+  const own = lessonSounds.filter((g) => SOUND_FILE[g]);
+  const g = pick(own);
+  // k/ck đọc giống c, ff giống f…: không để hai đáp án cùng một âm
+  const same = (x) => SOUND_FILE[x] === SOUND_FILE[g];
+  return {
+    sig: 'ph-snd-' + g,
+    ask: askFor(mia, { vi: 'Nghe và chọn vần đúng.', el: 'Άκου και διάλεξε τη συλλαβή.' }),
+    target: [soundOf(g), soundOf(g)],
+    show: { kind: 'listen' },
+    choiceStyle: 'big',
+    choices: choicesFrom(g, pool.filter((x) => SOUND_FILE[x] && !same(x)), n).map((c) => ({
+      label: c.value,
+      correct: c.correct,
+      say: [soundOf(c.value)],
+    })),
+  };
+};
+
 // Nghe một từ → chọn từ viết đúng (luyện ghép âm khi đọc).
 const hearWord = (lessonWords, pool, n, mia) => () => {
   const w = pick(lessonWords);
@@ -251,6 +271,7 @@ const makeLesson = (i, level) => {
 
   const gens = [];
   if (lessonSounds.length) gens.push(soundQ(lessonSounds, soundsSoFar, n, reviewWords, mia));
+  if (lessonSounds.some((g) => SOUND_FILE[g])) gens.push(hearSound(lessonSounds, soundsSoFar, n, mia));
   gens.push(hearWord(reviewWords, pool, n, mia));
   // Mia: chưa có giọng bé cho câu "tự đọc rồi chọn hình" → phần này làm trên phiếu giấy
   if (!mia && reviewWords.some((w) => picOf(w))) gens.push(readPic(reviewWords, pool, n));
@@ -403,9 +424,21 @@ const IPA = {
   air: 'eə', ure: 'ʊə', er: 'ə',
 };
 
+// File âm thu sẵn cho từng chữ / cặp chữ (giọng Anh, buzzphonics).
+const SOUND_FILE = {
+  a: 'a', b: 'b', c: 'c', d: 'd', e: 'e', f: 'f', g: 'g', h: 'h', i: 'i', j: 'j', k: 'c', l: 'l', m: 'm',
+  n: 'n', o: 'o', p: 'p', q: 'qu', r: 'r', s: 's', t: 't', u: 'u', v: 'v', w: 'w', x: 'x', y: 'y', z: 'z',
+  ck: 'c', ff: 'f', ll: 'l', ss: 's', zz: 'z', qu: 'qu', ch: 'ch', sh: 'sh', th: 'th', ng: 'ng', ai: 'ai',
+  ee: 'ee', igh: 'igh', oa: 'oa', oo: 'oo', ar: 'ar', or: 'or', ur: 'ur', ow: 'ow', oi: 'oi', ear: 'ear',
+  air: 'air', ure: 'ure', er: 'er',
+};
+const soundOf = (g) => (SOUND_FILE[g] ? phon(SOUND_FILE[g]) : null);
+
 const slide = (o) => {
   const parts = [];
   if (o.letterName) parts.push(en(o.letterName, true));
+  // âm thật của chữ: đọc 2 lần
+  if (o.sound && soundOf(o.sound)) parts.push(soundOf(o.sound), soundOf(o.sound));
   (o.words || []).forEach((w) => {
     parts.push(en(w, true));
     if (VI_MEAN[w]) parts.push(vi(VI_MEAN[w]));
@@ -424,7 +457,7 @@ const slide = (o) => {
 
 // Bảng chữ cái: mỗi chữ một trang — chữ thường + chữ hoa, âm, một từ có hình.
 const alphabetSlides = (set) =>
-  set.map((l) => slide({ big: l + '  ' + l.toUpperCase(), ipa: IPA[l], letterName: l.toUpperCase(), words: [KEY[l]] }));
+  set.map((l) => slide({ big: l + '  ' + l.toUpperCase(), ipa: IPA[l], letterName: l.toUpperCase(), sound: l, words: [KEY[l]] }));
 
 // Bài ghép âm: mỗi âm mới một trang (2 từ mẫu), rồi từ khó, rồi câu.
 const lessonSlides = (i, level) => {
@@ -437,7 +470,7 @@ const lessonSlides = (i, level) => {
     let ex = pickEx(ws);
     if (!ex.length) ex = pickEx(words(l.words)); // Mia's short list may not have this sound
     if (!ex.length && KEY[snd]) ex = [KEY[snd]];
-    out.push(slide({ big: snd, ipa: IPA[snd], words: ex }));
+    out.push(slide({ big: snd, ipa: IPA[snd], sound: snd, words: ex }));
   });
   if (!(l.sounds || []).length && ws.length) {
     // cụm phụ âm, từ dài: từng cặp từ mẫu
