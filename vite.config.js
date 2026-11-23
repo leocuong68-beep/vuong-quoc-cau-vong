@@ -55,7 +55,7 @@ export default defineConfig({
     isProduction && VitePWA({
       registerType: 'autoUpdate',
       filename: 'service-worker.js',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'icon-192.png', 'icon-512.png'],
       manifest: {
         name: 'Vương Quốc Cầu Vồng',
         short_name: 'Cầu Vồng',
@@ -66,12 +66,11 @@ export default defineConfig({
         // relative, so the game also works inside a folder of a website (www.leocuong.com/rainbow/)
         scope: './',
         start_url: './',
+        // PNG icons so Android (Chrome, Samsung Internet) installs the web as an app with a proper icon
         icons: [
-          {
-            src: 'favicon.svg',
-            sizes: 'any',
-            type: 'image/svg+xml'
-          }
+          { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
+          { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml' }
         ]
       },
       workbox: {
