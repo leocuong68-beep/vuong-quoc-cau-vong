@@ -86,6 +86,10 @@
       <p v-if="outcome.bonus" class="minecraft">
         {{ t(rewardBonus) }}
       </p>
+      <p v-if="outcome.gift" class="gift" data-test="gift">🎁 {{ giftText }}</p>
+      <p v-else-if="outcome.passed && !outcome.earned" class="old">
+        {{ t({ vi: 'Bài này đã nhận sao rồi. Học bài mới để có thêm sao nhé!', el: 'Έχεις πάρει ήδη αστέρια εδώ.', en: 'You already got stars for this lesson. Try a new one!' }) }}
+      </p>
       <div class="actions">
         <button type="button" class="secondary" data-test="again" @click="restart">
           {{ t({ vi: 'Làm lại', el: 'Ξανά' }) }}
@@ -142,6 +146,14 @@
       },
       rewardBonus() {
         return REWARD[this.profile.reward].bonus;
+      },
+      giftText() {
+        const n = this.outcome ? this.outcome.gift * 30 : 30;
+        return this.t({
+          vi: 'Chúc mừng ' + this.profile.name + '! Con đã gom đủ ' + n + ' sao. Ba sẽ tặng quà cho con!',
+          el: 'Συγχαρητήρια! ' + n + ' αστέρια! Ο μπαμπάς έχει δώρο για σένα!',
+          en: 'Well done, ' + this.profile.name + '! You have ' + n + ' stars. Dad has a present for you!',
+        });
       },
       acad() {
         return this.profile.state;
@@ -337,6 +349,12 @@
         } else {
           sfx.levelUp();
           let chain = voice(this.outcome.stars === 3 ? 'perfect' : 'pass', this.profile.vox);
+          if (this.outcome.gift) {
+            chain = chain.then(() => {
+              sfx.chest();
+              return token === this.reactToken ? AcademySpeech.say([{ text: this.giftText, lang: this.lang }]) : null;
+            });
+          }
           if (this.outcome.bonus) {
             chain = chain.then(() => {
               sfx.chest();
@@ -679,5 +697,14 @@
     margin-top: 0.8rem;
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .gift {
+    font-size: 17pt;
+    font-weight: 800;
+    color: #e11d48;
+    animation: pop 0.6s ease-out;
+  }
+  .old {
+    opacity: 0.8;
   }
 </style>

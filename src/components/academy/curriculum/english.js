@@ -1,6 +1,6 @@
 import { en } from '../academySpeech.js';
 import { build, choicesFrom, pick } from './helpers.js';
-import { phonicsUnits } from './phonics.js';
+import { alphabetUnit, phonicsUnits } from './phonics.js';
 
 // English — phonics first (letter groups as in Jolly Phonics), then short words and sight words.
 
@@ -237,6 +237,7 @@ export const ENGLISH = {
   color: '#ef4444',
   // 23/11/2026: giáo trình phonics 4 giai đoạn (chung với Mia), rồi từ vựng màu và số.
   units: [
+    alphabetUnit('tin', 'en-ph'),
     ...phonicsUnits('tin', 'en-ph'),
     {
       title: { vi: 'Từ vựng', el: 'Λεξιλόγιο', en: 'Words' },

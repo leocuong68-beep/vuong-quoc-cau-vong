@@ -112,6 +112,8 @@
       },
       choose(profile) {
         Profiles.choose(profile.id);
+        // Mia's home is her class; her games sit behind the "Game" button there
+        if (profile.id === 'mia') return this.$router.push('/mia');
         this.$emit('chosen', profile);
       },
       // two taps to delete, so a child does not remove a profile by accident

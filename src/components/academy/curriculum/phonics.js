@@ -289,3 +289,76 @@ export const phonicsUnits = (level, prefix) =>
   }));
 
 export const PHONICS_LESSON_COUNT = LESSONS.length;
+
+// ---------- Bảng chữ cái (học trước phần ghép âm, 23/11/2026) ----------
+const AZ = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const ABC_GROUPS = [AZ.slice(0, 7), AZ.slice(7, 14), AZ.slice(14, 21), AZ.slice(21)];
+
+// Tin Tin: nghe tên chữ → chọn chữ; chữ hoa ↔ chữ thường (câu đã thu giọng sẵn)
+const hearLetter = (set, pool, n, mia) => () => {
+  const l = pick(set);
+  const shown = mia ? l.toUpperCase() : l;
+  return {
+    sig: 'abc-hear-' + l,
+    ask: mia
+      ? { vi: 'Nghe tên chữ cái tiếng Anh rồi chạm vào chữ đúng.', el: 'Άκου το γράμμα.' }
+      : { vi: 'Nghe tên chữ cái rồi chọn chữ đúng.', el: 'Άκου και διάλεξε το γράμμα.' },
+    target: [en(l.toUpperCase(), true)],
+    show: { kind: 'listen' },
+    choiceStyle: 'big',
+    choices: choicesFrom(shown, pool.map((x) => (mia ? x.toUpperCase() : x)), n).map((c) => ({
+      label: c.value,
+      correct: c.correct,
+    })),
+  };
+};
+const upToLow = (set, pool, n, mia) => () => {
+  const l = pick(set);
+  return {
+    sig: 'abc-case-' + l,
+    ask: mia
+      ? { vi: 'Chữ to này giống chữ nhỏ nào?', el: 'Βρες το μικρό γράμμα.' }
+      : { vi: 'Chữ in hoa này, viết thường là chữ nào?', el: 'Ποιο είναι το μικρό γράμμα;' },
+    target: [en(l.toUpperCase())],
+    show: { kind: 'big', value: l.toUpperCase() },
+    choiceStyle: 'big',
+    choices: choicesFrom(l, pool, n).map((c) => ({ label: c.value, correct: c.correct })),
+  };
+};
+const lowToUp = (set, pool, n) => () => {
+  const l = pick(set);
+  return {
+    sig: 'abc-up-' + l,
+    ask: { vi: 'Chữ thường này, viết in hoa là chữ nào?', el: 'Ποιο είναι το κεφαλαίο γράμμα;' },
+    target: [en(l.toUpperCase())],
+    show: { kind: 'big', value: l },
+    choiceStyle: 'big',
+    choices: choicesFrom(l.toUpperCase(), pool.map((x) => x.toUpperCase()), n).map((c) => ({
+      label: c.value,
+      correct: c.correct,
+    })),
+  };
+};
+
+export const alphabetUnit = (level, prefix) => {
+  const mia = level === 'mia';
+  const n = mia ? 3 : 4;
+  const gens = (set, pool) =>
+    mia ? [hearLetter(set, pool, n, true), upToLow(set, pool, n, true)] : [hearLetter(set, pool, n), upToLow(set, pool, n), lowToUp(set, pool, n)];
+  const title = (g) => g[0].toUpperCase() + ' – ' + g[g.length - 1].toUpperCase();
+  return {
+    title: { vi: 'Bảng chữ cái', el: 'Αλφάβητο', en: 'The alphabet' },
+    lessons: [
+      ...ABC_GROUPS.map((g, i) => ({
+        id: prefix + '-abc' + (i + 1),
+        title: { vi: 'Chữ ' + title(g), el: title(g), en: 'Letters ' + title(g) },
+        make: () => build(10, gens(g, g)),
+      })),
+      {
+        id: prefix + '-abc-all',
+        title: { vi: 'Ôn cả bảng chữ cái', el: 'Όλο το αλφάβητο', en: 'The whole alphabet' },
+        make: () => build(10, gens(AZ, AZ)),
+      },
+    ],
+  };
+};

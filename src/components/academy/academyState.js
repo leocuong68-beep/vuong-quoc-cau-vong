@@ -40,6 +40,8 @@ export const starsForScore = (right, total) => {
 
 // Daily goal: one lesson passed in every subject. Then Minecraft opens for the day.
 export const DAILY_BONUS = 5;
+// Every 30 stars: a celebration and a present from Dad (23/11/2026).
+export const GIFT_EVERY = 30;
 
 export const today = () => {
   const d = new Date();
@@ -59,6 +61,8 @@ export const makeAcademy = (prefix) => {
     // date -> list of subject ids passed that day
     days: saved.days || {},
     bonusDays: saved.bonusDays || {},
+    // how many of Dad's presents have been announced (one per 30 stars)
+    gifts: Number(saved.gifts) || 0,
     unlockAll: read(prefix + '_unlock_all') === '1',
     // instruction language: vi (Vietnamese), en (English) or el (Greek)
     voiceLang: ['vi', 'en', 'el'].includes(read(prefix + '_voice_lang')) ? read(prefix + '_voice_lang') : 'vi',
@@ -72,9 +76,14 @@ export const makeAcademy = (prefix) => {
           spent: this.spent,
           days: this.days,
           bonusDays: this.bonusDays,
+          gifts: this.gifts,
         })
       );
       write(prefix + '_minecraft_open', this.minecraftOpen ? today() : '');
+    },
+    // stars still needed for Dad's next present
+    get toNextGift() {
+      return GIFT_EVERY - (this.wallet % GIFT_EVERY);
     },
     starsOf(lessonId) {
       return Number(this.best[lessonId]) || 0;
@@ -105,23 +114,30 @@ export const makeAcademy = (prefix) => {
       const before = this.starsOf(lessonId);
       let earned = 0;
       let bonus = 0;
+      let gift = 0;
       if (stars > 0) {
-        // new stars only for a better result than before, so stars mean progress
-        earned = Math.max(0, stars - before);
+        // stars only the first time a lesson is passed: a lesson already rewarded gives nothing again
+        const firstPass = before === 0;
+        if (firstPass) earned = stars;
         if (stars > before) this.best[lessonId] = stars;
         const day = today();
         const list = this.days[day] || [];
-        if (!list.includes(subjectId)) this.days[day] = [...list, subjectId];
-        // practising an old lesson again still counts for today's goal, worth 1 star once a day
-        if (earned === 0 && !list.includes(subjectId)) earned = 1;
+        // today's goal counts new lessons only
+        if (firstPass && !list.includes(subjectId)) this.days[day] = [...list, subjectId];
         if (this.minecraftOpen && !this.bonusDays[day]) {
           this.bonusDays[day] = true;
           bonus = DAILY_BONUS;
         }
         this.wallet += earned + bonus;
+        // a present from Dad for every 30 stars
+        const due = Math.floor(this.wallet / GIFT_EVERY);
+        if (due > this.gifts) {
+          gift = due;
+          this.gifts = due;
+        }
         this.save();
       }
-      return { stars, earned, bonus, passed: stars > 0, firstPass: before === 0 && stars > 0 };
+      return { stars, earned, bonus, gift, passed: stars > 0, firstPass: before === 0 && stars > 0 };
     },
     toggleVoice() {
       const order = ['vi', 'en', 'el'];

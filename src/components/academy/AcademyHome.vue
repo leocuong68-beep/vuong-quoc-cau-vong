@@ -17,6 +17,15 @@
           <span class="small">{{ t(profile.kicker) }}</span>
           {{ profile.name }}
         </h1>
+        <button
+          v-if="profile.id === 'mia'"
+          type="button"
+          class="mc-btn games"
+          data-test="to-games"
+          @click="$router.push('/princess')"
+        >
+          {{ t({ vi: '🎮 Game', el: '🎮 Παιχνίδια', en: '🎮 Games' }) }}
+        </button>
         <div class="spacer" />
         <div
           class="wallet slab pixel"
@@ -25,6 +34,13 @@
         >
           <span class="star">★</span>
           <b>{{ wallet }}</b>
+        </div>
+        <div
+          class="gift-hint slab pixel"
+          data-test="gift-hint"
+          :title="t({ vi: 'Còn ' + acad.toNextGift + ' sao nữa là có quà của Ba', el: 'Δώρο από τον μπαμπά', en: acad.toNextGift + ' more stars for a present from Dad' })"
+        >
+          🎁 <b>{{ acad.toNextGift }}</b>
         </div>
         <button type="button" class="mc-btn lang" data-test="voice" @click="toggleVoice">
           {{ { vi: 'VI · Tiếng Việt', en: 'EN · English', el: 'EL · Ελληνικά' }[lang] }}
@@ -107,7 +123,7 @@
       </section>
 
       <footer class="foot">
-        <button v-if="profile.back" type="button" class="link" @click="$router.push(profile.back.path)">
+        <button v-if="profile.back" type="button" class="link" @click="goBack">
           ← {{ t(profile.back.label) }}
         </button>
         <button v-if="profile.public" type="button" class="link" data-test="switch-kid" @click="switchKid">
@@ -125,6 +141,7 @@
   import PickName from './PickName.vue';
   import UpdateButton from '../common/UpdateButton.vue';
   import { pickText } from './curriculum/en.js';
+  import { Profiles } from '../princess/state.js';
   import { AcademySpeech } from './academySpeech.js';
   import { sfx, voice } from './sfx.js';
 
@@ -201,6 +218,11 @@
       AcademySpeech.stop();
     },
     methods: {
+      // Tin Tin's "change player" goes back to the account picker on the web
+      goBack() {
+        if (this.profile.back.pick) Profiles.currentId = null;
+        this.$router.push(this.profile.back.path);
+      },
       playMinecraft() {
         sfx.chest();
         voice('unlock', this.profile.vox);
@@ -751,5 +773,13 @@
     .subjects {
       grid-template-columns: 1fr;
     }
+  }
+  .gift-hint {
+    padding: 4pt 10pt;
+    font-size: 13pt;
+  }
+  .games {
+    font-size: 15pt;
+    padding: 6pt 14pt;
   }
 </style>

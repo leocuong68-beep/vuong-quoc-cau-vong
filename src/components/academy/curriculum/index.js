@@ -16,14 +16,14 @@ const prepare = (list, icon) =>
     lessons: s.units.flatMap((u, unitIndex) => u.lessons.map((l) => ({ ...l, unitIndex }))),
   }));
 
-// Tin Tin (8, Β΄ Δημοτικού): the four subjects in the order they show on his home screen.
+// Tin Tin (Β΄ Δημοτικού): the four subjects in the order they show on his home screen (English first, 23/11/2026).
 export const SUBJECTS = prepare(
-  [GREEK, ENGLISH, MATH, PHYSICS],
+  [ENGLISH, GREEK, MATH, PHYSICS],
   (s) => 'img/academy/block_' + s.id + '.webp'
 );
 // Mia (pre-school): the same four subjects, easier.
 export const MIA_SUBJECTS = prepare(
-  [MIA_GREEK, MIA_ENGLISH, MIA_MATH, MIA_SCIENCE],
+  [MIA_ENGLISH, MIA_GREEK, MIA_MATH, MIA_SCIENCE],
   (s) => 'img/academy/mia_block_' + s.icon + '.webp'
 );
 

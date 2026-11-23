@@ -77,3 +77,11 @@ Fork từ https://github.com/timmalich/edukiz (MIT), ngày 12/11/2026.
 - `#/hoc`: cùng giáo trình với Tin Tin, mở đầu là màn chọn tên (`PickName.vue`, `publicKids.js`); nhiều bé dùng chung một máy, mỗi tên giữ tiến độ riêng (`hoc_<id>_progress`). Nhân vật là robot (img/academy/bot*.webp, Recraft), phần thưởng ngày là cúp vàng (không có Minecraft).
 - Giọng: tiếng Việt `Vietnamese_kindhearted_girl` trong `sounds/academy_pub/` (không gọi tên bé); tiếng Anh/Hy Lạp dùng chung `sounds/academy/` (Wiselady). Thu: `scripts/collect-public-lines.spec.js` → `scripts/tts_public.py`.
 - `windows/`: Electron mở https://leocuong68-beep.github.io/vuong-quoc-cau-vong/#/hoc. Build trên Linux: `npx electron-builder --win dir --x64` rồi `makensis installer.nsi` (cài cho người dùng hiện tại, không cần quyền admin, có lối tắt Desktop/Start và gỡ cài đặt).
+
+## Bản web cho cả nhà (23/11/2026)
+
+- Hai bé học trên web https://www.leocuong.com/rainbow/ (bản `npm run build:public`); không làm APK hay app macOS riêng nữa (mã `android/`, `macos/`, `windows/` giữ lại nhưng không phát hành).
+- Màn "Ai đang chơi?": Tin Tin (mở #/tintin), Mia (mở #/mia — lớp học là trang chủ, nút 🎮 Game mở Vương Quốc Cầu Vồng), Tạo mới (bé khác, lớp học là #/hoc). Hai tài khoản gia đình không xóa được.
+- Môn Tiếng Anh đứng đầu. Giáo trình `curriculum/phonics.js`: Bảng chữ cái (5 bài) → 27 bài phonics theo Letters and Sounds (4 giai đoạn) → từ vựng. Tin 4 đáp án, Mia 3 đáp án. Giọng máy tiếng Anh là en-GB.
+- Tin Tin không còn khóa Minecraft; nhiệm vụ ngày được cúp vàng.
+- Sao: chỉ nhận ở lần đầu qua bài (làm lại bài cũ không có sao, cũng không tính nhiệm vụ ngày). Mỗi 30 sao: màn chúc mừng "Ba sẽ tặng quà" (`gifts` trong tiến độ, `toNextGift` hiện ở trang chủ).

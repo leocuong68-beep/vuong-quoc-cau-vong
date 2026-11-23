@@ -1,6 +1,6 @@
 import { en } from '../../academySpeech.js';
 import { build, choicesFrom, pick } from '../helpers.js';
-import { phonicsUnits } from '../phonics.js';
+import { alphabetUnit, phonicsUnits } from '../phonics.js';
 
 // English for Mia (pre-school): colours, numbers, animals, fruit, letters, body. 3 answers, read aloud.
 
@@ -128,6 +128,9 @@ export const MIA_ENGLISH = {
   short: 'ABC',
   color: '#f472b6',
   units: [
+    // 23/11/2026: bảng chữ cái trước, rồi ghép âm, cuối cùng là từ vựng theo chủ đề
+    alphabetUnit('mia', 'men-ph'),
+    ...phonicsUnits('mia', 'men-ph'),
     {
       title: { vi: 'Từ đầu tiên', el: 'Οι πρώτες λέξεις' },
       lessons: [
@@ -144,7 +147,5 @@ export const MIA_ENGLISH = {
         L('body', 'Cơ thể', 'Το σώμα', pic(BODY, 'bd-', 'Nghe rồi chạm vào hình đúng.')),
       ],
     },
-    // 23/11/2026: giáo trình phonics chung với Tin Tin, mức dễ (3 đáp án, ít từ hơn)
-    ...phonicsUnits('mia', 'men-ph'),
   ],
 };

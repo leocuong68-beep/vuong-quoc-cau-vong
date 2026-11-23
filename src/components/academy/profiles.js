@@ -15,10 +15,11 @@ export const PROFILES = {
     avatar: 'img/academy/tintin.webp',
     mood: (m) => 'img/academy/tintin_' + m + '.webp',
     vox: 'vox',
-    minecraft: true,
-    reward: 'minecraft',
+    // 23/11/2026: bỏ khóa Minecraft; xong nhiệm vụ ngày được cúp vàng
+    minecraft: false,
+    reward: 'cup',
     kicker: { vi: 'Học viện', el: 'Ακαδημία' },
-    back: { path: '/', label: { vi: 'Vương Quốc Cầu Vồng của Mia', el: 'Το παιχνίδι της Μία' } },
+    back: { path: '/', pick: true, label: { vi: 'Đổi người chơi', el: 'Αλλαγή παίκτη', en: 'Change player' } },
   },
   mia: {
     id: 'mia',
@@ -34,7 +35,8 @@ export const PROFILES = {
     minecraft: false,
     reward: 'crown',
     kicker: { vi: 'Lớp học của', el: 'Το σχολείο της' },
-    back: { path: '/princess', label: { vi: 'Về Vương Quốc Cầu Vồng', el: 'Πίσω στο βασίλειο' } },
+    // 23/11/2026: lớp học là trang chủ của Mia; các trò chơi gom vào mục Game
+    back: { path: '/princess', label: { vi: '🎮 Game', el: '🎮 Παιχνίδια', en: '🎮 Games' } },
   },
   // public: same lessons as Tin Tin, any child picks a name first, a gold cup as the daily reward
   hoc: {
