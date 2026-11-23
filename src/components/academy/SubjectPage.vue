@@ -45,6 +45,9 @@
           <span v-if="state(lesson) === 'open'" class="here pixel">{{
             t({ vi: 'HỌC NGAY', el: 'ΠΑΜΕ' })
           }}</span>
+          <span v-if="state(lesson) === 'pending'" class="here pixel wait">{{
+            t({ vi: '✏️ CHỜ DUYỆT', en: '✏️ TO CHECK', el: '✏️ ΕΛΕΓΧΟΣ' })
+          }}</span>
         </button>
       </div>
     </section>
@@ -91,6 +94,7 @@
       },
       state(lesson) {
         if (this.acad.isPassed(lesson.id)) return 'passed';
+        if (this.acad.isPending(lesson.id)) return 'pending';
         return this.acad.isOpen(this.subject, this.position(lesson)) ? 'open' : 'locked';
       },
       open(lesson) {
@@ -250,5 +254,9 @@
   }
   .wide {
     width: 100%;
+  }
+  .here.wait {
+    background: #f59e0b;
+    color: #fff;
   }
 </style>

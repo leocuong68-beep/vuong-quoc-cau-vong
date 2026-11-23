@@ -92,8 +92,39 @@
       <div class="medal pixel">
         <span v-for="s in 3" :key="s" class="star" :class="{ on: s <= outcome.stars }">★</span>
       </div>
-      <h2 class="pixel">{{ right }} / {{ questions.length }}</h2>
+      <h2 v-if="!outcome.resumed" class="pixel">{{ right }} / {{ questions.length }}</h2>
       <p class="verdict">{{ verdict }}</p>
+      <div v-if="outcome.pendingSheet" class="sheet-box" data-test="sheet-box">
+        <p>
+          ✏️
+          {{
+            t({
+              vi: 'Bước cuối: bài viết. Ba mẹ bấm In, bé làm bài trên giấy, xong ba mẹ nhập mã để duyệt.',
+              en: 'Last step: the worksheet. Parents print it, the child does it on paper, then parents enter the code.',
+              el: 'Τελευταίο βήμα: το φύλλο εργασίας.',
+            })
+          }}
+        </p>
+        <div class="sheet-actions">
+          <a class="primary print" :href="lesson.sheet" target="_blank" rel="noopener" data-test="print-sheet">
+            🖨️ {{ t({ vi: 'In bài tập', en: 'Print worksheet', el: 'Εκτύπωση' }) }}
+          </a>
+          <input
+            v-model="parentCode"
+            class="code"
+            :class="{ wrong: codeWrong }"
+            type="password"
+            inputmode="numeric"
+            maxlength="8"
+            data-test="approve-code"
+            :placeholder="t({ vi: 'Mã', en: 'Code', el: 'Κωδ.' })"
+            @keyup.enter="approveSheet"
+          />
+          <button type="button" class="primary ok" data-test="approve-sheet" @click="approveSheet">
+            ✅ {{ t({ vi: 'Ba mẹ duyệt', en: 'Approve', el: 'Έγκριση' }) }}
+          </button>
+        </div>
+      </div>
       <p v-if="outcome.earned || outcome.bonus" class="won">
         +{{ outcome.earned + outcome.bonus }} ⭐
         <span v-if="outcome.bonus"
@@ -114,7 +145,7 @@
           {{ t({ vi: 'Làm lại', el: 'Ξανά' }) }}
         </button>
         <button
-          v-if="outcome.passed && nextLesson"
+          v-if="outcome.passed && !outcome.pendingSheet && nextLesson"
           type="button"
           class="primary"
           data-test="next-lesson"
@@ -138,6 +169,7 @@
   import { AcademySpeech } from './academySpeech.js';
   import { burst } from './burst.js';
   import LessonTeach from './LessonTeach.vue';
+  import { PARENT_CODE } from './academyState.js';
   import { sfx, voice } from './sfx.js';
 
   const RIGHT_IS = { vi: 'Đáp án đúng là', el: 'Η σωστή απάντηση είναι', en: 'The right answer is' };
@@ -160,6 +192,8 @@
         // bài giảng trước phần chơi
         teaching: false,
         slides: [],
+        parentCode: '',
+        codeWrong: false,
         timer: null,
       };
     },
@@ -214,6 +248,18 @@
         return this.q.explain ? this.t(this.q.explain) : '→ ' + this.label(right);
       },
       verdict() {
+        if (this.outcome.pendingSheet)
+          return this.t({
+            vi: 'Qua phần chơi rồi! Giờ làm bài viết nhé.',
+            en: 'Game passed! Now the writing worksheet.',
+            el: 'Πέρασες το παιχνίδι! Τώρα το γράψιμο.',
+          });
+        if (this.outcome.approved)
+          return this.t({
+            vi: 'Ba mẹ đã duyệt bài viết. Qua bài! Bài tiếp theo đã mở.',
+            en: 'Worksheet approved. Lesson passed! The next lesson is open.',
+            el: 'Εγκρίθηκε! Το επόμενο μάθημα άνοιξε.',
+          });
         if (!this.outcome.passed)
           return this.t({
             vi: 'Cần đúng 8 câu để qua bài. Thử lại nhé!',
@@ -265,7 +311,39 @@
         this.mood = 'think';
         this.streak = 0;
         this.reactToken++;
+        this.parentCode = '';
+        this.codeWrong = false;
+        // game already passed, worksheet still waiting: open straight on the approval box
+        if (withTeach && this.acad.isPending(this.lesson.id)) {
+          this.teaching = false;
+          this.finished = true;
+          this.outcome = {
+            stars: Number(this.acad.pending[this.lesson.id]) || 1,
+            earned: 0,
+            bonus: 0,
+            gift: 0,
+            passed: true,
+            pendingSheet: true,
+            resumed: true,
+          };
+          return;
+        }
         if (!this.teaching) this.$nextTick(() => this.speakQuestion());
+      },
+      approveSheet() {
+        if (this.parentCode.trim() !== PARENT_CODE) {
+          this.codeWrong = true;
+          this.parentCode = '';
+          return;
+        }
+        const res = this.acad.approve(this.subject.id, this.lesson.id);
+        if (!res) return;
+        this.outcome = { ...res, approved: true, resumed: true };
+        sfx.levelUp();
+        const token = ++this.reactToken;
+        let chain = voice('pass', this.profile.vox);
+        if (res.gift) chain = chain.then(() => (token === this.reactToken ? AcademySpeech.say([{ text: this.giftText, lang: this.lang }]) : null));
+        chain.then(() => token === this.reactToken && AcademySpeech.say([{ text: this.verdict, lang: this.lang }]));
       },
       endTeach() {
         this.teaching = false;
@@ -374,7 +452,8 @@
           this.subject.id,
           this.lesson.id,
           this.right,
-          this.questions.length
+          this.questions.length,
+          !!this.lesson.sheet
         );
         const token = ++this.reactToken;
         const sayVerdict = () => {
@@ -748,5 +827,44 @@
   .teach-stage {
     flex: 1;
     min-height: 0;
+  }
+  .sheet-box {
+    max-width: 560px;
+    margin: 6pt auto;
+    padding: 10pt 14pt;
+    border-radius: 12pt;
+    background: rgba(255, 251, 235, 0.95);
+    color: #78350f;
+    text-align: center;
+    p {
+      margin: 0 0 8pt;
+    }
+  }
+  .sheet-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8pt;
+    .print {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+    .code {
+      width: 110px;
+      padding: 6pt;
+      font-size: 16pt;
+      text-align: center;
+      letter-spacing: 0.3em;
+      border: 2px solid #d6d3d1;
+      border-radius: 8pt;
+      &.wrong {
+        border-color: #ef4444;
+      }
+    }
+    .ok {
+      background: #16a34a;
+      color: #fff;
+    }
   }
 </style>

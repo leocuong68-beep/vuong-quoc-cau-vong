@@ -307,6 +307,7 @@ export const phonicsUnits = (level, prefix) =>
       title: lessonTitle(l),
       make: makeLesson(u.from + k, level),
       teach: () => lessonSlides(u.from + k, level),
+      sheet: 'worksheets/ph-' + l.n.replace('–', '-') + '.pdf',
     })),
   }));
 
@@ -376,10 +377,12 @@ export const alphabetUnit = (level, prefix) => {
         title: { vi: 'Chữ ' + title(g), el: title(g), en: 'Letters ' + title(g) },
         make: () => build(10, gens(g, g)),
         teach: () => alphabetSlides(g),
+        sheet: 'worksheets/ph-abc' + (i + 1) + '.pdf',
       })),
       {
         id: prefix + '-abc-all',
         title: { vi: 'Ôn cả bảng chữ cái', el: 'Όλο το αλφάβητο', en: 'The whole alphabet' },
+        sheet: 'worksheets/ph-abc-all.pdf',
         make: () => build(10, gens(AZ, AZ)),
       },
     ],
@@ -493,3 +496,32 @@ const lessonSlides = (i, level) => {
 
 export const alphabetTeach = (g) => () => alphabetSlides(g);
 export const phonicsTeach = (i, level) => () => lessonSlides(i, level);
+
+// ---------- Bài viết in theo từng bài (23/11/2026) ----------
+// Dữ liệu cho phiếu in: chữ để tập viết, từ (của Mia và của Tin), từ khó, câu. Script
+// scripts/make-worksheets.mjs xuất ra JSON, scripts/worksheets.py vẽ PDF vào public/worksheets/.
+export const worksheetKey = (lessonId) => lessonId.replace(/^m?en-/, '');
+export const worksheetSpecs = () => {
+  const out = [];
+  ABC_GROUPS.forEach((g, i) => out.push({ key: 'ph-abc' + (i + 1), kind: 'letters', title: 'Chữ ' + g[0].toUpperCase() + ' – ' + g[g.length - 1].toUpperCase(), letters: g, words: g.map((l) => KEY[l]), vi: g.map((l) => VI_MEAN[KEY[l]] || '') }));
+  out.push({ key: 'ph-abc-all', kind: 'letters', title: 'Cả bảng chữ cái', letters: AZ, words: [], vi: [] });
+  LESSONS.forEach((l, i) => {
+    const range = l.review || [i, i];
+    const prev = range[0] > 0 ? cumulative(range[0] - 1, 'words', 'tin') : [];
+    const tin = l.review ? cumulative(range[1], 'words', 'tin').filter((w) => !prev.includes(w)) : words(l.words);
+    const prevMia = range[0] > 0 ? cumulative(range[0] - 1, 'words', 'mia') : [];
+    const mia = l.review ? cumulative(range[1], 'words', 'mia').filter((w) => !prevMia.includes(w)) : words(l.mia);
+    out.push({
+      key: 'ph-' + l.n.replace('–', '-'),
+      kind: 'words',
+      title: lessonTitle(l).vi,
+      sounds: l.sounds || [],
+      mia: mia.length ? mia : tin.slice(0, 3),
+      tin: tin.length ? tin : cumulative(range[1], 'words', 'tin').slice(-6),
+      vi: Object.fromEntries(tin.concat(mia).map((w) => [w, VI_MEAN[w] || ''])),
+      tricky: words(l.tricky),
+      sentences: (l.sentences || []).map((s) => s[0]),
+    });
+  });
+  return out;
+};

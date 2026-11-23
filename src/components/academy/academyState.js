@@ -66,6 +66,8 @@ export const makeAcademy = (prefix) => {
     bonusDays: saved.bonusDays || {},
     // how many of Dad's presents have been announced (one per 30 stars)
     gifts: Number(saved.gifts) || 0,
+    // lessons whose game is passed but whose printed worksheet waits for the parents' approval: id -> stars
+    pending: saved.pending || {},
     unlockAll: read(prefix + '_unlock_all') === '1',
     // instruction language: vi (Vietnamese), en (English) or el (Greek)
     voiceLang: ['vi', 'en', 'el'].includes(read(prefix + '_voice_lang')) ? read(prefix + '_voice_lang') : 'vi',
@@ -80,6 +82,7 @@ export const makeAcademy = (prefix) => {
           days: this.days,
           bonusDays: this.bonusDays,
           gifts: this.gifts,
+          pending: this.pending,
         })
       );
       write(prefix + '_minecraft_open', this.minecraftOpen ? today() : '');
@@ -87,6 +90,9 @@ export const makeAcademy = (prefix) => {
     // stars still needed for Dad's next present
     get toNextGift() {
       return GIFT_EVERY - (this.wallet % GIFT_EVERY);
+    },
+    isPending(lessonId) {
+      return !!this.pending[lessonId] && !this.isPassed(lessonId);
     },
     starsOf(lessonId) {
       return Number(this.best[lessonId]) || 0;
@@ -112,9 +118,26 @@ export const makeAcademy = (prefix) => {
     },
     subjectIds: [],
     // Record one finished attempt. Returns what was won, for the result screen.
-    finish(subjectId, lessonId, right, total) {
+    // needsSheet: an English lesson with a printed worksheet — the lesson counts as done
+    // (stars, next lesson open) only after the parents approve the worksheet.
+    finish(subjectId, lessonId, right, total, needsSheet) {
       const stars = starsForScore(right, total);
       const before = this.starsOf(lessonId);
+      if (stars > 0 && needsSheet && before === 0) {
+        this.pending[lessonId] = Math.max(Number(this.pending[lessonId]) || 0, stars);
+        this.save();
+        return { stars, earned: 0, bonus: 0, gift: 0, passed: true, pendingSheet: true, firstPass: false };
+      }
+      return this.award(subjectId, lessonId, stars, before);
+    },
+    // the parents checked the printed worksheet: now the lesson is passed
+    approve(subjectId, lessonId) {
+      const stars = Number(this.pending[lessonId]) || 0;
+      if (!stars) return null;
+      delete this.pending[lessonId];
+      return this.award(subjectId, lessonId, stars, this.starsOf(lessonId));
+    },
+    award(subjectId, lessonId, stars, before) {
       let earned = 0;
       let bonus = 0;
       let gift = 0;

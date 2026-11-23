@@ -15,3 +15,21 @@ it('stars only on the first pass, a present every 30 stars', () => {
   expect(a.toNextGift).toBe(30 - (a.wallet % 30));
   expect(a.finish('math', 'm2', 8, 10).gift).toBe(0);
 });
+
+it('a lesson with a worksheet waits for the parents', () => {
+  const a = makeAcademy('test_sheet_' + Math.random());
+  a.subjectIds = ['english'];
+  const subject = { lessons: [{ id: 'w1' }, { id: 'w2' }] };
+  const r = a.finish('english', 'w1', 9, 10, true);
+  expect(r.pendingSheet).toBe(true);
+  expect(r.earned).toBe(0);
+  expect(a.isPending('w1')).toBe(true);
+  expect(a.isOpen(subject, 1)).toBe(false);
+  const ok = a.approve('english', 'w1');
+  expect(ok.earned).toBe(2);
+  expect(a.isPassed('w1')).toBe(true);
+  expect(a.isPending('w1')).toBe(false);
+  expect(a.isOpen(subject, 1)).toBe(true);
+  // replaying an approved lesson: no pending, no stars
+  expect(a.finish('english', 'w1', 10, 10, true).earned).toBe(0);
+});
