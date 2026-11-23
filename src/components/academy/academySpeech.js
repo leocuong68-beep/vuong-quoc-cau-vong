@@ -97,6 +97,9 @@ export const AcademySpeech = {
       bases[lang] = voiceBase(lang);
       files[lang] = ((await loadManifest(bases[lang])) || {})[lang] || [];
     }
+    // Mia's space: an English or Greek line she has no recording of plays Tin Tin's recording (same teacher voice)
+    const shared = ((await loadManifest('sounds/academy/')) || {});
+    const sharedHas = (lang, id) => lang !== 'vi' && (shared[lang] || []).includes(id);
     const has = (lang, text) => (files[lang] || []).includes(lineId(lang, text));
     // a whole recorded line first; otherwise Greek words by the Greek voice
     const list = (Array.isArray(parts) ? parts : [parts])
@@ -113,6 +116,8 @@ export const AcademySpeech = {
       const pieceIds = pieces.map((p) => lineId(part.lang, p));
       if (have.includes(id)) {
         await this.playFile(base + part.lang + '/' + id + '.mp3', token, part);
+      } else if (base !== 'sounds/academy/' && sharedHas(part.lang, id)) {
+        await this.playFile('sounds/academy/' + part.lang + '/' + id + '.mp3', token, part);
       } else if (pieces.length > 1 && pieceIds.every((p) => have.includes(p))) {
         for (const p of pieceIds) {
           if (token !== this.token) return;

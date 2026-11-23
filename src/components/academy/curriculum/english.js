@@ -1,5 +1,6 @@
 import { en } from '../academySpeech.js';
 import { build, choicesFrom, pick } from './helpers.js';
+import { phonicsUnits } from './phonics.js';
 
 // English — phonics first (letter groups as in Jolly Phonics), then short words and sight words.
 
@@ -234,40 +235,12 @@ export const ENGLISH = {
   title: { vi: 'Tiếng Anh', el: 'Αγγλικά' },
   short: 'Aa',
   color: '#ef4444',
+  // 23/11/2026: giáo trình phonics 4 giai đoạn (chung với Mia), rồi từ vựng màu và số.
   units: [
+    ...phonicsUnits('tin', 'en-ph'),
     {
-      title: { vi: 'Âm và chữ cái', el: 'Γράμματα και ήχοι' },
-      lessons: [
-        L('g1', 'Âm s a t p i n', 'Ήχοι s a t p i n', lettersLesson(GROUPS[0], GROUPS[0])),
-        L(
-          'g2',
-          'Âm c k e h r m d',
-          'Ήχοι c k e h r m d',
-          lettersLesson(GROUPS[1], GROUPS[0].concat(GROUPS[1]))
-        ),
-        L(
-          'g3',
-          'Âm g o u l f b',
-          'Ήχοι g o u l f b',
-          lettersLesson(GROUPS[2], GROUPS[1].concat(GROUPS[2]))
-        ),
-        L(
-          'g4',
-          'Âm j z w v y q',
-          'Ήχοι j z w v y q',
-          lettersLesson(GROUPS[3], GROUPS[2].concat(GROUPS[3]))
-        ),
-        L('abc', 'Ôn cả bảng chữ cái', 'Όλο το αλφάβητο', lettersLesson(all, all)),
-      ],
-    },
-    {
-      title: { vi: 'Đọc từ ngắn', el: 'Μικρές λέξεις' },
-      lessons: [
-        L('cvc1', 'Nghe từ 3 chữ: cat, dog…', 'Άκου: cat, dog…', () => build(10, [hearCvc])),
-        L('cvc2', 'Tự đọc từ 3 chữ', 'Διάβασε: cat, dog…', () => build(10, [readCvc, hearCvc])),
-        L('sight', 'Từ hay gặp: the, is, and…', 'Συχνές λέξεις', () => build(10, [sight])),
-        L('col', 'Màu sắc và con số', 'Χρώματα και αριθμοί', () => build(10, [colour, number])),
-      ],
+      title: { vi: 'Từ vựng', el: 'Λεξιλόγιο', en: 'Words' },
+      lessons: [L('col', 'Màu sắc và con số', 'Χρώματα και αριθμοί', () => build(10, [colour, number]))],
     },
   ],
 };

@@ -44,6 +44,7 @@ import AcademyHome from './components/academy/AcademyHome.vue';
 import SubjectPage from './components/academy/SubjectPage.vue';
 import LessonGame from './components/academy/LessonGame.vue';
 import { Kids } from './components/academy/publicKids.js';
+import { IS_PUBLIC } from './components/princess/state.js';
 import './registerServiceWorker';
 
 if (!localStorage.rewards) {
@@ -186,7 +187,8 @@ router.beforeEach((to) => {
   if (onMiaTablet && to.path.startsWith('/tintin')) return '/princess';
   const isAcademy = to.path.startsWith('/tintin');
   try {
-    if (firstNavigation && to.path === '/' && localStorage.academy_device === '1') {
+    // on the web both children share one computer: always start on the home page
+    if (!IS_PUBLIC && firstNavigation && to.path === '/' && localStorage.academy_device === '1') {
       firstNavigation = false;
       return '/tintin';
     }

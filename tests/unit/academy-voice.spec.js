@@ -7,7 +7,11 @@ it('both voices cover every line', () => {
   const load = (d) => JSON.parse(fs.readFileSync('public/sounds/' + d + '/manifest.json'));
   for (const [dir, subs] of [['academy', SUBJECTS], ['academy_mia', MIA_SUBJECTS], ['academy_pub', SUBJECTS]]) {
     // the public space: Vietnamese from academy_pub, English and Greek shared with Tin Tin
-    const m = dir === 'academy_pub' ? { ...load('academy'), vi: load('academy_pub').vi } : load(dir);
+    const own = load(dir);
+    // Mia: English/Greek lines without her own recording use Tin Tin's (AcademySpeech falls back to sounds/academy)
+    const tin = load('academy');
+    const m = dir === 'academy_pub' ? { ...tin, vi: load('academy_pub').vi }
+      : dir === 'academy_mia' ? { vi: own.vi, en: [...own.en, ...tin.en], el: [...own.el, ...tin.el] } : own;
     const has = (l, t) => (m[l] || []).includes(lineId(l, t));
     const miss = new Set();
     const ok = (lang, text) => { if (!text) return;
