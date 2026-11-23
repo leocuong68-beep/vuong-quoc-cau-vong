@@ -35,13 +35,14 @@ export const splitGreek = (part) => {
 };
 
 // Each child has an own voice: Tin Tin's guide is Coach Leo (vi) + Wiselady (en, el),
-// Mia keeps her Lovely_Girl voice in every language.
+// Mia keeps her Lovely_Girl voice in Vietnamese and Greek; her English is Tin Tin's teacher voice
+// (Wiselady), not a child's voice (23/11/2026). A missing English line uses the device's en-GB voice.
 // The public Academy (#/hoc) reads Vietnamese with MiniMax's own Vietnamese voice;
 // English and Greek are shared with Tin Tin's.
 const voiceBase = (lang) => {
   try {
     const h = window.location.hash;
-    if (/^#\/mia/.test(h)) return 'sounds/academy_mia/';
+    if (/^#\/mia/.test(h)) return lang === 'en' ? 'sounds/academy/' : 'sounds/academy_mia/';
     if (/^#\/hoc/.test(h) && lang === 'vi') return 'sounds/academy_pub/';
     return 'sounds/academy/';
   } catch (e) {

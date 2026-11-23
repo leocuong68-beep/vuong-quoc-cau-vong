@@ -38,6 +38,9 @@ export const starsForScore = (right, total) => {
   return 0;
 };
 
+// Parents' menu code (Ba mẹ): unlocks every lesson to check the content.
+export const PARENT_CODE = '6868';
+
 // Daily goal: one lesson passed in every subject. Then Minecraft opens for the day.
 export const DAILY_BONUS = 5;
 // Every 30 stars: a celebration and a present from Dad (23/11/2026).
@@ -147,6 +150,11 @@ export const makeAcademy = (prefix) => {
     openEverything() {
       this.unlockAll = true;
       write(prefix + '_unlock_all', '1');
+    },
+    // parents' menu: back to the normal order (a lesson opens after the one before is passed)
+    lockAgain() {
+      this.unlockAll = false;
+      write(prefix + '_unlock_all', '0');
     },
   });
 };

@@ -1,6 +1,37 @@
 <template>
   <div class="academy home" :class="'theme-' + profile.theme">
     <PickName v-if="needName" @picked="picked" />
+    <div v-if="parents" class="parents-back" data-test="parents-menu" @click.self="parents = false">
+      <form class="parents slab" @submit.prevent="checkCode">
+        <h3>🔑 {{ t({ vi: 'Dành cho ba mẹ', en: 'For parents', el: 'Για γονείς' }) }}</h3>
+        <template v-if="!acad.unlockAll">
+          <p>{{ t({ vi: 'Nhập mã để mở tất cả bài học (kiểm tra nội dung).', en: 'Enter the code to open every lesson.', el: 'Κωδικός για όλα τα μαθήματα.' }) }}</p>
+          <input
+            ref="code"
+            v-model="code"
+            data-test="parent-code"
+            inputmode="numeric"
+            maxlength="8"
+            autocomplete="off"
+            type="password"
+            :class="{ wrong: codeWrong }"
+          />
+          <div class="row">
+            <button type="button" class="mc-btn" @click="parents = false">{{ t({ vi: 'Đóng', en: 'Close', el: 'Κλείσιμο' }) }}</button>
+            <button type="submit" class="mc-btn ok" data-test="parent-ok">{{ t({ vi: 'Mở khóa', en: 'Unlock', el: 'Ξεκλείδωμα' }) }}</button>
+          </div>
+        </template>
+        <template v-else>
+          <p>{{ t({ vi: 'Tất cả bài đang mở.', en: 'All lessons are open.', el: 'Όλα ανοιχτά.' }) }}</p>
+          <div class="row">
+            <button type="button" class="mc-btn" @click="parents = false">{{ t({ vi: 'Đóng', en: 'Close', el: 'Κλείσιμο' }) }}</button>
+            <button type="button" class="mc-btn" data-test="parent-lock" @click="lockAgain">
+              {{ t({ vi: 'Khóa lại như cũ', en: 'Lock again', el: 'Κλείδωμα' }) }}
+            </button>
+          </div>
+        </template>
+      </form>
+    </div>
     <canvas v-if="celebrating" ref="fireworks" class="fireworks" />
     <aside class="hero">
       <div class="bubble slab pixel">{{ greeting }}</div>
@@ -123,6 +154,9 @@
       </section>
 
       <footer class="foot">
+        <button type="button" class="link" data-test="parents" @click="openParents">
+          🔑 {{ t({ vi: 'Ba mẹ', en: 'Parents', el: 'Γονείς' }) }}
+        </button>
         <button v-if="profile.back" type="button" class="link" @click="goBack">
           ← {{ t(profile.back.label) }}
         </button>
@@ -142,6 +176,7 @@
   import UpdateButton from '../common/UpdateButton.vue';
   import { pickText } from './curriculum/en.js';
   import { Profiles } from '../princess/state.js';
+  import { PARENT_CODE } from './academyState.js';
   import { AcademySpeech } from './academySpeech.js';
   import { sfx, voice } from './sfx.js';
 
@@ -149,7 +184,7 @@
     name: 'AcademyHome',
     components: { UpdateButton, PickName },
     data() {
-      return { taps: 0, tapTimer: null, crowned: false, celebrating: false, celebrateTimer: null };
+      return { taps: 0, tapTimer: null, crowned: false, celebrating: false, celebrateTimer: null, parents: false, code: '', codeWrong: false };
     },
     computed: {
       profile() {
@@ -337,6 +372,26 @@
         AcademySpeech.say([{ text: this.spokenGreeting, lang: this.lang }]);
       },
       // a tap says hello; 7 quick taps (for a parent) open every lesson
+      openParents() {
+        this.parents = true;
+        this.code = '';
+        this.codeWrong = false;
+        this.$nextTick(() => this.$refs.code && this.$refs.code.focus());
+      },
+      checkCode() {
+        if (this.code.trim() === PARENT_CODE) {
+          this.acad.openEverything();
+          this.parents = false;
+          sfx.chest && sfx.chest();
+        } else {
+          this.codeWrong = true;
+          this.code = '';
+        }
+      },
+      lockAgain() {
+        this.acad.lockAgain();
+        this.parents = false;
+      },
       secretTap() {
         AcademySpeech.say([{ text: this.spokenGreeting, lang: this.lang }]);
         this.taps++;
@@ -772,6 +827,57 @@
   @media (max-width: 760px) {
     .subjects {
       grid-template-columns: 1fr;
+    }
+  }
+  .parents-back {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.45);
+  }
+  .parents {
+    width: min(360px, 90vw);
+    padding: 16pt;
+    border-radius: 14pt;
+    background: #fff;
+    color: #222;
+    text-align: center;
+    h3 {
+      margin: 0 0 6pt;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 8pt 0;
+      padding: 8pt;
+      font-size: 22pt;
+      letter-spacing: 0.4em;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 10pt;
+      &.wrong {
+        border-color: #ef4444;
+        animation: shake 0.3s;
+      }
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 8pt;
+    }
+    .ok {
+      background: #16a34a;
+      color: #fff;
+    }
+  }
+  @keyframes shake {
+    25% {
+      transform: translateX(-6px);
+    }
+    75% {
+      transform: translateX(6px);
     }
   }
   .gift-hint {

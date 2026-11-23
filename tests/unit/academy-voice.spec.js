@@ -11,7 +11,7 @@ it('both voices cover every line', () => {
     // Mia: English/Greek lines without her own recording use Tin Tin's (AcademySpeech falls back to sounds/academy)
     const tin = load('academy');
     const m = dir === 'academy_pub' ? { ...tin, vi: load('academy_pub').vi }
-      : dir === 'academy_mia' ? { vi: own.vi, en: [...own.en, ...tin.en], el: [...own.el, ...tin.el] } : own;
+      : dir === 'academy_mia' ? { vi: own.vi, en: tin.en, el: [...own.el, ...tin.el] } : own;
     const has = (l, t) => (m[l] || []).includes(lineId(l, t));
     const miss = new Set();
     const ok = (lang, text) => { if (!text) return;
