@@ -14,10 +14,10 @@
           <span>{{ player ? player.name : '' }}</span>
           <em class="fas fa-user-friends" />
         </button>
-        <button type="button" class="player school" data-test="to-mia-school" @click="$router.push('/mia')">
-          <span>📚 {{ isPublic ? 'Mia' : 'Lớp học' }}</span>
+        <button type="button" class="player school" data-test="to-mia-school" @click="$router.push(schoolPath)">
+          <span>📚 Lớp học</span>
         </button>
-        <button v-if="isPublic || !onMiaTablet" type="button" class="player" data-test="to-tintin" @click="$router.push('/tintin')">
+        <button v-if="!isPublic && !onMiaTablet" type="button" class="player" data-test="to-tintin" @click="$router.push('/tintin')">
           <span>Tin Tin</span>
           <em class="fas fa-graduation-cap" />
         </button>
@@ -133,6 +133,10 @@
       },
       isPublic() {
         return IS_PUBLIC;
+      },
+      // Mia's class on her own account; any other child on the web goes to the public Academy
+      schoolPath() {
+        return !IS_PUBLIC || Profiles.currentId === 'mia' ? '/mia' : '/hoc';
       },
       // the family banner names Mia's family; the public version uses the one without names
       bannerSrc() {

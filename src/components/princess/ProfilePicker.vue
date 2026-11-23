@@ -7,12 +7,19 @@
       </div>
 
       <div v-if="!adding" class="cards">
+        <div class="card-wrap">
+          <button type="button" class="card family" data-profile="Tin Tin" @click="$router.push('/tintin')">
+            <img :src="avatar('boy')" class="no-drag" alt="" />
+            <span class="name">Tin Tin</span>
+          </button>
+        </div>
         <div v-for="p in profiles" :key="p.id" class="card-wrap">
           <button type="button" class="card" :data-profile="p.name" @click="choose(p)">
             <img :src="avatar(p.gender)" class="no-drag" alt="" />
             <span class="name">{{ p.name }}</span>
           </button>
           <button
+            v-if="!p.family"
             type="button"
             class="remove"
             :class="{ sure: removing === p.id }"
@@ -24,7 +31,7 @@
         </div>
         <button type="button" class="card add" data-test="add" @click="startAdding">
           <span class="plus">+</span>
-          <span class="name">{{ t('Thêm bé', 'Add') }}</span>
+          <span class="name">{{ t('Tạo mới', 'New') }}</span>
         </button>
       </div>
 
@@ -75,7 +82,7 @@
     emits: ['chosen'],
     data() {
       return {
-        adding: Profiles.list.length === 0,
+        adding: false,
         gender: 'girl',
         name: '',
         removing: null,
@@ -118,7 +125,7 @@
         }
         this.removing = null;
         Profiles.remove(profile.id);
-        if (!Profiles.list.length) this.adding = true;
+        
       },
       save() {
         if (!this.name.trim()) return;

@@ -44,13 +44,17 @@ const cleanName = (name) => String(name || '').replace(/\s+/g, ' ').trim().slice
 // Mia's own app has a single player, Mia; profiles are only offered on the public web version.
 const MIA = { id: 'mia', name: 'Mia', gender: 'girl' };
 
+// Web (23/11/2026): Mia's own account is always on the picker (her stars, her name in the voice);
+// Tin Tin's account opens his Academy; any other child creates a new profile.
 const loadProfiles = () => {
   if (!IS_PUBLIC) return [{ ...MIA }];
   const list = parseJson('vqcv_profiles', null);
-  if (Array.isArray(list)) {
-    return list.filter((p) => p && p.id && GENDERS.includes(p.gender)).map((p) => ({ ...p, name: cleanName(p.name) }));
-  }
-  return [];
+  const others = Array.isArray(list)
+    ? list
+        .filter((p) => p && p.id && p.id !== MIA.id && GENDERS.includes(p.gender))
+        .map((p) => ({ ...p, name: cleanName(p.name) }))
+    : [];
+  return [{ ...MIA, family: true }, ...others];
 };
 
 const starsKey = (id) => (id === 'mia' ? 'princess_stars' : 'princess_stars_' + id);
@@ -66,10 +70,10 @@ export const Profiles = reactive({
   },
   // the recorded lines say "Mia"; the public version speaks without a name
   get nameless() {
-    return IS_PUBLIC;
+    return IS_PUBLIC && this.currentId !== MIA.id;
   },
   save() {
-    write('vqcv_profiles', JSON.stringify(this.list));
+    write('vqcv_profiles', JSON.stringify(this.list.filter((p) => !p.family)));
   },
   add(name, gender) {
     const profile = { id: 'p' + Date.now().toString(36), name: cleanName(name), gender: GENDERS.includes(gender) ? gender : 'girl' };
@@ -78,6 +82,7 @@ export const Profiles = reactive({
     return profile;
   },
   remove(id) {
+    if (id === MIA.id) return;
     this.list = this.list.filter((p) => p.id !== id);
     this.save();
     try {
